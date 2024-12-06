@@ -1,0 +1,14 @@
+extends layout/layout
+
+block  variable
+    - let pageName = '404'; 
+
+block content 
+    main.main.main-404
+        ._404 
+            ._404__text Что-то пошло не так.....
+            ._404__wr-img 
+                img(src=require('../img/404.webp') alt="404")
+            ._404__text Но всегда можно вернуться на главную страницу!
+            ._404__wr-button
+                a._404__button(href="/") Главная

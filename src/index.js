@@ -20,5 +20,6 @@ import './css/change-password.css';
 import './css/account.css';
 import './css/basket.css';
 import './css/place-an-order.css';
+import './css/404.css';
 import './css/__modals.css';
 import 'air-datepicker/air-datepicker.css';

@@ -1,0 +1,103 @@
+.wrapper-404 {
+    background:
+    no-repeat url(../img/roasteria-side.webp),
+     no-repeat url(../img/roasteria-side.webp),
+       #483D41
+    ;
+    background-position:
+     right 0.35vw top 8vw,
+      left 0.35vw top 8vw 
+    ;
+    background-size: 10.9vw auto, 10.9vw auto;
+}
+
+.main-404 {
+    padding-top: 6.6vw;
+    padding-bottom: 21.28vw;
+
+    background: none;
+}
+
+._404 {
+    width: 46.6%;
+    margin: 0 auto;
+    padding-top: 3.65vw;
+    padding-bottom: 4.01vw;
+
+    background: #726B68;
+    box-shadow: 
+        4.22vw 9.48vw 2.92vw 0px rgba(0, 0, 0, 0.00), 
+        2.71vw 6.04vw 2.66vw 0px rgba(0, 0, 0, 0.02), 
+        1.51vw 65px 2.24vw 0px rgba(0, 0, 0, 0.08), 
+        0.68vw 1.51vw 1.67vw 0px rgba(0, 0, 0, 0.13), 
+        0.16vw 0.36vw 0.89vw 0px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(3px);
+}
+
+._404__text {
+    font-family: "SofiaSans";
+    font-size: 0.83vw;
+    font-weight: 700;
+    text-align: center;
+
+    color: #fff;
+}
+
+._404__wr-img {
+    width: 100%;
+    height: 7.03vw;
+    margin-top: 1.56vw;
+    margin-bottom: 1.56vw;
+}
+
+._404__wr-img img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+._404__wr-button {
+    display: flex;
+    margin-top: 1.30vw;
+    justify-content: center;
+}
+
+._404__button {
+    padding: 0.57vw 2.40vw;
+
+    font-family: "SofiaSans";
+    font-size: 0.83vw;
+    font-weight: 400;
+
+    color: #FFF;
+    background: #F1551C;
+    border-radius: 1.56vw;
+    border: 0.15vw solid #FFF;
+
+    cursor: pointer;
+}
+
+
+@media(max-width: 1200px) {
+    .wrapper-404 {
+        background-position:
+         right 0.35vw top 24vw,
+          left 0.35vw top 24vw
+        ;
+    }
+}
+
+@media(max-width: 1200px) {
+    ._404 {
+        width: 100%;
+        padding-top: 0;
+    }
+}
+
+@media(max-width: 1200px) {
+    ._404__title {
+        font-size: 4.80vw;
+    }
+}
