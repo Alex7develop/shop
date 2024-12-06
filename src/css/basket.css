@@ -1,0 +1,485 @@
+.wrapper-basket {
+    background:
+    no-repeat url(../img/roasteria-side.webp),
+     no-repeat url(../img/roasteria-side.webp),
+       #483D41
+    ;
+    background-position:
+     right 0.35vw top 8vw, 
+      left 0.35vw top 8vw 
+    ;
+    background-size: 10.9vw auto, 10.9vw auto;
+}
+
+.main-basket { 
+    padding-bottom: 11.28vw;
+
+    background: none;
+}
+
+.basket {
+    width: 76.4%;
+    margin: 0 auto;
+    padding-top: 5.78vw; 
+}
+
+.basket__content {
+    display: flex;
+    padding-bottom: 5.68vw;
+
+    background: #726B68;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.basket__wr-title {
+    padding-top: 2.97vw;
+}
+
+.basket__title {
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 700; 
+
+    color: #F1551C;
+}
+
+
+/* START СПИСОК BASKET */
+.basket__goods-list {
+    display: flex;
+    width: 52.2%;
+    /* height: 30vw; */
+    margin-top: 3vw;
+    padding-right: 1.3%;
+    gap: 2.09vw;
+
+    /* scrollbar-width: thin;
+    scrollbar-color: #d5cbc6 #726B68; */
+
+    flex-direction: column;
+
+    /* overflow: auto; */
+}
+
+.basket__goods-wr-content {
+    display: flex;
+    gap: 1.56vw;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.basket__goods-content {
+    display: flex;
+    gap: 0.52vw;
+
+    align-items: center;
+}
+
+.basket__goods-img {
+    width: 2.86vw;
+    height: 3.23vw;
+
+    > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+}
+
+.basket__goods-description {
+    > p {
+        font-family: "SofiaSans";
+        font-size: 0.73vw;
+        font-weight: 400;
+
+        color: #FFF;
+    }
+
+    > p:first-child {
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
+
+.basket__goods-amount {
+    display: flex;
+    height: 1.15vw;
+    gap: 0.26vw;
+}
+
+.basket__goods-amount-button {
+    display: flex;
+    width: 1.56vw;
+
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+
+    color: #FFF;
+    border: 1px solid #FFF;
+    background: #F1551C;
+
+    align-items: center;
+    justify-content: center;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.basket__goods-amount-button[data-type="decrement"]::before {
+    content: "-";
+}
+
+.basket__goods-amount-button[data-type="increment"]::before {
+    content: "+";
+}
+
+.basket__goods-amount-num {
+    width: 2.08vw;
+
+    font-family: "SofiaSans";
+    font-size: 0.73vw;
+    font-weight: 400;
+    text-align: center;
+    
+    color: #726B68;
+    border: 1px solid #FFF;
+    background: #FFF;
+
+    user-select: none;
+}
+
+.basket__goods-info-price {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.basket__goods-info p {
+    width: max-content;
+    padding-left: 19.2%;
+
+    font-family: "SofiaSans";
+    font-size: 0.68vw;
+    font-weight: 400;
+
+    color: #FFF;
+}
+
+.basket__goods-wr-price {
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.basket__goods-discount {
+    position: relative;
+
+    font-family: "SofiaSans";
+    font-size: 0.63vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.basket__goods-discount::before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    height: 2px;
+    width: 107%;
+
+    background-color: #F37548;
+
+    transform: translate(-50%, -50%) rotate(-12deg);
+}
+
+.basket__goods-price {
+    font-family: "SofiaSans";
+    font-size: 0.83vw;
+    font-weight: 700;
+
+    color: #F1551C; 
+}
+/* END СПИСОК BASKET */
+
+.basket__underline {
+    height: 0.10vw;
+    width: 66.79%;
+    margin-top: 1.88vw;
+
+    background: #FFF;
+}
+
+.basket__wr-total-price {
+    display: flex;
+    width: 52%;
+    padding-right: 1.9%;
+    margin-top: 2.08vw;
+
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.basket__wr-total-discount {
+    display: flex;
+    gap: 3.13vw;
+
+    color: #FFF;
+}
+
+.basket__total-price-old {
+    position: relative;
+
+    margin-top: 1.04vw;
+
+    color: #FFF;
+}
+
+.basket__total-price-old::before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    height: 2px;
+    width: 107%;
+
+    background-color: #F37548;
+
+    transform: translate(-50%, -50%) rotate(-12deg);
+}
+
+.basket__total-price {
+    display: flex;
+    gap: 3.13vw;
+
+    font-weight: 700;
+
+    color: #F1551C;
+}
+
+.basket__button {
+    display: flex;
+
+    height: 2.60vw;
+    width: 17.2%;
+    margin-top: 6.51vw;
+
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+    
+    color: #FFF;
+    border-radius: 1.56vw;
+    border: 0.15vw solid #FFF;
+    background: #F1551C;
+
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+ 
+
+@media(max-width: 1200px) {
+    .wrapper-basket {
+        background-position: right 0.35vw top 23.5vw, left 0.35vw top 23.5vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket {
+        width: auto;
+        padding-top: 15.73vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__content {
+        width: 89%;
+        margin: 0 auto;
+        padding-bottom: 20vw;
+    }
+}
+
+
+/* START ОКНО BASKET */
+@media(max-width: 1200px) {
+    .basket__wr-title {
+        padding-top: 8.27vw;
+    }
+    
+}
+
+@media(max-width: 1200px) {
+    .basket__title {
+        font-size: 4.80vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-list {
+        width: 88.7%;
+        /* height: 107vw; */
+        margin-top: 13.87vw;
+        padding-right: 0;
+        gap: 7.73vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-wr-content {
+        gap: 2.93vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-content {
+        gap: 2.67vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-img {
+        width: 11.47vw;
+        height: 13.07vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-description {
+        > p {
+            font-size: 2.93vw;
+        }
+    } 
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-amount {
+        height: 7.47vw;
+        gap: 1.33vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-amount-button {
+        width: 9.33vw;
+    
+        font-size: 5.33vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-amount-num {
+        width: 12.53vw;
+
+        font-size: 3.73vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-info-price {
+        margin-top: 2.13vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-info {
+        width: 76%;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-info p {
+        width: auto;
+        padding-left: 0;
+
+        font-size: 2.67vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-wr-price {
+        padding-right: 0.5%;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-discount {
+        font-size: 3.73vw;
+        white-space: nowrap;
+    }
+
+    .basket__goods-discount::before {
+        width: 105%;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__goods-price {
+        font-size: 4.27vw;
+        white-space: nowrap;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__underline {
+        width: 88.7%;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__wr-total-price {
+        width: 88.7%;
+        margin-top: 4.80vw;
+        padding-right: 4.9%;
+
+        font-size: 3.73vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__total-price-old {
+        margin-top: 2.4vw;
+        
+        font-size: 4.27vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__total-price { 
+        margin-top: 2.4vw;
+        
+        font-size: 4.27vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .basket__button {
+        height: 9.87vw;
+        width: 75%;
+        margin-top: 18.13vw;
+
+        font-size: 4.27vw;
+
+        border-radius: 8vw;
+        border: 0;
+        box-shadow: 31px 18px 10px 0px rgba(0, 0, 0, 0.00), 20px 12px 9px 0px rgba(0, 0, 0, 0.02), 11px 7px 8px 0px rgba(0, 0, 0, 0.08), 5px 3px 6px 0px rgba(0, 0, 0, 0.13), 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+    }
+}
+/* END ОКНО BASKET */

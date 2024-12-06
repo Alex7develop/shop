@@ -1,0 +1,966 @@
+.wrapper-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+
+    background: rgba(0, 0, 0, 0.45);
+    scrollbar-width: thin;
+    scrollbar-color: #d5cbc6 #726B68;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: auto; 
+    z-index: 1000000;
+}
+
+.modal {
+    display: flex;
+
+    background: #726B68;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal__wr-close {
+    display: flex;
+    width: 100%;
+    padding-top: 1.56vw;
+    padding-right: 1.56vw;
+
+    justify-content: flex-end;
+}
+
+.modal__close {
+    width: 1.56vw;
+    height: 1.41vw;
+
+    cursor: pointer;
+}
+
+.modal__wr-icon {
+    margin-top: 2.60vw;
+}
+
+.modal__icon {
+    width: 6.51vw;
+    height: 6.51vw;
+    margin: 0 auto;
+}
+
+.modal__icon-king {
+    background: no-repeat url('../img/icons/modal__king-icon.webp');
+    background-position: center;
+    background-size: 100%;
+}
+
+.modal__icon-photo {
+    background: no-repeat url('../img/icons/modal__photo-icon.webp');
+    background-position: center;
+    background-size: 100%;
+}
+
+.modal__icon-sad {
+    background: no-repeat url('../img/icons/modal__sad-icon.webp');
+    background-position: center;
+    background-size: 100%;
+}
+
+.modal__wr-form {
+    display: flex;
+    width: 100%;
+    margin-top: 2.19vw;
+
+    justify-content: center;
+}
+
+.modal__form {
+    display: flex;
+    width: 83.2%;
+    gap: .78vw;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal__wr-input {
+    width: 100%;
+}
+
+.modal__input {
+    width: 100%;
+    padding: 0.68vw 0.78vw;
+
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+    
+    background: transparent;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    caret-color: #fff;
+}
+
+.modal__input::placeholder {
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.modal__input_required {
+    background-image: url(../svg/profile__required-star.svg);
+    background-repeat: no-repeat;
+    background-size: auto 17.5%;
+}
+
+.modal__input_required[name="surname"] {
+    background-position: left 23.5% top 0.6vw;
+}
+.modal__input_required[name="name"] {
+    background-position: left 13.1% top 0.6vw;
+}
+.modal__input_required[name="phone"] {
+    background-position: left 22.5% top 0.6vw;
+}
+.modal__input_required[name="email"] {
+    background-position: left 17% top 0.6vw;
+}
+.modal__input_required[name="password"] {
+    background-position: left 20% top 0.6vw;
+}
+.modal__input_required[name="code"] {
+    background-position: left 12% top 0.6vw;
+}
+
+.modal__text {
+    font-family: 'SofiaSans';
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.modal__info-text {
+    font-size: 1.04vw;
+    text-align: center;
+}
+
+.modal__button {
+    height: 2.60vw;
+
+    font-size: 1.04vw;
+
+    border-radius: 1.56vw;
+    border: 0.10vw solid #FFF;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.modal__button_color {
+    background: #F1551C;
+}
+
+
+/* START УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ, ОТ ПОЛЬЗОВАТЕЛЯ */
+.modal-del-acc {
+    width: 18%;
+    padding-bottom: 3.28vw;
+}
+
+.modal-del-acc__text {
+    width: 70%;
+    margin-top: 5.05vw;
+}
+
+.modal-del-acc__wr-battons {
+    display: flex;
+    width: 84%;
+    margin-top: 4.79vw;
+
+    justify-content: space-between;
+}
+
+.modal-del-acc__button {
+    width: 47%;
+}
+/* END УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ, ПОДТВЕРЖДЕНИЕ ОТ ПОЛЬЗОВАТЕЛЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START АККАУНТ ПОЛЬЗОВАТЕЛЯ УСПЕШНО УДАЛЕН */
+.modal-acc-deleted {
+    width: 18%;
+    height: 18.23vw;
+
+    justify-content: center;
+}
+
+.modal-acc-deleted__text {
+    width: 69%;
+}
+/* END АККАУНТ ПОЛЬЗОВАТЕЛЯ УСПЕШНО УДАЛЕН */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START АККАУНТ ПОЛЬЗОВАТЕЛЯ УСПЕШНО ОТРЕДАКТИРОВАН */
+.modal-profile-edited {
+    width: 26.04vw;
+}
+
+.modal-profile-edited__text {
+    margin-top: 4.06vw;
+    margin-bottom: 11.51vw;
+}
+/* END АККАУНТ ПОЛЬЗОВАТЕЛЯ УСПЕШНО ОТРЕДАКТИРОВАН */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ПЕРВОЕ ОКНО ВХОД РЕГИСТРАЦИЯ */
+.modal-log-reg {
+    width: 26.3%;
+}
+
+.modal-log-reg__wr-battons {
+    display: flex;
+    width: 50%;
+    margin-top: 2.08vw;
+    margin-bottom: 6.20vw;
+    gap: 0.78vw;
+
+    flex-direction: column;
+}
+/* END ПЕРВОЕ ОКНО ВХОД РЕГИСТРАЦИЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО ВХОД */
+.modal-login {
+    width: 26.3%;
+}
+
+
+.modal-login__wr-recover {
+    width: 100%;
+    margin-top: 0.99vw;
+}
+
+.modal-login__recover {
+    width: fit-content;
+    margin: 0 auto;
+
+    font-family: 'SofiaSans';
+    font-size: 0.83vw;
+    font-weight: 300;
+
+    color: #fff;
+
+    cursor: pointer;
+}
+
+.modal-login__wr-battons {
+    display: flex;
+    width: 100%;
+    margin-top: 2.24vw;
+    margin-bottom: 4.58vw;
+
+    justify-content: center;
+}
+
+.modal-login__button {
+    width: 70%;
+}
+/* END ОКНО ВХОД */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО ВОССТАНОВЛЕНИЕ ПАРОЛЯ */
+.modal-recover {
+    width: 26.3%;
+    padding-bottom: 7.40vw;
+}
+
+.modal-recover__text {
+    width: 77%;
+    margin-top: 1.67vw;
+}
+
+.modal-recover__wr-battons {
+    display: flex;
+    width: 70%;
+    margin-top: 4.22vw;
+    margin-bottom: 4.58vw;
+
+    justify-content: center;
+}
+
+.modal-recover__button {
+    width: 71.4%;
+}
+/* END ОКНО ВОССТАНОВЛЕНИЕ ПАРОЛЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО ВОССТАНОВЛЕНИЕ ПАРОЛЯ РЕЗУЛЬТАТ */
+.modal-recover-succ {
+    width: 26.3%;
+    padding-bottom: 7.40vw;
+}
+
+.modal-recover-succ__text {
+    width: 77%;
+    margin-top: 1.67vw;
+}
+/* END ОКНО ВОССТАНОВЛЕНИЕ ПАРОЛЯ РЕЗУЛЬТАТ */
+
+
+/* ------------------==============================------------------- */
+
+/* START ОКНО РЕГИСТРАЦИЯ */
+.modal-reg {
+    width: 26.3%;
+    margin-top: 4vw;
+}
+
+.modal-reg__pass-rules {
+    display: flex;
+    margin-top: 0.63vw;
+    flex-direction: column;
+
+    font-family: "SofiaSans";
+    font-size: 0.63vw;
+    font-weight: 400;
+
+    color: #FFF;
+}
+
+.modal__wr-checkbox {
+    margin-top: 1.35vw;
+    align-self: flex-start;
+}
+
+.modal__label-checkbox {
+    cursor: pointer;
+}
+
+.modal__checkbox {
+    display: none;
+}
+
+.modal__checkbox-text {
+    display: flex;
+    gap: 0.47vw;
+    align-items: end;
+
+    font-family: "SofiaSans";
+    font-size: 0.63vw;
+    font-weight: 400;
+    text-align: center;
+    user-select: none;
+    
+    color: #FFF;
+}
+
+.modal__checkbox-text::before {
+    content: "";
+
+    display: inline-block;
+    width: 1.30vw;
+    height: 1.30vw;
+
+    background-color: #fff;
+    border-radius: 0.21vw;
+}
+
+.modal__label-checkbox_invalid + .modal__checkbox-text {
+    color: #FF7C7C;
+}
+
+.modal__label-checkbox_invalid + .modal__checkbox-text::before {
+    background-color: #FF7C7C;
+}
+
+.modal__checkbox:checked + .modal__checkbox-text::before {
+    background-image: url(../svg/check-mark-address-place-order.svg);
+    background-repeat: no-repeat;
+    background-size: 62% auto;
+    background-position: center;
+}
+
+.modal-reg__wr-icon-pdf {
+    margin-top: 1.30vw;
+}
+
+.modal-reg__link-icon-pdf {
+    display: block;
+    height: 3.49vw;
+    width: 3.49vw;
+}
+
+.modal-reg__wr-battons {
+    display: flex;
+    width: 70%;
+    margin-top: 2.34vw;
+    margin-bottom: 3.13vw;
+
+    justify-content: center;
+}
+
+.modal-reg__button {
+    width: 71.4%;
+}
+/* END ОКНО РЕГИСТРАЦИЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+
+/* START ОКНО КОД ПОДТВЕРЖДЕНИЯ */
+.modal-code {
+    width: 26.3%;
+    padding-bottom: 4.58vw;
+}
+
+.modal-code__text {
+    margin-top: 1.93vw;
+}
+
+.modal-code__wr-code-repeate {
+    margin-top: 0.47vw;
+}
+
+.modal-code__code-repeate {
+    font-family: "SofiaSans";
+    font-size: 0.83vw;
+    font-weight: 400;
+    
+    color: #FFF;
+}
+
+.modal-code__wr-battons {
+    display: flex;
+    width: 100%;
+    margin-top: 2.76vw;
+
+    justify-content: center;
+}
+
+.modal-code__button {
+    width: 50%;
+}
+/* END ОКНО КОД ПОДТВЕРЖДЕНИЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО ЗАКАЗ ОТПРАВЛЕН УСПЕШНО */
+.modal-order-success {
+    width: 26.3%;
+}
+
+.modal-order-success__info-text {
+    margin-top: 2.08vw;
+}
+
+.modal-order-success__text {
+    display: flex;
+    margin-top: 0.73vw;
+
+    flex-direction: column;
+}
+
+.modal-order-success__phone {
+    margin-top: 0.16vw;
+}
+
+.modal-order-success__wr-battons {
+    display: flex;
+    width: 100%;
+    margin-top: 2.50vw;
+    margin-bottom: 4.01vw;
+
+    justify-content: center;
+}
+
+.modal-order-success__button {
+    display: flex;
+    width: 50%;
+
+    align-items: center;
+    justify-content: center;
+}
+/* END ОКНО ЗАКАЗ ОТПРАВЛЕН УСПЕШНО */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО НЕ УДАЧНЫЙ ЗАПРОС */
+.modal-failed {
+    width: 26.3%;
+}
+
+.modal-failed__info-text {
+    margin-top: 4.06vw;
+}
+
+.modal-failed__wr-battons {
+    display: flex;
+    width: 100%;
+    margin-top: 4.90vw;
+    margin-bottom: 4.01vw;
+
+    justify-content: center;
+}
+
+.modal-failed__button {
+    display: flex;
+    width: 50%;
+
+    align-items: center;
+    justify-content: center;
+}
+/* END ОКНО НЕ УДАЧНЫЙ ЗАПРОС */
+
+@media(max-width: 1200px) {
+    div.modal {
+        width: 80%;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__wr-close {
+        padding-top: 4.80vw;
+        padding-right: 4.80vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__close {
+        width: 5.33vw;
+        height: 5.33vw;
+    }
+}
+@media(max-width: 1200px) {
+    .modal__wr-icon {
+        margin-top: 4.80vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__icon {
+        width: 26.67vw;
+        height: 26.67vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__wr-form {
+        margin-top: 6.40vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__form {
+        width: 88.7%;
+        gap: 2.67vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__input {
+        padding: 0.80vw 4vw;
+    
+        font-size: 3.47vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__input_required {
+        background-size: auto 20.5%;
+    }
+
+    .modal__input_required[name="surname"] {
+        background-position: left 25.5% top 0.6vw;
+    }
+    .modal__input_required[name="name"] {
+        background-position: left 14.8% top 0.6vw;
+    }
+    .modal__input_required[name="phone"] {
+        background-position: left 24% top 0.6vw;
+    }
+    .modal__input_required[name="email"] {
+        background-position: left 18.7% top 0.6vw;
+    }
+    .modal__input_required[name="password"] {
+        background-position: left 21.7% top 0.6vw;
+    }
+    .modal__input_required[name="code"] {
+        background-position: left 14% top 0.6vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__input::placeholder {
+        font-size: 3.47vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__info-text {
+        font-size: 5.33vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__button {
+        height: 9.87vw;
+    
+        font-size: 4.27vw;
+    
+        border-radius: 8vw;
+        border: 0.53vw solid #FFF;
+    }
+}
+
+/* START УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ, ОТ ПОЛЬЗОВАТЕЛЯ */
+@media(max-width: 1200px) {
+    .modal-del-acc {
+        padding-bottom: 13.87vw;
+    } 
+}
+
+@media(max-width: 1200px) {
+    .modal-del-acc__text {
+        width: 86%;
+        margin-top: 25.87vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-del-acc__wr-battons {
+        display: flex;
+        width: 86%;
+        margin-top: 17.07vw;
+    
+        justify-content: space-between;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-del-acc__button {
+        width: 46%;
+    }
+}
+/* END УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ, ПОДТВЕРЖДЕНИЕ ОТ ПОЛЬЗОВАТЕЛЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START АККАУНТ ПОЛЬЗОВАТЕЛЯ УСПЕШНО УДАЛЕН */
+@media(max-width: 1200px) {
+    .modal-acc-deleted {
+        height: 76.80vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-acc-deleted__text {
+        width: 86%;
+    }
+}
+/* END АККАУНТ ПОЛЬЗОВАТЕЛЯ УСПЕШНО УДАЛЕН */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START АККАУНТ ПОЛЬЗОВАТЕЛЯ УСПЕШНО ОТРЕДАКТИРОВАН */
+
+@media(max-width: 1200px) {
+    .modal-profile-edited__text {
+        margin-top: 9.33vw;
+        margin-bottom: 43.20vw;
+    }
+}
+
+/* END АККАУНТ ПОЛЬЗОВАТЕЛЯ УСПЕШНО ОТРЕДАКТИРОВАН */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ПЕРВОЕ ОКНО ВХОД РЕГИСТРАЦИЯ */
+
+@media(max-width: 1200px) {
+    .modal-log-reg__wr-battons {
+        width: 50%;
+        margin-top: 11.20vw;
+        margin-bottom: 9.60vw;
+        gap: 4.80vw;
+    
+        flex-direction: column;
+    }
+}
+
+/* END ПЕРВОЕ ОКНО ВХОД РЕГИСТРАЦИЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО ВХОД */
+@media(max-width: 1200px) {
+    .modal-login__wr-recover {
+        margin-top: 2.93vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-login__recover {
+        font-size: 2.93vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-login__wr-battons {
+        margin-top: 8vw;
+        margin-bottom: 8vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-login__button {
+        width: 40%;
+    }
+}
+/* END ОКНО ВХОД */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО ВОССТАНОВЛЕНИЕ ПАРОЛЯ */
+@media(max-width: 1200px) {
+    .modal-recover__text {
+        margin-top: 8vw;
+        padding-bottom: 9.07vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-recover__wr-battons {
+        margin-top: 9.87vw;
+        margin-bottom: 8.27vw;
+    }
+}
+@media(max-width: 1200px) {
+    .modal-recover__button {
+        width: 57.2%;
+    }
+}
+/* END ОКНО ВОССТАНОВЛЕНИЕ ПАРОЛЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО ВОССТАНОВЛЕНИЕ ПАРОЛЯ РЕЗУЛЬТАТ */
+@media(max-width: 1200px) {
+    .modal-recover-succ__text {
+        margin-top: 8vw;
+        padding-bottom: 17.07vw;
+    }
+}
+/* END ОКНО ВОССТАНОВЛЕНИЕ ПАРОЛЯ РЕЗУЛЬТАТ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО РЕГИСТРАЦИЯ */
+@media(max-width: 1200px) {
+    .modal-reg {
+        margin-top: 0;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-reg__pass-rules {
+        margin-top: 2.93vw;
+
+        font-size: 2.67vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__wr-checkbox {
+        margin-top: 9vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__checkbox-text {
+        gap: 2.67vw;
+
+        font-size: 2.67vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal__checkbox-text::before {
+        height: 5.33vw;
+        width: 5.33vw;
+
+        border-radius: 1.07vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-reg__wr-icon-pdf {
+        margin-top: 4.80vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-reg__link-icon-pdf {
+        height: 13.07vw;
+        width: 13.07vw;
+    }
+}
+ 
+@media(max-width: 1200px) {
+    .modal-reg__wr-battons {
+        margin-top: 7.20vw;
+        margin-bottom: 8.27vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-reg__button {
+        width: 57.2%;
+    }
+}
+/* END ОКНО РЕГИСТРАЦИЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО КОД ПОДТВЕРЖДЕНИЯ */
+@media(max-width: 1200px) {
+    .modal-code {
+        width: 26.3%;
+        padding-bottom: 9.33vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-code__text {
+        margin-top: 12.53vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-code__wr-code-repeate {
+        margin-top: 1vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-code__code-repeate {
+        font-size: 2.93vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-code__wr-battons {
+        margin-top: 10.93vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-code__button {
+        width: 40%;
+    }
+}
+/* END ОКНО КОД ПОДТВЕРЖДЕНИЯ */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО ЗАКАЗ ОТПРАВЛЕН УСПЕШНО */
+@media(max-width: 1200px) {
+    .modal-order-success__info-text {
+        margin-top: 9.33vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-order-success__text {
+        margin-top: 4.73vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-order-success__phone {
+        margin-top: 3.16vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-order-success__wr-battons {
+        margin-top: 10.67vw;
+        margin-bottom: 18.93vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-order-success__button {
+        width: 67.4%;
+    }
+}
+/* END ОКНО ЗАКАЗ ОТПРАВЛЕН УСПЕШНО */
+
+
+/* ------------------==============================------------------- */
+
+
+/* START ОКНО НЕ УДАЧНЫЙ ЗАПРОС */
+@media(max-width: 1200px) {
+    .modal-failed__info-text {
+        margin-top: 7.2vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .modal-order-success__wr-battons {
+        margin-top: 16.53vw;
+        margin-bottom: 18.93vw;
+    }
+}
+/* END ОКНО НЕ УДАЧНЫЙ ЗАПРОС */

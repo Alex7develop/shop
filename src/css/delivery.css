@@ -1,0 +1,228 @@
+.wrapper-delivery {
+    background:
+    no-repeat url(../img/roasteria-side.webp),
+     no-repeat url(../img/roasteria-side.webp),
+       #483D41
+    ;
+    background-position:
+     right 0.35vw top 8vw,
+      left 0.35vw top 8vw 
+    ;
+    background-size: 10.9vw auto, 10.9vw auto;
+}
+
+.main-delivery {
+    padding-bottom: 0;
+    padding-top: 14.5vw;
+    margin-bottom: 11.28vw;
+
+    background: none;
+}
+
+.delivery {
+    width: 75.73vw;
+    margin: 0 auto;
+    padding: 2.76vw 5.31vw;
+    
+    background: #726B68;
+    box-shadow: 81px 182px 56px 0px rgba(0, 0, 0, 0.00),
+     52px 116px 51px 0px rgba(0, 0, 0, 0.02),
+      29px 65px 43px 0px rgba(0, 0, 0, 0.08),
+       13px 29px 32px 0px rgba(0, 0, 0, 0.13),
+        3px 7px 17px 0px rgba(0, 0, 0, 0.15);
+}
+
+.delivery__controll {
+    display: none;
+}
+
+.delivery__wr-info {
+    display: flex;
+    gap: 2.60vw;
+
+    flex-direction: column;
+}
+
+.delivery__line {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.delivery__direction {
+    width: 47.995%;
+    padding: 0.89vw 1.56vw 3.02vw;
+
+    border: 1px solid #FFF;
+}
+
+.delivery__title {
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    
+    color: #F1551C;
+}
+
+.delivery__direction p {
+    margin-top: 1.20vw;
+
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+    text-align: center;
+    
+    color: #fff;
+}
+
+.delivery__direction p span {
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 700;
+    
+    color: #fff;
+}
+
+.delivery__direction p span:last-child {
+    text-transform: uppercase;
+}
+
+p.delivery__documents {
+    font-weight: 700;
+}
+
+.delivery__list {
+    display: flex;
+    margin-top: 1.20vw;
+    gap: 1.20vw;
+
+    flex-direction: column;
+}
+
+.delivery__item {
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+    text-align: center;
+    
+    color: #fff;
+}
+
+@media(max-width: 1200px) {
+    .main-delivery {
+        padding-top: 0;
+    }
+}
+
+@media(max-width: 1200px) {
+    .wrapper-delivery {
+        background-position:
+         right 0.35vw top 102.5vw,
+          left 0.35vw top 102.5vw
+        ;
+    }
+}
+
+@media(max-width: 1200px) {
+    .delivery {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        background: none;
+        box-shadow: none;
+    }
+}
+
+@media(max-width: 1200px) {
+    .delivery__controll {
+        display: block;
+
+        background: #3F3937;
+    }
+}
+
+@media(max-width: 1200px) {
+    .delivery__controll-item {
+        display: flex;
+        height: 13.33vw;
+
+        font-family: "SofiaSans";
+        font-size: 5.33vw;
+        font-weight: 300;
+
+        color: rgba(217, 217, 217, 0.90);
+        border-bottom: 1px solid #fff;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .delivery__controll-item_active {
+        color: #fff;
+        background-color: #F1551C;
+    }
+}
+
+@media(max-width: 1200px) {
+    .delivery__wr-info {
+        display: block;
+        width: 89.33vw;
+        margin: 14.13vw auto 0;
+
+        background: #726B68;
+        box-shadow: 0px 0px 15.1px 7px rgba(0, 0, 0, 0.25);
+    }
+}
+
+
+
+@media(max-width: 1200px) {
+    .delivery__direction {
+        display: none;
+        width: 100%;
+        min-height: 73.60vw;
+        padding: 6.67vw 4vw 7.73vw 6.67vw;
+
+        border: 0;
+    }
+
+    .delivery__direction_doc {
+        padding: 6.67vw 3.73vw 7.73vw 3.73vw;
+    }
+
+    .delivery__direction_active {
+        display: block;
+    }
+}
+
+@media(max-width: 1200px) {
+    .delivery__wr-title {
+        display: none;
+    }
+}
+
+@media(max-width: 1200px) {
+    .delivery__direction p {
+        font-size: 3.47vw;
+    }
+
+    .delivery__direction p span {
+        font-size: 3.47vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .delivery__item {
+        font-size: 3.47vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .wrapper-delivery .contacts__wr-address {
+        background: none;
+    }
+}
+

@@ -1,0 +1,13 @@
+.section-title__title {
+    font-family: Alegreya;
+    font-size: 5.21vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+@media( max-width: 1200px ) {
+    .section-title__title {
+        font-size: 10.67vw;
+    }
+}

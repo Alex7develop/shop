@@ -1,0 +1,31 @@
+User-agent: DotBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: Ezooms
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Riddler
+Disallow: /
+
+User-agent: ltx71
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: *
+Host: r18.coffee
+
+Sitemap: http://r18.coffee/sitemap.xml

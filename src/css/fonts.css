@@ -1,0 +1,39 @@
+@font-face { 
+    font-family: 'SofiaSans';
+    src: url('../fonts/SofiaSansSemiCondensed-Light.woff2') format('woff2'), 
+    url('../fonts/SofiaSansSemiCondensed-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+} 
+
+@font-face { 
+    font-family: 'SofiaSans';
+    src: url('../fonts/SofiaSansSemiCondensed-Regular.woff2') format('woff2'),
+     url('../fonts/SofiaSansSemiCondensed-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+} 
+
+@font-face { 
+    font-family: 'SofiaSans';
+    src: url('../fonts/SofiaSansSemiCondensed-Bold.woff2') format('woff2'), 
+    url('../fonts/SofiaSansSemiCondensed-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+} 
+
+@font-face { 
+    font-family: AbyssinicaSIL;
+    src: url('../fonts/AbyssinicaSIL-Regular.woff2') format('woff2'), 
+    url('../fonts/AbyssinicaSIL-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face { 
+    font-family: Alegreya;
+    src: url('../fonts/Alegreya-Regular.woff2') format('woff2'), 
+    url('../fonts/Alegreya-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+}

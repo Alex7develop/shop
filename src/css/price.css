@@ -1,0 +1,145 @@
+.wrapper-price {
+    background:
+    no-repeat url(../img/roasteria-side.webp),
+     no-repeat url(../img/roasteria-side.webp),
+       #483D41
+    ;
+    background-position:
+     right 0.35vw top 1.5vw,
+      left 0.35vw top 1.5vw 
+    ;
+    background-size: 10.9vw auto, 10.9vw auto;
+}
+
+.main-price {
+    background: none;
+}
+
+.price {
+    width: 71%;
+    margin: 6.56vw auto 0;
+    padding-top: 0.52vw;
+    padding-bottom: 2.71vw;
+
+    background-color: #726B68;
+    box-shadow: 81px 182px 56px 0px rgba(0, 0, 0, 0.00),
+     52px 116px 51px 0px rgba(0, 0, 0, 0.02),
+      29px 65px 43px 0px rgba(0, 0, 0, 0.08),
+       13px 29px 32px 0px rgba(0, 0, 0, 0.13),
+        3px 7px 17px 0px rgba(0, 0, 0, 0.15);
+}
+
+.price__wr-image {
+    width: 74.8%;
+    margin: 0 auto;
+}
+
+.price__desctop-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.price__mobile-image {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+}
+
+.price__wr-buttons {
+    display: flex;
+    margin-top: 3.44vw;
+
+    justify-content: center;
+}
+
+.price__wr-buttons a {
+    display: flex;
+    height: 2.60vw;
+    width: 17.40vw;
+
+    font-family: "SofiaSans";
+    font-weight: 400;
+    font-size: 1.04vw;
+
+    color: #fff;
+    border-radius: 1.56vw;
+    background: #F1551C;
+    box-shadow: 31px 18px 10px 0px rgba(0, 0, 0, 0.00),
+     20px 12px 9px 0px rgba(0, 0, 0, 0.02),
+      11px 7px 8px 0px rgba(0, 0, 0, 0.08),
+       5px 3px 6px 0px rgba(0, 0, 0, 0.13),
+        1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+@media(max-width: 1200px) {
+    .wrapper-price {
+        background-image: none;
+    }
+}
+
+@media(max-width: 1200px) {
+    .main-price {
+        padding-bottom: 0;
+    }
+}
+
+@media(max-width: 1200px) {
+    .price {
+        width: 89.4%;
+        margin-top: 10.67vw;
+        padding-bottom: 7.20vw;
+
+        box-shadow: 0px 0px 15.1px 7px rgba(0, 0, 0, 0.25);
+    }
+}
+
+@media(max-width: 1200px) {
+    .price__wr-image {
+        width: 95%;
+    }
+}
+
+@media(max-width: 1200px) {
+    .price__desctop-image {
+        display: none;
+    }
+
+    .price__mobile-image {
+        display: block;
+    }
+}
+
+@media(max-width: 1200px) {
+    .price__wr-buttons {
+        margin-top: 20vw;
+    }
+
+    .price__wr-buttons a {
+        height: 9.87vw;
+        width: 36.80vw;
+
+        font-size: 4.27vw;
+
+        border-radius: 8vw;
+        box-shadow: 31px 18px 10px 0px rgba(0, 0, 0, 0.00),
+         20px 12px 9px 0px rgba(0, 0, 0, 0.02),
+          11px 7px 8px 0px rgba(0, 0, 0, 0.08),
+           5px 3px 6px 0px rgba(0, 0, 0, 0.13),
+            1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+    }
+}
+

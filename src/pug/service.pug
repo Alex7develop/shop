@@ -1,0 +1,157 @@
+extends layout/layout
+
+block  variable
+  - let pageName = 'service'; 
+
+block content 
+  main.main.main-service
+    .service  
+        ul.service__control-list
+            li.service__control-item.service__control-item_active(data-index="0") Обучение
+            li.service__control-item(data-index="1") Экскурсия на производство
+            li.service__control-item(data-index="2") Тех. поддержка
+            li.service__control-item(data-index="3") СТМ
+
+        ul.service__content-list
+            li.service__content-item.service__content-item_active(data-index="0")
+                .training.training-wr-img 
+                    ul.training__img-list
+                        li.training__img-item
+                            img(src=require('../img/content/service-training-0-content.webp'), alt="service-training")
+                        li.training__img-item
+                            img(src=require('../img/content/service-training-1-content.webp'), alt="service-training")
+                        li.training__img-item
+                            img(src=require('../img/content/service-training-2-content.webp'), alt="service-training")
+                .training__wr-text
+                    .training__duration 
+                        span Длительность 5 дней по 4-5 часов
+                        span (зависит от размера группы):
+
+                    ul.training__days-list
+                        li.training__days-item
+                            .training__wr-title 
+                                .training__day-title День 1
+                                .training__ratio-title Теория / практика
+                            .training__wr-program
+                                .training__program-text Говорим про страны происхождения, сбор, обработку, на что это влияет. Пробуем правильно каппить, оценивать разный кофе из разных стран. Разбираемся в разнице во вкусе различных способов заваривания (традиционный способ/альтернативный). 
+                                .training__ratio-title_mobile Теория / практика
+                                .training__program-ratio 50% / 50%
+                        li.training__days-item
+                            .training__wr-title 
+                                .training__day-title День 2
+                            .training__wr-program
+                                .training__program-text Говорим про водоподготовку, выбор кофемашины и кофемолки (принципы и особенности работы, основные узлы, преимущества и недостатки). 
+                                .training__ratio-title_mobile Теория / практика
+                                .training__program-ratio 20% / 80%
+                        li.training__days-item
+                            .training__wr-title 
+                                .training__day-title День 3
+                            .training__wr-program
+                                .training__program-text Учимся настраивать эспрессо, как выбирать зерно в зависимости от типа заведения. Теория по молоку. Химический состав, лактозность, соотношение белков и углеводов, температура нагрева. Практика по взбитию молока и его вливанию. 
+                                .training__ratio-title_mobile Теория / практика
+                                .training__program-ratio 10% / 90%
+                        li.training__days-item
+                            .training__wr-title 
+                                .training__day-title День 4
+                            .training__wr-program
+                                .training__program-text Настраиваем эспрессо, взбиваем молоко. Все под надзором тренеров. Проводим общую аттестацию (теория - ответы на вопросы, практика - настройка эспрессо, взбивание молока). Выдача диплома об успешном окончании курса. 
+                                .training__ratio-title_mobile Теория / практика
+                                .training__program-ratio 10% / 90%
+                        li.training__days-item
+                            .training__wr-title 
+                                .training__day-title День 5
+                            .training__wr-program
+                                .training__program-text Едем на наше производство. Наш главный обжарщик Сергей Симаков (серебряный призер чемпионата России по обжарке) проведет экскурсию, расскажет про нюансы хранения зерна, обжарки, на что влияет тип обжарочного оборудования, покажет все разновидности ростеров, как обжарить зерно для эспрессо и для фильтр кофе. Все желающие могут попробовать пожарить зерно на нашем сэмпл ростере и после обжарки покаппить этот кофе с разбором деталей.
+                                .training__ratio-title_mobile Теория / практика
+                                .training__program-ratio 50% / 50%
+
+                    .training__accreditation 
+                        p Наш курс аккредитован министерством образования РФ, что дает нам право на выдачу дипломов о доп. образовании.          
+            li.service__content-item(data-index="1")
+                .excursions
+                    ul.excursions__img-list
+                        li.excursions__img-item
+                            img(src=require('../img/content/service-excursions-0-content.webp'), alt="service-excursions")
+                        li.excursions__img-item
+                            img(src=require('../img/content/service-excursions-1-content.webp'), alt="service-excursions")
+                        li.excursions__img-item
+                            img(src=require('../img/content/service-excursions-2-content.webp'), alt="service-excursions")
+                    .excursions__wr-address 
+                        p Для записи на экскурсию, свяжитесь с нами:
+                        address.excursions__address
+                            a(href="https://t.me/+79055554018" target="_blank" title="канал в телеграм")  
+                                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none')
+                                    g(clip-path='url(#clip0_1389_5148)')
+                                        path(d='M24.9602 10.0267L5.54688 16.7467L12.2669 18.9867M24.9602 10.0267L12.2669 18.9867M24.9602 10.0267L18.9869 25.7067L12.2669 18.9867' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                                        path(d='M15.9997 30.9333C24.2471 30.9333 30.9331 24.2474 30.9331 16C30.9331 7.75253 24.2471 1.06665 15.9997 1.06665C7.75228 1.06665 1.06641 7.75253 1.06641 16C1.06641 24.2474 7.75228 30.9333 15.9997 30.9333Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                                    defs
+                                        clippath#clip0_1389_5148
+                                            rect(width='32' height='32' fill='white')
+                            a(href="tel:+79055554018" title="номер телефона для записи") +7 (905) 555-40-18
+            li.service__content-item(data-index="2")
+                .support 
+                    .support__wr-img 
+                        img(src=require('../img/content/service-support-content.webp'), alt="support")
+                    ul.support__text-list 
+                        li.support__text-item
+                            .support__wr-title
+                                h2.support__title Ремонт и настройка
+                            p Осуществляем полный цикл услуг по монтажу, технической поддержке, сервисному обслуживанию, а также проводим обучение персонала правильной эксплуатации кофейного оборудования.
+                        li.support__text-item
+                            .support__wr-title
+                                h2.support__title Анализ воды и система водоподготовки
+                            p Сопутствующее оборудование и водоподготовка – немаловажная часть в приготовлении высококачественного напитка. Оно не только облегчает работу с машинами, но и предотвращает серьезные сбои в работе. Система подачи питьевой воды оперативно наполняет резервуар с водой в кофемашине, сокращая физическую нагрузку обслуживающего персонала. Фильтры BWT помогут обеспечить водой, подходящей для использования в профессиональных кофемашинах.
+            li.service__content-item(data-index="3")
+                .ctm 
+                    .ctm__wr-title 
+                        h2.ctm__title Процесс разработки СТМ (собственная торговая марка)
+                    ul.ctm__steps-list 
+                        li.ctm__steps-item
+                            .ctm__steps-icon.ctm__steps-icon_0
+                            .ctm__steps-text Обсуждение #[br] рецепта
+                        li.ctm__steps-item.ctm__steps-arrow
+                        li.ctm__steps-item
+                            .ctm__steps-icon.ctm__steps-icon_1
+                            .ctm__steps-text Определение объёма, #[br] заключение договора
+                        li.ctm__steps-item.ctm__steps-arrow
+                        li.ctm__steps-item 
+                            .ctm__steps-icon.ctm__steps-icon_2
+                            .ctm__steps-text Выбор упаковки
+                        li.ctm__steps-item.ctm__steps-arrow
+                        li.ctm__steps-item 
+                            .ctm__steps-icon.ctm__steps-icon_3
+                            .ctm__steps-text Создание дизайна
+                        li.ctm__steps-item.ctm__steps-arrow
+                        li.ctm__steps-item
+                            .ctm__steps-icon.ctm__steps-icon_4
+                            .ctm__steps-text Заказ сырья, пакетов, #[br] печать этикеток
+                        li.ctm__steps-item.ctm__steps-arrow
+                        li.ctm__steps-item
+                            .ctm__steps-icon.ctm__steps-icon_5
+                            .ctm__steps-text Запуск производства
+                        li.ctm__steps-item.ctm__steps-arrow
+                        li.ctm__steps-item
+                            .ctm__steps-icon.ctm__steps-icon_6
+                            .ctm__steps-text Осуществление отгрузки
+                    .ctm__description 
+                        p 
+                            span СТМ 
+                            |(собственная торговая марка) - наиболее оптимальный способ выпустить  качественный продукт по доступной цене под собственной торговой маркой, которая уже завоевала доверие покупателей или коллаборация (совмещение торговых марок - кобрендинг).
+                    ul.ctm__benefit-list 
+                        li.ctm__benefit-item
+                            .ctm__benefit-icon.ctm__benefit-icon_0
+                            .ctm__benefit-text Приводит к увеличению маржинальности продаж выбранной категории продуктов
+                        li.ctm__benefit-item
+                            .ctm__benefit-icon.ctm__benefit-icon_1
+                            .ctm__benefit-text Позволяет максимально эффективно управлять ценой, качеством и ассортиментом продукции
+                        li.ctm__benefit-item
+                            .ctm__benefit-icon.ctm__benefit-icon_2
+                            .ctm__benefit-text Повышает лояльность клиентов к бренду компании-продавца. Формирует отличительное преимущество перед конкурентами, предлагая потребителю уникальный продукт
+                    .ctm__file 
+                        .ctm__file-icon
+                        .ctm__file-wr-text
+                            .ctm__file-text Подробнее об условиях СТМ
+                            .ctm__file-download Скачать
+                        a.ctm__file-link(href="./files/conditions-ctm.pdf" target="_blank" title="файл с подробными условиями") 
+
+        

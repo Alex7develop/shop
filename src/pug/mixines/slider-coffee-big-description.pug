@@ -1,0 +1,53 @@
+mixin slCoffeBigDescr(data)
+    .sl-prod__wr-big-description
+        each val in data 
+            if val.packing !== 'drip'
+                // for rest
+                .sl-prod__big-desc-card(data-id=val.id, data-part=val.part)
+                    .sl-prod__big-desc-images 
+                        .sl-prod__big-desc-wr-img
+                            img.sl-prod__big-desc-img-top(src=require('../img/content/' + val.img1), alt=val.alt)
+                        .sl-prod__big-desc-wr-img
+                            img.sl-prod__big-desc-img-bottom(src=require('../img/content/' + val.img2), alt=val.alt)
+                    .sl-prod__big-desc-wr-text 
+                        .sl-prod__big-desc-wr-title  
+                            h2.sl-prod__big-desc-title #{val.title}
+                        .sl-prod__big-desc-text
+                            p   
+                                each item in val.text 
+                                    span #{item}
+            else
+                // for drip 
+                .sl-prod__big-desc-card.sl-prod__big-desc-card-drip(data-id=val.id, data-part=val.part)
+                    
+                    .sl-prod__big-desc-set
+                        .sl-prod__big-desc-wr-img
+                            img.sl-prod__big-desc-img(src=require('../img/content/' + val.top.img), alt=val.top.alt)
+
+                        a.sl-prod__button-slide.sl-prod__button-slide_drip(href='#0' title=val.part) Купить
+                        
+                        .sl-prod__big-desc-wr-text-set
+                            .sl-prod__big-desc-wr-title-set
+                                h2.sl-prod__big-desc-title-set #{val.top.title}
+                            p В состав набора входит 6 саше, по 3 вкуса:
+                            ul.sl-prod__big-desc-set-list
+                                each item in val.top.set                                         
+                                    li.sl-prod__big-desc-set-item #{item}
+                            if val.top.assemble
+                                div.sl-prod__big-desc-assemble
+                                    p
+                                        each item in val.top.assemble
+                                            span #{item}
+
+                    .sl-prod__big-compos-desc-set
+                        .sl-prod__big-desc-wr-img.sl-prod__big-compos-desc-wr-img
+                            img.sl-prod__big-desc-img(src=require('../img/content/' + val.bottom.img), alt=val.bottom.alt)
+                        .sl-prod__big-compos-desc-wr-text-set
+                            ul.sl-prod__big-compos-desc-set-list
+                                each item in val.bottom.set
+                                    li.sl-prod__big-compos-desc-set-item
+                                        .sl-prod__big-compos-desc-wr-title
+                                            h2.sl-prod__big-compos-desc-title #{item.title}
+                                        h3.sl-prod__big-compos-desc-profile вкусовой профиль:
+                                        p #{item.text}
+        .sl-prod__big-desc-deco

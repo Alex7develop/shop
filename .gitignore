@@ -1,0 +1,29 @@
+# src/video/about-us.MOV
+# src/video/roasting-coffee-1.MOV
+# src/video/roasting-coffee-2.MOV
+# src/video/roasting-coffee-3.MOV
+
+src/video/about-us.MOV
+
+# настройки PHPStorm и VC
+/.idea/
+/.vscode/
+
+# системные папки и операционных систем
+.DS_Store
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+ 
+# composer
+composer.phar
+/vendor/
+
+# исключаем всякое от node.js
+node_modules
+dist
+bower_components
+.grunt
+.npm
+.env

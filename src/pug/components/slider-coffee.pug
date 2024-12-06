@@ -1,0 +1,68 @@
+include ../mixines/slider-coffee-big-description
+include ../variable/slider-coffee-big-description
+
+.sl-prod
+    .sl-prod__wrapper-images
+        .sl-prod__wr-big-img-filter 
+            ul.sl-prod__filter-list
+                li.sl-prod__filter-item.sl-prod__filter-reset
+
+            .sl-prod__wr-big-img
+                img.sl-prod__big-img.sl-prod__big-img_visible(src="#", alt="Кофе R18")
+        .sl-prod__wr-descr-preview
+            .sl-prod__text-about.sl-prod__text-about_visible
+                header.sl-prod__header
+                    h2.sl-prod__title(data-type="title")
+                .sl-prod__description
+                    .sl-prod__taste
+                        p
+                            span.sl-prod__taste-title вкусовой профиль:&nbsp;
+                            span.sl-prod__wr-taste-text
+                                span.sl-prod__taste-text(data-type="taste")
+
+                .sl-prod__line
+
+                ul.sl-prod__character-list
+                    li.sl-prod__character-item
+                        .sl-prod__prop регион
+                        .sl-prod__val(data-type="region")
+                    li.sl-prod__character-item
+                        .sl-prod__prop высота
+                        .sl-prod__val(data-type="height")
+                    li.sl-prod__character-item
+                        .sl-prod__prop сорт
+                        .sl-prod__val(data-type="sort")
+                    li.sl-prod__character-item
+                        .sl-prod__prop обработка
+                        .sl-prod__val(data-type="processing")
+                    li.sl-prod__character-item 
+                        .sl-prod__prop q
+                        .sl-prod__val(data-type="q")
+                    li.sl-prod__character-item 
+                        .sl-prod__prop обжарка
+                        .sl-prod__val(data-type="roasting")
+                    li.sl-prod__character-item 
+                        .sl-prod__prop урожай
+                        .sl-prod__val(data-type="harvest")
+                    li.sl-prod__character-item
+                        .sl-prod__prop вес
+                        .sl-prod__val(data-type="weight")
+
+                .sl-prod__wr-to-big-description
+                    span 
+                        | Описание 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <path d="M19.6005 6.41287C20.1332 6.95649 20.1332 7.83784 19.6005 8.38161L12.9273 15.1855C11.8617 16.2719 10.1351 16.2714 9.0702 15.1845L2.39949 8.37659C1.86684 7.83283 1.86684 6.95148 2.39949 6.40772C2.93215 5.86409 3.79586 5.86409 4.32852 6.40772L10.038 12.2347C10.5706 12.7784 11.4342 12.7784 11.967 12.2347L17.6714 6.41287C18.2041 5.86911 19.0678 5.86911 19.6005 6.41287Z" fill="#F1551C"/>
+                        </svg>
+
+            .sl-prod__wr-prev
+                .sl-prod__wr-slides
+                    ul.sl-prod__slides
+                include arrow-next
+                include arrow-prev
+
+    +slCoffeBigDescr(dataCoffee)
+    
+            
+
+                    

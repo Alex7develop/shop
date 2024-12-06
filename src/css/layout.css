@@ -1,0 +1,49 @@
+/* .wrapper-rest-page header {
+    position: relative;
+} */
+.wrapper-rest-page .main {
+    position: relative;
+
+}
+
+.wrapper-rest-page .main:not(.main-delivery) {
+    top: 7.8vw;
+}
+
+.wrapper-rest-page .contacts {
+    display: none;
+}
+
+@media( max-width: 1200px ) {
+    .wrapper-rest-page .main:not(.main-delivery) {
+        top: 0;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .wrapper-rest-page .main-delivery {
+        top: 0;
+    }
+}
+
+
+@media( max-width: 1200px ) {
+    .wrapper-rest-page .contacts {
+        display: flex;
+        margin-top: 37vw;
+        padding-top: 0;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .wrapper-rest-page .contacts__wr-data {
+        margin-top: 0;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .wrapper-rest-page .contacts__wr-address {
+        margin-top: 0;
+    }
+}
+

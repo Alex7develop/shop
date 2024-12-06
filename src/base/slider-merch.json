@@ -1,0 +1,141 @@
+[
+    {
+        "article": "0",
+        "title": "От центра к краю",
+        "colors": [
+            {
+                "name": "black",
+                "value": "#3F3937"
+            }, 
+            {
+                "name": "white",
+                "value": "#ffffff"
+            }
+        ],
+        "white": {
+            "img": [
+                "./img/content/merch-t-shirt-white-from-center-front-content.webp",
+                "./img/content/merch-t-shirt-white-from-center-rear-content.webp"
+            ],
+            "sizes": ["M", "L", "XL", "XXL"]
+        },
+        "black": {
+            "img": [
+                "./img/content/merch-t-shirt-black-from-center-front-content.webp",
+                "./img/content/merch-t-shirt-black-from-center-rear-content.webp"
+            ],
+            "sizes": ["M", "L", "XL", "XXL"]
+        },
+        "price": "2 500 p.",
+        "composition": ["Хлопок 100%"],
+        "link": "#",
+        "description" : "Футболка R18: 'От центра к краю'"
+    },
+    {
+        "article": "1",
+        "title": "Черный внутри",
+        "colors": [
+            { 
+                "name": "black",
+                "value": "#3F3937"
+            }, 
+            {
+                "name": "white",
+                "value": "#ffffff"
+            }
+        ],
+        "white": {
+            "img": [
+                "./img/content/merch-t-shirt-white-black-inside-front-content.webp",
+                "./img/content/merch-t-shirt-white-black-inside-rear-content.webp"
+            ],
+            "sizes": ["M", "L", "XL", "XXL"]
+        },
+        "black": {
+            "img": [
+                "./img/content/merch-t-shirt-black-black-inside-front-content.webp",
+                "./img/content/merch-t-shirt-black-black-inside-rear-content.webp"
+            ],
+            "sizes": ["M", "L", "XL", "XXL"]
+        },
+        "price": "2 500 p.",
+        "composition": ["Хлопок 100%"],
+        "link": "#",
+        "description" : "Футболка R18: 'Черный внутри'"
+    },
+    {
+        "article": "2",
+        "title": "only Arabica",
+        "colors": [
+            {
+                "name": "black",
+                "value": "#3F3937"
+            }, 
+            {
+                "name": "white",
+                "value": "#ffffff"
+            }
+        ],
+        "white": {
+            "img": [ 
+                "./img/content/merch-t-shirt-white-only-arabica-front-content.webp",
+                "./img/content/merch-t-shirt-white-only-arabica-rear-content.webp"
+            ],
+            "sizes": ["M", "L", "XL", "XXL"]
+        },
+        "black": {
+            "img": [
+                "./img/content/merch-t-shirt-black-only-arabica-front-content.webp",
+                "./img/content/merch-t-shirt-black-only-arabica-rear-content.webp"
+            ],
+            "sizes": ["M", "L", "XL", "XXL"]
+        },
+        "price": "2 500 p.",
+        "composition": ["Хлопок 100%"],
+        "link": "#",
+        "description" : "Футболка R18: 'only Arabica'"
+    },
+    {
+        "article": "3",
+        "title": "Шоппер R18",
+        "colors": [
+            {
+                "name": "black",
+                "value": "#3F3937"
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/merch-shopper-black-front-content.webp",
+                "./img/content/merch-shopper-black-side-content.webp",
+                "./img/content/merch-shopper-black-rear-content.webp"
+            ],
+            "sizes": ["39х35"]
+        },
+        "price": "2 500 p.",
+        "composition": ["Хлопок 100%"],
+        "link": "#",
+        "description" : "Шоппер R18"
+    }, 
+    {
+        "article": "4",
+        "title": "Худи R18",
+        "colors": [
+            {
+                "name": "black",
+                "value": "#3F3937"
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/merch-hoodies-black-front-content.webp",
+                "./img/content/merch-hoodies-black-rear-content.webp"
+            ],
+            "sizes": ["M", "L", "XL", "XXL"]
+        },
+        "price": "5000 p.",
+        "composition": ["Хлопок 80%, полиэстер 20%."],
+        "link": "#",
+        "description" : "Худи R18"
+    }
+]

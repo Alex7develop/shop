@@ -1,0 +1,20 @@
+.logo {
+    display: inline-block;
+    width: 6.51vw;
+    height: 6.51vw;
+}
+
+.logo img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+@media( max-width: 1200px ) {
+    .logo {
+        width: 16.80vw;
+        height: 17.07vw;
+    }
+}

@@ -1,0 +1,1131 @@
+.main-about-us {
+    display: flex;
+
+    background:
+     no-repeat url(../img/roasteria-side.webp),
+      no-repeat url(../img/roasteria-side.webp)
+    ;
+    background-size:
+     10.9vw auto,
+      10.9vw auto
+    ;
+    background-position:
+     right 0.35vw top 0.2vw,
+      right 0.35vw top 159.5vw
+    ;
+
+    flex-direction: column;
+}  
+
+.main-about-us .button-to-top {
+    position: fixed;
+    top: 25vw;
+    right: 4.5%;
+
+    margin-top: 0;
+
+    transition: opacity 0.15s linear; 
+
+    opacity: 0;
+    z-index: 100;
+}
+
+/* START ABOUT US R18 */
+
+.about-us-r-18 {
+    padding-top: 4.74vw;
+    padding-bottom: 6.93vw;
+    padding-left: 6.77vw;
+
+    background: 
+    linear-gradient(90deg,
+     rgba(114, 107, 104, 1) 0%,
+      rgba(114, 107, 104, 1) 41.8%,
+       rgba(0, 0 , 0 , 0) 41.8%,
+        rgba(0, 0 , 0 , 0) 100%)
+    ;
+}
+
+.about-us-r-18__wrapper {
+    display: flex;
+    gap: 10vw;
+    width: 82%;
+    padding-top: 2.19vw;
+    padding-bottom: 2.19vw;
+    padding-left: 11.67vw;
+
+    background: rgba(114, 107, 104, 1);
+    box-shadow:
+     81px 182px 56px 0px rgba(0, 0, 0, 0.00),
+      52px 116px 51px 0px rgba(0, 0, 0, 0.02),
+       29px 65px 43px 0px rgba(0, 0, 0, 0.08),
+        13px 29px 32px 0px rgba(0, 0, 0, 0.13),
+         3px 7px 17px 0px rgba(0, 0, 0, 0.15)
+    ;
+}
+
+.about-us-r-18__title {
+    font-family: "SofiaSans";
+    font-size: 2.08vw;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #F1551C;
+}
+
+.about-us-r-18__logo {
+    width: 17.76vw;
+    height: 18.02vw;
+    margin-top: 2.5vw;
+}
+
+.about-us-r-18__text {
+    width: 27.5vw;
+    padding-top: 1.25vw;
+}
+
+.about-us-r-18__text p {
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+/* END ABOUT US R18 */
+
+
+/* START ABOUT US ART */
+
+.about-us-art {
+    display: flex;
+    width: 83.5%;
+    margin-top: 4.95vw;
+    gap: 1.72vw;
+}
+
+.about-us-art__wr-img {
+    width: 31.20vw;
+    flex-shrink: 0;
+}
+
+.about-us-art__wr-img img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.about-us-art__title {
+    font-family: "SofiaSans";
+    font-size: 2.08vw;
+    font-weight: 700;
+
+    color: #F1551C;
+}
+
+.about-us-art__inspiration-wr-text {
+    margin-top: 1.30vw;
+}
+
+.about-us-art__inspiration-wr-text p {
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.about-us-art__philosophy {
+    margin-top: 3.49vw;
+}
+
+.about-us-art__philosophy-wr-text {
+    margin-top: 2.14vw;
+}
+
+.about-us-art__philosophy-wr-quote {
+    font-family: "SofiaSans";
+
+    color: #ffffff;
+}
+
+.about-us-art__philosophy-wr-quote p:first-child {
+    font-size: 1.88vw;
+    font-weight: 700;
+}
+
+.about-us-art__philosophy-wr-quote p:last-child {
+    font-size: 1.04vw;
+    font-weight: 400;
+}
+
+.about-us-art__philosophy-wr-article {
+    margin-top: 2.60vw;
+}
+
+.about-us-art__philosophy-wr-article p {
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 400;
+
+    color: #ffffff;
+}
+
+.about-us-art__philosophy-list {
+    margin-top: 2.29vw;
+}
+
+.about-us-art__philosophy-item {
+    display: flex;
+
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 400;
+
+    color: #ffffff;
+
+    transform: translateX(-0.89vw);
+}
+
+.about-us-art__philosophy-item::before {
+    content: "";
+
+    display: inline-block;
+    height: 0.89vw;
+    width: 0.89vw;
+
+    border-radius: 50%;
+    background: #F1551C;
+
+    transform: translate(-55%, 39%);
+
+    flex-shrink: 0;
+}
+
+/* END ABOUT US ART */
+
+
+
+/* START ABOUT US HISTORY */
+
+.about-us-history {
+    display: flex;
+    width: 91.3%;
+    margin-top: 5vw;
+
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
+.about-us-history__wr-text {
+    width: 56.4%;
+    padding-bottom: 2.90vw;
+}
+
+.about-us-history__title {
+    font-family: "SofiaSans";
+    font-size: 2.08vw;
+    font-weight: 700;
+
+    color: #F1551C;
+}
+
+.about-us-history__events-list {
+    display: flex;
+    width: 89.6%;
+    margin-top: 1.25vw;
+    gap: 2.03vw;
+
+    flex-direction: column;
+}
+
+.about-us-history__events-date {
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 700;
+
+    color: #F1551C; 
+}
+
+.about-us-history__events-item:last-child .about-us-history__events-date {
+    font-size: 1.67vw;
+}
+
+.about-us-history__events-text {
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.about-us-history__advantages-list {
+    display: flex;
+    margin-top: 3.07vw;
+    padding-top: 0.83vw;
+    padding-bottom: 1.82vw;
+    gap: 0.99vw;
+
+    border-top: 2px solid #A59F9E;
+    border-bottom: 2px solid #A59F9E;
+
+    flex-direction: column;
+}
+
+.about-us-history__advantages-item {
+    display: flex;
+    gap: 0.47vw;
+
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 400;
+
+    color: #fff;
+
+    align-items: center;
+}
+
+.about-us-history__advantages-item::before {
+    content: "";
+
+    display: inline-block;
+    height: 0.89vw;
+    width: 0.89vw;
+
+    border-radius: 50%;
+    background: #F1551C;
+}
+
+.about-us-history__wr-image {
+    width: 40%;
+    padding-top: 2.08vw;
+
+    background: #726B68;
+}
+
+.about-us-history__wr-image img {
+    height: 97.5%;
+    width: 97%;
+    margin-left: -5.83vw;
+
+    object-fit: contain;
+    object-position: top left;
+}
+
+
+/* END ABOUT US HISTORY */
+
+
+/* START ABOUT US EQUIPMENT */
+
+.about-us-equipment {
+    margin-top: 3.33vw;
+    padding-top: 4.74vw;
+    padding-bottom: 8.33vw;
+    padding-left: 6.77vw;
+
+    background: 
+    linear-gradient(90deg,
+     rgba(114, 107, 104, 1) 0%,
+      rgba(114, 107, 104, 1) 41.8%,
+       rgba(0, 0 , 0 , 0) 41.8%,
+        rgba(0, 0 , 0 , 0) 100%)
+    ;
+}
+
+.about-us-equipment__wr-content {
+    display: flex;
+    width: 82%;
+    padding-top: 3.13vw;
+    padding-bottom: 3.54vw;
+    padding-left: 2.76vw;
+    gap: 2.45vw;
+
+    background: rgba(114, 107, 104, 1);
+    box-shadow:
+     81px 182px 56px 0px rgba(0, 0, 0, 0.00),
+      52px 116px 51px 0px rgba(0, 0, 0, 0.02),
+       29px 65px 43px 0px rgba(0, 0, 0, 0.08),
+        13px 29px 32px 0px rgba(0, 0, 0, 0.13),
+         3px 7px 17px 0px rgba(0, 0, 0, 0.15)
+    ;
+}
+
+.about-us-equipment__wr-img {
+    width: 34.22vw;
+    height: 31.51vw;
+
+    flex-shrink: 0;
+}
+
+.about-us-equipment__wr-img img {
+    width: 100%;
+    height: 100%;
+
+    box-shadow:
+     81px 182px 56px 0px rgba(0, 0, 0, 0.00),
+      52px 116px 51px 0px rgba(0, 0, 0, 0.02),
+       29px 65px 43px 0px rgba(0, 0, 0, 0.08),
+        13px 29px 32px 0px rgba(0, 0, 0, 0.13),
+         3px 7px 17px 0px rgba(0, 0, 0, 0.15)
+    ;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.about-us-equipment__wr-title {
+    margin-top: -0.94vw;
+}
+
+.about-us-equipment__title {
+    font-family: 'SofiaSans';
+    font-size: 2.36vw;
+    font-weight: 700;
+    letter-spacing: 0.1vw;
+
+    color: #F1551C;
+}
+
+.about-us-equipment__description {
+    width: 89.14%;
+    margin-top: 1.25vw;
+}
+
+.about-us-equipment__description p {
+    font-family: 'SofiaSans';
+    font-size: 1.15vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.about-us-equipment__list {
+    display: flex;
+    width: 89.14%;
+    margin-top: 1.72vw;
+    gap: 1.72vw;
+
+    flex-direction: column;
+}
+
+.about-us-equipment__item p {
+    display: flex;
+
+    font-family: 'SofiaSans';
+    font-size: 1.15vw;
+    font-weight: 400;
+
+    color: #fff;
+
+    flex-direction: column;
+}
+
+.about-us-equipment__item span:first-child {
+    font-weight: 700;
+
+    color: #F1551C;
+}
+
+
+/* END ABOUT US EQUIPMENT */
+
+
+/* START ABOUT US TEAM */
+
+.about-us-team {
+    position: relative;
+    margin-top: 4.11vw;
+}
+
+.about-us-team__title {
+    font-family: 'SofiaSans';
+    font-size: 2.08vw;
+    font-weight: 700;
+    text-align: center;
+
+    color: #F1551C;
+}
+
+.about-us-team__list {
+    display: flex;
+    margin-top: 3.18vw;
+    gap: 3.13vw;
+
+    justify-content: center;
+}
+
+.about-us-team__item {
+    display: flex;
+    width: 31.82vw;
+    padding-top: 1.51vw;
+    padding-bottom: 2.08vw;
+
+    background: #726B68;
+    box-shadow:
+     85px 191px 58px 0px rgba(0, 0, 0, 0.01),
+      55px 122px 53px 0px rgba(0, 0, 0, 0.04),
+       31px 69px 45px 0px rgba(0, 0, 0, 0.14),
+        14px 30px 33px 0px rgba(0, 0, 0, 0.24),
+         3px 8px 18px 0px rgba(0, 0, 0, 0.28)
+    ;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-us-team__wr-img {
+    width: 15.26vw;
+    height: 18.65vw;
+}
+
+.about-us-team__wr-img img {
+    height: 100%;
+    width: 100%;
+
+    box-shadow:
+     81px 182px 56px 0px rgba(0, 0, 0, 0.00),
+      52px 116px 51px 0px rgba(0, 0, 0, 0.02),
+       29px 65px 43px 0px rgba(0, 0, 0, 0.08),
+        13px 29px 32px 0px rgba(0, 0, 0, 0.13),
+         3px 7px 17px 0px rgba(0, 0, 0, 0.15)
+    ;
+    border-radius: 0.42vw;
+
+    object-fit: cover;
+    object-position: center top;
+}
+
+.about-us-team__item-wr-title {
+    margin-top: 1.15vw;
+}
+
+.about-us-team__item-title {
+    font-family: "SofiaSans";
+    font-size: 1.67vw;
+    font-weight: 700;
+
+    color: #F1551C;
+}
+
+.about-us-team__person-list {
+    display: flex;
+    width: 84%;
+    margin-top: 1.20vw;
+    gap: 1.41vw;
+
+    flex-direction: column;
+}
+
+.about-us-team__person-item {
+    display: flex;
+
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+
+    color: #fff;
+
+    transform: translateX(-0.89vw);
+}
+
+.about-us-team__person-item::before {
+    content: "";
+
+    display: inline-block;
+    height: 0.89vw;
+    width: 0.89vw;
+
+    border-radius: 50%;
+    background: #F1551C;
+
+    transform: translate(-55%, 12%);
+
+    flex-shrink: 0;
+}
+
+/* END ABOUT US TEAM */
+
+
+/* START ABOUT US VIDEO */
+
+.about-us-video {
+    margin-top: 3.91vw;
+}
+
+.about-us-video__title {
+    font-family: "SofiaSans";
+    font-size: 2.08vw;
+    font-weight: 700;
+    text-align: center;
+
+    color: #F1551C;
+}
+
+.about-us-video__wr-content {
+    margin-top: 2.97vw;
+}
+
+.about-us-video__content {
+    position: relative;
+
+    width: 81.61vw;
+    height: 39.38vw;
+    margin: 0 auto;
+}
+
+.about-us-video__content video {
+    height: 100%;
+    width: 100%;
+
+    border-radius: 0.42vw;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* END ABOUT US VIDEO */
+
+@media (max-width: 1200px) {
+    .main-about-us {
+        padding-bottom: 0;
+
+        background: none;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .main-about-us .button-to-top {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-r-18 {
+        position: relative;
+
+        display: flex;
+        padding: 0;
+        padding-top: 8.53vw;
+
+        background:
+         linear-gradient(180deg,
+          rgba(114, 107, 104, 1) 0%,
+           rgba(114, 107, 104, 1) 90%,
+            rgba(0, 0, 0, 0) 90%,
+             rgba(0, 0, 0, 0) 100%)
+        ;
+
+        justify-content: center;
+
+        z-index: 2;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-r-18__wrapper {
+        width: 89.4%;
+        padding: 0;
+        padding-top: 8vw;
+        padding-bottom: 27.20vw;
+        gap: 2.40vw;
+
+        box-shadow: 0px 0px 15.1px 7px rgba(0, 0, 0, 0.25);
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-r-18__logo {
+        width: 63.20vw;
+        height: 63.20vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-r-18__title {
+        font-size: 6.40vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-r-18__text {
+        width: 89%;
+        margin: 2.40vw auto 0;
+    }
+
+    .about-us-r-18__text p {
+        font-size: 3.73vw;
+        text-align: center;
+    }
+} 
+
+
+/* .about-us-art */
+
+@media (max-width: 1200px) {
+    .about-us-art {
+        position: relative;
+
+        width: 100%;
+        margin-top: -41.5vw;
+
+        flex-direction: column;
+
+        z-index: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-art__wr-img {
+        width: 100%;
+
+        overflow: hidden;
+    }
+
+    .about-us-art__wr-img img {
+        width: 106%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-art__wr-content {
+        width: 89.4%;
+        margin: -134px auto 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-art__title {
+        font-size: 7.8vw;
+        text-align: center;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-art__inspiration-wr-text {
+        margin-top: 2.67vw;
+    }
+
+    .about-us-art__inspiration-wr-text p {
+        font-size: 3.73vw;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-art__philosophy {
+        margin-top: 7.47vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-art__philosophy-wr-text {
+        margin-top: 2.67vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-art__philosophy-wr-quote p {
+        text-align: center;
+    }
+
+    .about-us-art__philosophy-wr-quote p:first-child {
+        font-size: 6.40vw;
+    }
+
+    .about-us-art__philosophy-wr-quote p:last-child {
+        font-size: 3.73vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-art__philosophy-wr-article {
+        margin-top: 7.47vw;
+        padding-left: 4.9%;
+    }
+
+    .about-us-art__philosophy-wr-article p {
+        font-size: 3.73vw;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-art__philosophy-list {
+        margin-top: 4.80vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-art__philosophy-item {
+        gap: 1.2vw;
+
+        font-size: 3.73vw;
+
+        transform: none;
+    }
+
+    .about-us-art__philosophy-item::before {
+        width: 3.20vw;
+        height: 3.20vw;
+
+        transform: translateY(25%);
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-history {
+        width: 100%;
+        margin-top: 27.73vw;
+
+        flex-direction: column;
+        align-items: normal;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-history__wr-text {
+        width: 88%;
+        margin: 3.3vw auto 0;
+
+        order: 2;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-history__title {
+        font-size: 7.8vw;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-history__events-list {
+        width: 100%;
+        margin-top: 2.67vw;
+        gap: 9.33vw;
+
+        align-items: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-history__events-date {
+        font-size: 5.33vw;
+        text-align: center;
+    }
+
+    .about-us-history__events-item:last-child .about-us-history__events-date {
+        font-size: 6.40vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-history__events-text {
+        font-size: 3.73vw;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-history__advantages-list {
+        margin-top: 6.67vw;
+        padding-top: 3.47vw;
+        padding-bottom: 4.27vw;
+        gap: 2.67vw;
+
+        border-top: 1px solid #A59F9E;
+        border-bottom: 1px solid #A59F9E;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-history__advantages-item {
+        gap: 1.87vw;
+
+        font-size: 3.73vw;
+
+        align-items: normal;
+    }
+
+    .about-us-history__advantages-item::before {
+        height: 3.20vw;
+        width: 3.20vw;
+
+        flex-shrink: 0;
+
+        transform: translateY(0.75vw);
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-history__wr-image {
+        display: flex;
+        width: 100%;
+        padding-top: 8.27vw;
+
+        background: linear-gradient(180deg,
+         #726B68 0%,
+          #726B68 83.7%,
+           rgba(114, 107, 104, 0) 83.7%,
+            rgba(114, 107, 104, 0) 100%)
+        ;
+
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-history__wr-image img {
+        width: 88%;
+        margin-left: 0;
+    }
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .about-us-equipment {
+        margin-top: 20.53vw;
+        padding-top: 8.53vw;
+        padding-bottom: 0;
+        padding-left: 0;
+
+        background: linear-gradient(180deg,
+         #726B68 0%,
+          #726B68 91%,
+           rgba(114, 107, 104, 0) 91%,
+            rgba(114, 107, 104, 0) 100%)
+        ;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-equipment__wr-content {
+        width: 88%;
+        margin: 0 auto;
+        padding-top: 9.33vw;
+        padding-bottom: 14.93vw;
+        padding-left: 0;
+        gap: 5.60vw;
+
+        box-shadow: 0px 0px 15.1px 7px rgba(0, 0, 0, 0.25);
+
+        flex-direction: column;
+        align-items: center;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-equipment__wr-img {
+        width: 80vw;
+        height: 73.60vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-equipment__img {
+        box-shadow:
+         81px 182px 56px 0px rgba(0, 0, 0, 0.00),
+          52px 116px 51px 0px rgba(0, 0, 0, 0.02),
+           29px 65px 43px 0px rgba(0, 0, 0, 0.08),
+            13px 29px 32px 0px rgba(0, 0, 0, 0.13),
+             3px 7px 17px 0px rgba(0, 0, 0, 0.15)
+        ;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-equipment__wr-text {
+        width: 88%;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-equipment__wr-title {
+        width: 90%;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-equipment__title {
+        font-size: 6.40vw;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-equipment__description {
+        width: 100%;
+        margin-top: 2.67vw;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-equipment__description p {
+        font-size: 3.73vw;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-equipment__list {
+        width: 100%;
+        margin-top: 5.87vw;
+        gap: 5.60vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-equipment__item p {
+        font-size: 3.73vw;
+        text-align: center;
+    }
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .about-us-team {
+        margin-top: 17.07vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__title {
+        font-size: 6.40vw;
+    }
+} 
+
+@media (max-width: 1200px) {
+    .about-us-team__list {
+        display: flex;
+        margin-top: 5.07vw;
+        gap: 9.07vw;
+
+        flex-direction: column;
+        justify-content: normal;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__item {
+        width: 100%;
+        padding-top: 8vw;
+        padding-bottom: 7.73vw;
+
+        box-shadow: 0 3vw 7vw rgba(0, 0 , 0 , 0.4);
+
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__wr-img {
+        width: 64.80vw;
+        height: 79.20vw;
+
+        box-shadow:
+         81px 182px 56px 0px rgba(0, 0, 0, 0.00),
+          52px 116px 51px 0px rgba(0, 0, 0, 0.02),
+           29px 65px 43px 0px rgba(0, 0, 0, 0.08),
+            13px 29px 32px 0px rgba(0, 0, 0, 0.13),
+             3px 7px 17px 0px rgba(0, 0, 0, 0.15)
+        ;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__wr-img img {
+        border-radius: 2.13vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__item-wr-title {
+        margin-top: 8.80vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__item-title {
+        font-size: 6.40vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__person-list {
+        width: 90%;
+        margin-top: 2.67vw;
+        gap: 5.87vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__person-item {
+        gap: 1.33vw;
+
+        font-size: 3.73vw;
+
+        transform: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-team__person-item::before {
+        width: 3.20vw;
+        height: 3.20vw;
+
+        transform: translateY(25%);
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-video {
+        margin-top: 22.93vw;
+
+        box-shadow: 0 3vw 7vw rgba(0, 0 , 0 , 0.4);
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-video__title {
+        font-size: 6.40vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-video__wr-content {
+        margin-top: 9.07vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-us-video__content {
+        width: 100%;
+        height: 129.33vw;
+        margin: 0;
+    }
+
+    .about-us-video__content video {
+        border-radius: 0;
+    }
+}
+
+
+
+
+
+
+
+

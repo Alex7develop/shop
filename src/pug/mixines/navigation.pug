@@ -1,0 +1,22 @@
+mixin nav(obj)
+    nav.nav 
+        ul.nav__list 
+            each item in obj
+                if item.title === 'account'
+                    li.nav__item(data-item=item.title class='nav__item-' + item.title)
+                        a.nav__item-link(href=item.link title=item.title)
+                            svg(viewBox='0 0 50 51', fill='none', xmlns='http://www.w3.org/2000/svg')
+                                g#CloseCircle(clip-path='url(#clip0_1853_2287)')
+                                    path#Vector_2(d='M25.5 13C21.4518 13 18.15 16.4304 18.15 20.6364C18.15 23.2656 19.442 25.6009 21.3984 26.9773C17.6537 28.6477 15 32.5085 15 37H17.1C17.1 32.1676 20.8488 28.2727 25.5 28.2727C30.1512 28.2727 33.9 32.1676 33.9 37H36C36 32.5085 33.3463 28.6477 29.6016 26.9773C31.558 25.6009 32.85 23.2656 32.85 20.6364C32.85 16.4304 29.5482 13 25.5 13ZM25.5 15.1818C28.4121 15.1818 30.75 17.6108 30.75 20.6364C30.75 23.6619 28.4121 26.0909 25.5 26.0909C22.5879 26.0909 20.25 23.6619 20.25 20.6364C20.25 17.6108 22.5879 15.1818 25.5 15.1818Z', fill='white')
+                                defs
+                                    clipPath#clip0_1853_2287
+                                        rect(width='50', height='50', fill='white', transform='translate(0 0.5)')                            
+                else if item.title !== 'basket'
+                    li.nav__item(data-item=item.title)
+                        if item.link
+                            a.nav__item-link(href=item.link title=item.title) #{item.name}
+                        else
+                            | #{item.name}
+                 
+        .nav__sub-menu.nav__sub-menu-coffee
+            ul.nav__sub-menu-coffee-list

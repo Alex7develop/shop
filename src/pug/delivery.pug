@@ -1,0 +1,69 @@
+extends layout/layout
+ 
+block  variable
+    - let pageName = 'delivery'; 
+
+block content 
+    main.main.main-delivery 
+        .delivery
+            .delivery__controll 
+                .delivery__controll-list
+                    .delivery__controll-item(data-item="in-mkad") В пределах МКАД
+                    .delivery__controll-item(data-item="out-mkad") За МКАД
+                    .delivery__controll-item(data-item="region") В регионы
+                    .delivery__controll-item(data-item="pickup") Самовывоз
+                    .delivery__controll-item(data-item="making-order") Оформление заказа
+                    .delivery__controll-item(data-item="door-to-door") Подъем заказов
+            .delivery__wr-info
+                .delivery__line 
+                    .delivery__direction(data-item="in-mkad")
+                        .delivery__wr-title
+                            h2.delivery__title в пределах мкад
+                        p Доставка заказов стоимостью от #[span 3000руб].  осуществляется #[span бесплатно].
+                        .delivery__list 
+                            span.delivery__item Минимальной суммы заказа нет, доставляем любые заказы.
+                            span.delivery__item Стоимость доставки по Москве и в пределах МКАД – 300 руб.
+                            span.delivery__item Срок доставки 1-2 дня, только в рабочие дни.
+                    .delivery__direction(data-item="out-mkad") 
+                        .delivery__wr-title
+                            h2.delivery__title за мкад
+                        p До 5 км (от МКАД), те же условия, как и по Москве (300 руб.).
+                        .delivery__list 
+                            span.delivery__item От 5 км до 100 км - 30 руб./км.
+                            span.delivery__item Срок доставки 1-2 дня, только в рабочие дни.
+                .delivery__line 
+                    .delivery__direction(data-item="region") 
+                        .delivery__wr-title
+                              h2.delivery__title в регионы
+                        .delivery__list  
+                            span.delivery__item Доставка по России осуществляется через транспортную компанию (ТК): СДЭК. Если Вы хотите использовать другую ТК или способ доставки, свяжитесь с нашим менеджером.
+                            span.delivery__item Условия доставки до ТК совпадает с условиями доставки по Московскому региону.
+                            span.delivery__item Предоплата 100%, безналичный расчёт или оплата картой на сайте.
+                            span.delivery__item Срок отправки заказа 1-2 дня, только в рабочие дни.
+                            span.delivery__item Услуги ТК покупатель оплачивает при получении груза.
+                    .delivery__direction.delivery__direction_doc(data-item="pickup")
+                        .delivery__wr-title
+                            h2.delivery__title самовывоз 
+                        p Товары, имеющиеся в наличии* вы можете приобрести в пункте выдачи нашего интернет-магазина, по рабочим дням с 10:00 до 17:30. *наличие товара на складе офиса уточняйте у менеджера нашего интернет-магазина.
+                        p Перемещение заказов с оптового склада на пункт выдачи составляет 1-2 дня. Стоимость самовывоза - бесплатно.
+                        p.delivery__documents Для входа на территорию офиса необходимо иметь при себе паспорт или другой документ удостоверяющий личность!
+                .delivery__line 
+                    .delivery__direction(data-item="making-order")
+                        .delivery__wr-title
+                            h2.delivery__title оформление заказа
+                        .delivery__list 
+                            span.delivery__item Вы можете оформить заказ на сайте, или написать нам в мессенджерах.
+                            span.delivery__item Заказы по телефону принимаются с 10:00 до 18:00 по рабочим дням.
+                            span.delivery__item Заказы обрабатываются по рабочим дням с 10:00 до 18:00.
+                            span.delivery__item Заказы доставляются только после согласования с покупателем по телефону.
+                    .delivery__direction(data-item="door-to-door")
+                        .delivery__wr-title
+                            h2.delivery__title подъем заказов
+                        .delivery__list 
+                            span.delivery__item Необходимость подъема товара согласовывается при заказе.
+                            span.delivery__item Заказчику необходимо обеспечить подъезд транспорта к месту разгрузки или заказать пропуск (заранее). Расходы за въезд к месту разгрузки несет покупатель.
+                            span.delivery__item До 15 кг подъем бесплатно.
+                            span.delivery__item При объеме более 15 кг, цену уточняйте у менеджера.
+
+                        
+

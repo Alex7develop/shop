@@ -1,0 +1,353 @@
+extends layout/layout
+
+block  variable
+    - let pageName = 'place-order'; 
+
+block content
+    main.main.main-place-order
+        .place-order
+            .place-order__content
+                .place-order__wr-main-title 
+                    a.place-order__main-title-link(href="./basket.html" title="link to basket") 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 31" fill="none">
+                            <path d="M19 3.6425L15.3846 0L0 15.5L15.3846 31L19 27.3575L7.25641 15.5L19 3.6425Z" fill="white"/>
+                        </svg>
+                    h1.place-order__main-title Оформление заказа
+
+                .place-order__wr-data 
+                    .place-order__user-data-list 
+                        .place-order__user-data-item Фамилия 
+                        .place-order__user-data-item Имя
+                        .place-order__user-data-item Отчество
+                        .place-order__user-data-item Телефон
+                        .place-order__user-data-item Почта
+
+                    .place-order__wr-order 
+                        .place-order__order-list 
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/merch-t-shirt-white-from-center-front-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Футболка R18, “От центра к краю”
+                                        p Размер: XL; Белая
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/merch-t-shirt-black-black-inside-front-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Футболка R18: 'Черный внутри'
+                                        p Размер: М; Черная
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/filter-ethiopia-banko-gotete-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Ethiopia Banko Gotete
+                                        p Молотый: капсульная кофемашина
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/filter-ethiopia-banko-gotete-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Ethiopia Banko Gotete
+                                        p Молотый: Эспрессо
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/espresso-colombia-excelso-decaf-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Colombia Excelso Decaf
+                                        p Молотый
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/espresso-colombia-excelso-decaf-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Colombia Excelso Decaf
+                                        p Зерно
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/espresso-colombia-andino-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Colombia Andino
+                                        p Зерно
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/big-desc-part-of-africa-1-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Сет дрип-пакетов: 'Африка'
+                                        p Молотый
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/accessories-nok-box-motta-105-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Нок-бокс 105 мм
+                                        p 
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/accessories-nok-box-motta-105-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Нок-бокс 105 мм
+                                        p 
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/accessories-nok-box-motta-105-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Нок-бокс 105 мм
+                                        p 
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                            .place-order__order-item 
+                                .place-order__product-info 
+                                    .place-order__product-wr-img
+                                        img.place-order__product-img(src=require('../img/content/accessories-nok-box-motta-105-content.webp') alt="изображение товара")
+                                    .place-order__product-wr-description 
+                                        p Нок-бокс 105 мм
+                                        p 
+                                    .place-order__product-wr-amount
+                                        span.place-order__product-amount 2 
+                                        span шт
+                                .place-order__product-price #[span 5000] р.
+                        .place-order__wr-total 
+                            .place-order__total-dop-info
+                                .place-order__total-wr-delivery 
+                                    .place-order__total-delivery-title Доставка
+                                    .place-order__total-delivery-price #[span 0] р.
+                                .place-order__total-wr-discount 
+                                    .place-order__total-discount-title Скидка #[span 5]%
+                                    .place-order__total-discount-price #[span 750] р.
+                            .place-order__total-price 
+                                .place-order__total-price-title Итог:
+                                .place-order__total-price #[span 9870] р.
+
+                    .place-order__wr-receiving
+                        .place-order__wr-title
+                            h2.place-order__title Способ получения
+                        .place-order__receiving-wr-list(data-current="" data-type_content="")
+                            .place-order__receiving-list
+                                //- .place-order__receiving-item_active
+                                .place-order__receiving-item(data-receiving="moskow" data-type="moskow")
+                                        span.place-order__radio-input-cust-back
+                                            span.place-order__radio-input-cust-body 
+                                        span Москва
+                                .place-order__receiving-item(data-receiving="moskow-area" data-type="area-region")
+                                        span.place-order__radio-input-cust-back
+                                            span.place-order__radio-input-cust-body 
+                                        span Московская область
+                                .place-order__receiving-item(data-receiving="regions" data-type="area-region")
+                                        span.place-order__radio-input-cust-back
+                                            span.place-order__radio-input-cust-body 
+                                        span Регионы
+                                .place-order__receiving-item(data-receiving="pickup" data-type="pickup")
+                                        span.place-order__radio-input-cust-back
+                                            span.place-order__radio-input-cust-body 
+                                        span Самовывоз
+                                .place-order__receiving-item(data-receiving="cdek" data-type="cdek")
+                                        span.place-order__radio-input-cust-back
+                                            span.place-order__radio-input-cust-body 
+                                        span.place-order__receiving-logo-cdek 
+                            //- .place-order__cdek-type_active
+                            .place-order__cdek-type
+                                label.place-order__cdek-type-label(data-type="courier")
+                                    input.place-order__cdek-radio(type="radio" name="radio-cdek" value="Курьером" checked)    
+                                    //- span.place-order__cdek-type-circle
+                                    span.place-order__cdek-type-text Курьером
+                                label.place-order__cdek-type-label(data-type="opp")
+                                    input.place-order__cdek-radio(type="radio" name="radio-cdek" value="ПВЗ") 
+                                    //- span.place-order__cdek-type-circle
+                                    span.place-order__cdek-type-text ПВЗ
+                        .place-order__calc-delivery-info 
+                            p Ожидайте ответа менеджера для точного расчета доставки
+
+                        .place-order__wr-type-address
+                            .place-order__type-wr-address
+                                .place-order__type-address-title Тип адреса
+                                input#place-order__type-address-check.place-order__type-address-check(type="checkbox")
+                                label.place-order__type-address-select(for="place-order__type-address-check") 
+                                    span Имя адреса
+                                    .place-order__type-address-list
+                                        .place-order__type-address-item Адрес 1
+                                        .place-order__type-address-item Адрес 2
+                                        .place-order__type-address-item Адрес 3
+
+                        .place-order__forms-address-list
+                            //- .place-order__forms-address-item_active
+                            .place-order__forms-address-item(data-type="moskow")
+                                form.place-order__form-address(name="moskow")
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="city")
+                                        input(type="text" name="city" data-standart_value="Город" value="Город").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="street")
+                                        input(type="text" name="street" data-standart_value="Улица" value="Улица").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="hause")
+                                        input(type="text" name="hause" data-standart_value="Дом" value="Дом").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="appartment")
+                                        input(type="text" name="appartment" data-standart_value="Квартира/Офис" value="Квартира/Офис").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="entrance")
+                                        input(type="text" name="entrance" data-standart_value="Подъезд" value="Подъезд").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="stage")
+                                        input(type="text" name="stage" data-standart_value="Этаж" value="Этаж").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="intercom")
+                                        input(type="text" name="intercom" data-standart_value="Код домофона" value="Код домофона").place-order__form-address-input
+                            .place-order__forms-address-item(data-type="area-region")
+                                form.place-order__form-address(name="area-region")
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="zip")
+                                        input(type="text" name="zip" data-standart_value="Индекс" value="Индекс").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="area")
+                                        input(type="text" name="area" data-standart_value="Область" value="Область").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="city")
+                                        input(type="text" name="city" data-standart_value="Город" value="Город").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="street")
+                                        input(type="text" name="street" data-standart_value="Улица" value="Улица").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="hause")
+                                        input(type="text" name="hause" data-standart_value="Дом" value="Дом").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="appartment")
+                                        input(type="text" name="appartment" data-standart_value="Квартира/Офис" value="Квартира/Офис").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="entrance")
+                                        input(type="text" name="entrance" data-standart_value="Подъезд" value="Подъезд").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="stage")
+                                        input(type="text" name="stage" data-standart_value="Этаж" value="Этаж").place-order__form-address-input.place-order__form-input_required
+                                    .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="intercom")
+                                        input(type="text" name="intercom" data-standart_value="Код домофона" value="Код домофона").place-order__form-address-input
+                            .place-order__forms-address-item(data-type="pickup")
+                                .place-order__forms-address-pickup
+                                    p 
+                                        span Вы можете забрать товары из нашего шоурума, по рабочим дням с 10:00 до 18:00. 
+                                        span По адресу: Россия, город Москва, Хорошевское шоссе, д. 32, корп. А, подъезд 2, офис 109.
+                                    p 
+                                        span Перемещение заказов с оптового склада на пункт выдачи составляет 1-2 дня. 
+                                        span Стоимость самовывоза - бесплатно.
+                                    p 
+                                        span Возможен заезд на территорию на личном 
+                                        span транспорте, кроме такси и каршеринга.
+                                        span Тел. для заказа пропуска: +7 (495) 789-67-27
+                                    p 
+                                        | Для входа на территорию офиса необходимо иметь при себе паспорт или другой документ удостоверяющий личность!
+                            .place-order__forms-address-item(data-type="cdek")
+                                .place-order__forms-address-cdek-list
+                                    .place-order__forms-address-cdek-item.place-order__forms-address-cdek-item_active(data-type="courier")
+                                        form.place-order__form-address
+                                            .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="city")
+                                                input(type="text" name="city" data-standart_value="Город" value="Город").place-order__form-address-input.place-order__form-input_required
+                                            .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="street")
+                                                input(type="text" name="street" data-standart_value="Улица" value="Улица").place-order__form-address-input.place-order__form-input_required
+                                            .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="hause")
+                                                input(type="text" name="hause" data-standart_value="Дом" value="Дом").place-order__form-address-input.place-order__form-input_required
+                                            .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="appartment")
+                                                input(type="text" name="appartment" data-standart_value="Квартира/Офис" value="Квартира/Офис").place-order__form-address-input.place-order__form-input_required
+                                            .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="entrance")
+                                                input(type="text" name="entrance" data-standart_value="Подъезд" value="Подъезд").place-order__form-address-input.place-order__form-input_required
+                                            .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="stage")
+                                                input(type="text" name="stage" data-standart_value="Этаж" value="Этаж").place-order__form-address-input.place-order__form-input_required
+                                            .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="intercom")
+                                                input(type="text" name="intercom" data-standart_value="Код домофона" value="Код домофона").place-order__form-address-input
+                                    .place-order__forms-address-cdek-item(data-type="opp")
+                                        .place-order__wr-cdek
+                                            .place-order__form-cdek-address(name="form-opp")
+                                                input.place-order__wr-cdek-address.place-order__form-address-input(type="text" id="suggest" placeholder="Адрес")
+                                            #map.place-order__wr-cdek-app.place-order__wr-cdek-app_load
+                                                //- здесь карта с ПВЗ
+                                            .place-order__wr-cdek-confirm
+                                                p 
+                                                    span Вы выбрали адрес:
+                                                    span.place-order__choice-map-address
+                                                buttom.place-order__cdek-confirm-button(type='button') Подтвердить
+
+                    .place-order__payment
+                        .place-order__wr-title 
+                            h2.place-order__title.place-order__payment-title Тип оплаты
+                        .place-order__wr-choice
+                            //- .place-order__payment-type_active
+                            //- .place-order__payment-type_disabled
+                            .place-order__payment-type(data-payment_type="cash")
+                                span.place-order__radio-input-cust-back
+                                    span.place-order__radio-input-cust-body 
+                                span Наличными
+                            .place-order__payment-type(data-payment_type="card-site") 
+                                span.place-order__radio-input-cust-back
+                                    span.place-order__radio-input-cust-body 
+                                span Картой на сайте
+                            .place-order__payment-type(data-payment_type="card-place") 
+                                span.place-order__radio-input-cust-back
+                                    span.place-order__radio-input-cust-body 
+                                span Картой при получении
+                            .place-order__payment-type(data-payment_type="legal") 
+                                span.place-order__radio-input-cust-back
+                                    span.place-order__radio-input-cust-body 
+                                span Для юрлица
+
+                            form(name="legal-entity").place-order__payment-form
+                                .place-order__payment-wr-input 
+                                    input.place-order__payment-input.place-order__form-input_required(type="text" name="name" data-standart_value="Название организации" value="Название организации")
+                                .place-order__payment-wr-input 
+                                    input.place-order__payment-input.place-order__form-input_required(type="text" name="address" data-standart_value="Адрес" value="Адрес")
+                                .place-order__payment-wr-input 
+                                    input.place-order__payment-input.place-order__form-input_required(type="text" name="inn" data-standart_value="ИНН" value="ИНН")
+                                .place-order__payment-wr-input 
+                                    input.place-order__payment-input.place-order__form-input_required(type="text" name="ogrn" data-standart_value="ОГРН" value="ОГРН")
+
+                    .place-order__wr-comment
+                        .place-order__wr-title
+                            h2.place-order__title Комментарий к заказу
+                        form.place-order__wr-comment-textarea(name="comment-form")
+                            textarea.place-order__comment(name="comment" maxlength="700")
+
+                    //- .place-order__personal-data
+                    //-     label.place-order__personal-data-label
+                    //-         input.place-order__personal-data-input(type="checkbox" value="personal-data" required)
+                    //-         span.place-order__personal-data-text Согласие на обработку персональных данных
+                    //-     label.place-order__personal-data-label
+                    //-         input.place-order__personal-data-input(type="checkbox" value="subscription-email")
+                    //-         span.place-order__personal-data-text Согласие на E-mail рассылку
+
+                    .place-order__button-submit 
+                        button(type="button") Оформить
+                    

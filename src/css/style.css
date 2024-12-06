@@ -1,0 +1,750 @@
+.wrapper-page {
+    background-color: #483D41;
+}
+
+.wrapper-index-page {
+    background-image: url('../img/roasteria-side.webp');
+    background-repeat: no-repeat;
+    background-position: left 0.35vw bottom 8vw;
+    background-size: 10.9vw auto;
+}
+
+/* HEADER START */
+
+.header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    height: 6.51vw;
+
+    border-bottom: 1px solid #ddd;
+    background: #483D41;
+
+    justify-content: center;
+
+    z-index: 1200;
+}
+
+.header__wr-content {
+    display: flex;
+    width: 85%;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__wr-buttons {
+    display: flex;
+    gap: 1.56vw;
+}
+
+.header__account {
+    position: relative;
+
+    display: flex;
+    height: 2.60vw;
+    width: 2.60vw;
+    
+    border: 2px solid #fff;
+    border-radius: 50%;
+    
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.header__account a {
+    display: block;
+    line-height: 2.40vw;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    font-family: "SofiaSans";
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+.header__account_active {
+    background-color: #F1551C;
+}
+
+.header__account:hover {
+    border-color: #F1551C;
+}
+
+.header__account a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    border-radius: 50%;
+}
+
+.header__account svg {
+    width: 1.09vw; 
+    height: 1.25vw;
+}
+
+.header__basket {
+    position: relative;
+    
+    display: block;
+    height: 2.60vw;
+    width: 2.60vw;
+    
+    border: 2px solid #fff;
+    border-radius: 50%;
+    
+    cursor: pointer;
+}
+
+.header__basket_active {
+    background-color: #F1551C;
+}
+
+.header__basket-amount {
+    position: absolute;
+    top: -51%;
+    right: -2%;
+
+    display: none;
+    width: 1.15vw;
+    height: 1.15vw;
+
+    font-family: "SofiaSans";
+    font-size: 0.73vw;
+    font-weight: 700;
+
+    background-color: #fff;
+    border-radius: 50%;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.header__basket-amount_active {
+    display: flex;
+}
+
+.header__basket:hover {
+    border-color: #F1551C;
+}
+
+.header__basket-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+}
+
+/* HEADER END */
+
+/* ////////////////  MAIN   ///////////////// */
+
+.main {
+    padding-bottom: 11.28vw;
+
+    background:no-repeat url('../img/roasteria-side.webp');
+    background-position: right 0.35vw top 101.6vh;
+    background-size: 11.41vw auto;
+}
+
+/* products start */
+.coffee {
+    display: flex;
+    padding-top: 2.81vw;
+    padding-bottom: 2.97vw;
+
+    background: no-repeat linear-gradient(180deg, rgba(114, 107, 104, 1) 0%, rgba(114, 107, 104, 1) 100%);
+    background-size: 41.5% 100%;
+
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 0;
+}
+
+.coffee__wr-slider-top {
+    position: relative;
+
+    width: 85%;
+
+    z-index: 5;
+}
+
+.coffee__wr-button-price {
+    margin-top: 3.23vw;
+    margin-left: 12.24vw;
+}
+
+.coffee__button-price {
+    display: flex;
+
+    width: 17.40vw;
+    height: 2.60vw;
+
+    
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+    
+    color: #fff;
+    border-radius: 1.56vw;
+    background: #F1551C;
+    box-shadow: 31px 18px 10px 0px rgba(0, 0, 0, 0.00),
+     20px 12px 9px 0px rgba(0, 0, 0, 0.02),
+      11px 7px 8px 0px rgba(0, 0, 0, 0.08),
+       5px 3px 6px 0px rgba(0, 0, 0, 0.13),
+        1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.coffee__wr-slider-bottom {
+    position: relative;
+
+    margin-top: 10.5vw;
+    width: 85%;
+
+    z-index: 5;
+}
+
+/* products end */
+
+
+
+/* orders-are-temporary */
+.orders-are-temporary {
+    position: relative;
+
+    display: flex;
+    width: 46.15%;
+    height: 4.43vw;
+    margin: 2.81vw auto 0;
+
+    border: 0.15vw solid #FFF;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.orders-are-temporary p {
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+
+    font-weight: 700;
+
+    color: #F1551C;
+} 
+
+.orders-are-temporary a {
+    text-decoration: underline;
+
+    color: #F1551C;
+}
+
+/* orders-are-temporary end */
+
+
+
+/* merch start */
+
+.merch {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 1;
+}
+
+.merch__wr-slider {
+    display: flex;
+    width: 100%;
+
+    justify-content: center;
+}
+
+/* merch end */
+
+
+/* accessories start */
+
+.accessories {
+    position: relative;
+
+    display: flex;
+    margin-top: 4.5vw;
+
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 2;
+}
+
+.accessories__wr-slider {
+    display: flex;
+    width: 100%;
+
+    justify-content: center;
+}
+
+/* accessories end */
+
+/* КОНТАКТЫ START */
+
+.contacts {
+    display: flex;
+    margin-top: 5.2vw;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.contacts__wr-data {
+    display: flex;
+    width: 85%;
+    margin-top: 2.76vw;
+
+    justify-content: space-between;
+}
+
+.contacts__map {
+    width: 51.67vw;
+    height: 28.59vw;
+}
+
+.contacts__map img {
+    height: 100%;
+    width: 100%;
+
+    box-shadow: 20px 20px 65px rgba(0, 0, 0, 0.3);
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.contacts__wr-address {
+    margin-top: .2vw;
+}
+
+.contacts__logo-mobile {
+    display: none;
+}
+
+.contacts__wr-address h3 {
+    font-family: 'SofiaSans';
+    font-size: 1.46vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.contacts__wr-address p {
+    font-family: 'SofiaSans';
+    font-size: 1.25vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.contacts__wr-address a {
+    font-family: 'SofiaSans';
+    font-size: 1.46vw;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.contacts__address p {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.contacts__working-time {
+    margin-top: 1.93vw;
+}
+
+.contacts__phone-number {
+    display: flex;
+    margin-top: 3.49vw;
+    gap: 2.34vw;
+}
+
+.button-to-top {
+    width: 4.11vw;
+    height: 4.11vw;
+    margin-top: 0.52vw;
+
+    cursor: pointer;
+}
+
+.contacts__social-list {
+    display: flex;
+    gap: 1.61vw;
+}
+
+.contacts__social-item {
+    position: relative;
+
+    width: 2.08vw;
+    height: 2.08vw;
+}
+
+.contacts__social-item-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
+}
+
+/* КОНТАКТЫ END */
+
+
+/* FOOTER START */
+
+.footer {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__wr-content {
+    position: relative;
+
+    display: flex;
+    width: 85%;
+    padding-bottom: 0.94vw;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__copyright {
+    width: 100%;
+    padding-top: 1.04vw;
+    padding-bottom: 1.30vw;
+
+    border-top: 1px solid #fff;
+}
+
+.footer__copyright p {
+    font-family: 'SofiaSans';
+    font-size: 0.83vw;
+    font-weight: 400;
+    text-align: center;
+
+    color: #FFF;
+}
+
+/* FOOTER END */
+
+
+
+
+@media(max-width: 1200px) {
+    .wrapper-index-page {
+        background-image: none;
+    }
+}
+
+@media(max-width: 1200px) {
+    .main {
+        background-size: 14.41vw auto;
+        background-position: right 0.35vw top 265vw;
+    }
+}
+
+/* HEADER */
+
+@media( max-width: 1200px ) {
+    .header {
+        position: relative;
+
+        height: auto;
+        padding-bottom: 2.40vw;
+        padding-top: 2.40vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .header__wr-content {
+        width: 94%;
+        gap: 1.33vw;
+
+        flex-direction: row;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .header__account {
+        width: 9.87vw;
+        height: 9.87vw;
+    }
+
+    .header__account svg {
+        height: 62%;
+        width: 62%;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .header__basket {
+        display: none;
+    }
+}
+
+/* ------------------------------------- */
+
+/* COFFEE */
+@media( max-width: 1200px ) {
+    .coffee {
+        padding-top: 0;
+        background-size: 0;
+        padding-bottom: 9.97vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .coffee__wr-slider-top {
+        width: 100%;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .coffee__wr-button-price {
+        margin-top: 7.20vw;
+        margin-left: 0;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .coffee__button-price {
+        width: 54.40vw;
+        height: 10.67vw;
+
+        font-size: 4.27vw;
+
+        border-radius: 8vw;
+        box-shadow: 31px 18px 10px 0px rgba(0, 0, 0, 0.00),
+         20px 12px 9px 0px rgba(0, 0, 0, 0.02),
+          11px 7px 8px 0px rgba(0, 0, 0, 0.08),
+           5px 3px 6px 0px rgba(0, 0, 0, 0.13),
+            1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@media( max-width: 1200px ) {
+    .coffee__wr-slider-bottom {
+        width: 100%;
+    }
+}
+
+/* ------------------------------------- */
+
+/* MERCH */
+
+@media( max-width: 1200px ) {
+    .merch {
+        padding-top: 10.13vw;
+    }
+}
+
+/* ------------------------------------- */
+
+/* orders-are-temporary */
+
+@media( max-width: 1200px ) {
+    .orders-are-temporary {
+        width: 89.5%;
+        height: 15.43vw;
+    }
+
+    .orders-are-temporary p {
+        font-size: 3.6vw;
+        text-align: center;
+    }
+}
+
+/* ------------------------------------- */
+
+
+/* ACCESSORIES */
+
+@media( max-width: 1200px ) {
+    .accessories {
+        padding-top: 14.6vw;
+    }
+}
+
+/* ------------------------------------- */
+
+
+/* CONTACTS */
+
+
+@media( max-width: 1200px ) {
+    .contacts {
+        width: 100%;
+        margin-top: 14.6vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__wr-data {
+        width: 100%;
+        margin-top: 5.2vw;
+
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__map {
+        width: 100%;
+        height: 85.33vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__wr-address {
+        position: relative;
+
+        width: 100%;
+        margin-top: 3.73vw;
+        padding-bottom: 17.60vw;
+
+        background: no-repeat url('../img/roasteria-side.webp');
+        background-size: auto 90%;
+        background-position: left 1.8vw top;
+
+        text-align: center;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__logo-mobile {
+        display: flex;
+        width: 41.60vw;
+        margin: 0 auto;
+        padding-bottom: 2.40vw;
+    
+        border-bottom: 1px solid #ffffff;
+    
+        justify-content: center;
+    }
+
+    .contacts__logo-mobile .logo {
+        width: 19.73vw;
+        height: 20vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__address {
+        margin-top: 5vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__wr-address h3 {
+        font-size: 5.33vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__wr-address p {
+        font-size: 3.73vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__working-time {
+        margin-top: 3.8vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__phone-number {
+        margin-top: 7vw;
+
+        justify-content: center;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__wr-address a {
+        font-size: 3.73vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .button-to-top {
+        position: absolute;
+        top: 0;
+        right: 12vw;
+
+        width: 18.5vw;
+        height: 18.5vw;
+        margin: 0;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__social-list {
+        margin-top: 7.5vw;
+        gap: 8vw;
+
+        justify-content: center;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .contacts__social-item {
+        width: 10.67vw;
+        height: 10.67vw;
+    }
+}
+
+/* ------------------------------------- */
+
+/* FOOTER */
+
+
+@media( max-width: 1200px ) {
+    .footer__wr-content {
+        display: none;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .footer__copyright {
+        padding-top: 2.6vw;
+        padding-bottom: 3.6vw;
+
+        font-size: 4.27vw;
+    }
+}
+
+@media( max-width: 1200px ) {
+    .footer__copyright p {
+        font-size: 4.27vw;
+    }
+}

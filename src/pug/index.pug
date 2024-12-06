@@ -1,0 +1,245 @@
+include variable/navigationVar
+include variable/bottomNavigationVar
+include variable/mobileNav
+include mixines/navigation
+include mixines/navMobile
+include mixines/title-for-section
+include ./variable/contacts
+
+
+doctype html
+html(lang='ru')
+  head
+    //- // Google tag (gtag.js)
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-DDK2J1VYM7')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DDK2J1VYM7');
+
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(name="keywords" content="R18, Rosteria 18, Р18, Ростерия 18, Обжарка, Обжарка кофе, Кофе, Кофейное производство, Specialty coffee, Кофе для кофеин, Кофе для HoReCa. ")
+    meta(name="description" content="Rosteria 18 - это профессиональная, открытая команда единомышленников, которая начала свой кофейный путь в 2000 году с дистрибьюции обжаренного кофе.")
+    meta(http-equiv="Content-Security-Policy" content="upgrade-insecure-requests")
+    link(rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="./img/favicon/32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="./img/favicon/16.png")
+
+    title Roasteria18
+
+    // Yandex.Metrika counter
+    script(type='text/javascript').
+  
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      
+            ym(97844110, "init", {
+                  clickmap:true,
+                  trackLinks:true,
+                  accurateTrackBounce:true,
+                  webvisor:true
+            });
+  
+    noscript  
+      div 
+        img(src="https://mc.yandex.ru/watch/97844110" style="position:absolute; left:-9999px;" alt="")
+    // Yandex.Metrika counter 
+  body
+    
+    .wrapper-page.wrapper-index-page
+      header.header
+        .header__wr-content
+          +navMob(mobileNav)
+          include components/logo 
+          .header__wr-buttons
+            +nav(nav)
+            .header__account
+              //- cсылка ниже для тестов модалки (модалка вызывается когда #0)
+              a(href="#0")
+                //- a(href="./account.html" title="Личный кабинет")
+                svg(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 21 24' fill='none')
+                  path(d='M10.5 0C6.45176 0 3.15 3.4304 3.15 7.63636C3.15 10.2656 4.44199 12.6009 6.39844 13.9773C2.65371 15.6477 0 19.5085 0 24H2.1C2.1 19.1676 5.84883 15.2727 10.5 15.2727C15.1512 15.2727 18.9 19.1676 18.9 24H21C21 19.5085 18.3463 15.6477 14.6016 13.9773C16.558 12.6009 17.85 10.2656 17.85 7.63636C17.85 3.4304 14.5482 0 10.5 0ZM10.5 2.18182C13.4121 2.18182 15.75 4.6108 15.75 7.63636C15.75 10.6619 13.4121 13.0909 10.5 13.0909C7.58789 13.0909 5.25 10.6619 5.25 7.63636C5.25 4.6108 7.58789 2.18182 10.5 2.18182Z' fill='white')
+                
+              
+            //- .header__basket_active - подкрашивает иконку
+            .header__basket
+              //- .header__basket-amount_active - активирует счетчик
+              span.header__basket-amount.header__basket-amount_active 0
+              svg(viewBox='0 0 50 51', fill='none', xmlns='http://www.w3.org/2000/svg')
+                g#CloseCircle(clip-path='url(#clip0_1854_2349)')
+                  g#Group 7
+                    path#Vector_2(d='M36.1358 15.0148H11V17.7323H14.0428L18.382 29.9611C18.6549 30.754 19.16 31.4408 19.8279 31.9273C20.4958 32.4138 21.2938 32.6762 22.1127 32.6786H33.4899V29.9611H22.1127C21.8408 29.961 21.5755 29.8748 21.353 29.7143C21.1305 29.5539 20.9615 29.3269 20.8691 29.0643L20.2605 27.2436H32.5374C33.1116 27.2427 33.6699 27.0501 34.1281 26.6946C34.5863 26.3392 34.9195 25.8404 35.0774 25.2734L37.4587 16.7404C37.5125 16.562 37.5299 16.3741 37.5098 16.1885C37.4897 16.0029 37.4325 15.8235 37.3419 15.6615C37.2513 15.4996 37.1291 15.3586 36.983 15.2473C36.837 15.1361 36.6701 15.0569 36.493 15.0148C36.3747 14.9951 36.254 14.9951 36.1358 15.0148ZM32.4977 24.5261H19.2683L16.8606 17.7323H34.3763L32.4977 24.5261Z', fill='white')
+                    path#Vector_3(d='M21.8488 37.5C22.9583 37.5 23.8577 36.6006 23.8577 35.4911C23.8577 34.3816 22.9583 33.4821 21.8488 33.4821C20.7393 33.4821 19.8398 34.3816 19.8398 35.4911C19.8398 36.6006 20.7393 37.5 21.8488 37.5Z', fill='white')
+                    path#Vector_4(d='M30.6876 37.5C31.7971 37.5 32.6966 36.6006 32.6966 35.4911C32.6966 34.3816 31.7971 33.4821 30.6876 33.4821C29.5781 33.4821 28.6787 34.3816 28.6787 35.4911C28.6787 36.6006 29.5781 37.5 30.6876 37.5Z', fill='white')
+                defs
+                  clipPath#clip0_1854_2349
+                    rect(width='50', height='50', fill='white', transform='translate(0 0.5)')
+              a.header__basket-link(href="./basket.html" title="basket page") 
+
+
+      main.main 
+        //- ------------------ Слайдер с видео 
+
+        .slider-h
+          .slider-h__slides 
+            ul.slider-h__slides-list 
+              li.slider__slide-item 
+                video(muted autoplay playsinline data-count="0")  
+                  //- source(src=require('../video/roasting-coffee-1.webm') type='video/webm')
+                  //- source(src=require('../video/roasting-coffee-1.mp4') type='video/mp4' codecs="avc1.42E01E, mp4a.40.2")
+                  source(src=require('../video/roasting-coffee-1.MOV') type='video/mp4')
+              li.slider__slide-item
+                video(muted playsinline data-count="1")
+                  //- source(src=require('../video/roasting-coffee-2.webm') type='video/webm')
+                  //- source(src=require('../video/roasting-coffee-2.mp4') type='video/mp4' codecs="avc1.42E01E, mp4a.40.2")
+                  source(src=require('../video/roasting-coffee-2.MOV') type='video/mp4')
+              li.slider__slide-item
+                video(muted playsinline data-count="2")
+                  //- source(src=require('../video/roasting-coffee-3.webm') type='video/webm')
+                  //- source(src=require('../video/roasting-coffee-3.mp4') type='video/mp4' codecs="avc1.42E01E, mp4a.40.2")
+                  source(src=require('../video/roasting-coffee-3.MOV') type='video/mp4')
+
+          .slider-h__mask
+           
+          .slider-h__arrows-name 
+            include components/arrow-prev
+
+            .slider-h__wr-name-site
+              .slider-h__wr-name-site-descr
+                .slider-h__name-site-lines
+                  .slider-h__name-site-line.slider-h__name-site-line_top 
+                  .slider-h__name-site-line.slider-h__name-site-line_bottom 
+                .slider-h__name-site-descr Specialty coffee
+                .slider-h__name-site-lines
+                  .slider-h__name-site-line.slider-h__name-site-line_top 
+                  .slider-h__name-site-line.slider-h__name-site-line_bottom 
+              .slider-h__name-site
+                img(src=require('../img/head-title-roasteria.webp') alt="roasteria")
+
+            include components/arrow-next
+            
+          .slider-h__pagination
+            ul.slider-h__pagination-list 
+              li.slider-h__pagination-item(data-num="0")
+                .slider-h__pagination-icon
+                .slider-h__pagination-text Свежая обжарка
+              li.slider-h__pagination-item(data-num="1")
+                .slider-h__pagination-icon
+                .slider-h__pagination-text Зерна
+              li.slider-h__pagination-item(data-num="2")
+                .slider-h__pagination-icon
+                .slider-h__pagination-text Упаковка
+          .slider-h__line 
+            .slider-h__nav-line
+              .slider-h__nav-line-item
+        
+              //- ------------------ блок со слайдерами с кофе
+
+        #coffee.coffee 
+
+          article.coffee__wr-slider-top
+            include components/slider-coffee
+          .coffee__wr-button-price 
+            a.coffee__button-price(href="./price.html" title="прайс на кофе R18") Цены
+
+        .orders-are-temporary
+          p Личный кабинет в разработке, заказы временно принимаются через #[a(href="#0") контакты]
+
+        section.merch 
+          .merch__wr-title 
+            +title-for-section('Мерч')
+          .merch__wr-slider
+            include components/slider-perspective
+
+        section.accessories 
+          .accessories__wr-title 
+            +title-for-section('Аксессуары')
+          .accessories__wr-slider
+            include components/slider-perspective
+
+        section.contacts
+          .contacts__wr-title 
+            +title-for-section('Контакты')
+          .contacts__wr-data 
+            .contacts__map 
+              img(src=require('../img/map.webp'), alt="Карта офиса R18")
+            .contacts__wr-address
+              .contacts__logo-mobile
+                include components/logo
+              .contacts__address 
+                h3.contacts__address-title Адрес:
+                p 
+                  span Береговая улица, 47Б
+                  span коттеджный поселок Спартак, село Быково,
+                  span Раменский городской округ, Московская область.
+              .contacts__working-time
+                h3.contacts__address-title Время работы: 09:00 - 18:00,
+                p по рабочим дням.
+              .contacts__phone-number
+                .contacts__wr-phone-number
+                  h3.contacts__phone-number-title Для заказа и сотрудничества:
+                  a.contacts__phone-number-link(href=('tel:+' + phoneLink) title="для заказа и сотрудничества") #{phoneText}
+                include ./components/button-to-top.pug
+              ul.contacts__social-list 
+                li.contacts__social-item
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+                    <g clip-path="url(#clip0_855_1087)">
+                      <path d="M31.1993 12.5337L6.93262 20.9337L15.3326 23.7337M31.1993 12.5337L15.3326 23.7337M31.1993 12.5337L23.7326 32.1337L15.3326 23.7337" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M19.9997 38.6668C30.3089 38.6668 38.6663 30.3094 38.6663 20.0002C38.6663 9.69084 30.3089 1.3335 19.9997 1.3335C9.69035 1.3335 1.33301 9.69084 1.33301 20.0002C1.33301 30.3094 9.69035 38.6668 19.9997 38.6668Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_855_1087">
+                        <rect width="40" height="40" fill="white"/>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  a.contacts__social-item-link(href=("https://t.me/+" + phoneLink) target="_blank" title="канал в телеграм")
+                li.contacts__social-item
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+                    <g clip-path="url(#clip0_3208_8758)">
+                      <path d="M3.61774 37.8569L10.0259 36.175L10.238 36.3006L10.2367 36.3029C13.088 38.0155 16.4288 39 19.9942 39H20.0015C30.4959 39 39 30.4927 39 20C39 9.50714 30.4929 1 20 1C9.50714 1 1 9.50713 1 20C1 23.7388 2.0811 27.2301 3.90747 30.1008C3.90794 30.1015 3.90842 30.1023 3.90889 30.103L4.1003 30.4071L2.39931 36.6258L1.9423 38.2966L3.61774 37.8569Z" stroke="white" stroke-width="2"/>
+                      <path d="M29.9001 24.2329C29.359 23.9675 26.6954 22.6873 26.1994 22.5089C25.702 22.332 25.3403 22.2449 24.9785 22.7758C24.6197 23.3053 23.5811 24.4984 23.2646 24.8523C22.9495 25.2077 22.6315 25.2505 22.0903 24.9864C20.4128 24.3214 18.9716 23.4351 17.7186 22.3434L17.7332 22.3562C16.5677 21.3001 15.5685 20.0913 14.7618 18.7584L14.721 18.6842C14.4059 18.1547 14.6874 17.8678 14.9573 17.6038C15.2009 17.3669 15.4999 16.9844 15.7698 16.6762C15.9828 16.4207 16.1651 16.1282 16.3037 15.8142L16.3124 15.7899C16.3751 15.6658 16.4116 15.5216 16.4116 15.3675C16.4116 15.1805 16.3576 15.0064 16.2643 14.858L16.2672 14.8623C16.1301 14.5968 15.0477 11.988 14.597 10.9262C14.1565 9.89297 13.7087 10.0343 13.3775 10.0171C13.0625 10.0029 12.7007 10 12.3389 10C11.7628 10.0143 11.2508 10.2683 10.8978 10.6608L10.8963 10.6636C9.72643 11.7497 9 13.281 9 14.9779C9 15.015 9 15.0535 9.00146 15.0906V15.0849C9.19255 17.1785 9.99483 19.0581 11.2289 20.5894L11.2114 20.568C13.5511 23.9632 16.6698 26.679 20.3297 28.5086L20.4668 28.57C21.2661 28.9239 22.2901 29.3021 23.3375 29.6261L23.5548 29.6846C24.1996 29.8844 24.942 30 25.7122 30C26.1542 30 26.5889 29.9615 27.009 29.8887L26.9638 29.8944C28.5231 29.5761 29.817 28.6556 30.6062 27.3983L30.6193 27.3741C30.86 26.8517 31 26.2423 31 25.6015C31 25.3375 30.9767 25.0792 30.9314 24.828L30.9358 24.8551C30.8016 24.6339 30.4399 24.5026 29.8972 24.2358L29.9001 24.2329Z" fill="white"/>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_3208_8758">
+                        <rect width="40" height="40" fill="white"/>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  a.contacts__social-item-link(href=("https://api.whatsapp.com/send/?phone=" + phoneLink) target="_blank" title="канал в whatsapp")
+                li.contacts__social-item
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+                    <g clip-path="url(#clip0_855_1091)">
+                      <path d="M19.6667 38.3333C29.9759 38.3333 38.3333 29.9759 38.3333 19.6667C38.3333 9.35735 29.9759 1 19.6667 1C9.35735 1 1 9.35735 1 19.6667C1 29.9759 9.35735 38.3333 19.6667 38.3333Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9.27778 13.25L18.1456 18.6725C18.5517 18.9208 19.021 19.0525 19.5 19.0525C19.979 19.0525 20.4483 18.9208 20.8544 18.6725L29.7222 13.25M10.5556 27H28.4444C29.1222 27 29.7722 26.7366 30.2515 26.2678C30.7308 25.7989 31 25.163 31 24.5V14.5C31 13.837 30.7308 13.2011 30.2515 12.7322C29.7722 12.2634 29.1222 12 28.4444 12H10.5556C9.87778 12 9.22776 12.2634 8.7485 12.7322C8.26925 13.2011 8 13.837 8 14.5V24.5C8 25.163 8.26925 25.7989 8.7485 26.2678C9.22776 26.7366 9.87778 27 10.5556 27Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_855_1091">
+                        <rect width="40" height="40" fill="white"/>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  a.contacts__social-item-link(href=("mailto:" + mail) title="Почта")
+                //- li.contacts__social-item
+                //-   svg(xmlns='http://www.w3.org/2000/svg', viewBox='0 0 40 40' fill='none')
+                //-     g(clip-path='url(#clip0_1656_2619)')
+                //-       path(d='M27.4255 0H12.4471C5.55495 0 0 5.57961 0 12.4695V27.444C0 34.3344 5.55495 40 12.4471 40H27.4255C34.3178 40 40 34.3344 40 27.444V12.4695C40 5.57961 34.3178 0 27.4255 0ZM36.2313 27.444C36.2313 32.2602 32.2431 36.2151 27.4255 36.2151H12.4471C7.62921 36.2151 3.68308 32.2602 3.68308 27.444V12.4695C3.68308 7.65359 7.62921 3.69892 12.4471 3.69892H27.4255C32.2431 3.69892 36.2313 7.65359 36.2313 12.4695V27.444Z' fill='white')
+                //-       path(d='M20 11C15.0298 11 11 15.0297 11 20.0004C11 24.9704 15.0298 29 20 29C24.9704 29 29 24.9704 29 20.0004C29 15.0297 24.9704 11 20 11ZM20 25.6252C16.8994 25.6252 14.3753 23.1008 14.3753 20.0004C14.3753 16.897 16.8994 14.3752 20 14.3752C23.1005 14.3752 25.6249 16.8971 25.6249 20.0004C25.6249 23.1008 23.1005 25.6252 20 25.6252Z' fill='white')
+                //-       path(d='M30.0002 9C29.4478 9 29 9.44772 29 9.99987C29 10.5521 29.4478 11 30.0002 11C30.552 11 31 10.5521 31 9.99987C31 9.44772 30.552 9 30.0002 9Z' fill='white')
+                //-     defs
+                //-       clippath#clip0_1656_2619
+                //-         rect(width='40' height='40' fill='white')
+                //-   a.contacts__social-item-link(href="https://instagram.com/R18.coffee/" target="_blank" title="Инстаграм")
+
+
+      footer.footer 
+        .footer__wr-content
+          include components/logo
+          +nav(bottomNav)
+        .footer__copyright 
+          p Все права защищены, 2024

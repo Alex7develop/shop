@@ -1,0 +1,13 @@
+extends layout/layout
+
+block  variable
+    - let pageName = 'price'; 
+
+block content
+    main.main.main-price
+        .price 
+            .price__wr-image 
+                img.price__desctop-image(src=require('../img/content/price-desctop-content.png'), alt="цены на кофк r18")
+                img.price__mobile-image(src=require('../img/content/price-mobile-content.png'), alt="цены на кофк r18")
+            .price__wr-buttons 
+                a(href="./files/price.pdf" download="price__r18" title="скачать прайс R18") Скачать

@@ -1,0 +1,198 @@
+[
+    {
+        "article": "2", 
+        "title": "Нок-бокс",
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }, 
+            {
+                "name": "",
+                "value": ""
+            }
+        ], 
+        "black": {
+            "img": [
+                "./img/content/accessories-nok-box-motta-content.webp"
+            ],
+            "sizes": ["167 мм"]
+        },
+        "price": "5 600 p.",
+        "composition": ["Нержавеющая сталь"],
+        "link": "#",
+        "description" : "Нок-бокс 167 мм"
+    },
+    {
+        "article": "3",
+        "title": "Нок-бокс",
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }, 
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/accessories-nok-box-motta-105-content.webp"
+            ],
+            "sizes": ["105 мм"]
+        },
+        "price": "4 000 p.",
+        "composition": ["Нержавеющая сталь"],
+        "link": "#",
+        "description" : "Нок-бокс 105 мм"
+    },
+    {
+        "article": "0",
+        "title": "Питчер",
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }, 
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/accessories-pitcher-motta-content.webp"
+            ],
+            "sizes": ["0,35 мл"]
+        },
+        "price": "4 400 p.",
+        "composition": ["Нержавеющая сталь"],
+        "link": "#",
+        "description" : "Питчер 0,35 мл 'Motta'"
+    },
+    {
+        "article": "1",
+        "title": "Питчер",
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }, 
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/accessories-pitcher-ascaso-content.webp"
+            ],
+            "sizes": ["0,35 мл"]
+        },
+        "price": "1 440 p.",
+        "composition": ["Нержавеющая сталь"],
+        "link": "#",
+        "description" : "Питчер 0,35 мл 'Ascaso'"
+    },
+    {
+        "article": "4",
+        "title": "Темпер",
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/accessories-temper-content.webp"
+            ],
+            "sizes": ["58 мм"]
+        },
+        "price": "5 520 p.",
+        "composition": ["Нержавеющая сталь", "Швеция"],
+        "link": "#",
+        "description" : "Темпер 58 мм"
+    },
+    {
+        "article": "5",
+        "title": "Термометр",
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/accessories-thermometer-motta-content.webp"
+            ],
+            "sizes": ["0 – 100 °C"]
+        },
+        "price": "616 p.",
+        "composition": ["Аналоговый"],
+        "link": "#",
+        "description" : "Термометр аналоговый 0 – 100 °C"
+    },
+    {
+        "article": "6",
+        "title": "Brewista",
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/accessories-scales-content.webp"
+            ],
+            "sizes": ["106×127×18"]
+        },
+        "price": "11 868 p.",
+        "composition": ["Умные весы для бариста"],
+        "link": "#",
+        "description" : "Умные весы для бариста"
+    },
+    {
+        "article": "7",
+        "title": "Neodisher СM special",
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/accessories-neodisher-special-content.webp"
+            ],
+            "sizes": ["1 кг"]
+        },
+        "price": "2500 р.",
+        "composition": ["Порошок для удаления накипи"],
+        "link": "#",
+        "description" : "Порошок для удаления накипи 1 кг 'Neodisher СM special'"
+    },
+    {
+        "article": "8",
+        "title": "Neodisher CM P", 
+        "colors": [
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "black": {
+            "img": [
+                "./img/content/accessories-neodisher-content.webp"
+            ],
+            "sizes": ["1 кг"]
+        },
+        "price": "2200 р.",
+        "composition": ["Порошок для прочистки классических кофемашин"],
+        "link": "#",
+        "description" : "Порошок для прочистки классических кофемашин 1 кг Neodisher CM P"
+    }
+]

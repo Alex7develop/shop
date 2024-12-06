@@ -1,0 +1,528 @@
+extends layout/layout
+
+block  variable
+    - let pageName = 'account'; 
+
+block content
+    main.main.main-account 
+        .account 
+            .account__controll
+                ul.account__tabs-list 
+                    li.account__tabs-item.account__tabs-profile.account__tabs-item_active(data-type_acc="profile") Профиль
+                    li.account__tabs-item.account__tabs-history(data-type_acc="history") История заказов
+                    li.account__tabs-item.account__tabs-loyalty(data-type_acc="loyalty") Система лояльности
+                    li.account__tabs-item.account__tabs-delivery(data-type_acc="delivery") Доставка
+                        //- a(href="./delivery.html" title="Доставка") 
+            
+            ul.account__content-list 
+                li.account__profile.account__content-item.account__content-item_active(data-account="profile")
+                    .profile__wr-img 
+                        img.profile__img(src=require('../img/icons/profile-default-photo-icon.webp') alt="фото пользователя")
+
+                    form.profile__user-contacts-form(name="form_profile")
+                        ul.profile__user-contacts-list 
+                            li.profile__user-contacts-item
+                                input(type="text" name="second_name" data-standart_value="Фамилия" value="Фамилия" disabled)
+                            li.profile__user-contacts-item
+                                input(type="text" name="name" data-standart_value="Имя" value="Имя" disabled)
+                            li.profile__user-contacts-item
+                                input(type="text" name="patronymic" data-standart_value="Отчество" value="Отчество" disabled)
+                            li.profile__user-contacts-item
+                                input(type="tel" name="phone" data-standart_value="Телефон" value="Телефон" placeholder="Телефон" disabled)
+                            li.profile__user-contacts-item
+                                input(type="text" name="email" data-standart_value="Электронная почта" value="Электронная почта" disabled)
+
+                        .profile__wr-gender
+                            span.profile__gender-title Пол
+                            span.profile__gender-wr-radio 
+                                label.profile__gender-label
+                                    input.profile__gender-input(type="radio" name="gender" value="man" checked disabled) 
+                                    span.profile__gender-mark М
+                                label.profile__gender-label
+                                    input.profile__gender-input(type="radio" name="gender" value="woman" disabled) 
+                                    span.profile__gender-mark Ж
+
+                        .profile__wr-born-date 
+                            label.profile__born-date-label
+                                span.profile__born-date-mark Дата рождения
+                                input.profile__born-date-input(type="text" name="born_date" value="__/__/____" disabled)       
+ 
+                        .profile__wr-buttons 
+                            //- .profile__buttons-group-edit_active
+                            .profile__buttons-group.profile__buttons-group-edit.profile__buttons-group-edit_active
+                                button.profile__button.profile__button_edit(type="button") Редактировать
+                            .profile__buttons-group.profile__buttons-group-save
+                                button.profile__button.profile__button_save(type="button") Сохранить
+
+                    .profile__wr-address
+                        .profile__wr-address-list
+                            input#profile__wr-address-checkbox(type="checkbox")
+                            label.profile__wr-address-title(for="profile__wr-address-checkbox") Имя адреса 
+                            ul.profile__address-list 
+                                li.profile__address-item Домашний
+                                li.profile__address-item Рабочий
+                                //- li.profile__address-item Какой-то
+                        .profile__address-edit 
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                <path d="M1.24989 18.125C1.16169 18.1255 1.07438 18.1074 0.993696 18.0718C0.91301 18.0362 0.840777 17.9839 0.781743 17.9184C0.72271 17.8528 0.678213 17.7755 0.651179 17.6916C0.624144 17.6076 0.615185 17.5189 0.624888 17.4313L1.10614 13.0563C1.12327 12.9164 1.18714 12.7865 1.28739 12.6875L11.5124 2.4625C11.6982 2.27636 11.9188 2.12869 12.1617 2.02793C12.4046 1.92717 12.665 1.87531 12.928 1.87531C13.191 1.87531 13.4514 1.92717 13.6943 2.02793C13.9372 2.12869 14.1579 2.27636 14.3436 2.4625L16.2874 4.40625C16.4735 4.59202 16.6212 4.81268 16.722 5.05559C16.8227 5.2985 16.8746 5.5589 16.8746 5.82188C16.8746 6.08486 16.8227 6.34526 16.722 6.58817C16.6212 6.83108 16.4735 7.05174 16.2874 7.2375L6.06864 17.4563C5.96966 17.5565 5.83972 17.6204 5.69989 17.6375L1.32489 18.1188L1.24989 18.125ZM2.33114 13.4063L1.95614 16.7938L5.34364 16.4188L15.4061 6.35625C15.4761 6.28658 15.5315 6.20378 15.5694 6.11262C15.6072 6.02145 15.6267 5.92371 15.6267 5.825C15.6267 5.72629 15.6072 5.62855 15.5694 5.53739C15.5315 5.44623 15.4761 5.36343 15.4061 5.29375L13.4561 3.34375C13.3865 3.27383 13.3037 3.21836 13.2125 3.1805C13.1213 3.14265 13.0236 3.12316 12.9249 3.12316C12.8262 3.12316 12.7284 3.14265 12.6373 3.1805C12.5461 3.21836 12.4633 3.27383 12.3936 3.34375L2.33114 13.4063Z" fill="white"/>
+                                <path d="M14.376 8.88123C14.2937 8.88171 14.2122 8.86594 14.1361 8.83484C14.0599 8.80374 13.9906 8.75791 13.9322 8.69998L10.051 4.80623C9.99272 4.74796 9.94649 4.67878 9.91496 4.60264C9.88342 4.5265 9.86719 4.44489 9.86719 4.36248C9.86719 4.28007 9.88342 4.19846 9.91496 4.12233C9.94649 4.04619 9.99272 3.97701 10.051 3.91873C10.1093 3.86046 10.1784 3.81423 10.2546 3.78269C10.3307 3.75116 10.4123 3.73492 10.4947 3.73492C10.5772 3.73492 10.6588 3.75116 10.7349 3.78269C10.811 3.81423 10.8802 3.86046 10.9385 3.91873L14.8322 7.81248C14.8908 7.87058 14.9373 7.93971 14.9691 8.01587C15.0008 8.09203 15.0171 8.17372 15.0171 8.25623C15.0171 8.33874 15.0008 8.42043 14.9691 8.49659C14.9373 8.57275 14.8908 8.64188 14.8322 8.69998C14.7724 8.75943 14.7011 8.80613 14.6227 8.83728C14.5442 8.86843 14.4603 8.88338 14.376 8.88123Z" fill="white"/>
+                                <path d="M10.0533 7.81476L5.1875 12.6805L6.07138 13.5644L10.9372 8.69865L10.0533 7.81476Z" fill="white"/>
+                                <path d="M18.75 18.125H8.75C8.58424 18.125 8.42527 18.0592 8.30806 17.9419C8.19085 17.8247 8.125 17.6658 8.125 17.5C8.125 17.3342 8.19085 17.1753 8.30806 17.0581C8.42527 16.9408 8.58424 16.875 8.75 16.875H18.75C18.9158 16.875 19.0747 16.9408 19.1919 17.0581C19.3092 17.1753 19.375 17.3342 19.375 17.5C19.375 17.6658 19.3092 17.8247 19.1919 17.9419C19.0747 18.0592 18.9158 18.125 18.75 18.125Z" fill="white"/>
+                            </svg>
+                        form(name="profile__address-form").profile__address-form
+                            .profile__address-wr-input(data-value="Имя адреса") 
+                                //- .profile__address-input_required - ставим когда активируем поле для добавления адреса
+                                //- .profile__address-input_no-valid - не валидное поле
+                                input.profile__address-input(type="text" name="name" data-value="Имя адреса" value="Имя адреса" disabled)
+                            .profile__address-wr-input(data-value="Индекс") 
+                                input.profile__address-input(type="text" name="zip-code" data-value="Индекс" value="Индекс" disabled)
+                            .profile__address-wr-input(data-value="Область") 
+                                input.profile__address-input(type="text" name="area" data-value="Область" value="Область" disabled)
+                            .profile__address-wr-input(data-value="Район") 
+                                input.profile__address-input(type="text" name="district" data-value="Район" value="Район" disabled)
+                            .profile__address-wr-input(data-value="Город") 
+                                input.profile__address-input(type="text" name="city" data-value="Город" value="Город" disabled)
+                            .profile__address-wr-input(data-value="Улица") 
+                                input.profile__address-input(type="text" name="street" data-value="Улица" value="Улица" disabled)
+                            .profile__address-wr-input(data-value="Дом") 
+                                input.profile__address-input(type="text" name="hause" data-value="Дом" value="Дом" disabled)
+                            .profile__address-wr-input(data-value="Квартира/Офис") 
+                                input.profile__address-input(type="text" name="appartment" data-value="Квартира/Офис" value="Квартира/Офис" disabled)
+                        .profile__address-wr-buttons 
+                            input.profile__button.profile__button-add-adress(type="button", value="+ Добавить адрес")
+                            input.profile__button.profile__button-save-adress.profile__button_disabled(type="button", value="Сохранить")
+                    .profile__delete 
+                            a(href="#0") Удалить профиль
+
+
+
+                li.account__history.account__content-item(data-account="history")
+                    ul.history__list
+                        li.history__item 
+                            .history__delivery Доставка
+                            .history__delivery-cost 
+                                | Итогова сумма: #[span.history__delivery-cost_num 5000] #[span.history__delivery-cost_currency р.]
+
+                            .history__delivery-address Москва, Полярная улица, 24 дом, 87 квартира.
+                            .history__delivery-date 22 апреля, с 13:00 до 18:00
+
+                            .history__order-number Заказ №: #[span.history__order-number_num 25689516]
+                            ul.history__order-state-list
+                                li.history__order-state-item.history__order-state-item_active Новый заказ
+                                li.history__order-state-item В работе
+                                li.history__order-state-item Ожидаем оплату
+                                li.history__order-state-item Оплачен
+                                li.history__order-state-item Выполнен
+                                li.history__order-state-item Отменен
+
+                            .history__wr-details 
+                                input.history__details-title_checkbox(type="checkbox")
+                                label.history__details-title(data-state="0")
+                                    span.history__details-title-text Посмотреть детали заказа
+                                    span.history__details-title-arrow
+                                ul.history__details-list
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/espresso-honduras-intibuca-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Honduras Intibuca
+                                            p Зерно
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 2] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/espresso-colombia-excelso-ground-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Colombia Excelso Decaf
+                                            p Молотый
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/filter-burundi-muranga-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Burundi Мuranga
+                                            p Молотый: капсульная кофемашина
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+
+                        li.history__item 
+                            .history__delivery Доставка
+                            .history__delivery-cost 
+                                | Итогова сумма: #[span.history__delivery-cost_num 5000] #[span.history__delivery-cost_currency р.]
+
+                            .history__delivery-address Москва, Полярная улица, 24 дом, 87 квартира.
+                            .history__delivery-date 22 апреля, с 13:00 до 18:00
+
+                            .history__order-number Заказ №: #[span.history__order-number_num 25689516]
+                            ul.history__order-state-list
+                                li.history__order-state-item.history__order-state-item_active Новый заказ
+                                li.history__order-state-item В работе
+                                li.history__order-state-item Ожидаем оплату
+                                li.history__order-state-item Оплачен
+                                li.history__order-state-item Выполнен
+                                li.history__order-state-item Отменен
+
+                            .history__wr-details 
+                                input.history__details-title_checkbox(type="checkbox")
+                                label.history__details-title(data-state="0")
+                                    span.history__details-title-text Посмотреть детали заказа
+                                    span.history__details-title-arrow
+                                ul.history__details-list
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/merch-t-shirt-white-from-center-front-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Футболка R18, “От центра к краю
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 2] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+
+                        li.history__item 
+                            .history__delivery Доставка
+                            .history__delivery-cost 
+                                | Итогова сумма: #[span.history__delivery-cost_num 5000] #[span.history__delivery-cost_currency р.]
+
+                            .history__delivery-address Москва, Полярная улица, 24 дом, 87 квартира.
+                            .history__delivery-date 22 апреля, с 13:00 до 18:00
+
+                            .history__order-number Заказ №: #[span.history__order-number_num 25689516]
+                            ul.history__order-state-list
+                                li.history__order-state-item.history__order-state-item_active Новый заказ
+                                li.history__order-state-item В работе
+                                li.history__order-state-item Ожидаем оплату
+                                li.history__order-state-item Оплачен
+                                li.history__order-state-item Выполнен
+                                li.history__order-state-item Отменен
+
+                            .history__wr-details 
+                                input.history__details-title_checkbox(type="checkbox")
+                                label.history__details-title(data-state="0")
+                                    span.history__details-title-text Посмотреть детали заказа
+                                    span.history__details-title-arrow
+                                ul.history__details-list
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/merch-t-shirt-white-from-center-front-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Футболка R18, “От центра к краю
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 2] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+
+                        li.history__item 
+                            .history__delivery Доставка
+                            .history__delivery-cost 
+                                | Итогова сумма: #[span.history__delivery-cost_num 5000] #[span.history__delivery-cost_currency р.]
+
+                            .history__delivery-address Москва, Полярная улица, 24 дом, 87 квартира.
+                            .history__delivery-date 22 апреля, с 13:00 до 18:00
+
+                            .history__order-number Заказ №: #[span.history__order-number_num 25689516]
+                            ul.history__order-state-list
+                                li.history__order-state-item.history__order-state-item_active Новый заказ
+                                li.history__order-state-item В работе
+                                li.history__order-state-item Ожидаем оплату
+                                li.history__order-state-item Оплачен
+                                li.history__order-state-item Выполнен
+                                li.history__order-state-item Отменен
+
+                            .history__wr-details 
+                                input.history__details-title_checkbox(type="checkbox")
+                                label.history__details-title(data-state="0")
+                                    span.history__details-title-text Посмотреть детали заказа
+                                    span.history__details-title-arrow
+                                ul.history__details-list
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/merch-t-shirt-white-from-center-front-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Футболка R18, “От центра к краю
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 2] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+
+                        li.history__item 
+                            .history__delivery Доставка
+                            .history__delivery-cost 
+                                | Итогова сумма: #[span.history__delivery-cost_num 5000] #[span.history__delivery-cost_currency р.]
+
+                            .history__delivery-address Москва, Полярная улица, 24 дом, 87 квартира.
+                            .history__delivery-date 22 апреля, с 13:00 до 18:00
+
+                            .history__order-number Заказ №: #[span.history__order-number_num 25689516]
+                            ul.history__order-state-list
+                                li.history__order-state-item.history__order-state-item_active Новый заказ
+                                li.history__order-state-item В работе
+                                li.history__order-state-item Ожидаем оплату
+                                li.history__order-state-item Оплачен
+                                li.history__order-state-item Выполнен
+                                li.history__order-state-item Отменен
+
+                            .history__wr-details 
+                                input.history__details-title_checkbox(type="checkbox")
+                                label.history__details-title(data-state="0")
+                                    span.history__details-title-text Посмотреть детали заказа
+                                    span.history__details-title-arrow
+                                ul.history__details-list
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/merch-t-shirt-white-from-center-front-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Футболка R18, “От центра к краю
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 2] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+               
+                        li.history__item 
+                            .history__delivery Доставка
+                            .history__delivery-cost 
+                                | Итогова сумма: #[span.history__delivery-cost_num 5000] #[span.history__delivery-cost_currency р.]
+
+                            .history__delivery-address Москва, Полярная улица, 24 дом, 87 квартира.
+                            .history__delivery-date 22 апреля, с 13:00 до 18:00
+
+                            .history__order-number Заказ №: #[span.history__order-number_num 25689516]
+                            ul.history__order-state-list
+                                li.history__order-state-item.history__order-state-item_active Новый заказ
+                                li.history__order-state-item В работе
+                                li.history__order-state-item Ожидаем оплату
+                                li.history__order-state-item Оплачен
+                                li.history__order-state-item Выполнен
+                                li.history__order-state-item Отменен
+
+                            .history__wr-details 
+                                input.history__details-title_checkbox(type="checkbox")
+                                label.history__details-title(data-state="0")
+                                    span.history__details-title-text Посмотреть детали заказа
+                                    span.history__details-title-arrow
+                                ul.history__details-list
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/merch-t-shirt-white-from-center-front-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Футболка R18, “От центра к краю
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 2] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+                                    li.history__details-item
+                                        .history__details-wr-img 
+                                            img(src=require('../img/content/accessories-nok-box-motta-content.webp') alt="фото заказанного товара")
+                                        .history__details-description 
+                                            p Нок-бокс
+                                        .history__details-amount 
+                                            | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
+               
+                li.account__delivery.account__content-item(data-account="delivery")
+                    .delivery-account__wr-info
+                        .delivery-account__line 
+                            .delivery-account__direction(data-item="in-mkad")
+                                .delivery-account__wr-title
+                                    h2.delivery-account__title в пределах мкад
+                                p Доставка заказов стоимостью от #[span 3000руб].  осуществляется #[span бесплатно].
+                                .delivery-account__list 
+                                    span.delivery-account__item Минимальной суммы заказа нет, доставляем любые заказы.
+                                    span.delivery-account__item Стоимость доставки по Москве и в пределах МКАД – 300 руб.
+                                    span.delivery-account__item Срок доставки 1-2 дня, только в рабочие дни.
+                            .delivery-account__direction(data-item="out-mkad") 
+                                .delivery-account__wr-title
+                                    h2.delivery-account__title за мкад
+                                p До 5 км (от МКАД), те же условия, как и по Москве (300 руб.).
+                                .delivery-account__list 
+                                    span.delivery-account__item От 5 км до 100 км - 30 руб./км.
+                                    span.delivery-account__item Срок доставки 1-2 дня, только в рабочие дни.
+                        .delivery-account__line 
+                            .delivery-account__direction(data-item="region") 
+                                .delivery-account__wr-title
+                                    h2.delivery-account__title в регионы
+                                .delivery-account__list 
+                                    span.delivery-account__item Доставка по России осуществляется через транспортную компанию (ТК): СДЭК. Если Вы хотите использовать другую ТК или способ доставки, свяжитесь с нашим менеджером
+                                    span.delivery-account__item Условия доставки до ТК совпадает с условиями доставки по Московскому региону.
+                                    span.delivery-account__item Предоплата 100%, безналичный расчёт или оплата картой на сайте.
+                                    span.delivery-account__item Срок отправки заказа 1-2 дня, только в рабочие дни.
+                                    span.delivery-account__item Услуги ТК покупатель оплачивает при получении груза.
+                            .delivery-account__direction.delivery-account__direction_doc(data-item="pickup")
+                                .delivery-account__wr-title
+                                    h2.delivery-account__title самовывоз
+                                p Товары, имеющиеся в наличии* вы можете приобрести в пункте выдачи нашего интернет-магазина, по рабочим дням с 10:00 до 17:30. *наличие товара на складе офиса уточняйте у менеджера нашего интернет-магазина.
+                                p Перемещение заказов с оптового склада на пункт выдачи составляет 1-2 дня. Стоимость самовывоза - бесплатно.
+                                p.delivery-account__documents Для входа на территорию офиса необходимо иметь при себе паспорт или другой документ удостоверяющий личность!
+                        .delivery-account__line 
+                            .delivery-account__direction(data-item="making-order")
+                                .delivery-account__wr-title
+                                    h2.delivery-account__title оформление заказа
+                                .delivery-account__list 
+                                    span.delivery-account__item Вы можете оформить заказ на сайте, или написать нам в мессенджерах.
+                                    span.delivery-account__item Заказы по телефону принимаются с 10:00 до 18:00 по рабочим дням.
+                                    span.delivery-account__item Заказы обрабатываются по рабочим дням с 10:00 до 18:00.
+                                    span.delivery-account__item Заказы доставляются только после согласования с покупателем по телефону.
+                            .delivery-account__direction(data-item="door-to-door")
+                                .delivery-account__wr-title
+                                    h2.delivery-account__title подъем заказов
+                                .delivery-account__list 
+                                    span.delivery-account__item Необходимость подъема товара согласовывается при заказе.
+                                    span.delivery-account__item Заказчику необходимо обеспечить подъезд транспорта к месту разгрузки или заказать пропуск (заранее). Расходы за въезд к месту разгрузки несет покупатель.
+                                    span.delivery-account__item До 15 кг подъем бесплатно.
+                                    span.delivery-account__item При объеме более 15 кг, цену уточняйте у менеджера.
+                                   
+
+                    
+            
+
+            

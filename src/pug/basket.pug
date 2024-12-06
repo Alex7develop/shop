@@ -1,0 +1,216 @@
+extends layout/layout
+
+block  variable
+    - let pageName = 'basket'; 
+
+block content
+    main.main.main-basket
+        .basket
+            .basket__content
+                .basket__wr-title 
+                    h1.basket__title Корзина
+            
+                ul.basket__goods-list
+                    li.basket__goods-item(data-index='5' data-sku_title='Черный внутри' data-sku_packing='Черный внутри' data-article='1')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/merch-t-shirt-black-black-inside-front-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p Футболка R18: 'Черный внутри'
+                                    p Размер: М; Черная
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет 10%, так как Вы заказали более 10 кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='5' data-sku_title='Черный внутри' data-sku_packing='Черный внутри' data-article='1')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/merch-t-shirt-white-only-arabica-front-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p Футболка R18: 'only Arabica'
+                                    p Размер: XL; Белая
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='0' data-sku_title='ethiopia banko gotete' data-sku_packing='ethiopia banko gotete' data-article='ethiopia-banko-gotete' data-grinding='Эспрессо')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/filter-ethiopia-banko-gotete-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p ethiopia banko gotete
+                                    p Молотый: капсульная кофемашина
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='0' data-sku_title='ethiopia banko gotete' data-sku_packing='ethiopia banko gotete' data-article='ethiopia-banko-gotete' data-grinding='Эспрессо')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/filter-ethiopia-banko-gotete-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p ethiopia banko gotete
+                                    p Молотый: Эспрессо
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='1' data-sku_title='colombia excelso decaf' data-sku_packing='colombia excelso decaf' data-article='colombia-excelso-decaf')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/espresso-colombia-excelso-decaf-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p colombia excelso decaf
+                                    p Молотый
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='1' data-sku_title='colombia excelso decaf' data-sku_packing='colombia excelso decaf' data-article='colombia-excelso-decaf')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/espresso-colombia-excelso-decaf-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p colombia excelso decaf
+                                    p Зерно
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='3' data-sku_title='colombia andino' data-sku_packing='colombia andino' data-article='colombia-andino')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/espresso-colombia-andino-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p Colombia andino
+                                    p Зерно
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='4' data-sku_title='part-of-africa' data-sku_packing='part-of-africa' data-article='part-of-africa')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/big-desc-part-of-africa-1-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p Сет дрип-пакетов: 'Африка'
+                                    p Молотый
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='6' data-sku_title='Нок-бокс' data-sku_packing='Нок-бокс' data-article='3')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/accessories-nok-box-motta-105-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p Нок-бокс 105 мм
+                                    p
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info 
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+                    li.basket__goods-item(data-index='7' data-sku_title='part-of-america' data-sku_packing='part-of-america' data-article='part-of-america')
+                        .basket__goods-wr-content
+                            .basket__goods-content
+                                .basket__goods-img
+                                    img(src='./img/content/big-desc-part-of-amerika-1-content.webp' alt='Фото товара')
+                                .basket__goods-description
+                                    p Сет дрип-пакетов: 'Америка'
+                                    p Молотый
+                            .basket__goods-amount-price
+                                .basket__goods-amount
+                                    .basket__goods-amount-button(data-type='decrement')
+                                    input.basket__goods-amount-num(type='text' placeholder='0')
+                                    .basket__goods-amount-button(data-type='increment')
+                        .basket__goods-info-price
+                            .basket__goods-info  
+                                p Скидка составляет #[span 10]%, так как Вы заказали более #[span 10] кг кофе
+                            .basket__goods-wr-price
+                                .basket__goods-discount #[span 6750] р.
+                                .basket__goods-price #[span 5000] р.
+
+                hr.basket__underline
+
+                .basket__wr-total-price 
+                    .basket__wr-total-discount  
+                        .basket__total-discount-text Скидка:
+                        .basket__total-discount-num #[span 750] р.
+                    .basket__total-price-old 11 750 р.
+                    .basket__total-price
+                        .basket__total-price-text Итог:
+                        .basket__total-price-num #[span 11000] р.
+
+                a(href="./place-an-order.html" title="Оформить заказ").basket__button Оформить

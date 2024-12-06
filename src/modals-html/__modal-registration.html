@@ -1,0 +1,61 @@
+<!-- регистрация аккаунта -->
+<div class="wrapper-modal">
+
+    <div class="modal modal-reg">
+        
+        <div class="modal__wr-close">
+            <div class="modal__close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 27" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M26.0882 0C26.0882 0 26.0919 0.00138772 26.0954 0.00454724L29.995 3.47377C29.9984 3.47685 30 3.48017 30 3.48017V3.48556C30 3.48556 29.9984 3.48872 29.9949 3.49188L18.9198 13.345L29.9949 23.1982L29.9992 23.2028L30 23.2046V23.21C30 23.21 29.9984 23.2132 29.9949 23.2163L26.0954 26.6856C26.092 26.6887 26.0882 26.6901 26.0882 26.6901H26.0822C26.0822 26.6901 26.0786 26.6887 26.0751 26.6855L15 16.8323L3.92501 26.6855C3.92137 26.6886 3.91774 26.69 3.91774 26.69H3.91167C3.91167 26.69 3.90812 26.6886 3.90457 26.6855L0.00502401 23.2162C0.00276044 23.2145 0.00103021 23.2123 0 23.2099V23.2045C0 23.2045 0.00155982 23.2013 0.00511116 23.1981L11.0801 13.345L0.00511116 3.49196L0.000779235 3.48726L0 3.48548V3.48009C0 3.48009 0.00155982 3.47693 0.00511116 3.47377L3.90457 0.0044697C3.90804 0.00138725 3.91176 0 3.91176 0H3.91782C3.91782 0 3.92137 0.00138772 3.92493 0.00454724L15 9.8576L26.0752 0.00454724C26.0786 0.00138772 26.0824 0 26.0824 0H26.0882Z" fill="white"/>
+                </svg>
+            </div>
+        </div>
+        <div class="modal__wr-icon">
+            <div class="modal__icon modal__icon-photo"><!-- icon css --></div>
+        </div>
+        <div class="modal__wr-form">
+            <form class="modal__form" name="form_registration">
+                <div class="modal__wr-input">
+                    <input class="modal__input modal__input_required" type="text" name="surname" placeholder="Фамилия">
+                </div>
+                <div class="modal__wr-input">
+                    <input class="modal__input modal__input_required" type="text" name="name" placeholder="Имя">
+                </div>
+                <div class="modal__wr-input">
+                    <input class="modal__input modal__input_required" type="text" name="phone" placeholder="Телефон">
+                </div> 
+                <div class="modal__wr-input">
+                    <input class="modal__input modal__input_required" type="text" name="email" placeholder="Почта">
+                </div>
+                <div class="modal__wr-input">
+                    <input class="modal__input modal__input_required" type="password" name="password" placeholder="Пароль">
+                    <p class="modal-reg__pass-rules">
+                        <span>Пароль должен содержать не менее 8 символов.</span>
+                        <span>Одна заглавная и одна строчная буква. Минимум 1 цифра.</span>
+                        <span>Наличие символов.</span>
+                    </p>
+                </div>
+                <div class="modal__wr-checkbox">
+                    <label class="modal__label-checkbox">
+                        <input class="modal__checkbox" type="checkbox" name="confirm" value="согласие на обработку данных">
+                        <span class="modal__checkbox-text">Согласие на обработку персональных данных</span>
+                    </label>
+                </div>
+            </form> 
+        </div>
+        <div class="modal-reg__wr-icon-pdf">
+            <a class="modal-reg__link-icon-pdf" href="./files/Политика_в_отношении_обработки_персональных_данных_R18.pdf" target="_blank" title="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67" fill="none">
+                    <path d="M29.032 32.3833H22.332V36.8499V48.0166H24.5654V41.3166H29.032C31.4886 41.3166 33.4987 39.3065 33.4987 36.8499C33.4987 34.3933 31.4886 32.3833 29.032 32.3833ZM29.032 39.0834H24.5654V34.6167H29.032C30.372 34.6167 31.2654 35.5101 31.2654 36.8501C31.2654 38.1901 30.372 39.0834 29.032 39.0834Z" fill="white"/>
+                    <path d="M42.4344 32.3833H35.7344V48.0166H42.4344C44.891 48.0166 46.901 46.0065 46.901 43.5499V36.8499C46.901 34.3933 44.891 32.3833 42.4344 32.3833ZM44.6677 43.5501C44.6677 44.8901 43.7744 45.7834 42.4344 45.7834H37.9677V34.6167H42.4344C43.7744 34.6167 44.6677 35.5101 44.6677 36.8501V43.5501Z" fill="white"/>
+                    <path d="M60.3 25.6834H42.4333V18.9834L29.0333 3.35005H4.46667C2.00994 3.35005 0 5.35999 0 7.81672V59.1834C0 61.64 2.00994 63.65 4.46667 63.65H37.9667C40.4233 63.65 42.4333 61.64 42.4333 59.1834V54.7167H60.3C64.0967 54.7167 67 51.8134 67 48.0167V32.3833C67 28.5867 64.0967 25.6834 60.3 25.6834ZM29.0333 6.69999L39.5301 18.9834H31.2667C30.1501 18.9834 29.0333 17.8668 29.0333 16.7501V6.69999ZM40.2 59.1833C40.2 60.2999 39.3067 61.4166 37.9667 61.4166H4.46667C3.35006 61.4166 2.23333 60.5233 2.23333 59.1833V7.81672C2.23333 6.70011 3.12667 5.58339 4.46667 5.58339H26.8V16.7501C26.8 19.2068 28.8099 21.2167 31.2667 21.2167H40.2V25.6834H22.3333C18.5366 25.6834 15.6333 28.5867 15.6333 32.3834V48.0167C15.6333 51.8134 18.5366 54.7167 22.3333 54.7167H40.2V59.1833ZM64.7667 48.0167C64.7667 50.4733 62.7566 52.4834 60.3 52.4834H22.3333C19.8766 52.4834 17.8667 50.4733 17.8667 48.0167V32.3833C17.8667 29.9265 19.8766 27.9166 22.3333 27.9166H60.3C62.7566 27.9166 64.7667 29.9265 64.7667 32.3833V48.0167Z" fill="white"/>
+                    <path d="M49.1328 48.0167H51.3661V41.3166H58.0661V39.0834H51.3661V34.6167H60.2995V32.3833H49.1328V48.0167Z" fill="white"/>
+                </svg>
+            </a>
+        </div>
+        <div class="modal-reg__wr-battons">
+            <button class="modal__button modal__text modal__button_color modal-reg__button">Регистрация</button>
+        </div>
+    </div>
+
+</div>
