@@ -1,8 +1,11 @@
+import { API_URL } from "../utils/constants";
+
 export async function fetchCoffeeData() {
   try {
+    // const response = await fetch(`${API_URL}/api/mainpage/coffee`);
     const response = await fetch('https://dev.r18.coffee/api/mainpage/coffee');
     const data = await response.json();
-    console.log('Статус ответа который мы заслужили:', response.status);
+    // console.log('Статус ответа который мы заслужили:', response.status);
     console.log('Data received:', data);
 
     const transformedData = Object.values(data.OFFERS).flatMap((offersArray) =>
@@ -34,21 +37,22 @@ export async function fetchCoffeeData() {
           link: '#',
           description: `Кофе R18: '${offer.title}'`,
           // pomol:offer.pomol,
+          main_offer_id: offer.main_offer_id,
         };
 
         // if (offer.packing === 'filter') {
         //   transformedOffer.pomol = offer.pomol;
         // }
 
-        if (offer.packing === 'Дрип-пакет' && offer.main_offer_id) {
-          transformedOffer.main_offer_id = offer.main_offer_id;
-        }
+        // if (offer.packing === 'Дрип-пакет' && offer.main_offer_id) {
+        //   transformedOffer.main_offer_id = offer.main_offer_id;
+        // }
 
         return transformedOffer;
       })
     );
 
-    console.log('Вот тут готовый вариант ======>', transformedData);
+    // console.log('Вот тут готовый вариант ======>', transformedData);
 
     return transformedData;
   } catch (error) {

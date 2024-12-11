@@ -24,7 +24,7 @@ export default class RedrawService {
 
     changeCard(index) {
         if(this.lastIndex === index) return;
-        console.log('work')
+        // console.log('work')
         this.activeCard.classList.remove('service__content-item_active');
         this.cards.children[index].classList.add('service__content-item_active');
         this.activeCard = this.cards.children[index];

@@ -128,7 +128,7 @@ export default class ControllBasketButton extends ApiModals {
                 });
 
                 const order = localStorage?.basket ? JSON.parse(localStorage.basket) : '';
-                console.log('ORDER: ', order)
+                // console.log('ORDER: ', order)
 
                 this.clearLocalStorage();
 

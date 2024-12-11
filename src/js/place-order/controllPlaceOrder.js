@@ -139,9 +139,9 @@ export default class ControllPlaceOrder {
                 if(activeType === 'cdek') {
                     // form = this.d.currentReceivingContentCdek.querySelector('form');
                     const result = this.validationAddressPVZ(this.d.confirmedAddressPVZ);
-                    console.log(this.d.confirmedAddressPVZ)
-                    console.log('this.d.confirmedAddressPVZ.textContent', this.d.confirmedAddressPVZ.textContent)
-                    console.log('result', result)
+                    // console.log(this.d.confirmedAddressPVZ)
+                    // console.log('this.d.confirmedAddressPVZ.textContent', this.d.confirmedAddressPVZ.textContent)
+                    // console.log('result', result)
                     if(!result) this.d.setInvalidAddressPVZ();
                 }
 

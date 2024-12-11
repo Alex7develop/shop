@@ -72,8 +72,8 @@ export default class ControllChangePassword extends Encrypt {
 
             const pass = this.d.form.pass.value;
             const confirmed_pass = this.d.form['repeat-pass'].value;
-            console.log(pass);
-            console.log(confirmed_pass);
+            // console.log(pass);
+            // console.log(confirmed_pass);
             (async () => {
                 data.pass = await super._encrypt(pass, data.USER_CHECKWORD);
                 data.confirmed_pass = await super._encrypt(confirmed_pass, data.USER_CHECKWORD);

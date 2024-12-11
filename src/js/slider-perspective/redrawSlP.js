@@ -1,6 +1,10 @@
 export default class RedrawSLP {
-    constructor(el, data) {
+    constructor(el, data, type) {
+        console.log('%cRedrawSLP Data:', 'color: green; font-size: 20px;');
+        console.log(data);
+
         this.el = el;
+        this.type = type;
         this.data = data;
         this.arrows = this.el.querySelectorAll('.slider__arrow');
         this.cardDecoL = this.el.querySelector('.sl-p__slide-item_l');
@@ -20,6 +24,11 @@ export default class RedrawSLP {
         this.activeCardSlidesList = null;
         this.activePaginationList = null;
         this.activeColorPag = null;
+
+        this.chosenProps = {
+            size: null,
+            color: null,
+        };
 
         this.activeSize = null;
 
@@ -738,8 +747,10 @@ export default class RedrawSLP {
                 transform ${this.duration}s ${this.timeF}
             `;
         })
-    }
 
+        // Обновляем main_offer_id
+        this.updateMainOfferID();
+    }
 
     /**
      * выбор размера
@@ -748,6 +759,18 @@ export default class RedrawSLP {
         this.activeSize.classList.remove('sl-p__size-item_active');
         this.activeSize = el;
         this.activeSize.classList.add('sl-p__size-item_active');
+        // Обновляем main_offer_id
+        this.updateMainOfferID();
+    }
+
+    /**
+     * Определят ID, основываясь на выбранном цвете и размере
+     * **/
+    updateMainOfferID() {
+        console.log('%cChosen properties:', 'font-size: 20px; color: brown;');
+        const size = this.activeSize?.firstChild.innerHTML;
+        console.log(this.activeSize, size);
+        console.log(this.activeColorPag);
     }
 
     /**
@@ -814,6 +837,11 @@ export default class RedrawSLP {
      * Создает карточки
      * **/ 
     patternCard(data) {
+        // console.log('%cData:', 'font-size: 20px; color: red;');
+        // console.log(data);
+
+        const { article: main_offer_id } = data;
+
         const item = this.createEl('li', 'sl-p__slide-item');
 
         const card  = this.createEl('div', 'sl-p__card');
@@ -926,6 +954,11 @@ export default class RedrawSLP {
         link.title = data.title;
         link.target = '_blank';
         link.dataset.article = data.article;
+        link.addEventListener('click', (e) => {
+            // alert(main_offer_id);
+            // window.cart.add(main_offer_id);
+            e.preventDefault();
+        });
         // link.dataset.color = data.article.colors.name;
         wrLink.append(link);
 

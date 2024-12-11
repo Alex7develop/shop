@@ -63,7 +63,7 @@ export default class RedrawAccountProfile {
             }
     
             const data = await response.json();
-            console.log('Данные профиля:', data);
+            // console.log('Данные профиля:', data);
     
             // Заполнение полей на странице
             document.querySelector('input[name="second_name"]').value = decodeURIComponent(data.LAST_NAME || 'Фамилия');
@@ -112,8 +112,8 @@ export default class RedrawAccountProfile {
         // Now you can safely use .find on the array
         const address = addressArray.find(item => item.textContent === addressName);
 
-        console.log('%cSelected Address:', 'color: red; font-size: 20px;')
-        console.log(this.addresses);
+        // console.log('%cSelected Address:', 'color: red; font-size: 20px;')
+        // console.log(this.addresses);
 
         if (address) {
             // Заполняем поля формы соответствующими данными адреса
@@ -445,7 +445,7 @@ class AddressManager {
             }
 
             const result = await response.json();
-            console.log('Адрес успешно сохранен:', result);
+            // console.log('Адрес успешно сохранен:', result);
 
             this.addAddressToList(addressData.ALIAS);
             this.updateAddressSelect(addressData.ALIAS);

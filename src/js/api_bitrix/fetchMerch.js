@@ -12,11 +12,16 @@ const transformData = (data) => {
     const uniqueOffers = {};
     const offers = item.OFFERS;
 
+    // console.clear()
+
     for (const offer of offers) {
+      // console.log(item.ID, offer.ID);
       if (!uniqueOffers[offer.ID]) {
         uniqueOffers[offer.ID] = offer;
       }
     }
+
+    // console.log('unique offers:', uniqueOffers);
 
     const uniqueOffersArray = Object.values(uniqueOffers);
 
@@ -59,20 +64,17 @@ const transformData = (data) => {
 
 export const fetchMerchData = async () => {
   try {
-    const response = await fetch(
-      'https://dev.r18.coffee/api/mainpage/merch'
-    );
-
-    console.log('Статус ответа', response.status);
-
+    // const response = await fetch(`${API_URL}/api/mainpage/merch`);
+    const response = await fetch('https://dev.r18.coffee/api/mainpage/merch');
+    // console.log('Статус ответа', response.status);
     if (!response.ok) {
       throw new Error('Ошибочка залетела');
     }
-
     const data = await response.json();
+    window.merch = data;
     return transformData(data);
   } catch (error) {
-    console.error('Что-то не так', error);
+    // console.error('Что-то не так', error);
     return null;
   }
 };

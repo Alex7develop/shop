@@ -1,4 +1,11 @@
+import getMainOfferID from "../utils/getMainOfferID";
+
 export default class ControllSLP {
+
+    /**
+     * @param {*} d - Класс RedrawSLP
+     * @param {*} addToBasket 
+     */
     constructor(d, addToBasket) {
         this.d = d;
         this.addToBasket = addToBasket;
@@ -7,6 +14,10 @@ export default class ControllSLP {
         this.touchMoove = this.touchMoove.bind(this);
         this.touchStart = this.touchStart.bind(this);
         this.touchEnd = this.touchEnd.bind(this);
+
+        // this.color = '';
+        // this.size = '';
+        // this.main_offer_id = 0;
     }
 
     init() {
@@ -49,6 +60,7 @@ export default class ControllSLP {
             const el = e.target.closest('.sl-p__card-slider-color-item');
             const id = el.id;
             const color = el.dataset.color;
+            console.log('Chosen color:', color);
             this.d.changeColor(id, color, article);
         }
 
@@ -83,7 +95,12 @@ export default class ControllSLP {
                 amount : 1,
             };
     
-            this.addToBasket(data);
+            const main_offer_id = getMainOfferID(choice);
+
+            window.cart.add(main_offer_id);
+
+            // console.log(choice);
+            // this.addToBasket(data);
         }
     }
 

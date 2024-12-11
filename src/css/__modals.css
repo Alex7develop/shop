@@ -964,3 +964,19 @@
     }
 }
 /* END ОКНО НЕ УДАЧНЫЙ ЗАПРОС */
+
+.profile__logout-button {
+    position: absolute;
+    top: 15vw; 
+    right: 15vw; 
+    padding: 0.57vw 1.56vw;
+    font-family: "SofiaSans";
+    font-size: 1.2vw;
+    font-weight: 400;
+    color: #FFF;
+    background: #F1551C;
+    border-radius: 1.56vw;
+    border: 0.15vw solid #FFF;
+    cursor: pointer;
+}
+

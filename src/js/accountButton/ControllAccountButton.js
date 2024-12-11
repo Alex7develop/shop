@@ -1,5 +1,7 @@
 import ApiModals from '../api-modals/ApiModals.js';
 
+import { API_URL } from '../utils/constants.js';
+
 export default class ControllAccountButton extends ApiModals {
   constructor(redraw, IMask, api) {
     super();
@@ -137,7 +139,7 @@ export default class ControllAccountButton extends ApiModals {
         const requestData = { phone, password };
 
         // Логируем данные для отправки на сервер
-        console.log('Данные для отправки на сервер:', requestData);
+        // console.log('Данные для отправки на сервер:', requestData);
 
         // Отправка данных на сервер
         const result = await this.api.login(requestData);
@@ -182,7 +184,8 @@ export default class ControllAccountButton extends ApiModals {
 
           try {
             const response = await fetch(
-              'https://dev.r18.coffee/api/auth/recovery',
+              `${API_URL}/api/auth/recovery`,
+              // 'https://dev.r18.coffee/api/auth/recovery',
               {
                 method: 'POST',
                 headers: {
@@ -195,7 +198,7 @@ export default class ControllAccountButton extends ApiModals {
             const result = await response.json();
 
             if (response.ok) {
-              console.log('Запрос на восстановление отправлен:', result);
+              // console.log('Запрос на восстановление отправлен:', result);
 
               const modalRecover = await super.read('recover-success');
               this.redraw.openNewModal(modalRecover);
@@ -282,7 +285,7 @@ export default class ControllAccountButton extends ApiModals {
         this.savedPhoneNumber = form
           .querySelector('input[name="phone"]')
           ?.value.trim();
-        console.log('Сохранённый номер телефона:', this.savedPhoneNumber);
+        // console.log('Сохранённый номер телефона:', this.savedPhoneNumber);
 
         const formData = new FormData(form);
         this.api.create(formData);
@@ -308,7 +311,7 @@ export default class ControllAccountButton extends ApiModals {
       this.savedPhoneNumber = form
         .querySelector('input[name="phone"]')
         ?.value.trim();
-      console.log('Сохранённый номер телефона:', this.savedPhoneNumber);
+      // console.log('Сохранённый номер телефона:', this.savedPhoneNumber);
       this.redraw.closeModal(form);
       return;
     }
@@ -329,8 +332,8 @@ export default class ControllAccountButton extends ApiModals {
       const formattedPhone = phone.replace(/[^\d+]/g, '');
 
       const code = form.querySelector('input[name="code"]')?.value.trim();
-      console.log('Номер телефона для отправки:', phone); // Лог номера телефона
-      console.log('Код подтверждения:', code); // Лог кода подтверждения
+      // console.log('Номер телефона для отправки:', phone); // Лог номера телефона
+      // console.log('Код подтверждения:', code); // Лог кода подтверждения
 
       if (!formattedPhone || !code) {
         alert('Отсутствуют обязательные данные (номер телефона или код).');
@@ -346,7 +349,8 @@ export default class ControllAccountButton extends ApiModals {
   async sendCodeToServer(data) {
     try {
       const response = await fetch(
-        'https://dev.r18.coffee/api/auth/approvecoderegister',
+        `${API_URL}/api/auth/approvecoderegister`,
+        // 'https://dev.r18.coffee/api/auth/approvecoderegister',
         {
           method: 'POST',
           headers: {

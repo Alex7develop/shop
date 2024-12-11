@@ -67,6 +67,11 @@
     letter-spacing: -1px;
 }
 
+.header__account svg {
+    width: 2.60vw;
+    height: 2.60vw;
+}
+
 .header__account_active {
     background-color: #F1551C;
 }

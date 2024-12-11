@@ -62,7 +62,7 @@ export default class ControllNav {
             const el = e.target.closest('.nav__sub-menu-coffee-item')
             const type = el.dataset.type;
             const path = el.children[0].pathname;
-            console.log(path)
+            // console.log(path)
             if(isIndexPage) {
                 this.d.goToPointWithFilter(type);
                 return;

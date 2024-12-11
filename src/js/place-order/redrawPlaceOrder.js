@@ -215,7 +215,7 @@ export default class RedrawPlaceOrder {
                 myMap.setCenter(coords, 10);
             },
             function (err) {
-                console.log('Ошибка поиска координат');
+                // console.log('Ошибка поиска координат');
             }
           );
         }, 2000)

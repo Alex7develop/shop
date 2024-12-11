@@ -20,7 +20,6 @@ export default class Profile {
         throw new Error(`Ошибка загрузки данных: ${response.statusText}`);
       }
       this.data = await response.json();
-
     }
     catch (err) {
 

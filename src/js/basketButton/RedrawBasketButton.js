@@ -121,7 +121,7 @@ export default class RedrawBasketButton {
     }
 
     patternProduct(data, index) {
-        console.log(data)
+        // console.log(data)
         const li = this.createEl('li', ['modal-basket__goods-item'])
         li.dataset.index = index;
         li.dataset.sku_title = data.title;

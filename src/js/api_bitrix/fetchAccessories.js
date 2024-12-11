@@ -1,3 +1,5 @@
+import { API_URL } from "../utils/constants";
+
 const transformAccessoriesData = (data) => {
   return Object.values(data).map((item) => {
     const uniqueOffers = {};
@@ -47,16 +49,18 @@ const transformAccessoriesData = (data) => {
 export const fetchAccessoriesData = async () => {
   try {
     const response = await fetch(
+      // `${API_URL}/api/mainpage/accessories`
       'https://dev.r18.coffee/api/mainpage/accessories'
     );
 
-    console.log('Статус ответа', response.status);
+    // console.log('Статус ответа', response.status);
 
     if (!response.ok) {
       throw new Error('Ошибка при загрузке данных');
     }
 
     const data = await response.json();
+    window.accessories = data;
     return transformAccessoriesData(data);
   } catch (error) {
     console.error('Что-то пошло не так', error);

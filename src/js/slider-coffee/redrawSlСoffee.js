@@ -41,17 +41,22 @@ export default class RedrawSlСoffee {
     }
 
     initSlider() { 
+
+        // console.log("%cCoffee Slider", 'color: brown; font-size: 20px;')
+        // console.table(this.data);
+
         // формируем слайды
         this.data.forEach((item, index) => {
-            const el = this.createSlide(
-                item.id,
-                item?.part ? item.part : null,
-                item.img,
-                item.title,
-                item.packing,
-                item.link, 
-                item.title,
-                );
+            const el = this.createSlide({
+                id: item.id,
+                part: item?.part ? item.part : null,
+                pathImg: item.img, 
+                title: item.title, 
+                packing: item.packing, 
+                href: item.link, 
+                linkTitle: item.title,
+                mainOfferId: item.main_offer_id,
+            });
 
             el.style.transition = `height ${this.duration}s ${this.timeFunc}, width ${this.duration}s ${this.timeFunc}`;
 
@@ -392,15 +397,16 @@ export default class RedrawSlСoffee {
 
         this.filter.forEach((item, index) => {
             
-            const li = this.createSlide(
-                item.id,
-                item?.part ? item.part : null,
-                item.img, 
-                item.title, 
-                item.packing, 
-                item.link, 
-                item.title,
-            );
+            const li = this.createSlide({
+                id: item.id,
+                part: item?.part ? item.part : null,
+                pathImg: item.img, 
+                title: item.title, 
+                packing: item.packing, 
+                href: item.link, 
+                linkTitle: item.title,
+                mainOfferId: item.main_offer_id,
+            });
             li.style.transition = `height ${this.duration}s ${this.timeFunc}, width ${this.duration}s ${this.timeFunc}`;
 
             if(index === 0 && innerWidth > 1200) {
@@ -587,7 +593,9 @@ export default class RedrawSlСoffee {
         }
     }
 
-    createSlide(id, part, pathImg, title, packing, href, linkTitle) {
+    createSlide({
+        id, part, pathImg, title, packing, href, linkTitle, mainOfferId
+    }) {
         // слайд
         const li = this.createEl('li', ['sl-prod__slide']);
         
@@ -662,6 +670,11 @@ export default class RedrawSlСoffee {
             link.title = linkTitle;
             link.dataset.part
             link.textContent = 'Купить';
+            link.addEventListener('click', (e) => {
+                // alert('Hello coffee ' + mainOfferId)
+                window.cart.add(mainOfferId);
+                e.preventDefault();
+            });
             const linkDeco = this.createEl('div', ['sl-prod__wr-button-slide-deco']);
             divButton.append(link);
             divButton.append(linkDeco);
