@@ -495,9 +495,96 @@ document.addEventListener('DOMContentLoaded', () => {
     const addressManager = new AddressManager('http://localhost/api/auth/createuseraddress');
 });
 
+//Класс Oerder лист для отображениея истории
 
-
-
-
-
-
+class OrderList {
+    constructor(apiUrl, containerSelector) {
+      this.apiUrl = apiUrl;
+      this.containerSelector = containerSelector;
+      this.ordersContainer = document.querySelector(containerSelector);
+    }
+  
+    async fetchOrders() {
+      try {
+        const response = await fetch(this.apiUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+  
+        // Преобразование данных с помощью transformOrderData
+        const transformedOrders = data.map(order => this.transformOrderData(order));
+        this.renderOrders(transformedOrders);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    }
+  
+    transformOrderData(data) {
+      return {
+        id: data.ID,
+        deliveryType: data.Delivery_type,
+        address: data.Address,
+        price: data.Price,
+        state: data.State,
+        items: data.Entities.map(entity => {
+          const product = entity.MAINS;
+          return {
+            name: product.NAME,
+            quantity: entity.BASKET_QUANTITY,
+            grind: product.PROPERTY_POMOL_VALUE,
+            roast: product.PROPERTY_OBJARKA_VALUE,
+            processing: product.PROPERTY_OBRABOTKA_VALUE,
+            variety: product.PROPERTY_SORT_VALUE,
+            weight: product.PROPERTY_VES_VALUE,
+            year: product.PROPERTY_YROJAI_VALUE,
+            image: product.PROPERTY_PICTURES_VALUE_SRC[0]
+          };
+        })
+      };
+    }
+  
+    renderOrders(orders) {
+      this.ordersContainer.innerHTML = ''; 
+      orders.forEach(order => {
+        const orderItem = document.createElement('li');
+        orderItem.classList.add('history__item');
+  
+        orderItem.innerHTML = `
+          <div class="history__delivery">${order.deliveryType}</div>
+          <div class="history__delivery-cost">
+            Итоговая сумма: <span class="history__delivery-cost_num">${order.price}</span>
+            <span class="history__delivery-cost_currency">р.</span>
+          </div>
+          <div class="history__delivery-address">${order.address}</div>
+          <div class="history__order-number">Заказ №: <span class="history__order-number_num">${order.id}</span></div>
+          <ul class="history__details-list">
+            ${order.items.map(item => `
+              <li class="history__details-item">
+                <div class="history__details-wr-img">
+                  <img src="${item.image}" alt="фото заказанного товара">
+                </div>
+                <div class="history__details-description">
+                  <p>${item.name}</p>
+                  <p>Помол: ${item.grind}, Обжарка: ${item.roast}</p>
+                  <p>Вес: ${item.weight}, Урожай: ${item.year}</p>
+                </div>
+                <div class="history__details-amount">
+                  <span class="history__details-amount-num">${item.quantity}</span>
+                  <span class="history__details-amount_unit">шт</span>
+                </div>
+              </li>
+            `).join('')}
+          </ul>
+        `;
+  
+        this.ordersContainer.appendChild(orderItem);
+      });
+    }
+  }
+  
+  const orderList = new OrderList('http://localhost/api/order/list', '.history__list');
+  orderList.fetchOrders();
+  
+  
+  
