@@ -145,4 +145,53 @@ class Cart {
 
 window.cart = new Cart();
 
-// export default cart;
+//это Класс на отображение данных корзины на странице оформления заказа
+class OrderCart {
+  constructor(cart) {
+      this.cart = cart;
+      this.list = document.querySelector('.place-order__order-list');
+      this.render = this.render.bind(this);
+
+      // Подписываемся на событие cartUpdated
+      document.addEventListener('cartUpdated', this.render);
+  }
+
+  render() {
+      console.log('Cart items:', this.cart.items); 
+
+      if (this.cart.items.length === 0) {
+          this.list.innerHTML = '<li class="place-order__order-item">Нет товаров в корзине</li>';
+          return;
+      }
+
+      const items = this.cart.items.map(item => new CartItem(item));
+      const html = items.map(item => `
+          <li class="place-order__order-item">
+              <div class="place-order__product-info">
+                  <div class="place-order__product-wr-img">
+                      <img class="place-order__product-img" src="${item.product.PROPS.PROPERTY_PICTURES_VALUE}" alt="${item.product.NAME}" />
+                  </div>
+                  <div class="place-order__product-wr-description">
+                      <p>${item.product.PROPS.NAME}</p>
+                      <p>${item.product.PROPS.PROPERTY_BASKET_DESC_VALUE}</p>
+                  </div>
+                  <div class="place-order__product-wr-amount">
+                      <span class="place-order__product-amount">${item.product.QUANTITY}</span>
+                      <span>шт</span>
+                  </div>
+              </div>
+              <div class="place-order__product-price">
+                  <span>${item.product.sum_with_discount}</span> р.
+              </div>
+          </li>
+      `).join('\n');
+
+      if (this.list) {
+          this.list.innerHTML = html;
+      }
+  }
+}
+
+const orderCart = new OrderCart(cart);
+
+export default orderCart;

@@ -585,6 +585,45 @@ class OrderList {
   
   const orderList = new OrderList('http://localhost/api/order/list', '.history__list');
   orderList.fetchOrders();
-  
-  
-  
+
+  //Это класс для отображения оформления заказа 
+  class UserProfile {
+    constructor(apiUrl) {
+        this.apiUrl = apiUrl;
+    }
+
+    async loadProfileData() {
+        try {
+            const response = await fetch(this.apiUrl, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Ошибка загрузки данных: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+
+            // Заполнение полей на странице
+            document.querySelector('h1.place-order__main-title').textContent = 'Оформление заказа';
+            document.querySelector('.place-order__user-data-item:nth-child(1)').textContent = 'Фамилия: ' + decodeURIComponent(data.LAST_NAME || 'Фамилия');
+            document.querySelector('.place-order__user-data-item:nth-child(2)').textContent = 'Имя: ' + decodeURIComponent(data.NAME || 'Имя');
+            document.querySelector('.place-order__user-data-item:nth-child(3)').textContent = 'Отчество: ' + decodeURIComponent(data.PATRONYMIC || 'Отчество');
+            document.querySelector('.place-order__user-data-item:nth-child(4)').textContent = 'Телефон: ' + (data.PERSONAL_PHONE || 'Телефон');
+            document.querySelector('.place-order__user-data-item:nth-child(5)').textContent = 'Почта: ' + (data.EMAIL || 'Электронная почта');
+
+        } catch (error) {
+            console.error('Не удалось загрузить данные профиля:', error);
+        }
+    }
+}
+
+// Пример использования
+const userProfile = new UserProfile('http://localhost/api/auth/info');
+userProfile.loadProfileData();
+
+
