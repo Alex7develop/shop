@@ -24,7 +24,9 @@ mixin slCoffeBigDescr(data)
                         .sl-prod__big-desc-wr-img
                             img.sl-prod__big-desc-img(src=require('../img/content/' + val.top.img), alt=val.top.alt)
 
-                        a.sl-prod__button-slide.sl-prod__button-slide_drip(href='#0' title=val.part) Купить
+                        a.sl-prod__button-slide_drip(href='#0', title=val.part, data-part=val.part) Купить
+                        //- .sl-prod__button-slide.
+                        //- onclick='alert("' + val.id + '")'
                         
                         .sl-prod__big-desc-wr-text-set
                             .sl-prod__big-desc-wr-title-set

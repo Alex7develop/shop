@@ -56,6 +56,7 @@ export default class RedrawSlСoffee {
                 href: item.link, 
                 linkTitle: item.title,
                 mainOfferId: item.main_offer_id,
+                systemId: item.system_id,
             });
 
             el.style.transition = `height ${this.duration}s ${this.timeFunc}, width ${this.duration}s ${this.timeFunc}`;
@@ -106,6 +107,9 @@ export default class RedrawSlСoffee {
         // Активируем актуальную карточку с большим описанием
         this.activeBigDesc = [...this.bigDescriptions].find(item => item.dataset.part === this.activeSlide.dataset.part);
         this.activeBigDesc.classList.add('sl-prod__big-desc-card_active');
+
+        // Выбранный main_offer_id у слайда Фильтр-кофе
+        this.filterCoffeeMainOfferId = '97';
     }
 
     moveNext() {
@@ -406,6 +410,7 @@ export default class RedrawSlСoffee {
                 href: item.link, 
                 linkTitle: item.title,
                 mainOfferId: item.main_offer_id,
+                systemId: item.system_id,
             });
             li.style.transition = `height ${this.duration}s ${this.timeFunc}, width ${this.duration}s ${this.timeFunc}`;
 
@@ -594,11 +599,13 @@ export default class RedrawSlСoffee {
     }
 
     createSlide({
-        id, part, pathImg, title, packing, href, linkTitle, mainOfferId
+        id, part, pathImg, title, packing, href, linkTitle, mainOfferId, systemId = null
     }) {
         // слайд
         const li = this.createEl('li', ['sl-prod__slide']);
         
+        // console.log(`%c${mainOfferId}, - ${part}`, 'color: purple; font-size: 16px;')
+
         // изоюражение на слайде
         const divImg = this.createEl('div', ['sl-prod__wr-img-slide', `sl-prod__wr-img-slide_${packing}`]);
         const img = this.createEl('img', ['sl-prod__img-slide']);
@@ -607,15 +614,20 @@ export default class RedrawSlСoffee {
         li.dataset.packing = packing;
         img.dataset.pack = packing;
         img.src = pathImg;
-
          
         divImg.append(img);
 
         li.append(divImg);
 
         // выбор типа кофе для фильтра(зерно или какой-то помол)
+        // 12 times
         if(packing === 'filter') {
-            const arrText = ['Зерно', 'Эспрессо', 'Капельная кофеварка', 'Турка'];
+
+            // const filterCoffee = window.coffeeData['Фильтр'];
+            // console.log(filterCoffee);
+            // console.log(mainOfferId);
+
+            const arrText = ['Зерно', 'Эпрессо', 'Капельная кофеварка', 'Турка'];
             const arrTextEn = ['seed', 'espresso', 'drip', 'turk'];
 
             const radioForm = this.createEl('form', ['sl-prod__radio-form']);
@@ -645,6 +657,10 @@ export default class RedrawSlСoffee {
                 label.append(radioText);
 
                 radioItem.append(label);
+                radioItem.addEventListener('click', () => {
+                    this.filterCoffeeMainOfferId = this.getFilterCoffeeMainOfferId(part, arrText[i]);
+                    console.log('Event listener called');
+                })
 
                 radioList.append(radioItem)
             }
@@ -658,11 +674,15 @@ export default class RedrawSlСoffee {
         const divTitle = this.createEl('div', ['sl-prod__wr-title-slide']);
         const h3 = this.createEl('h3', ['sl-prod__title-slide']);
         h3.textContent = title;
+        // divTitle.write(h3);
         divTitle.append(h3);
 
         li.append(divTitle);
 
-        if(packing !== 'drip') {
+        console.log(packing);
+
+        // if(packing !== 'drip') {
+        if (true) {
             // кнопка 
             const divButton = this.createEl('div', ['sl-prod__wr-button-slide']);
             const link = this.createEl('a', ['sl-prod__button-slide']);
@@ -672,7 +692,16 @@ export default class RedrawSlСoffee {
             link.textContent = 'Купить';
             link.addEventListener('click', (e) => {
                 // alert('Hello coffee ' + mainOfferId)
-                window.cart.add(mainOfferId);
+                if (packing === 'filter') {
+                    window.cart.add(this.filterCoffeeMainOfferId);
+                }
+                else if (packing === 'Дрип-пакет') {
+                    window.cart.add(systemId);
+                }
+                else {
+                    // alert(`${part} - ${mainOfferId}`);
+                    window.cart.add(mainOfferId);
+                }
                 e.preventDefault();
             });
             const linkDeco = this.createEl('div', ['sl-prod__wr-button-slide-deco']);
@@ -720,4 +749,28 @@ export default class RedrawSlСoffee {
             inline: "nearest"
         })
     }
+
+    /**
+     * Обработка кнопок радио для Фильтр-кофе
+     * 
+     * @param {string} slug
+     *      colombia-andino
+     *      guatemala-blue-ayarsa
+     *      honduras-intibuca
+     *      kenya-anfdb-kibendo
+     * @param {string} type 
+     *      "Зерно", "Эспрессо", "Капельная кофеварка", "Турка", 
+     */
+    getFilterCoffeeMainOfferId(slug, type) {
+        const filterCoffee = window.coffeeData['Фильтр'];
+        const found = filterCoffee.find(offer => offer.pomol === type && offer.id === slug);
+        if (found) return found.main_offer_id;
+        return null;
+    }
+    
+    handleRadioSelected(slug, type) {
+        
+    }
+
+
 }

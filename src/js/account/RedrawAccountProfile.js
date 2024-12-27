@@ -494,17 +494,33 @@ class AddressManager {
 document.addEventListener('DOMContentLoaded', () => {
     const addressManager = new AddressManager('http://localhost/api/auth/createuseraddress');
 });
-
-//Класс Oerder лист для отображениея истории
-
+  
 class OrderList {
     constructor(apiUrl, containerSelector) {
       this.apiUrl = apiUrl;
       this.containerSelector = containerSelector;
       this.ordersContainer = document.querySelector(containerSelector);
+  
+      // Проверяем, найден ли элемент
+      if (!this.ordersContainer) {
+        console.warn(`Element with selector "${containerSelector}" not found. Creating a new container.`);
+        const container = document.createElement('div');
+        container.id = containerSelector.replace('#', ''); // Удаляем символ '#' из селектора
+        document.body.appendChild(container);
+        this.ordersContainer = container;
+      }
     }
+
+        isTargetPage() {
+      const targetPageSelector = 'li.account__tabs-item.account__tabs-history[data-type_acc="history"]';
+      return document.querySelector(targetPageSelector) !== null;
+        }
   
     async fetchOrders() {
+        if (!this.isTargetPage()) {
+            console.log('Target page not found.');
+            return;
+        }
       try {
         const response = await fetch(this.apiUrl);
         if (!response.ok) {
@@ -512,40 +528,71 @@ class OrderList {
         }
         const data = await response.json();
   
-        // Преобразование данных с помощью transformOrderData
+        // Проверяем, что данные являются массивом
+        if (!Array.isArray(data)) {
+          throw new Error('API response is not an array');
+        }
+  
+        // Преобразуем и рендерим заказы
         const transformedOrders = data.map(order => this.transformOrderData(order));
         this.renderOrders(transformedOrders);
       } catch (error) {
         console.error('Error fetching orders:', error);
+        this.renderError();
       }
     }
   
+    renderOrders(orders) {
+      if (!this.ordersContainer) {
+        console.error('Cannot render orders: ordersContainer is null.');
+        return;
+      }
+      this.ordersContainer.innerHTML = orders
+        .map(order => `<div class="order-item">${order.name}</div>`)
+        .join('');
+    }
+  
+    renderError() {
+      if (!this.ordersContainer) {
+        console.error('Cannot render error: ordersContainer is null.');
+        return;
+      }
+      this.ordersContainer.innerHTML = '<div class="error">Failed to load orders. Please try again later.</div>';
+    }
+
+
+    
     transformOrderData(data) {
       return {
-        id: data.ID,
-        deliveryType: data.Delivery_type,
-        address: data.Address,
-        price: data.Price,
-        state: data.State,
-        items: data.Entities.map(entity => {
-          const product = entity.MAINS;
-          return {
-            name: product.NAME,
-            quantity: entity.BASKET_QUANTITY,
-            grind: product.PROPERTY_POMOL_VALUE,
-            roast: product.PROPERTY_OBJARKA_VALUE,
-            processing: product.PROPERTY_OBRABOTKA_VALUE,
-            variety: product.PROPERTY_SORT_VALUE,
-            weight: product.PROPERTY_VES_VALUE,
-            year: product.PROPERTY_YROJAI_VALUE,
-            image: product.PROPERTY_PICTURES_VALUE_SRC[0]
-          };
-        })
+        id: data.ID || 'Неизвестно',
+        deliveryType: data.Delivery_type || 'Не указан',
+        address: data.Address || 'Не указан',
+        price: data.Price || 0,
+        state: data.State || 'Неизвестно',
+        items: Array.isArray(data.Entities)
+          ? data.Entities.map(entity => {
+              const product = entity.MAINS || {};
+              return {
+                name: product.NAME || 'Неизвестно',
+                quantity: entity.BASKET_QUANTITY || 0,
+                grind: product.PROPERTY_POMOL_VALUE || 'Не указано',
+                roast: product.PROPERTY_OBJARKA_VALUE || 'Не указано',
+                processing: product.PROPERTY_OBRABOTKA_VALUE || 'Не указано',
+                variety: product.PROPERTY_SORT_VALUE || 'Не указано',
+                weight: product.PROPERTY_VES_VALUE || 'Не указано',
+                year: product.PROPERTY_YROJAI_VALUE || 'Не указано',
+                image: (product.PROPERTY_PICTURES_VALUE_SRC || [])[0] || ''
+              };
+            })
+          : []
       };
     }
   
     renderOrders(orders) {
-      this.ordersContainer.innerHTML = ''; 
+      // Очищаем контейнер перед добавлением заказов
+      this.ordersContainer.innerHTML = '';
+  
+      // Создаем элементы для каждого заказа
       orders.forEach(order => {
         const orderItem = document.createElement('li');
         orderItem.classList.add('history__item');
@@ -581,10 +628,18 @@ class OrderList {
         this.ordersContainer.appendChild(orderItem);
       });
     }
+  
+    renderError() {
+      this.ordersContainer.innerHTML = `
+        <div class="error-message">Не удалось загрузить заказы. Попробуйте позже.</div>
+      `;
+    }
   }
   
+  // Пример использования
   const orderList = new OrderList('http://localhost/api/order/list', '.history__list');
   orderList.fetchOrders();
+  
 
   //Это класс для отображения оформления заказа 
   class UserProfile {
@@ -622,8 +677,262 @@ class OrderList {
     }
 }
 
-// Пример использования
 const userProfile = new UserProfile('http://localhost/api/auth/info');
 userProfile.loadProfileData();
 
+ class PlaceOrderAddress {
+    constructor(el) {
+        this.el = el;
+        
+        // Контейнер списка адресов
+        this.addressList = this.el.querySelector('.place-order__type-address-list');
 
+        // Чекбокс для выбора адреса
+        this.addressSelectCheckbox = this.el.querySelector('#place-order__type-address-check');
+        
+        // Заголовок с выбранным именем адреса
+        this.addressTitle = this.el.querySelector('.place-order__type-address-title');
+
+        this.init();
+    }
+
+    async init() {
+        await this.loadAddresses();
+        this.initEventListeners();
+    }
+
+    async loadAddresses() {
+        try {
+            const response = await fetch('http://localhost/api/auth/info', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Ошибка загрузки адресов: ${response.statusText}`);
+            }
+    
+            const data = await response.json();
+    
+            // Проверяем наличие адресов в ответе
+            if (data && data.ADDRESSES && Array.isArray(data.ADDRESSES)) {
+                this.renderAddressList(data.ADDRESSES);
+            } else {
+                this.renderEmptyAddressMessage();
+            }
+        } catch (error) {
+            console.error('Ошибка загрузки адресов:', error);
+            this.renderEmptyAddressMessage();
+        }
+    }
+
+    renderAddressList(addresses) {
+        const addressItems = addresses.map(address => 
+            `<div class="place-order__type-address-item">${decodeURIComponent(address.ALIAS)}</div>`
+        ).join('');
+        this.addressList.innerHTML = addressItems;
+    }
+
+    renderEmptyAddressMessage() {
+        this.addressList.innerHTML = '<div class="place-order__type-address-item">Нет доступных адресов</div>';
+    }
+
+    initEventListeners() {
+        this.addressList.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains('place-order__type-address-item')) {
+                this.selectAddress(e.target.textContent);
+            }
+        });
+    }
+
+    selectAddress(addressName) {
+        this.addressTitle.textContent = addressName;
+        this.addressSelectCheckbox.checked = false;
+    }
+}
+
+// Инициализация
+document.addEventListener('DOMContentLoaded', () => {
+    const placeOrderEl = document.querySelector('.place-order__wr-type-address');
+    if (placeOrderEl) {
+        new PlaceOrderAddress(placeOrderEl);
+    }
+});
+
+//Это просто запрос 
+// async function fetchDeliveryAndPayment() {
+//     try {
+//         let response = await fetch('http://localhost/api/order/delivery_and_payment', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({})
+//         });
+        
+//         if (!response.ok) {
+//             throw new Error('Ошибка при отправке POST запроса');
+//         }
+        
+//         let data = await response.json();
+//         console.log(data);
+//     } catch (error) {
+//         console.error('============================>:', error);
+//     }
+// }
+
+// fetchDeliveryAndPayment();
+
+//Получение типов оплаты от Димы 
+class OrderDeliveryAndPayment {
+    constructor(apiUrl) {
+        this.apiUrl = apiUrl;
+    }
+
+    async fetchDeliveryAndPayment(data) {
+        try {
+            let response = await fetch(this.apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data) 
+            });
+
+            if (!response.ok) {
+                throw new Error('Ошибка при запросе данных!');
+            }
+
+            let responseData = await response.json();
+            return responseData;
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    }
+}
+
+let orderDeliveryAndPayment = new OrderDeliveryAndPayment('http://localhost/api/order/delivery_and_payment');
+
+orderDeliveryAndPayment.fetchDeliveryAndPayment({/* Запрашиваю типы доставки*/})
+    .then(data => {
+        let deliveries = Object.values(data);
+        
+        deliveries.forEach(delivery => {
+            let deliveryName = delivery.NAME;
+            let deliveryID = delivery.ID;
+            
+            let payments = delivery.PAYMENTS.map(payment => {
+                return {
+                    paymentName: payment.NAME,
+                    paymentID: payment.ID
+                };
+            });
+
+            console.log(`Способ доставки: ${deliveryName}, ID: ${deliveryID}`);
+            console.log('%cСпособы оплаты:', 'color: teal; font-size: 20px;', payments);
+        });
+    });
+
+
+
+
+//Заказ Оформление 
+function submitOrder() {
+    const orderData = {
+        delivery_id: "11", 
+        address: {},
+        oplata: "5", 
+        ur_litso: false, 
+        comment: '', 
+    };
+
+    const addressForm = document.querySelector('.place-order__form-address'); 
+    if (addressForm) {
+        const formData = new FormData(addressForm);
+        orderData.address = {
+            alias: formData.get('alias') || 'Адрес по умолчанию',
+            index: formData.get('zip') || '',
+            oblast: formData.get('area') || '',
+            gorod: formData.get('city') || '',
+            ulitsa: formData.get('street') || '',
+            dom: formData.get('hause') || '',
+            podezd: formData.get('entrance') || '',
+            etazh: formData.get('stage') || '',
+            domofom: formData.get('intercom') || '',
+            room: formData.get('appartment') || ''
+        };
+    }
+
+    
+    const deliveryType = document.querySelector('.place-order__receiving-item_active');
+if (deliveryType && deliveryType.dataset.receiving) {
+    orderData.delivery_id = deliveryType.dataset.receiving;
+}
+
+
+const paymentInput = document.querySelector('input[name="payment-method"]:checked');
+if (paymentInput) {
+    orderData.oplata = parseInt(paymentInput.value, "10");
+}
+   
+    const legalCheckbox = document.querySelector('#legal-entity-checkbox');
+    if (legalCheckbox) {
+        orderData.ur_litso = legalCheckbox.checked;
+    }
+
+    const commentInput = document.querySelector('#order-comment');
+    if (commentInput) {
+        orderData.comment = commentInput.value;
+    }
+
+    const cartItems = document.querySelectorAll('.place-order__order-item');
+cartItems.forEach(item => {
+    const productId = item.dataset.productId;
+    const quantityInput = item.querySelector('.product-quantity');
+    if (productId && quantityInput) {
+        orderData.items.push({
+            product_id: productId,
+            quantity: parseInt(quantityInput.value, 10)
+        });
+    }
+});
+
+    
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+        credentials: 'include',
+    };
+
+    fetch('http://localhost/api/order/create', requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка отлетела ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+            alert('Заказ успешно оформлен!');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Произошла ошибка при оформлении заказа.');
+        });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const submitButton = document.querySelector('#submit-order-button');
+    if (submitButton) {
+        submitButton.addEventListener('click', submitOrder);
+    } else {
+        console.error('ОТСУТСТВУЕТ :(');
+    }
+});

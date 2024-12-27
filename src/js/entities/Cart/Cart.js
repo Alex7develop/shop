@@ -66,22 +66,37 @@ class Cart {
   }
 
   render() {
-    
-    // console.log('%cCart items list:', 'color: red; font-size: 20px;');
-    // console.log(this.items);
+    console.log('%cСписок что у нас в корзине:', 'color: red; font-size: 20px;');
+    console.log(this.items);
 
     const items = this.items.map(item => new CartItem(item));
     const html = items.map(item => item.render());
 
-    if (this.list) 
-      this.list.innerHTML = html.join('\n');
-    if (this.totalPriceOldEl) 
-      this.totalPriceOldEl.innerHTML = this.total_price.sum_without_discount;
-    if (this.totalSumEl)
-      this.totalSumEl.innerHTML = this.total_price.sum_with_discount;
-    if (this.discountEl)
-      this.discountEl.innerHTML = this.total_price.sum_without_discount - this.total_price.sum_with_discount;
-  }
+    if (this.list) {
+        this.list.innerHTML = html.join('\n');
+    } else {
+        console.warn('Cart: Элемент .basket__goods-list не найден.');
+    }
+
+    if (this.totalPriceOldEl) {
+        this.totalPriceOldEl.innerHTML = this.total_price.sum_without_discount;
+    } else {
+        console.warn('Cart: Элемент .basket__total-price-old не найден.');
+    }
+
+    if (this.totalSumEl) {
+        this.totalSumEl.innerHTML = this.total_price.sum_with_discount;
+    } else {
+        console.warn('Cart: Элемент .basket__total-price-num span не найден.');
+    }
+
+    if (this.discountEl) {
+        this.discountEl.innerHTML = this.total_price.sum_without_discount - this.total_price.sum_with_discount;
+    } else {
+        console.warn('Cart: Элемент .basket__total-discount-num span не найден.');
+    }
+}
+
 
   add(id) {
     const myHeaders = new Headers();
@@ -158,6 +173,11 @@ class OrderCart {
 
   render() {
       console.log('Cart items:', this.cart.items); 
+
+      if (!this.list) {
+        console.warn('OrderCart: Элемент .place-order__order-list не найден.');
+        return;
+    }
 
       if (this.cart.items.length === 0) {
           this.list.innerHTML = '<li class="place-order__order-item">Нет товаров в корзине</li>';

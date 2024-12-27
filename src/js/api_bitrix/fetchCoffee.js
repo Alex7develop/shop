@@ -5,8 +5,9 @@ export async function fetchCoffeeData() {
     // const response = await fetch(`${API_URL}/api/mainpage/coffee`);
     const response = await fetch('https://dev.r18.coffee/api/mainpage/coffee');
     const data = await response.json();
+    window.coffeeData = data.OFFERS;
     // console.log('Статус ответа который мы заслужили:', response.status);
-    console.log('Data received:', data);
+    console.log('%cДанные о кофе:', 'color: brown; font-size: 15px;', data);
 
     const transformedData = Object.values(data.OFFERS).flatMap((offersArray) =>
       offersArray.map((offer) => {
@@ -16,7 +17,7 @@ export async function fetchCoffeeData() {
 
         offer.packing = offer.packing.replace(/\s+/g, '-');
 
-        delete offer.system_id;
+        // delete offer.system_id;
 
         const transformedOffer = {
           packing: offer.packing,
@@ -38,6 +39,7 @@ export async function fetchCoffeeData() {
           description: `Кофе R18: '${offer.title}'`,
           // pomol:offer.pomol,
           main_offer_id: offer.main_offer_id,
+          system_id: offer.system_id,
         };
 
         // if (offer.packing === 'filter') {

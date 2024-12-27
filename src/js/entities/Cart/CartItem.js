@@ -93,6 +93,15 @@ export default class CartItem {
     `);
   }
 
+  /*
+  <div class="basket__goods-info">
+            <p>Скидка составляет 10%, так как Вы заказали более 10 кг кофе</p>
+          </div>
+
+          
+  <div class="basket__goods-discount"><span>${sum_without_discount}</span> р.</div>
+  */
+
   static getImagePath(path) {
     if (path.match(/http?s:\/\/localhost/)) {
       return path.replace('localhost', 'dev.r18.coffee');

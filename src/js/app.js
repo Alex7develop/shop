@@ -301,3 +301,7 @@ window.addEventListener('load', async () => {
     controll.init();
   }
 });
+
+function testPug(id) {
+  alert(id);
+}

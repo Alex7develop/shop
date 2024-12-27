@@ -113,12 +113,21 @@ export default class RedrawNav {
 
     goToPointWithFilter(type) {
         // для верхнего меню
-        if(this.data) {
-            this.scrolling('coffee')
+        if (this.data) {
+            this.scrolling('coffee');
         }
-
-        const filterButton = [...this.filter].find(item => item.dataset.id === type);
-        filterButton.click()
+    
+        // Проверяем, что this.filter итерабелен
+        if (this.filter && typeof this.filter[Symbol.iterator] === 'function') {
+            const filterButton = [...this.filter].find(item => item.dataset.id === type);
+            if (filterButton) {
+                filterButton.click();
+            } else {
+                console.warn(`Filter button with dataset.id = ${type} not found`);
+            }
+        } else {
+            console.warn('this.filter is not iterable or is not set');
+        }
     }
 
     scrolling(type) {

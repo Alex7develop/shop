@@ -8,12 +8,14 @@ export default class RedrawTypeContent {
             history : this.el.querySelector('[data-type_acc="history"]'),
             loyalty : this.el.querySelector('[data-type_acc="history"]'),
             delivery : this.el.querySelector('[data-type_acc="delivery"]'),
+            exchange : this.el.querySelector('[data-type_acc="exchange"]'),
         }
 
         this.content = {
             profile : this.el.querySelector('[data-account="profile"]'),
             history : this.el.querySelector('[data-account="history"]'),
             delivery : this.el.querySelector('[data-account="delivery"]'),
+            exchange : this.el.querySelector('[data-account="exchange"]'),
         }
 
         this.lastActiveNav = this.nav.profile;

@@ -67,7 +67,6 @@ export default class ControllSlСoffee {
 
             const card = e.target.closest('li');
 
-            
             let choice = {
                 article : card.dataset.id,
                 part : card.dataset.part,
@@ -107,6 +106,13 @@ export default class ControllSlСoffee {
             }
 
             this.addToBasket(choice);
+        }
+
+        if (e.target.closest('.sl-prod__button-slide_drip')) {
+            // alert(e.target.title)
+            const setItems = window.coffeeData['Дрип пакет'].filter(item => item.part === e.target.title);
+            setItems.forEach(item => window.cart.add(item.system_id));
+            // console.log(setItems);
         }
 
         if(e.target.closest('.sl-prod__wr-to-big-description')) {
