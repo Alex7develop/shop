@@ -48,3 +48,4 @@ this.currentPayment = this.paymentNav[type];
       "ID": "11",
   }
 }
+//"Это брал за образец"
