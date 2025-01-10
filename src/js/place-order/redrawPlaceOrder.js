@@ -244,8 +244,8 @@ export default class RedrawPlaceOrder {
 // ------------------------------------------------------------------------
 
 
-  // START УПРАВЛЕНИЕ ФОРМАМИ ПОЛУЧЕНИЯ
 
+// START УПРАВЛЕНИЕ ФОРМАМИ ПОЛУЧЕНИЯ
   // выбор (открытие форм и активация соответствующей радио кнопки) способа получения
   choiceReceiving(typeReceiving, typeContent) {
     if (this.currentReceivingNav) this.currentReceivingNav.classList.remove('place-order__receiving-item_active');
@@ -282,6 +282,7 @@ export default class RedrawPlaceOrder {
     // показ и скрытие фразы: Ожидайте ответа менеджера для точного расчета доставки
     this.controllTextCountDelivery(typeReceiving);
   }
+  
   // закрытие кастомного способа получения (форма для способа получения)
   closeReceiving() {
     if (this.currentReceivingNav) {

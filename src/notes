@@ -1,0 +1,50 @@
+this.currentPayment = this.paymentNav[type];
+
+
+
+"PAYMENTS": [
+  {
+      "NAME": "Наличными", "cash"
+      "ID": "3"
+  },
+  {
+      "NAME": "Картой при получении","card-place"
+      "ID": "5"
+  },
+  {
+      "NAME": "Картой на сайте","card-site"
+      "ID": "4"
+  },
+  {
+      "NAME": "Для юрлица","legal"
+      "ID": "6"
+  }
+]
+
+//
+{
+  "6": {
+      "NAME": "Самовывоз", "pickup"
+      "ID": "6",
+  },
+  "7": {
+      "NAME": "Москва", "moskow"
+      "ID": "7",
+  },
+  "8": {
+      "NAME": "Московская область", "moskow-area"
+      "ID": "8",
+  },
+  "9": {
+      "NAME": "Регионы", "regions"
+      "ID": "9",
+  },
+  "10": {
+      "NAME": "Курьером", "cdek"
+      "ID": "10",
+  },
+  "11": {
+      "NAME": "ПВЗ", "cdek"
+      "ID": "11",
+  }
+}
