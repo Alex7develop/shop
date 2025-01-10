@@ -737,20 +737,26 @@ class UserProfile {
       document.querySelector(
         '.place-order__user-data-item:nth-child(1)'
       ).textContent =
-        'Фамилия: ' + decodeURIComponent(data.LAST_NAME || 'Фамилия');
+        '' + decodeURIComponent(data.LAST_NAME || 'Фамилия');
       document.querySelector(
         '.place-order__user-data-item:nth-child(2)'
-      ).textContent = 'Имя: ' + decodeURIComponent(data.NAME || 'Имя');
+      ).textContent = '' + decodeURIComponent(data.NAME || 'Имя');
       document.querySelector(
         '.place-order__user-data-item:nth-child(3)'
       ).textContent =
         'Отчество: ' + decodeURIComponent(data.PATRONYMIC || 'Отчество');
       document.querySelector(
         '.place-order__user-data-item:nth-child(4)'
-      ).textContent = 'Телефон: ' + (data.PERSONAL_PHONE || 'Телефон');
+      ).textContent = '' + (data.PERSONAL_PHONE || 'Телефон');
       document.querySelector(
         '.place-order__user-data-item:nth-child(5)'
-      ).textContent = 'Почта: ' + (data.EMAIL || 'Электронная почта');
+      ).textContent = '' + (data.EMAIL || 'Электронная почта');
+      const patronymicElement = document.querySelector(
+        '.place-order__user-data-item:nth-child(3)'
+      );
+      if (patronymicElement) {
+        patronymicElement.style.display = 'none';
+      }
     } catch (error) {
       console.error('Не удалось загрузить данные профиля:', error);
     }
@@ -941,9 +947,9 @@ orderDeliveryAndPayment
 //Заказ Оформление
 function submitOrder() {
   const orderData = {
-    delivery_id: '11',
+    delivery_id: '',
     address: {},
-    oplata: '3',
+    oplata: '',
     ur_litso: false,
     comment: '',
   };
