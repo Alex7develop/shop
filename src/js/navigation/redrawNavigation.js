@@ -50,7 +50,7 @@ export default class RedrawNav {
                 el.dataset.type = val;
 
                 const a = this.createEl('a', ['nav__sub-menu-coffee-link'])
-                a.href = './index.html';
+                a.href = './';
                 a.textContent = key;
 
                 el.append(a);

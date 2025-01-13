@@ -30,7 +30,7 @@ export default class RedrawNavM {
             li.dataset.id = val;
 
             const a = this.createEl('a', ['nav-mob__sub-menu-coffee-link']);
-            a.href = './index.html';
+            a.href = './';
             a.textContent = key;
 
             li.append(a);

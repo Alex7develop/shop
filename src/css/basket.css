@@ -483,3 +483,40 @@
     }
 }
 /* END ОКНО BASKET */
+
+
+.place-order__order-summary {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.place-order__discount,
+.place-order__total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-weight: 400;
+}
+
+.place-order__total span:last-child {
+    font-weight: bold;
+}
+
+.place-order__discount-label {
+    color: white;
+}
+
+.place-order__total-label {
+    color: orangered;
+}
+.place-order__discount-label_span {
+    color: white;
+}
+
+.place-order__total-label_span {
+    color: orangered;
+}

@@ -43,7 +43,7 @@ export default class ApiAccountButton {
     };
 
     try {
-      const response = await fetch('http://localhost/api/auth/login', {
+      const response = await fetch(' /api/auth/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -69,7 +69,7 @@ export default class ApiAccountButton {
 
   async logout() {
     try {
-      const response = await fetch('http://localhost/api/auth/logout', {
+      const response = await fetch(' /api/auth/logout', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -78,7 +78,7 @@ export default class ApiAccountButton {
       });
 
       console.log('response.ok:');
-      console.log(response)
+      console.log(response);
 
       if (response.ok) {
         // const result = await response.json();
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const result = await apiAccountButton.logout();
     console.log('Result', result);
     if (result) {
-      window.location.href = '/index.html';
+      window.location.href = '/';
     } else {
       alert('Произошла ошибка при выходе.');
     }

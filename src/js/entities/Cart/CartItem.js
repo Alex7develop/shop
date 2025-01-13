@@ -59,7 +59,10 @@ export default class CartItem {
     // Проверяем, есть ли скидка на основе общего веса
     let discountMessage = '';
     if (totalWeight >= 10) {
-      discountMessage = `<p>Скидка составляет 10%, так как Вы заказали более 10 кг кофе</p>`;
+      discountMessage = `
+        <p style="color: white;">
+          Скидка составляет <span style="color: #F6724A;">10%</span>, так как Вы заказали более <span style="color: #F6724A;">10 кг</span> кофе
+        </p>`;
     }
 
     return (`

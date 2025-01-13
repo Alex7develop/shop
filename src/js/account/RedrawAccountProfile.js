@@ -66,7 +66,7 @@ export default class RedrawAccountProfile {
 
   async loadProfileData() {
     try {
-      const response = await fetch('http://localhost/api/auth/info', {
+      const response = await fetch(' /api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -310,7 +310,7 @@ class ProfileEditor {
     this.buttonSaveUserData = document.querySelector('.profile__button_save');
     this.buttonSaveAddress = document.querySelector('.profile__button_save');
 
-    this.apiUrl = 'http://localhost/api/auth/updateprofile';
+    this.apiUrl = ' /api/auth/updateprofile';
     this.initEventListeners();
   }
 
@@ -544,9 +544,7 @@ class AddressManager {
 
 // Инициализация класса
 document.addEventListener('DOMContentLoaded', () => {
-  const addressManager = new AddressManager(
-    'http://localhost/api/auth/createuseraddress'
-  );
+  const addressManager = new AddressManager(' /api/auth/createuseraddress');
 });
 
 class OrderList {
@@ -648,15 +646,14 @@ class OrderList {
         : [],
     };
   }
-  
 
   renderOrders(orders) {
     this.ordersContainer.innerHTML = '';
-  
+
     orders.forEach((order) => {
       const orderItem = document.createElement('li');
       orderItem.classList.add('history__item');
-  
+
       orderItem.innerHTML = `
         <div class="history__delivery">${order.deliveryType}</div>
         <div class="history__delivery-cost">
@@ -667,9 +664,11 @@ class OrderList {
         </div>
         <div class="history__delivery-address">${order.address}</div>
         <div class="history__delivery-date">
-          ${order.deliveryDate.from && order.deliveryDate.to
-            ? `${order.deliveryDate.from} - ${order.deliveryDate.to}`
-            : ''}
+          ${
+            order.deliveryDate.from && order.deliveryDate.to
+              ? `${order.deliveryDate.from} - ${order.deliveryDate.to}`
+              : ''
+          }
         </div>
         <div class="history__order-number"><span class="history__order-number_num">${
           order.id
@@ -708,11 +707,11 @@ class OrderList {
           </ul>
         </div>
       `;
-  
+
       this.ordersContainer.appendChild(orderItem);
     });
   }
-  
+
   getOrderStateList(state) {
     const states = [
       'Новый заказ',
@@ -732,7 +731,6 @@ class OrderList {
       )
       .join('');
   }
-  
 
   renderError() {
     this.ordersContainer.innerHTML = `
@@ -742,10 +740,7 @@ class OrderList {
 }
 
 // Пример использования
-const orderList = new OrderList(
-  'http://localhost/api/order/list',
-  '.history__list'
-);
+const orderList = new OrderList(' /api/order/list', '.history__list');
 orderList.fetchOrders();
 
 //Это класс для отображения оформления заказа
@@ -775,8 +770,7 @@ class UserProfile {
         'Оформление заказа';
       document.querySelector(
         '.place-order__user-data-item:nth-child(1)'
-      ).textContent =
-        '' + decodeURIComponent(data.LAST_NAME || 'Фамилия');
+      ).textContent = '' + decodeURIComponent(data.LAST_NAME || 'Фамилия');
       document.querySelector(
         '.place-order__user-data-item:nth-child(2)'
       ).textContent = '' + decodeURIComponent(data.NAME || 'Имя');
@@ -802,7 +796,7 @@ class UserProfile {
   }
 }
 
-const userProfile = new UserProfile('http://localhost/api/auth/info');
+const userProfile = new UserProfile(' /api/auth/info');
 userProfile.loadProfileData();
 
 class PlaceOrderAddress {
@@ -832,7 +826,7 @@ class PlaceOrderAddress {
 
   async loadAddresses() {
     try {
-      const response = await fetch('http://localhost/api/auth/info', {
+      const response = await fetch(' /api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -903,7 +897,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //Это просто запрос
 // async function fetchDeliveryAndPayment() {
 //     try {
-//         let response = await fetch('http://localhost/api/order/delivery_and_payment', {
+//         let response = await fetch(' /api/order/delivery_and_payment', {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
@@ -953,7 +947,7 @@ class OrderDeliveryAndPayment {
 }
 
 let orderDeliveryAndPayment = new OrderDeliveryAndPayment(
-  'http://localhost/api/order/delivery_and_payment'
+  ' /api/order/delivery_and_payment'
 );
 
 orderDeliveryAndPayment
@@ -1082,45 +1076,40 @@ function submitOrder() {
     credentials: 'include',
   };
 
-  fetch('http://localhost/api/order/create', requestOptions)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Ошибка: ' + response.statusText);
-    }
-    return response.json();
-  })
-  .then((answer) => {
-    console.log('Ответ от сервера:', answer);
+  fetch(' /api/order/create', requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Ошибка: ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then((answer) => {
+      console.log('Ответ от сервера:', answer);
 
+      if (answer.errors && answer.errors.length > 0) {
+        console.error('Ошибки в заказе:', answer.errors);
+        alert('Произошли ошибки при оформлении заказа.');
+        return;
+      }
 
-    if (answer.errors && answer.errors.length > 0) {
-      console.error('Ошибки в заказе:', answer.errors);
-      alert('Произошли ошибки при оформлении заказа.');
-      return;
-    }
+      if (answer.url && typeof answer.url === 'string') {
+        console.info('Получена ссылка на оплату:', answer.url);
 
+        window.location.href = answer.url;
+        return;
+      }
 
-    if (answer.url && typeof answer.url === 'string') {
-      console.info('Получена ссылка на оплату:', answer.url);
-
-
-      window.location.href = answer.url;
-      return;
-    }
-
-  
-    if (answer.status === 'success') {
-      alert('Заказ успешно оформлен!');
-    } else {
-      console.error('Неожиданный статус ответа:', answer.status);
-      alert('Что-то пошло не так. Обратитесь в службу поддержки.');
-    }
-  })
-  .catch((error) => {
-    console.error('Ошибка запроса:', error);
-    alert('Произошла ошибка при оформлении заказа.');
-  });
-
+      if (answer.status === 'success') {
+        alert('Заказ успешно оформлен!');
+      } else {
+        console.error('Неожиданный статус ответа:', answer.status);
+        alert('Что-то пошло не так. Обратитесь в службу поддержки.');
+      }
+    })
+    .catch((error) => {
+      console.error('Ошибка запроса:', error);
+      alert('Произошла ошибка при оформлении заказа.');
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {

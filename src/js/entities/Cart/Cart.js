@@ -53,10 +53,16 @@ class Cart {
     const result3 = JSON.parse(result2);
     // console.log('%cCart:', 'color: orange; font-size: 20px;');
     // console.log(result3);
+    console.log(JSON.stringify(result3.items));
+    localStorage.basket = JSON.stringify(result3.items);
 
     Object.assign(this, result3)
 
     this.dispatchCartUpdated();
+    const event = new Event('cartUpdated');
+    document.dispatchEvent(event);
+    const list = new RedrawBasketButton(document.querySelector('.header__basket'), null);
+    list.redrawIconAmount()
 
     // fetch('/api/basket/get', requestOptions)
     //   .then((response) => response.text())
@@ -175,44 +181,62 @@ class OrderCart {
   }
 
   render() {
-      console.log('Cart items:', this.cart.items); 
+    console.log('Cart items:', this.cart.items); 
 
-      if (!this.list) {
+    if (!this.list) {
         console.warn('OrderCart: Элемент .place-order__order-list не найден.');
         return;
     }
 
-      if (this.cart.items.length === 0) {
-          this.list.innerHTML = '<li class="place-order__order-item">Нет товаров в корзине</li>';
-          return;
-      }
+    if (this.cart.items.length === 0) {
+        this.list.innerHTML = '<li class="place-order__order-item">Нет товаров в корзине</li>';
+        return;
+    }
 
-      const items = this.cart.items.map(item => new CartItem(item));
-      const html = items.map(item => `
-          <li class="place-order__order-item">
-              <div class="place-order__product-info">
-                  <div class="place-order__product-wr-img">
-                      <img class="place-order__product-img" src="${item.product.PROPS.PROPERTY_PICTURES_VALUE}" alt="${item.product.NAME}" />
-                  </div>
-                  <div class="place-order__product-wr-description">
-                      <p>${item.product.PROPS.NAME}</p>
-                      <p>${item.product.PROPS.PROPERTY_BASKET_DESC_VALUE}</p>
-                  </div>
-                  <div class="place-order__product-wr-amount">
-                      <span class="place-order__product-amount">${item.product.QUANTITY}</span>
-                      <span>шт</span>
-                  </div>
-              </div>
-              <div class="place-order__product-price">
-                  <span>${item.product.sum_with_discount}</span> р.
-              </div>
-          </li>
-      `).join('\n');
+    const items = this.cart.items.map(item => new CartItem(item));
+    const html = items.map(item => 
+        `<li class="place-order__order-item">
+            <div class="place-order__product-info">
+                <div class="place-order__product-wr-img">
+                    <img class="place-order__product-img" src="${item.product.PROPS.PROPERTY_PICTURES_VALUE}" alt="${item.product.NAME}" />
+                </div>
+                <div class="place-order__product-wr-description">
+                    <p>${item.product.PROPS.NAME}</p>
+                    <p>${item.product.PROPS.PROPERTY_BASKET_DESC_VALUE}</p>
+                </div>
+                <div class="place-order__product-wr-amount">
+                    <span class="place-order__product-amount">${item.product.QUANTITY}</span>
+                    <span>шт</span>
+                </div>
+            </div>
+            <div class="place-order__product-price">
+                <span>${item.product.sum_with_discount}</span> р.
+            </div>
+        </li>`
+    ).join('\n');
 
-      if (this.list) {
-          this.list.innerHTML = html;
-      }
-  }
+    const totalPriceWithDiscount = this.cart.total_price.sum_with_discount;
+    const totalPriceWithoutDiscount = this.cart.total_price.sum_without_discount;
+    const discount = totalPriceWithoutDiscount - totalPriceWithDiscount;
+
+    // HTML для итогов заказа
+    const totalHtml = `
+        <li class="place-order__order-summary">
+    <div class="place-order__discount">
+        <span class="place-order__discount-label">Скидка</span>
+        <span class='place-order__discount-label_span'>${discount} р.</span>
+    </div>
+    <div class="place-order__total">
+        <span class="place-order__total-label">Итого</span>
+        <span class='place-order__total-label_span'>${totalPriceWithDiscount} р.</span>
+    </div>
+</li>
+    `;
+
+    // Обновление HTML
+    this.list.innerHTML = html + totalHtml;
+}
+
 }
 
 const orderCart = new OrderCart(cart);

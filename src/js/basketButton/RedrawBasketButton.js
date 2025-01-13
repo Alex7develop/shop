@@ -46,11 +46,12 @@ export default class RedrawBasketButton {
         }
         const basket = JSON.parse(localStorage.basket);
         
-        const result = basket.reduce((acc, item) => {
-            return acc += +item.amount
+        const totalQuantity = basket.reduce((acc, item) => {
+            return acc + Number(item.QUANTITY); // Убедимся, что QUANTITY преобразовано в число
         }, 0);
-    
-        this.amount.textContent = result;
+
+        // Обновляем отображение количества товаров
+        this.amount.textContent = totalQuantity;
         // if(!this.el.classList.contains('header__basket_active')) {
         //     this.el.classList.add('header__basket_active');
         // }

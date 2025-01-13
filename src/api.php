@@ -14,7 +14,7 @@ use lib\MainAuthAction;
 use lib\Order;
 use lib\Master;
 
-$allowedOrigins = ['http://localhost:8800', 'https://wmf24.ru'];
+$allowedOrigins = [' :8800', 'https://wmf24.ru'];
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
