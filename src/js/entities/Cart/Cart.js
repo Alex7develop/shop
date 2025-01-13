@@ -1,10 +1,13 @@
 import CartItem from "./CartItem";
+import RedrawBasketButton from "../../basketButton/RedrawBasketButton";
 
 class Cart {
   constructor() {
     // this.cookies = `BITRIX_RR_LOGIN=%2B79654493064; BITRIX_RR_SALE_UID=111; BITRIX_SM_LOGIN=%2B79654493064; PHPSESSID=77MNubruWyqbIhXYqlD0SbXfV1CKaR2H`;
 
     // console.log('Cookies', this.cookies);
+    const list = new RedrawBasketButton(document.querySelector('.header__basket'), null);
+    list.redrawIconAmount()
 
     this.list = document.querySelector('.basket__goods-list');
     this.totalSumEl = document.querySelector('.basket__total-price-num span');

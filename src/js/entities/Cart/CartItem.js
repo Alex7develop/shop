@@ -34,7 +34,6 @@ window.handleDecrement = function(id) {
 export default class CartItem {
   constructor(product) {
     this.product = product;
-    // const li = document.createElement
   }
 
   render() {
@@ -50,8 +49,19 @@ export default class CartItem {
       sum_with_discount,
       sum_without_discount,
       PROPS,
-    } = this.product
+    } = this.product;
+
     const IMAGE_PATH = CartItem.getImagePath(PROPS.PROPERTY_PICTURES_VALUE);
+
+    // Рассчитываем общий вес (предполагаем, что каждый продукт - это 1 кг)
+    const totalWeight = QUANTITY * 1; // 1 кг на каждую пачку (можно заменить на реальный вес)
+    
+    // Проверяем, есть ли скидка на основе общего веса
+    let discountMessage = '';
+    if (totalWeight >= 10) {
+      discountMessage = `<p>Скидка составляет 10%, так как Вы заказали более 10 кг кофе</p>`;
+    }
+
     return (`
       <li
         class="basket__goods-item"
@@ -63,9 +73,7 @@ export default class CartItem {
         <div class="basket__goods-wr-content">
           <div class="basket__goods-content">
             <div class="basket__goods-img">
-              <img
-                src="${IMAGE_PATH}"
-              />
+              <img src="${IMAGE_PATH}" />
             </div>
             <div class="basket__goods-description">
               <p>${PROPS.NAME}</p>
@@ -82,7 +90,7 @@ export default class CartItem {
         </div>
         <div class="basket__goods-info-price">
           <div class="basket__goods-info">
-            <p>Скидка составляет 10%, так как Вы заказали более 10 кг кофе</p>
+            ${discountMessage} <!-- Добавляем сообщение о скидке -->
           </div>
           <div class="basket__goods-wr-price">
             <div class="basket__goods-discount"><span>${sum_without_discount}</span> р.</div>
@@ -93,21 +101,12 @@ export default class CartItem {
     `);
   }
 
-  /*
-  <div class="basket__goods-info">
-            <p>Скидка составляет 10%, так как Вы заказали более 10 кг кофе</p>
-          </div>
-
-          
-  <div class="basket__goods-discount"><span>${sum_without_discount}</span> р.</div>
-  */
-
   static getImagePath(path) {
     if (path.match(/http?s:\/\/localhost/)) {
       return path.replace('localhost', 'dev.r18.coffee');
     }
-    return path
+    return path;
   }
-  
 }
+
 

@@ -625,6 +625,10 @@ class OrderList {
       id: data.ID || 'Неизвестно',
       deliveryType: data.Delivery_type || 'Не указан',
       address: data.Address || 'Не указан',
+      deliveryDate: {
+        from: data.Delivery_data_from || '',
+        to: data.Delivery_data_to || '',
+      },
       price: data.Price || 0,
       state: data.State || 'Неизвестно',
       items: Array.isArray(data.Entities)
@@ -635,7 +639,6 @@ class OrderList {
               quantity: entity.BASKET_QUANTITY || 0,
               grind: product.PROPERTY_POMOL_VALUE || 'Не указано',
               roast: product.PROPERTY_OBJARKA_VALUE || 'Не указано',
-              processing: product.PROPERTY_OBRABOTKA_VALUE || 'Не указано',
               variety: product.PROPERTY_SORT_VALUE || 'Не указано',
               weight: product.PROPERTY_VES_VALUE || 'Не указано',
               year: product.PROPERTY_YROJAI_VALUE || 'Не указано',
@@ -645,28 +648,41 @@ class OrderList {
         : [],
     };
   }
+  
 
   renderOrders(orders) {
-    // Очищаем контейнер перед добавлением заказов
     this.ordersContainer.innerHTML = '';
-
-    // Создаем элементы для каждого заказа
+  
     orders.forEach((order) => {
       const orderItem = document.createElement('li');
       orderItem.classList.add('history__item');
-
+  
       orderItem.innerHTML = `
-          <div class="history__delivery">${order.deliveryType}</div>
-          <div class="history__delivery-cost">
-            Итоговая сумма: <span class="history__delivery-cost_num">${
-              order.price
-            }</span>
-            <span class="history__delivery-cost_currency">р.</span>
-          </div>
-          <div class="history__delivery-address">${order.address}</div>
-          <div class="history__order-number">Заказ №: <span class="history__order-number_num">${
-            order.id
-          }</span></div>
+        <div class="history__delivery">${order.deliveryType}</div>
+        <div class="history__delivery-cost">
+          Итоговая сумма: <span class="history__delivery-cost_num">${
+            order.price
+          }</span>
+          <span class="history__delivery-cost_currency">р.</span>
+        </div>
+        <div class="history__delivery-address">${order.address}</div>
+        <div class="history__delivery-date">
+          ${order.deliveryDate.from && order.deliveryDate.to
+            ? `${order.deliveryDate.from} - ${order.deliveryDate.to}`
+            : ''}
+        </div>
+        <div class="history__order-number"><span class="history__order-number_num">${
+          order.id
+        }</span></div>
+        <ul class="history__order-state-list">
+          ${this.getOrderStateList(order.state)}
+        </ul>
+        <div class="history__wr-details">
+          <input class="history__details-title_checkbox" type="checkbox" />
+          <label class="history__details-title" data-state="0">
+            <span class="history__details-title-text">Посмотреть детали заказа</span>
+            <span class="history__details-title-arrow"></span>
+          </label>
           <ul class="history__details-list">
             ${order.items
               .map(
@@ -678,7 +694,8 @@ class OrderList {
                 <div class="history__details-description">
                   <p>${item.name}</p>
                   <p>Помол: ${item.grind}, Обжарка: ${item.roast}</p>
-                  <p>Вес: ${item.weight}, Урожай: ${item.year}</p>
+                  <p>Сорт: ${item.variety}, Вес: ${item.weight}</p>
+                  <p>Урожай: ${item.year}</p>
                 </div>
                 <div class="history__details-amount">
                   <span class="history__details-amount-num">${item.quantity}</span>
@@ -689,11 +706,33 @@ class OrderList {
               )
               .join('')}
           </ul>
-        `;
-
+        </div>
+      `;
+  
       this.ordersContainer.appendChild(orderItem);
     });
   }
+  
+  getOrderStateList(state) {
+    const states = [
+      'Новый заказ',
+      'В работе',
+      'Ожидаем оплату',
+      'Оплачен',
+      'Выполнен',
+      'Отменен',
+    ];
+    return states
+      .map(
+        (s) => `
+      <li class="history__order-state-item ${
+        s === state ? 'history__order-state-item_active' : ''
+      }">${s}</li>
+    `
+      )
+      .join('');
+  }
+  
 
   renderError() {
     this.ordersContainer.innerHTML = `
@@ -1044,42 +1083,44 @@ function submitOrder() {
   };
 
   fetch('http://localhost/api/order/create', requestOptions)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Ошибка отлетела ' + response.statusText);
-      }
-      return response.json();
-    })
-    .then((answer) => {
-      console.log('Success:', answer);
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Ошибка: ' + response.statusText);
+    }
+    return response.json();
+  })
+  .then((answer) => {
+    console.log('Ответ от сервера:', answer);
 
-      let hasErrors = false;
-      if (answer.errors && answer.errors.length > 0) {
-        hasErrors = true;
-        // ошибка, выводим список ошибок
-      }
 
-      if (!hasErrors && answer.status === 'success') {
-        const dataType = typeof answer.data;
-        if (dataType === 'string') {
-          if (answer.data.indexOf('Номер заказа:') === -1) {
-            console.error("'Номер заказа:' не получили");
-          }
-          if (answer.data.indexOf('Номер заказа:') !== -1) {
-            console.info("'Номер заказа:' получили");
-          }
-          alert('Заказ успешно оформлен!');
-        }
-        if (dataType === 'object') {   
-            console.info("пришёл объект, возможно содержащий ссылку");         
-        }
-      }
-      
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert('Произошла ошибка при оформлении заказа.');
-    });
+    if (answer.errors && answer.errors.length > 0) {
+      console.error('Ошибки в заказе:', answer.errors);
+      alert('Произошли ошибки при оформлении заказа.');
+      return;
+    }
+
+
+    if (answer.url && typeof answer.url === 'string') {
+      console.info('Получена ссылка на оплату:', answer.url);
+
+
+      window.location.href = answer.url;
+      return;
+    }
+
+  
+    if (answer.status === 'success') {
+      alert('Заказ успешно оформлен!');
+    } else {
+      console.error('Неожиданный статус ответа:', answer.status);
+      alert('Что-то пошло не так. Обратитесь в службу поддержки.');
+    }
+  })
+  .catch((error) => {
+    console.error('Ошибка запроса:', error);
+    alert('Произошла ошибка при оформлении заказа.');
+  });
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
