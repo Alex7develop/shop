@@ -1,0 +1,216 @@
+.wrapper-offer {
+    background:
+    no-repeat url(../img/roasteria-side.webp),
+     no-repeat url(../img/roasteria-side.webp),
+       #483D41
+    ;
+    background-position:
+     right 0.35vw top 8vw,
+      left 0.35vw top 8vw 
+    ;
+    background-size: 10.9vw auto, 10.9vw auto;
+}
+
+.main-offer {
+    padding-top: 4.90vw;
+    padding-bottom: 18.28vw;
+
+    background: none;
+}
+
+.offer {
+    width: 55.6%;
+    margin: 0 auto;
+    padding-top: 1.88vw;
+    padding-right: 3.13vw;
+    padding-bottom: 2.50vw;
+    padding-left: 3.13vw;
+
+    background: #726B68;
+    box-shadow: 
+        4.22vw 9.48vw 2.92vw 0px rgba(0, 0, 0, 0.00), 
+        2.71vw 6.04vw 2.66vw 0px rgba(0, 0, 0, 0.02), 
+        1.51vw 65px 2.24vw 0px rgba(0, 0, 0, 0.08), 
+        0.68vw 1.51vw 1.67vw 0px rgba(0, 0, 0, 0.13), 
+        0.16vw 0.36vw 0.89vw 0px rgba(0, 0, 0, 0.15);
+}
+
+.offer__wr-title {
+    width: 53.23%;
+    margin: 0 auto;
+    padding-bottom: 0.57vw;
+
+    border-bottom: 0.16vw solid #fff;
+}
+
+.offer__title {
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+
+    color: #F1551C;
+}
+
+.offer__content {
+    display: flex;
+    margin-top: 3.18vw;
+    justify-content: center;
+}
+
+.offer__link {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: "SofiaSans";
+    font-size: 0.83vw;
+    text-align: center;
+}
+
+.offer__link-icon {
+    width: 4.48vw;
+    height: 4.01vw;
+}
+
+.offer__link-icon_pdf {
+    background: no-repeat url('../svg/pdf.svg');
+    background-size: contain;
+    background-position: center;
+}
+
+.offer__link-title {
+    margin-top: 0.63vw;
+
+    font-weight: 400;
+
+    color: #FFF;
+}
+
+.offer__link-download {
+    margin-top: 0.57vw;
+
+    font-weight: 700;
+
+    color: #F37548;
+}
+
+.offer__wr-button {
+    display: flex;
+    margin-top: 9.43vw;
+    justify-content: center;
+}
+
+.offer__button {
+    padding: 0.57vw 1.67vw;
+
+    font-family: "SofiaSans";
+    font-size: 0.83vw;
+    font-weight: 400;
+
+    color: #FFF;
+    border-radius: 1.56vw;
+    border: 0.15vw solid #FFF;
+    background: #F1551C;
+
+    cursor: pointer;
+}
+
+
+
+
+
+@media(max-width: 1200px) {
+    .wrapper-offer {
+        background-position:
+         right 0.35vw top 24vw,
+          left 0.35vw top 24vw
+        ;
+    }
+}
+
+@media(max-width: 1200px) {
+    .main-offer {
+        padding-top: 11.8vw;
+        padding-bottom: 0;
+    }
+}
+
+@media(max-width: 1200px) {
+    .offer {
+        width: 89.35%;
+        padding-top: 5.60vw;
+        padding-bottom: 12.53vw;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__wr-title {
+        width: 77.7%;
+        padding-bottom: 1.60vw;
+
+        border-bottom: 0.80vw solid #fff;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__title {
+        font-size: 5.33vw;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__content {
+        margin-top: 16.80vw;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__link-icon {
+        width: 22.93vw;
+        height: 20.53vw;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__link {
+        font-size: 4.27vw;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__link-title {
+        margin-top: 4vw;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__link-download {
+        margin-top: 1vw;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__wr-button {
+        margin-top: 23.47vw;
+    }
+}
+
+@media(max-width: 961px) {
+    .offer__button {
+        padding: 2.40vw 4.80vw;
+
+        font-size: 4.27vw;
+
+        border-radius: 8vw;
+        border: 0;
+        background: #F1551C;
+        box-shadow: 31px 18px 10px 0px rgba(0, 0, 0, 0.00), 20px 12px 9px 0px rgba(0, 0, 0, 0.02), 11px 7px 8px 0px rgba(0, 0, 0, 0.08), 5px 3px 6px 0px rgba(0, 0, 0, 0.13), 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+    }
+}
+
+

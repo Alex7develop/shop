@@ -7,7 +7,7 @@ export default class Profile {
   async getUserInfo() {
     let response, data;
     try {
-      response = await fetch(' /api/auth/info', {
+      response = await fetch('http://localhost/api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {

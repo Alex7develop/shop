@@ -1,0 +1,19 @@
+extends layout/layout
+
+block  variable
+    - let pageName = 'offer'; 
+
+block content 
+    main.main.main-offer
+        .offer
+            .offer__wr-title 
+                h1.offer__title публичная оферта
+            
+            .offer__content 
+                a.offer__link(href="./files/public-offer-R18.pdf" download title="Публичная оферта PDF")
+                    span.offer__link-icon.offer__link-icon_pdf
+                    span.offer__link-title Договор публичной аферты
+                    span.offer__link-download Скачать
+
+            .offer__wr-button 
+                a.offer__button(href="/" title="Главная") Вернуться на главную

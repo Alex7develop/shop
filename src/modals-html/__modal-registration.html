@@ -22,18 +22,30 @@
                     <input class="modal__input modal__input_required" type="text" name="name" placeholder="Имя">
                 </div>
                 <div class="modal__wr-input">
+                    <input class="modal__input" type="text" name="secodname" placeholder="Отчество">
+                </div>
+                <div class="modal__wr-input">
                     <input class="modal__input modal__input_required" type="text" name="phone" placeholder="Телефон">
                 </div> 
                 <div class="modal__wr-input">
                     <input class="modal__input modal__input_required" type="text" name="email" placeholder="Почта">
                 </div>
                 <div class="modal__wr-input">
-                    <input class="modal__input modal__input_required" type="password" name="password" placeholder="Пароль">
+                    <div class="modal__input-wrapper">
+                        <input class="modal__input modal__input_required" type="password" name="password" placeholder="Пароль">
+                        <span class="modal__toggle-password" onclick="togglePassword(this)"><img src="../modals-html/hide_icon_148530.svg"></span>
+                    </div>
                     <p class="modal-reg__pass-rules">
                         <span>Пароль должен содержать не менее 8 символов.</span>
                         <span>Одна заглавная и одна строчная буква. Минимум 1 цифра.</span>
                         <span>Наличие символов.</span>
                     </p>
+                </div>
+                <div class="modal__wr-input">
+                    <div class="modal__input-wrapper">
+                        <input class="modal__input modal__input_required" type="password" name="password_confirmation" placeholder="Подтверждение пароля">
+                        <span class="modal__toggle-password" onclick="togglePassword(this)"><img src="../modals-html/hide_icon_148530.svg"></span>
+                    </div>
                 </div>
                 <div class="modal__wr-checkbox">
                     <label class="modal__label-checkbox">

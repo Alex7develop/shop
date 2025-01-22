@@ -48,7 +48,7 @@ class Cart {
     };
 
     // fetch('https://dev.r18.coffee/api/basket/get', requestOptions)
-    const result = await fetch('/api/basket/get', requestOptions);
+    const result = await fetch('http://localhost/api/basket/get', requestOptions);
     const result2 = await result.text();
     const result3 = JSON.parse(result2);
     // console.log('%cCart:', 'color: orange; font-size: 20px;');
@@ -127,7 +127,7 @@ class Cart {
     };
 
     // fetch("https://dev.r18.coffee/api/basket/add", requestOptions)
-    fetch('/api/basket/add', requestOptions)
+    fetch('http://localhost/api/basket/add', requestOptions)
       .then(this.fetchData)
       .then(this.dispatchCartUpdated)
       // .then((response) => response.text())
@@ -150,7 +150,7 @@ class Cart {
       redirect: 'follow',
     };
 
-    fetch('/api/basket/remove', requestOptions)
+    fetch('http://localhost/api/basket/remove', requestOptions)
       .then(this.fetchData)
       .then(this.dispatchCartUpdated)
   }

@@ -1,0 +1,73 @@
+extends layout/layout
+
+block  variable
+    - let pageName = 'requisites'; 
+
+block content 
+    main.main.main-requisites
+        .requisites 
+            .requisites__wr-title 
+                h1.requisites__title реквизиты
+            ul.requisites__list 
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="name") Полное наименование фирмы
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="name") Общество с ограниченной ответственностью «Оазис МСК»
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="short_name") Сокращенное наименование
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="short_name") ООО «Оазис МСК»
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="legal_address") Юридический адрес
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="legal_address") 123007, г. Москва, Хорошевское шоссе, д. 32А
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="actual_address") Фактический адрес
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="actual_address") 123007, г. Москва, Хорошевское шоссе, д. 32 А
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="phone") Телефон
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="phone") +7 (495) 789-67-27
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="inn/kpp") ИНН/КПП
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="inn/kpp") 7714951967/771401001
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="egrn") ЕГРН
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="egrn") 5147746370844
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="payment_account") Расчетный счет (Рубли)
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="payment_account") 40702810001600008710
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="сorrespondent_account") Корреспондентский счет
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="сorrespondent_account") 30101810200000000593
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="bik") БИК
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="bik") 044525593
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="full_name_bank") Полное наименование банка
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="full_name_bank") «АЛЬФА-БАНК» (АО «АЛЬФА-БАНК»)
+                
+                li.requisites__item.requisites__item__key
+                    .requisites__text.requisites__key(data-key="general_manager") Генеральный директор
+                li.requisites__item.requisites__item__val
+                    .requisites__text.requisites__val(data-val="general_manager") Белашев Владимир Вадимович
+
+            .requisites__wr-button 
+                a.requisites__button(href="/" title="Главная") Вернуться на главную

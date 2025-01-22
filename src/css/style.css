@@ -416,6 +416,22 @@
     width: 100%;
 }
 
+.contacts__docs {
+    display: flex;
+    margin-top: 3vw;
+    flex-direction: column;
+
+    > a {
+        font-family: "SofiaSans";
+        font-size: 1.25vw;
+        font-weight: 700;
+        
+        color: #FFF;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.15vw;
+    }
+}
 /* КОНТАКТЫ END */
 
 
@@ -752,4 +768,28 @@
     .footer__copyright p {
         font-size: 4.27vw;
     }
+}
+
+.modal__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.modal__input {
+    width: 100%;
+    padding-right: 2.5rem; /* Добавляем отступ для глазика */
+}
+
+.modal__toggle-password {
+    position: absolute;
+    right: 0.5rem; /* Отступ от правого края */
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #6c757d;
+    transition: color 0.2s;
+}
+
+.modal__toggle-password:hover {
+    color: #000;
 }

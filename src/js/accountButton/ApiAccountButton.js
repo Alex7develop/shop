@@ -6,6 +6,7 @@ export default class ApiAccountButton {
     const jsonData = {
       name: data.get('name'),
       last_name: data.get('surname'),
+      patronymic: data.get('secodname'),
       password: data.get('password'),
       email: data.get('email'),
       phone: data.get('phone').replace(/\D/g, '').replace(/^(\d)/, '+$1'),
@@ -43,7 +44,7 @@ export default class ApiAccountButton {
     };
 
     try {
-      const response = await fetch(' /api/auth/login', {
+      const response = await fetch('http://localhost/api/auth/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -69,7 +70,7 @@ export default class ApiAccountButton {
 
   async logout() {
     try {
-      const response = await fetch(' /api/auth/logout', {
+      const response = await fetch('http://localhost/api/auth/logout', {
         method: 'POST',
         credentials: 'include',
         headers: {

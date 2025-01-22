@@ -66,7 +66,7 @@ export default class RedrawAccountProfile {
 
   async loadProfileData() {
     try {
-      const response = await fetch(' /api/auth/info', {
+      const response = await fetch('http://localhost/api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -88,7 +88,9 @@ export default class RedrawAccountProfile {
         data.NAME || 'Имя'
       );
       document.querySelector('input[name="patronymic"]').value =
-        decodeURIComponent(data.PATRONYMIC || 'Отчество');
+        decodeURIComponent(data.
+          patronymic
+           || 'Отчество');
       document.querySelector('input[name="phone"]').value =
         data.PERSONAL_PHONE || 'Телефон';
       document.querySelector('input[name="email"]').value =
@@ -375,6 +377,7 @@ class ProfileEditor {
     return {
       name: form.querySelector('input[name="name"]').value,
       last_name: form.querySelector('input[name="second_name"]').value,
+      patronymic: form.querySelector('input[name="patronymic"]').value,
       email: form.querySelector('input[name="email"]').value,
       gender: form.querySelector('input[name="gender"]:checked').value,
       birthday: form.querySelector('input[name="born_date"]').value,
@@ -386,6 +389,7 @@ class ProfileEditor {
     return {
       name: data.name,
       last_name: data.last_name,
+      patronymic:data.patronymic,
       email: data.email,
       gender: data.gender === 'man' ? 'M' : 'F', // Преобразование пола
       birthday: data.birthday.replace(/_/g, '').replace(/\//g, '.'), // Убираем символы "_" и "/" и ставим точки
@@ -444,7 +448,9 @@ class AddressManager {
   handleAddressSelected(event) {
     const { ADDRESSES } = window.userInfo;
     const { addressInputs } = this;
-    const address = ADDRESSES.find((addr) => addr.NAME === event.detail);
+    console.log(ADDRESSES)
+    console.log(addressInputs)
+    const address = ADDRESSES.find((addr) => addr.ALIAS === event.detail);
 
     Object.entries(keyMapping).forEach(function ([key, KEY]) {
       const inputs = [];
@@ -544,7 +550,7 @@ class AddressManager {
 
 // Инициализация класса
 document.addEventListener('DOMContentLoaded', () => {
-  const addressManager = new AddressManager(' /api/auth/createuseraddress');
+  const addressManager = new AddressManager('http://localhost/api/auth/createuseraddress');
 });
 
 class OrderList {
@@ -740,7 +746,7 @@ class OrderList {
 }
 
 // Пример использования
-const orderList = new OrderList(' /api/order/list', '.history__list');
+const orderList = new OrderList('http://localhost/api/order/list', '.history__list');
 orderList.fetchOrders();
 
 //Это класс для отображения оформления заказа
@@ -777,26 +783,26 @@ class UserProfile {
       document.querySelector(
         '.place-order__user-data-item:nth-child(3)'
       ).textContent =
-        'Отчество: ' + decodeURIComponent(data.PATRONYMIC || 'Отчество');
+        '' + decodeURIComponent(data.patronymic || 'Отчество');
       document.querySelector(
         '.place-order__user-data-item:nth-child(4)'
       ).textContent = '' + (data.PERSONAL_PHONE || 'Телефон');
       document.querySelector(
         '.place-order__user-data-item:nth-child(5)'
       ).textContent = '' + (data.EMAIL || 'Электронная почта');
-      const patronymicElement = document.querySelector(
-        '.place-order__user-data-item:nth-child(3)'
-      );
-      if (patronymicElement) {
-        patronymicElement.style.display = 'none';
-      }
+      // const patronymicElement = document.querySelector(
+      //   '.place-order__user-data-item:nth-child(3)'
+      // );
+      // if (patronymicElement) {
+      //   patronymicElement.style.display = 'none';
+      // }
     } catch (error) {
       console.error('Не удалось загрузить данные профиля:', error);
     }
   }
 }
 
-const userProfile = new UserProfile(' /api/auth/info');
+const userProfile = new UserProfile('http://localhost/api/auth/info');
 userProfile.loadProfileData();
 
 class PlaceOrderAddress {
@@ -826,7 +832,7 @@ class PlaceOrderAddress {
 
   async loadAddresses() {
     try {
-      const response = await fetch(' /api/auth/info', {
+      const response = await fetch('http://localhost/api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -947,7 +953,7 @@ class OrderDeliveryAndPayment {
 }
 
 let orderDeliveryAndPayment = new OrderDeliveryAndPayment(
-  ' /api/order/delivery_and_payment'
+  'http://localhost/api/order/delivery_and_payment'
 );
 
 orderDeliveryAndPayment
@@ -1076,7 +1082,7 @@ function submitOrder() {
     credentials: 'include',
   };
 
-  fetch(' /api/order/create', requestOptions)
+  fetch('http://localhost/api/order/create', requestOptions)
     .then((response) => {
       if (!response.ok) {
         throw new Error('Ошибка: ' + response.statusText);
