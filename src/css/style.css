@@ -58,7 +58,7 @@
 
 .header__account a {
     display: block;
-    line-height: 2.40vw;
+    line-height: 2.50vw;
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -68,8 +68,8 @@
 }
 
 .header__account svg {
-    width: 2.60vw;
-    height: 2.60vw;
+    /* width: 2.60vw; */
+    height: 2.40vw;
 }
 
 .header__account_active {
@@ -90,7 +90,7 @@
 
 .header__account svg {
     width: 1.09vw; 
-    height: 1.25vw;
+    /* height: 1.25vw; */
 }
 
 .header__basket {
@@ -132,6 +132,12 @@
 
 .header__basket-amount_active {
     display: flex;
+}
+
+.header__basket-amount_orange {
+    background-color: #F1551C; 
+    color: white; 
+    border: 1px solid white;
 }
 
 .header__basket:hover {
@@ -770,26 +776,48 @@
     }
 }
 
-.modal__input-wrapper {
+.error-message_list{
+padding: 0.57vw 1.56vw;
+font-family: "SofiaSans";
+font-size: 1.25vw;
+font-weight: 400;
+border-radius: 1.56vw;
+color: #FFF;
+cursor: pointer;
+user-select: none;
+display: flex;
+justify-content: center; 
+align-items: center; 
+text-align: center;
+}
+.password-input-wrapper {
     position: relative;
+    width: 100%;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.modal__input {
-    width: 100%;
-    padding-right: 2.5rem; /* Добавляем отступ для глазика */
+.eye-icon {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
+    opacity: 0.7;
+    transition: opacity 0.3s;
 }
 
-.modal__toggle-password {
-    position: absolute;
-    right: 0.5rem; /* Отступ от правого края */
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: #6c757d;
-    transition: color 0.2s;
+.password-toggle-btn:hover .eye-icon {
+    opacity: 1;
 }
 
-.modal__toggle-password:hover {
-    color: #000;
-}

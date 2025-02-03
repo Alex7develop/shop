@@ -36,43 +36,50 @@ export default class CartItem {
     this.product = product;
   }
 
+  checkDiscount() {
+    const { QUANTITY, PRODUCT_ID } = this.product;
+
+    const espressoIds = ['85', '87', '89', '91', '93'];
+    const dripIds = ['97'];
+    const filterIds = ['109', '110', '111', '112', '114', '115', '116', '1117'];
+    
+    let discountMessage = '';
+
+    if (espressoIds.includes(PRODUCT_ID) && QUANTITY >= 10) {
+      discountMessage = `
+        <p class="basket__goods-info-text" style="color: white; margin: 0;">
+          Скидка составляет <span style="color: #F6724A; font-weight: 600;">10%</span>, так как Вы заказали более <span style="color: #F6724A; font-weight: 600;">10 кг</span> кофе
+        </p>`;
+    } else if (dripIds.includes(PRODUCT_ID) && QUANTITY >= 10) {
+      discountMessage = `
+        <p class="basket__goods-info-text" style="color: white; margin: 0;">
+          Скидка составляет <span style="color: #F6724A; font-weight: 600;">10%</span>, так как Вы заказали более <span style="color: #F6724A; font-weight: 600;">10 пачек зерна</span>
+        </p>`;
+    } else if (filterIds.includes(PRODUCT_ID) && QUANTITY >= 10) {
+      discountMessage = `
+        <p class="basket__goods-info-text" style="color: white; margin: 0;">
+          Скидка составляет <span style="color: #F6724A; font-weight: 600;">10%</span>, так как Вы заказали более <span style="color: #F6724A; font-weight: 600;">10 Дрип пакетов</span> кофе
+        </p>`;
+      }
+
+    return discountMessage;
+  }
+
   render() {
     const {
       PRODUCT_ID,
       NAME,
-      PRICE,
       QUANTITY,
-      DISCOUNT_PRICE,
-      BASE_PRICE,
-      DISCOUNT,
-      SERVICE_ID,
       sum_with_discount,
       sum_without_discount,
       PROPS,
     } = this.product;
 
     const IMAGE_PATH = CartItem.getImagePath(PROPS.PROPERTY_PICTURES_VALUE);
-
-    // Рассчитываем общий вес (предполагаем, что каждый продукт - это 1 кг)
-    const totalWeight = QUANTITY * 1; // 1 кг на каждую пачку (можно заменить на реальный вес)
-    
-    // Проверяем, есть ли скидка на основе общего веса
-    let discountMessage = '';
-    if (totalWeight >= 10) {
-      discountMessage = `
-        <p style="color: white;">
-          Скидка составляет <span style="color: #F6724A;">10%</span>, так как Вы заказали более <span style="color: #F6724A;">10 кг</span> кофе
-        </p>`;
-    }
+    const discountMessage = this.checkDiscount();
 
     return (`
-      <li
-        class="basket__goods-item"
-        data-index="5"
-        data-sku_title="${NAME}"
-        data-sku_packing="${NAME}"
-        data-article="1"
-      >
+      <li class="basket__goods-item" data-index="5" data-sku_title="${NAME}" data-sku_packing="${NAME}" data-article="1">
         <div class="basket__goods-wr-content">
           <div class="basket__goods-content">
             <div class="basket__goods-img">
@@ -93,7 +100,7 @@ export default class CartItem {
         </div>
         <div class="basket__goods-info-price">
           <div class="basket__goods-info">
-            ${discountMessage} <!-- Добавляем сообщение о скидке -->
+            ${discountMessage}
           </div>
           <div class="basket__goods-wr-price">
             <div class="basket__goods-discount"><span>${sum_without_discount}</span> р.</div>
@@ -105,11 +112,9 @@ export default class CartItem {
   }
 
   static getImagePath(path) {
-    if (path.match(/http?s:\/\/localhost/)) {
-      return path.replace('localhost', 'dev.r18.coffee');
-    }
-    return path;
+    return path.match(/http?s:\/\/localhost/) ? path.replace('localhost', 'dev.r18.coffee') : path;
   }
 }
+
 
 

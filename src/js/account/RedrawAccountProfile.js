@@ -22,6 +22,9 @@ export default class RedrawAccountProfile {
     this.phone = this.formUserData.phone;
     this.email = this.formUserData.email;
 
+    this.phone.setAttribute('readonly', true);
+
+
     // кнопки профайла
     this.groupButtonsEdit = this.el.querySelector(
       '.profile__buttons-group-edit'
@@ -62,11 +65,12 @@ export default class RedrawAccountProfile {
       });
 
     this.loadProfileData();
+    this.addAddressButton = this.el.querySelector('.profile__button-add-adress');
   }
 
   async loadProfileData() {
     try {
-      const response = await fetch('http://localhost/api/auth/info', {
+      const response = await fetch('https://dev.r18.coffee/api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -98,9 +102,9 @@ export default class RedrawAccountProfile {
 
       // Пол
       const genderInputs = document.querySelectorAll('input[name="gender"]');
-      if (data.PERSONAL_GENDER === 'man') {
+      if (data.PERSONAL_GENDER === 'M') {
         genderInputs[0].checked = true;
-      } else if (data.PERSONAL_GENDER === 'woman') {
+      } else if (data.PERSONAL_GENDER === 'F') {
         genderInputs[1].checked = true;
       }
 
@@ -127,6 +131,7 @@ export default class RedrawAccountProfile {
         addressList.innerHTML =
           '<li class="profile__address-item">Нет адресов</li>';
       }
+      this.toggleAddAddressButton(data.ADDRESSES.length);
     } catch (error) {
       console.error('Не удалось загрузить данные профиля:', error);
     }
@@ -247,10 +252,10 @@ export default class RedrawAccountProfile {
       this.email.setAttribute('no-valid', '');
     }
 
-    if (!data?.phone) {
-      this.phone.value = 'Неверно указан номер телефона';
-      this.phone.setAttribute('no-valid', '');
-    }
+    // if (!data?.phone) {
+    //   this.phone.value = 'Неверно указан номер телефона';
+    //   this.phone.setAttribute('no-valid', '');
+    // }
   }
 
   // ADDRESS
@@ -298,6 +303,17 @@ export default class RedrawAccountProfile {
   countAddresses() {
     if (this.addresses.length === 3)
       this.buttonAddAdress.style.display = 'none';
+  }
+  toggleAddAddressButton(addressCount) {
+    if (this.addAddressButton) {
+      if (addressCount === 0 || addressCount >= 3) {
+        this.addAddressButton.classList.add('profile__button_disabled');
+        this.addAddressButton.disabled = true;
+      } else {
+        this.addAddressButton.classList.remove('profile__button_disabled');
+        this.addAddressButton.disabled = false;
+      }
+    }
   }
 }
 //Отображение данных пользователя, реализовано редактирование и сохранение данных
@@ -550,7 +566,7 @@ class AddressManager {
 
 // Инициализация класса
 document.addEventListener('DOMContentLoaded', () => {
-  const addressManager = new AddressManager('http://localhost/api/auth/createuseraddress');
+  const addressManager = new AddressManager('https://dev.r18.coffee/api/auth/createuseraddress');
 });
 
 class OrderList {
@@ -592,6 +608,11 @@ class OrderList {
       // Проверяем, что данные являются массивом
       if (!Array.isArray(data)) {
         throw new Error('API response is not an array');
+      }
+
+      if (data.length === 0) {
+        this.renderError();
+        return;
       }
 
       // Преобразуем и рендерим заказы
@@ -664,7 +685,7 @@ class OrderList {
         <div class="history__delivery">${order.deliveryType}</div>
         <div class="history__delivery-cost">
           Итоговая сумма: <span class="history__delivery-cost_num">${
-            order.price
+            order.price.toFixed(0)
           }</span>
           <span class="history__delivery-cost_currency">р.</span>
         </div>
@@ -740,13 +761,13 @@ class OrderList {
 
   renderError() {
     this.ordersContainer.innerHTML = `
-        <div class="error-message">Не удалось загрузить заказы. Попробуйте позже.</div>
+        <div class="error-message_list">Вы не сделали ни одного заказа.</div>
       `;
   }
 }
 
 // Пример использования
-const orderList = new OrderList('http://localhost/api/order/list', '.history__list');
+const orderList = new OrderList('https://dev.r18.coffee/api/order/list', '.history__list');
 orderList.fetchOrders();
 
 //Это класс для отображения оформления заказа
@@ -802,7 +823,7 @@ class UserProfile {
   }
 }
 
-const userProfile = new UserProfile('http://localhost/api/auth/info');
+const userProfile = new UserProfile('https://dev.r18.coffee/api/auth/info');
 userProfile.loadProfileData();
 
 class PlaceOrderAddress {
@@ -832,7 +853,7 @@ class PlaceOrderAddress {
 
   async loadAddresses() {
     try {
-      const response = await fetch('http://localhost/api/auth/info', {
+      const response = await fetch('https://dev.r18.coffee/api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -953,7 +974,7 @@ class OrderDeliveryAndPayment {
 }
 
 let orderDeliveryAndPayment = new OrderDeliveryAndPayment(
-  'http://localhost/api/order/delivery_and_payment'
+  'https://dev.r18.coffee/api/order/delivery_and_payment'
 );
 
 orderDeliveryAndPayment
@@ -983,7 +1004,11 @@ orderDeliveryAndPayment
     });
   });
 
-//Заказ Оформление
+// Импортируем класс ApiModals
+import ApiModals from '../api-modals/ApiModals';
+
+const apiModals = new ApiModals();
+
 function submitOrder() {
   const orderData = {
     delivery_id: '',
@@ -991,13 +1016,14 @@ function submitOrder() {
     oplata: '',
     ur_litso: false,
     comment: '',
+    items: []
   };
 
   const addressForm = document.querySelector('.place-order__form-address');
   if (addressForm) {
     const formData = new FormData(addressForm);
     orderData.address = {
-      alias: formData.get('alias') || 'Адрес по умолчанию',
+      alias: formData.get('alias') || '',
       index: formData.get('zip') || '',
       oblast: formData.get('area') || '',
       gorod: formData.get('city') || '',
@@ -1010,9 +1036,7 @@ function submitOrder() {
     };
   }
 
-  const deliveryType = document.querySelector(
-    '.place-order__receiving-item_active'
-  );
+  const deliveryType = document.querySelector('.place-order__receiving-item_active');
   if (deliveryType && deliveryType.dataset.receiving) {
     const delivery_type = deliveryType.dataset.receiving;
     if (delivery_type === 'pickup') {
@@ -1032,9 +1056,7 @@ function submitOrder() {
     }
   }
 
-  const paymentInput = document.querySelector(
-    '.place-order__payment-type_active'
-  );
+  const paymentInput = document.querySelector('.place-order__payment-type_active');
   if (paymentInput && paymentInput.dataset.payment_type) {
     const paymentType = paymentInput.dataset.payment_type;
     if (paymentType === 'cash') {
@@ -1073,6 +1095,13 @@ function submitOrder() {
     }
   });
 
+  // Проверки
+  if (!orderData.delivery_id || !orderData.oplata) {
+    // Если нет способа доставки, типа оплаты или адреса
+    showModal('failed'); // Показываем модалку с ошибкой
+    return;
+  }
+
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -1082,41 +1111,73 @@ function submitOrder() {
     credentials: 'include',
   };
 
-  fetch('http://localhost/api/order/create', requestOptions)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Ошибка: ' + response.statusText);
-      }
-      return response.json();
-    })
-    .then((answer) => {
-      console.log('Ответ от сервера:', answer);
+  fetch('https://dev.r18.coffee/api/order/create', requestOptions)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Ошибка: ' + response.statusText);
+    }
+    return response.json();
+  })
+  .then((answer) => {
+    console.log('Ответ от сервера:', answer);
 
-      if (answer.errors && answer.errors.length > 0) {
-        console.error('Ошибки в заказе:', answer.errors);
-        alert('Произошли ошибки при оформлении заказа.');
-        return;
-      }
+    if (answer.errors && answer.errors.length > 0) {
+      console.error('Ошибки в заказе:', answer.errors);
+      showModal('failed'); // Показываем модалку с ошибкой
+      return;
+    }
 
-      if (answer.url && typeof answer.url === 'string') {
-        console.info('Получена ссылка на оплату:', answer.url);
+    if (answer.url && typeof answer.url === 'string') {
+      console.info('Получена ссылка на оплату:', answer.url);
+      window.location.href = answer.url; // Переходим по полученной ссылке
+      return;
+    }
 
-        window.location.href = answer.url;
-        return;
-      }
+    if (answer.status === 'success') {
+      // Получаем номер заказа из ответа и передаем в модалку
+      const orderNumber = answer.data.match(/Номер заказа: (\d+)/);
+      showModal('order-successfully', orderNumber ? orderNumber[1] : '');
+    } else {
+      console.error('Неожиданный статус ответа:', answer.status);
+      showModal('failed'); // Показываем модалку с ошибкой
+    }
+  })
+  .catch((error) => {
+    console.error('Ошибка запроса:', error);
+    showModal('failed'); // Показываем модалку с ошибкой
+  });
 
-      if (answer.status === 'success') {
-        alert('Заказ успешно оформлен!');
-      } else {
-        console.error('Неожиданный статус ответа:', answer.status);
-        alert('Что-то пошло не так. Обратитесь в службу поддержки.');
-      }
-    })
-    .catch((error) => {
-      console.error('Ошибка запроса:', error);
-      alert('Произошла ошибка при оформлении заказа.');
-    });
 }
+
+// Функция для показа модалки
+async function showModal(type, orderNumber = '') {
+  try {
+    const modal = await apiModals.read(type);
+    document.body.appendChild(modal); // Добавляем модалку в body
+    modal.style.display = 'block'; // Показываем модалку (можно добавить анимацию)
+
+    // Если это модалка с успешным заказом, подставляем номер заказа
+    if (type === 'order-successfully' && orderNumber) {
+      const orderNumberElement = modal.querySelector('.modal-order-success__number');
+      if (orderNumberElement) {
+        orderNumberElement.textContent = `№ ${orderNumber}`;
+      }
+    }
+
+    // Обработчик закрытия модального окна
+    const closeButton = modal.querySelector('.modal__close_failed');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        modal.remove(); // Удаляем модальное окно из DOM
+      });
+    }
+
+  } catch (error) {
+    console.error('Ошибка при загрузке модалки:', error);
+  }
+  
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.querySelector('#submit-order-button');
@@ -1126,3 +1187,44 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('ОТСУТСТВУЕТ :(');
   }
 });
+
+
+
+class ZipCodeInput {
+  constructor(selector) {
+    this.inputElement = document.querySelector(selector);
+
+    if (!this.inputElement) {
+      console.error(`Element with selector "${selector}" not found.`);
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+  
+    this.inputElement.addEventListener('input', (event) => {
+      const value = this.inputElement.value;
+
+ 
+      this.inputElement.value = value.replace(/\D/g, '');
+
+ 
+      if (this.inputElement.value.length > 6) {
+        this.inputElement.value = this.inputElement.value.slice(0, 6);
+      }
+    });
+
+ 
+    this.inputElement.addEventListener('blur', () => {
+      if (this.inputElement.value.length < 6) {
+        this.inputElement.value = ''; 
+        alert('Индекс должен содержать 6 цифр');
+      }
+    });
+  }
+}
+
+new ZipCodeInput('input[name="zip-code"]');
+

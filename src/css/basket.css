@@ -79,8 +79,8 @@
 }
 
 .basket__goods-img {
-    width: 2.86vw;
-    height: 3.23vw;
+    width: 4.86vw;
+    height: 5.23vw;
 
     > img {
         width: 100%;
@@ -161,7 +161,7 @@
 
 .basket__goods-info p {
     width: max-content;
-    padding-left: 19.2%;
+    padding-left: 30.2%;
 
     font-family: "SofiaSans";
     font-size: 0.68vw;
@@ -266,7 +266,7 @@
 .basket__total-price {
     display: flex;
     gap: 3.13vw;
-
+    font-size: 1.3vw;
     font-weight: 700;
 
     color: #F1551C;
@@ -486,7 +486,7 @@
 
 
 .place-order__order-summary {
-    border-top: 1px solid #ccc;
+    border-top: 2px solid white;
     padding-top: 10px;
     margin-top: 10px;
 }
@@ -500,6 +500,7 @@
     font-family: "SofiaSans";
     font-size: 1.04vw;
     font-weight: 400;
+    margin-left: 270px;
 }
 
 .place-order__total span:last-child {
@@ -512,6 +513,7 @@
 
 .place-order__total-label {
     color: orangered;
+    font-size: 1.1vw;
 }
 .place-order__discount-label_span {
     color: white;
@@ -519,4 +521,20 @@
 
 .place-order__total-label_span {
     color: orangered;
+    font-size: 1.1vw;
+}
+
+.place-order__order-item_text{
+    padding: 0.57vw 1.56vw;
+    font-family: "SofiaSans";
+    font-size: 1.25vw;
+    font-weight: 400;
+    border-radius: 1.56vw;
+    color: #FFF;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

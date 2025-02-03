@@ -48,7 +48,7 @@ class Cart {
     };
 
     // fetch('https://dev.r18.coffee/api/basket/get', requestOptions)
-    const result = await fetch('http://localhost/api/basket/get', requestOptions);
+    const result = await fetch('https://dev.r18.coffee/api/basket/get', requestOptions);
     const result2 = await result.text();
     const result3 = JSON.parse(result2);
     // console.log('%cCart:', 'color: orange; font-size: 20px;');
@@ -127,7 +127,7 @@ class Cart {
     };
 
     // fetch("https://dev.r18.coffee/api/basket/add", requestOptions)
-    fetch('http://localhost/api/basket/add', requestOptions)
+    fetch('https://dev.r18.coffee/api/basket/add', requestOptions)
       .then(this.fetchData)
       .then(this.dispatchCartUpdated)
       // .then((response) => response.text())
@@ -150,7 +150,7 @@ class Cart {
       redirect: 'follow',
     };
 
-    fetch('http://localhost/api/basket/remove', requestOptions)
+    fetch('https://dev.r18.coffee/api/basket/remove', requestOptions)
       .then(this.fetchData)
       .then(this.dispatchCartUpdated)
   }
@@ -189,7 +189,7 @@ class OrderCart {
     }
 
     if (this.cart.items.length === 0) {
-        this.list.innerHTML = '<li class="place-order__order-item">Нет товаров в корзине</li>';
+        this.list.innerHTML = '<li class="place-order__order-item_text">Нет товаров в корзине</li>';
         return;
     }
 
@@ -227,7 +227,7 @@ class OrderCart {
         <span class='place-order__discount-label_span'>${discount} р.</span>
     </div>
     <div class="place-order__total">
-        <span class="place-order__total-label">Итого</span>
+        <span class="place-order__total-label">Итого:</span>
         <span class='place-order__total-label_span'>${totalPriceWithDiscount} р.</span>
     </div>
 </li>

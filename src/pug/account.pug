@@ -91,8 +91,10 @@ block content
                             .profile__address-wr-input(data-value="Квартира/Офис") 
                                 input.profile__address-input(type="text" name="appartment" data-value="Квартира/Офис" value="Квартира/Офис" disabled)
                         .profile__address-wr-buttons 
-                            input.profile__button.profile__button-add-adress(type="button", value="+ Добавить адрес")
-                            input.profile__button.profile__button-save-adress.profile__button_disabled(type="button", value="Сохранить")
+                                input.profile__button.profile__button-save-adress.profile__button_disabled(type="button", value="Сохранить",style="margin-bottom: 20px;")
+                        .profile__add-address 
+                                 input.profile__button.profile__button-add-adress(type="button", value="+ Добавить адрес" disabled=false)
+
                     .profile__delete 
                             a(href="#0") Удалить профиль
 
@@ -175,7 +177,7 @@ block content
                                             p Нок-бокс
                                         .history__details-amount 
                                             | #[span.history__details-amount-num 1] #[span.history__details-amount_unit шт.]
-
+        
                         
                         li.history__item 
                             .history__delivery Доставка
@@ -315,7 +317,7 @@ block content
                                     li.exchange__rules-under-item - даты заключения договора и передачи товара
                                     li.exchange__rules-under-item - сумма, подлежащая возврату
                                     li.exchange__rules-under-item - подписи продавца и покупателя
-
+                        button.profile__logout-button_exchange(type="button") Выход
                         .exchange__contacts 
                             p Обмен - возврат осуществляется по адресу:
                             p Интернет-магазин Оазис.

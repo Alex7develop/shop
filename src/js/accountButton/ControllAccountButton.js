@@ -9,6 +9,9 @@ export default class ControllAccountButton extends ApiModals {
     this.IMask = IMask;
     this.api = api;
 
+    this.mask = null;
+    this.currentPlaceholder = null;
+
     this.click = this.click.bind(this);
     this.clickLogReg = this.clickLogReg.bind(this);
     this.clickLogin = this.clickLogin.bind(this);
@@ -16,9 +19,18 @@ export default class ControllAccountButton extends ApiModals {
     this.clickRecoverSuccess = this.clickRecoverSuccess.bind(this);
     this.clickRegistration = this.clickRegistration.bind(this);
     this.clickConfirmCode = this.clickConfirmCode.bind(this);
+    this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
 
-    this.mask = null;
-    this.currentPlaceholder = null;
+  }
+
+  togglePasswordVisibility(passwordInput) {
+    const currentType = passwordInput.type;
+    passwordInput.type = currentType === 'password' ? 'text' : 'password';
+    
+    const eyeIcon = passwordInput.parentElement.querySelector('.eye-icon');
+    if (eyeIcon) {
+      eyeIcon.style.opacity = currentType === 'password' ? '0.5' : '1';
+    }
   }
 
   init() {
@@ -30,8 +42,30 @@ export default class ControllAccountButton extends ApiModals {
     }
   }
 
+  togglePasswordVisibility(passwordInput) {
+    const currentType = passwordInput.type;
+    passwordInput.type = currentType === 'password' ? 'text' : 'password';
+    
+    const eyeIcon = passwordInput.parentElement.querySelector('.eye-icon');
+    if (eyeIcon) {
+      eyeIcon.style.opacity = currentType === 'password' ? '0.5' : '1';
+    }
+  }
+
   registerEvents() {
     this.redraw.el.addEventListener('click', this.click);
+     document.addEventListener('click', (e) => {
+      const toggleBtn = e.target.closest('.password-toggle-btn');
+      if (toggleBtn) {
+        const wrapper = toggleBtn.closest('.password-input-wrapper');
+        if (wrapper) {
+          const passwordInput = wrapper.querySelector('input[type="password"], input[type="text"]');
+          if (passwordInput) {
+            this.togglePasswordVisibility(passwordInput);
+          }
+        }
+      }
+    });
   }
 
   // нажатие на КНОПКУ ACCOUNT в HEADER
@@ -266,6 +300,7 @@ export default class ControllAccountButton extends ApiModals {
       resultsValidation.push(this.validationPatternPhone(form.phone));
       resultsValidation.push(this.validationCheckbox([form.confirm]));
       resultsValidation.push(this.validationPassword(form.password));
+      resultsValidation.push(this.validatePasswordMatch(form.password, form['password_confirmation']));
 
       const totalResult = resultsValidation.some((item) => item.length > 0);
 
@@ -397,7 +432,28 @@ export default class ControllAccountButton extends ApiModals {
         e.target.setAttribute('placeholder', this.currentPlaceholder);
         this.currentPlaceholder = null;
         this.redraw.showRequiredStar(input);
+       // Добавляем проверку совпадения паролей при потере фокуса
+       if (input.name === 'confirm-password') {
+        const form = input.closest('form');
+        if (form) {
+          this.validatePasswordMatch(form.password, form['confirm-password']);
+        }
+      }
+    });
+
+    // Добавляем проверку при вводе для поля подтверждения пароля
+    if (input.name === 'confirm-password') {
+      input.addEventListener('input', (e) => {
+        const form = input.closest('form');
+        if (form && form.password.value) {
+          if (input.value === form.password.value) {
+            // Сбрасываем ошибку если пароли совпадают
+            input.style.color = '#fff';
+            input.removeAttribute('data-invalid');
+          }
+        }
       });
+    }
     });
   }
   // добавляем к полю маску
@@ -511,4 +567,15 @@ export default class ControllAccountButton extends ApiModals {
 
     return totalResult;
   }
+
+  validatePasswordMatch(password, confirmPassword) {
+    const totalResult = [];
+    
+    if (password.value !== confirmPassword.value) {
+      this.redraw.incorrectData(confirmPassword, 'Пароли не совпадают');
+      totalResult.push(false);
+    }
+    return totalResult;
+  }
+
 }

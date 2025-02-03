@@ -11,7 +11,7 @@ module.exports = {
     proxy: [
       {
         context: ['/api'],
-        target: 'http://localhost',
+        target: 'https://dev.r18.coffee',
       },
     ],
   },
@@ -185,6 +185,15 @@ module.exports = {
       // title: '....' // здесь можно указать title конкретной страницы
       template: './src/pug/public-offer.pug',
       filename: './public-offer.html',   // куда компилировать
+      // minify: {
+      //   html: false // отключаем минификацию html, еще есть версия minify: false
+      // },
+      scriptLoading: 'blocking', // defer | module. можно также указать inject: 'body' скрипт будет в конце body но с defer
+    }),
+    new HtmlWebPackPlugin({
+      // title: '....' // здесь можно указать title конкретной страницы
+      template: './src/pug/error-send-order.pug',
+      filename: './error-send-order.html',   // куда компилировать
       // minify: {
       //   html: false // отключаем минификацию html, еще есть версия minify: false
       // },

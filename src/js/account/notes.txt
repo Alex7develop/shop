@@ -1,0 +1,207 @@
+import ApiModals from '../api-modals/ApiModals.js';
+
+async function submitOrder() {
+  const orderData = {
+    delivery_id: '',
+    address: {},
+    oplata: '',
+    ur_litso: false,
+    comment: '',
+  };
+
+  const addressForm = document.querySelector('.place-order__form-address');
+  if (addressForm) {
+    const formData = new FormData(addressForm);
+    orderData.address = {
+      alias: formData.get('alias') || 'Адрес по умолчанию',
+      index: formData.get('zip') || '',
+      oblast: formData.get('area') || '',
+      gorod: formData.get('city') || '',
+      ulitsa: formData.get('street') || '',
+      dom: formData.get('hause') || '',
+      podezd: formData.get('entrance') || '',
+      etazh: formData.get('stage') || '',
+      domofom: formData.get('intercom') || '',
+      room: formData.get('appartment') || '',
+    };
+  }
+const deliveryType = document.querySelector('.place-order__receiving-item_active');
+  if (deliveryType && deliveryType.dataset.receiving) {
+    const delivery_type = deliveryType.dataset.receiving;
+
+       if (delivery_type === 'pickup') orderData.delivery_id = 6;
+    if (delivery_type === 'moskow') orderData.delivery_id = 7;
+    if (delivery_type === 'moskow-area') orderData.delivery_id = 8;
+    if (delivery_type === 'regions') orderData.delivery_id = 9;
+    if (delivery_type === 'cdek') orderData.delivery_id = 10;
+  }
+
+  const paymentInput = document.querySelector('.place-order__payment-type_active');
+  if (paymentInput && paymentInput.dataset.payment_type) {
+    const paymentType = paymentInput.dataset.payment_type;
+       if (paymentType === 'cash') orderData.oplata = 3;
+    if (paymentType === 'card-site') orderData.oplata = 4;
+    if (paymentType === 'card-place') orderData.oplata = 5;
+    if (paymentType === 'legal') orderData.oplata = 6;
+  }
+
+    const legalCheckbox = document.querySelector('#legal-entity-checkbox');
+  if (legalCheckbox) {
+    orderData.ur_litso = legalCheckbox.checked;
+  }
+
+  const commentInput = document.querySelector('#order-comment');
+  if (commentInput) {
+    orderData.comment = commentInput.value;
+  }
+    const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(orderData),
+    credentials: 'include',
+  };
+ try {
+    const response = await fetch('http://localhost/api/order/create', requestOptions);
+    if (!response.ok) {
+      throw new Error('Ошибка: ' + response.statusText);
+    }
+    
+    const answer = await response.json();
+    console.log('Ответ от сервера:', answer);
+
+ if (answer.errors && answer.errors.length > 0) {
+      console.error('Ошибки в заказе:', answer.errors);
+      await showErrorModal();
+      return;
+    }
+
+    if (answer.url && typeof answer.url === 'string') {
+      console.info('Получена ссылка на оплату:', answer.url);
+      window.location.href = answer.url;
+      return;
+    }
+
+      if (answer.status === 'success') {
+      await showSuccessModal();
+    } else {
+      console.error('Неожиданный статус ответа:', answer.status);
+      await showErrorModal();
+    }
+  } catch (error) {
+    console.error('Ошибка запроса:', error);
+    await showErrorModal();
+  }
+}
+
+// Функция показа модального окна успешного оформления заказа
+async function showSuccessModal() {
+  try {
+    const api = new ApiModals();
+    const modalHtml = await api.read('order-successfully');
+    
+    const tempContainer = document.createElement('div');
+    tempContainer.innerHTML = modalHtml;
+    
+    const modal = tempContainer.querySelector('.modal-order-successfully');
+    if (!modal) {
+      throw new Error('Модальное окно не найдено');
+    }
+    
+    document.body.appendChild(modal);
+    modal.classList.add('modal_active');
+
+    // Обработчик закрытия
+    const closeModal = () => {
+      modal.classList.remove('modal_active');
+      setTimeout(() => {
+        modal.remove();
+        window.location.href = '/';
+      }, 300);
+    };
+
+    // Добавляем обработчики закрытия
+    const closeButtons = modal.querySelectorAll('.modal__close, .modal__button');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', closeModal);
+    });
+
+    // Закрытие по клику на оверлей
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Закрытие по Escape
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        document.removeEventListener('keydown', handleEscape);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+  } catch (error) {
+    console.error('Ошибка показа модального окна:', error);
+    alert('Заказ успешно оформлен!');
+  }
+}
+
+// Функция показа модального окна с ошибкой
+async function showErrorModal() {
+  try {
+    const api = new ApiModals();
+    const modalHtml = await api.read('recover-success');
+    
+    const tempContainer = document.createElement('div');
+    tempContainer.innerHTML = modalHtml;
+    
+    const modal = tempContainer.querySelector('.modal-recover-success');
+    if (!modal) {
+      throw new Error('Модальное окно не найдено');
+    }
+    
+    document.body.appendChild(modal);
+    modal.classList.add('modal_active');
+
+    // Обработчик закрытия
+    const closeModal = () => {
+      modal.classList.remove('modal_active');
+      setTimeout(() => {
+        modal.remove();
+      }, 300);
+    };
+
+    // Добавляем обработчики закрытия
+    const closeButtons = modal.querySelectorAll('.modal__close, .modal__button');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', closeModal);
+    });
+
+    // Закрытие по клику на оверлей
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Закрытие по Escape
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        document.removeEventListener('keydown', handleEscape);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+  } catch (error) {
+    console.error('Ошибка показа модального окна:', error);
+    alert('Произошла ошибка при оформлении заказа.');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const submitButton = document.querySelector('#submit-order-button');
+  if (submitButton) {
+    submitButton.addEventListener('click', submitOrder);
+  } else {
+      console.error('Кнопка отправки заказа не найдена');
+  }
+});
+ 

@@ -43,6 +43,13 @@
     cursor: pointer;
 }
 
+.modal__close_failed{
+    width: 1.56vw;
+    height: 1.41vw;
+
+    cursor: pointer;
+}
+
 .modal__wr-icon {
     margin-top: 2.60vw;
 }
@@ -478,6 +485,12 @@
 /* START ОКНО ЗАКАЗ ОТПРАВЛЕН УСПЕШНО */
 .modal-order-success {
     width: 26.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    top: 250px;
+    left: 680px;
 }
 
 .modal-order-success__info-text {
@@ -520,6 +533,12 @@
 /* START ОКНО НЕ УДАЧНЫЙ ЗАПРОС */
 .modal-failed {
     width: 26.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    top: 250px;
+    left: 680px;
 }
 
 .modal-failed__info-text {
@@ -978,5 +997,50 @@
     border-radius: 1.56vw;
     border: 0.15vw solid #FFF;
     cursor: pointer;
+}
+.profile__logout-button_exchange {
+    position: absolute;
+    top: 15vw; 
+    right: 15vw; 
+    padding: 0.57vw 1.56vw;
+    font-family: "SofiaSans";
+    font-size: 1.2vw;
+    font-weight: 400;
+    color: #FFF;
+    background: #F1551C;
+    border-radius: 1.56vw;
+    border: 0.15vw solid #FFF;
+    cursor: pointer;
+}
+
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eye-icon {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.password-toggle-btn:hover .eye-icon {
+    opacity: 0.8;
 }
 

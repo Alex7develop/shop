@@ -15,7 +15,37 @@ export default class ControllAccount extends ApiModals {
         this.blur = this.blur.bind(this);
     }
 
-    init() {
+        async init() {
+            try {
+                const response = await fetch('/api/profile/info', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include'
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+    
+                const data = await response.json();
+                
+                // Проверяем и форматируем данные адресов перед отправкой в redraw
+                if (data.addresses) {
+                    // Убеждаемся, что addresses это массив
+                    data.addresses = Array.isArray(data.addresses) ? data.addresses : [];
+                } else {
+                    data.addresses = [];
+                }
+    
+                // Отправляем данные в redraw
+                this.redraw.info(data);
+    
+            } catch (error) {
+                console.error('Error fetching profile info:', error);
+                // Обработка ошибки - можно показать сообщение пользователю
+            }
         this.registerEvents();
 
         this.redraw.history.initScroll();
@@ -38,6 +68,12 @@ export default class ControllAccount extends ApiModals {
             .forEach(item => item.addEventListener('focus', this.focus));
         [...this.redraw.profile.inputsForms['address']]
             .forEach(item => item.addEventListener('blur', this.blur));
+
+         // Добавляем обработчик на кнопку "Сохранить"
+        const saveButton = document.querySelector('.profile__button_save');
+        if (saveButton) {
+            saveButton.addEventListener('click', () => this.showEditProfileSuccessModal());
+        }   
     }
 
     initCalendar() {
@@ -206,4 +242,16 @@ export default class ControllAccount extends ApiModals {
 
         return elements;
     }
+
+    async showEditProfileSuccessModal() {
+        const result = await super.read('edit-profile-successfully');
+        const closeButton = result.querySelector('.modal__close');
+        closeButton.addEventListener('click', () => {
+            result.remove();
+        }, { once: true });
+
+        this.redraw.content.el.append(result);
+    }
+    
 }
+

@@ -44,7 +44,7 @@ export default class ApiAccountButton {
     };
 
     try {
-      const response = await fetch('http://localhost/api/auth/login', {
+      const response = await fetch('https://dev.r18.coffee/api/auth/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -70,7 +70,7 @@ export default class ApiAccountButton {
 
   async logout() {
     try {
-      const response = await fetch('http://localhost/api/auth/logout', {
+      const response = await fetch('https://dev.r18.coffee/api/auth/logout', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -116,3 +116,55 @@ document.addEventListener('DOMContentLoaded', function () {
     logoutButton.addEventListener('click', handleLogout);
   }
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const apiAccountButton = new ApiAccountButton();
+
+  async function handleLogout() {
+    const result = await apiAccountButton.logout();
+    console.log('Result', result);
+    if (result) {
+      window.location.href = '/';
+    } else {
+      alert('Произошла ошибка при выходе.');
+    }
+  }
+
+  const logoutButton = document.querySelector('.profile__logout-button_exchange');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', handleLogout);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const orderButton = document.querySelector(".basket__button");
+
+  if (orderButton) {
+    orderButton.addEventListener("click", async (event) => {
+      event.preventDefault(); // предотвращаем стандартный переход по ссылке
+
+      try {
+        const response = await fetch("https://dev.r18.coffee/api/auth/info", {
+          method: "GET",
+          credentials: "include", // чтобы отправлять куки сессии
+        });
+
+        const data = await response.json();
+        console.log("Ответ API:", data); // Посмотрим, что приходит от API
+
+        // Проверяем, есть ли в ответе ключевые данные, указывающие на авторизованного пользователя
+        const isAuthenticated = data.EMAIL && data.LOGIN;
+
+        if (response.ok && isAuthenticated) {
+          window.location.href = "./place-an-order.html";
+        } else {
+          window.location.href = "./error-send-order.html";
+        }
+      } catch (error) {
+        console.error("Ошибка при проверке авторизации:", error);
+        window.location.href = "./error-send-order.html";
+      }
+    });
+  }
+  
+});
+

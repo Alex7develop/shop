@@ -55,9 +55,16 @@ export default class RedrawBasketButton {
         // if(!this.el.classList.contains('header__basket_active')) {
         //     this.el.classList.add('header__basket_active');
         // }
+        if (totalQuantity > 0) {
+            this.changeAmountColorToOrange();
+        } else {
+            this.amount.classList.remove('header__basket-amount_orange');
+        }
     }
 
-
+    changeAmountColorToOrange() {
+        this.amount.classList.add('header__basket-amount_orange');
+    }
 
     // изменение количества товара в корзине визуально
     calcAmountGoods(button) {

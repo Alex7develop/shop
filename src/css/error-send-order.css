@@ -1,0 +1,149 @@
+.wrapper-er-order {
+  background:
+  no-repeat url(../img/roasteria-side.webp),
+   no-repeat url(../img/roasteria-side.webp),
+     #483D41
+  ;
+  background-position:
+   right 0.35vw top 8vw,
+    left 0.35vw top 8vw 
+  ;
+  background-size: 10.9vw auto, 10.9vw auto;
+}
+
+.main-er-order {
+  padding-top: 4.90vw;
+  padding-bottom: 18.28vw;
+
+  background: none;
+}
+
+.er-order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55.6%;
+  margin: 0 auto;
+  padding-top: 3.07vw;
+  padding-right: 3.13vw;
+  padding-bottom: 2.50vw;
+  padding-left: 3.13vw;
+
+  background: #726B68;
+  box-shadow: 
+      4.22vw 9.48vw 2.92vw 0px rgba(0, 0, 0, 0.00), 
+      2.71vw 6.04vw 2.66vw 0px rgba(0, 0, 0, 0.02), 
+      1.51vw 65px 2.24vw 0px rgba(0, 0, 0, 0.08), 
+      0.68vw 1.51vw 1.67vw 0px rgba(0, 0, 0, 0.13), 
+      0.16vw 0.36vw 0.89vw 0px rgba(0, 0, 0, 0.15);
+}
+
+.er-order__icon {
+  width: 6.51vw;
+  height: 6.51vw;
+
+  background: no-repeat url('../img/icons/modal__sad-icon.webp');
+  background-size: contain;
+  background-position: center;
+}
+
+.er-order__text {
+  margin-top: 1.77vw;
+
+  font-family: "SofiaSans";
+  font-size: 1.25vw;
+  font-weight: 400;
+  text-align: center;
+
+  color: #FFF;
+}
+
+.er-order__text a {
+  color: inherit;
+}
+
+.er-order__wr-button {
+  display: flex;
+  margin-top: 6.56vw;
+  justify-content: center;
+}
+
+.er-order__button {
+  padding: 0.57vw 1.67vw;
+
+  font-family: "SofiaSans";
+  font-size: 0.83vw;
+  font-weight: 400;
+
+  color: #FFF;
+  border-radius: 1.56vw;
+  border: 0.15vw solid #FFF;
+  background: #F1551C;
+
+  cursor: pointer;
+}
+
+
+
+
+
+@media(max-width: 1200px) {
+  .wrapper-er-order  {
+      background-position:
+       right 0.35vw top 24vw,
+        left 0.35vw top 24vw
+      ;
+  }
+}
+
+@media(max-width: 1200px) {
+  .main-er-order {
+      padding-top: 11.8vw;
+      padding-bottom: 0;
+  }
+}
+
+@media(max-width: 1200px) {
+  .er-order {
+      width: 89.35%;
+      padding-top: 10.40vw;
+      padding-bottom: 10.67vw;
+      padding-left: 0;
+      padding-right: 0;
+  }
+}
+
+@media(max-width: 961px) {
+  .er-order__icon {
+      width: 26.67vw;
+      height: 26.67vw;
+  }
+}
+
+@media(max-width: 961px) {
+  .er-order__text {
+      width: 74%;
+      margin-top: 12.27vw;
+
+      font-size: 4.80vw;
+  }
+}
+
+@media(max-width: 961px) {
+  .er-order__wr-button {
+      margin-top: 7.20vw;
+  }
+}
+
+@media(max-width: 961px) {
+  .er-order__button {
+      padding: 2.40vw 4.80vw;
+
+      font-size: 4.27vw;
+
+      border-radius: 8vw;
+      border: 0;
+      background: #F1551C;
+      box-shadow: 31px 18px 10px 0px rgba(0, 0, 0, 0.00), 20px 12px 9px 0px rgba(0, 0, 0, 0.02), 11px 7px 8px 0px rgba(0, 0, 0, 0.08), 5px 3px 6px 0px rgba(0, 0, 0, 0.13), 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+  }
+}
