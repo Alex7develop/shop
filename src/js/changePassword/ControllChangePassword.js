@@ -75,11 +75,20 @@ export default class ControllChangePassword extends Encrypt {
             // console.log(pass);
             // console.log(confirmed_pass);
             (async () => {
-                data.pass = await super._encrypt(pass, data.USER_CHECKWORD);
-                data.confirmed_pass = await super._encrypt(confirmed_pass, data.USER_CHECKWORD);
+                try {
+                    // Ждем завершения шифрования
+                    data.pass = await super._encrypt(pass, data.USER_CHECKWORD);
+                    data.confirmed_pass = await super._encrypt(confirmed_pass, data.USER_CHECKWORD);
+            
+                    // Теперь data содержит зашифрованные значения
+                    console.log("Зашифрованные данные:", data);
+            
+                    // Вызываем API только после завершения шифрования
+                    this.api.create(data);
+                } catch (error) {
+                    console.error("Ошибка при шифровании:", error);
+                }
             })();
-
-            this.api.create(data);
         }
     }
 

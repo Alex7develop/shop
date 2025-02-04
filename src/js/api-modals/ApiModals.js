@@ -5,7 +5,9 @@ export default class ApiModals {
 
     async read(type) {
         try {
-            const response = await fetch(`../__modal-${type}.html`, {
+            const ApiUrl = `https://dev.r18.coffee/__modal-${type}`
+            console.log(ApiUrl);
+            const response = await fetch(ApiUrl, {
                 headers: {
                     'Content-Type': 'text/html'
                 }

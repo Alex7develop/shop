@@ -538,7 +538,13 @@ input:-webkit-autofill:focus,input:-webkit-autofill:active,input:-webkit-autofil
 
     color: #FFF;
 }
+.history__delivery-cost_num{
+    color: #FFF;
+}
 
+.history__delivery-cost_currency{
+    color: #FFF;
+}
 .history__delivery-cost,
 .history__order-state-list {
     color: #F37548;

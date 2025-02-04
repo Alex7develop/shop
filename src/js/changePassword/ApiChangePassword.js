@@ -5,7 +5,7 @@ export default class ApiChangePassword {
 
     async create(data) {
         try {
-            const response = await fetch('', {
+            const response = await fetch('https://dev.r18.coffee/api/auth/approverecoverpass', {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'

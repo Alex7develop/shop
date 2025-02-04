@@ -1,29 +1,41 @@
 export default class Encrypt {
-    _encrypt(data, key) {
-        // Generate a random initialization vector (IV)
-        const ivLength = 16; // AES block size for CBC mode
-        const iv = window.crypto.getRandomValues(new Uint8Array(ivLength));
-    
-        // Encrypt data using AES-256-CBC
+    async _encrypt(data, key) {
+        // Генерация случайного IV (16 байт)
+        const iv = window.crypto.getRandomValues(new Uint8Array(16));
+
+        // Преобразуем ключ в бинарный формат и хешируем его с использованием SHA-256
         const encoder = new TextEncoder();
+        const keyData = encoder.encode(key);
+        const hashedKey = await window.crypto.subtle.digest('SHA-256', keyData);
+
+        // Импортируем ключ для использования в AES-CBC
+        const importedKey = await window.crypto.subtle.importKey(
+            'raw',
+            hashedKey,
+            { name: 'AES-CBC' },
+            false, // Не экспортируемый ключ
+            ['encrypt', 'decrypt']
+        );
+
+        // Преобразуем данные в бинарный формат
         const encodedData = encoder.encode(data);
-        
-        return window.crypto.subtle.importKey('raw', encoder.encode(key), { name: 'AES-CBC' }, false, ['encrypt'])
-            .then(importedKey => {
-                return window.crypto.subtle.encrypt(
-                    {
-                        name: 'AES-CBC',
-                        iv: iv
-                    },
-                    importedKey,
-                    encodedData
-                );
-            })
-            .then(encryptedData => {
-                const combinedData = new Uint8Array(ivLength + encryptedData.byteLength);
-                combinedData.set(iv);
-                combinedData.set(new Uint8Array(encryptedData), ivLength);
-                return btoa(String.fromCharCode.apply(null, combinedData));
-            });
+
+        // Шифруем данные с использованием AES-256-CBC
+        const encryptedData = await window.crypto.subtle.encrypt(
+            {
+                name: 'AES-CBC',
+                iv: iv
+            },
+            importedKey,
+            encodedData
+        );
+
+        // Объединяем IV и зашифрованные данные
+        const combinedData = new Uint8Array(iv.length + encryptedData.byteLength);
+        combinedData.set(iv);
+        combinedData.set(new Uint8Array(encryptedData), iv.length);
+
+        // Кодируем результат в Base64
+        return btoa(String.fromCharCode.apply(null, combinedData));
     }
 }

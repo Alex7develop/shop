@@ -654,7 +654,7 @@ class OrderList {
         from: data.Delivery_data_from || '',
         to: data.Delivery_data_to || '',
       },
-      price: data.Price || 0,
+      price: parseFloat(data.Price) || 0,
       state: data.State || 'Неизвестно',
       items: Array.isArray(data.Entities)
         ? data.Entities.map((entity) => {
@@ -684,22 +684,14 @@ class OrderList {
       orderItem.innerHTML = `
         <div class="history__delivery">${order.deliveryType}</div>
         <div class="history__delivery-cost">
-          Итоговая сумма: <span class="history__delivery-cost_num">${
-            order.price.toFixed(0)
-          }</span>
+          Итоговая сумма: <span class="history__delivery-cost_num">${order.price.toFixed(0)}</span>
           <span class="history__delivery-cost_currency">р.</span>
         </div>
         <div class="history__delivery-address">${order.address}</div>
         <div class="history__delivery-date">
-          ${
-            order.deliveryDate.from && order.deliveryDate.to
-              ? `${order.deliveryDate.from} - ${order.deliveryDate.to}`
-              : ''
-          }
+          ${order.deliveryDate.from && order.deliveryDate.to ? `${order.deliveryDate.from} - ${order.deliveryDate.to}` : ''}
         </div>
-        <div class="history__order-number"><span class="history__order-number_num">${
-          order.id
-        }</span></div>
+        <div class="history__order-number"><span class="history__order-number_num">${order.id}</span></div>
         <ul class="history__order-state-list">
           ${this.getOrderStateList(order.state)}
         </ul>
@@ -711,25 +703,35 @@ class OrderList {
           </label>
           <ul class="history__details-list">
             ${order.items
-              .map(
-                (item) => `
-              <li class="history__details-item">
-                <div class="history__details-wr-img">
-                  <img src="${item.image}" alt="фото заказанного товара">
-                </div>
-                <div class="history__details-description">
-                  <p>${item.name}</p>
-                  <p>Помол: ${item.grind}, Обжарка: ${item.roast}</p>
-                  <p>Сорт: ${item.variety}, Вес: ${item.weight}</p>
-                  <p>Урожай: ${item.year}</p>
-                </div>
-                <div class="history__details-amount">
-                  <span class="history__details-amount-num">${item.quantity}</span>
-                  <span class="history__details-amount_unit">шт</span>
-                </div>
-              </li>
-            `
-              )
+              .map((item) => {
+                let details = [];
+
+                if (item.grind && item.grind !== 'Не указано') details.push(`<p>Помол: ${item.grind}</p>`);
+                if (item.roast && item.roast !== 'Не указано') details.push(`<p>Обжарка: ${item.roast}</p>`);
+                if ((item.variety && item.variety !== 'Не указано') || (item.weight && item.weight !== 'Не указано')) {
+                  let varietyWeight = [];
+                  if (item.variety && item.variety !== 'Не указано') varietyWeight.push(`Сорт: ${item.variety}`);
+                  if (item.weight && item.weight !== 'Не указано') varietyWeight.push(`Вес: ${item.weight}`);
+                  details.push(`<p>${varietyWeight.join(', ')}</p>`);
+                }
+                if (item.year && item.year !== 'Не указано') details.push(`<p>Урожай: ${item.year}</p>`);
+
+                return `
+                  <li class="history__details-item">
+                    <div class="history__details-wr-img">
+                      <img src="${item.image}" alt="фото заказанного товара">
+                    </div>
+                    <div class="history__details-description">
+                      <p>${item.name}</p>
+                      ${details.length > 0 ? details.join('') : ''}
+                    </div>
+                    <div class="history__details-amount">
+                      <span class="history__details-amount-num">${item.quantity}</span>
+                      <span class="history__details-amount_unit">шт</span>
+                    </div>
+                  </li>
+                `;
+              })
               .join('')}
           </ul>
         </div>
@@ -738,6 +740,7 @@ class OrderList {
       this.ordersContainer.appendChild(orderItem);
     });
   }
+
 
   getOrderStateList(state) {
     const states = [
