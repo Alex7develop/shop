@@ -75,7 +75,9 @@ export default class CartItem {
       PROPS,
     } = this.product;
 
+    console.log("%cКартинки в объекте ===> ', 'color: red; font-size: 20px;", PROPS.PROPERTY_PICTURES_VALUE);
     const IMAGE_PATH = CartItem.getImagePath(PROPS.PROPERTY_PICTURES_VALUE);
+    console.log("%cПервая картинка ТУТ:', 'color: teal; font-size: 20px;", PROPS.PROPERTY_PICTURES_VALUE[0]);
     const discountMessage = this.checkDiscount();
 
     return (`
@@ -115,6 +117,4 @@ export default class CartItem {
     return path.match(/http?s:\/\/localhost/) ? path.replace('localhost', 'dev.r18.coffee') : path;
   }
 }
-
-
 

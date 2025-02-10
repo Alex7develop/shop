@@ -134,11 +134,31 @@
     display: flex;
 }
 
+/* @keyframes blink {
+    0% {
+        background-color: #F1551C;
+        color: white;
+        border-color: white;
+    }
+    50% {
+        background-color: rgba(241, 85, 28, 0.5); 
+        color: rgba(255, 255, 255, 0.5);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        background-color: #F1551C;
+        color: white;
+        border-color: white;
+    }
+} */
+
 .header__basket-amount_orange {
     background-color: #F1551C; 
     color: white; 
     border: 1px solid white;
+    animation: blink 2s infinite ease-in-out;
 }
+
 
 .header__basket:hover {
     border-color: #F1551C;
@@ -231,7 +251,7 @@
 
 
 /* orders-are-temporary */
-.orders-are-temporary {
+/* .orders-are-temporary {
     position: relative;
 
     display: flex;
@@ -260,7 +280,7 @@
     text-decoration: underline;
 
     color: #F1551C;
-}
+} */
 
 /* orders-are-temporary end */
 
@@ -821,3 +841,7 @@ text-align: center;
     opacity: 1;
 }
 
+.basket__total-price-old::after {
+    content: "р.";
+    margin-left: 4px;
+  }

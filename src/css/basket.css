@@ -161,7 +161,7 @@
 
 .basket__goods-info p {
     width: max-content;
-    padding-left: 30.2%;
+    padding-left: 25.2%;
 
     font-family: "SofiaSans";
     font-size: 0.68vw;
@@ -509,11 +509,14 @@
 
 .place-order__discount-label {
     color: white;
+    margin-left: -20px;
 }
 
 .place-order__total-label {
+    font-weight: bold;
     color: orangered;
     font-size: 1.1vw;
+    margin-left: -15px;
 }
 .place-order__discount-label_span {
     color: white;

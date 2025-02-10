@@ -861,3 +861,28 @@
 @media( max-width: 1200px ) {
     
 }
+/*Все для анимации после последней встречи!*/
+/* @keyframes moveToCart {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(150px, -150px) scale(0.3); 
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(300px, -300px) scale(0.1); 
+        opacity: 0;
+    }
+}
+
+.animate-to-cart {
+    animation: moveToCart 0.25s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
+
+.move-animation {
+    animation: moveToCart 0.25s cubic-bezier(0.7, 0, 1, 0.8) forwards;
+} */
+
+

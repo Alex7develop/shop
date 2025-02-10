@@ -401,6 +401,10 @@ module.exports = {
           to: 'files/Политика_в_отношении_обработки_персональных_данных_R18.pdf',
         },
         {
+          from: 'src/files/public-offer-R18.pdf',
+          to: 'files/public-offer-R18.pdf',
+        },
+        {
           from: 'src/files/conditions-ctm.pdf',
           to: 'files/conditions-ctm.pdf',
         },
@@ -421,6 +425,10 @@ module.exports = {
         {
           from: 'src/modals-html/__modal-edit-profile-successfully.html',
           to: './__modal-edit-profile-successfully.html',
+        },
+        {
+          from: 'src/modals-html/__modal-reg-successfull.html',
+          to: './__modal-reg-successfull.html',
         },
         {
           from: 'src/modals-html/__modal-log-reg.html',

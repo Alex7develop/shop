@@ -1422,3 +1422,16 @@
     }
 }
 
+::placeholder {
+    color: white;
+    opacity: 1; /* Полностью видимый */
+  }
+  
+  :-ms-input-placeholder { /* Для Internet Explorer 10-11 */
+    color: white;
+  }
+  
+  ::-ms-input-placeholder { /* Для Microsoft Edge */
+    color: white;
+  }
+  

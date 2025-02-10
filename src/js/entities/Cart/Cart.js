@@ -223,7 +223,7 @@ class OrderCart {
     const totalHtml = `
         <li class="place-order__order-summary">
     <div class="place-order__discount">
-        <span class="place-order__discount-label">Скидка</span>
+        <span class="place-order__discount-label">Скидка:</span>
         <span class='place-order__discount-label_span'>${discount} р.</span>
     </div>
     <div class="place-order__total">

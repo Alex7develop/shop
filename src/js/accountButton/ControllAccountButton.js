@@ -402,9 +402,19 @@ export default class ControllAccountButton extends ApiModals {
         alert('Ошибка: ' + (result.MESSAGE || 'Попробуйте снова.'));
         return;
       }
+      // Закрываем модальное окно ввода кода
+    this.redraw.closeModal();
+    
+    // Ожидаем появления модалки об успешной регистрации
+    const successModal = await super.read('reg-successfull');
+    if (successModal) {
+      this.redraw.openNewModal(successModal);
+    }
 
-      alert('Регистрация успешно завершена!');
-      this.redraw.closeModal();
+
+    setTimeout(() => {
+      window.location.href = '/'; 
+    }, 1000);
     } catch (error) {
       console.error('Ошибка при отправке данных:', error);
       alert('Не удалось подтвердить код. Проверьте соединение с интернетом.');

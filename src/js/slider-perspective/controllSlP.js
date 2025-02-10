@@ -35,74 +35,81 @@ export default class ControllSLP {
 
     click(e) {
         e.preventDefault();
-
-        if(e.target.closest('.slider__arrow-next')) {
+    
+        if (e.target.closest('.slider__arrow-next')) {
             this.d.next();
         }
-
-        if(e.target.closest('.slider__arrow-prev')) {
+    
+        if (e.target.closest('.slider__arrow-prev')) {
             this.d.prev();
         }
-
-        if(e.target.closest('.sl-p__size-item')) {
+    
+        if (e.target.closest('.sl-p__size-item')) {
             this.d.choosingSize(e.target.closest('.sl-p__size-item'));
         }
-
-        if(e.target.closest('.sl-p__card-slider-pag-item')) {
+    
+        if (e.target.closest('.sl-p__card-slider-pag-item')) {
             const el = e.target.closest('.sl-p__card-slider-pag-item');
             const index = +el.dataset.num;
             this.d.mooveCardSlider(index);
         }
-
-        if(e.target.closest('.sl-p__card-slider-color-item')) {
+    
+        if (e.target.closest('.sl-p__card-slider-color-item')) {
             const list = e.target.closest('.sl-p__card-slider-color-list');
-            const article = list.dataset.article
+            const article = list.dataset.article;
             const el = e.target.closest('.sl-p__card-slider-color-item');
             const id = el.id;
             const color = el.dataset.color;
             console.log('Chosen color:', color);
             this.d.changeColor(id, color, article);
         }
-
-        if(e.target.closest('.sl-p__card-link')) {
-            // this.d.scrollToContacts();
+    
+        if (e.target.closest('.sl-p__card-link')) {
+            // Получаем кнопку и карточку товара
             const button = e.target.closest('.sl-p__card-link');
-            const section = button.closest('section');
             const card = e.target.closest('.sl-p__card');
+    
+            // Добавляем анимацию на карточку
+            // card.classList.add('animate-to-cart');
+    
+            // // Убираем анимацию через 1 секунду (по завершению анимации)
+            // setTimeout(() => {
+            //     card.classList.remove('animate-to-cart');
+            // }, 300);
+    
+            // Логика добавления товара в корзину
+            const section = button.closest('section');
             const el_color = card.querySelector('.sl-p__card-slider-color-item_active');
             const index_color = +el_color.dataset.color_id;
             const size = card.querySelector('.sl-p__size-item_active');
-
+    
             let choice = {
-                sectionName : section.className,
-                article : button.dataset.article,
-                color : el_color.dataset.color,
-                size : size.children[0].textContent
-            }
-
+                sectionName: section.className,
+                article: button.dataset.article,
+                color: el_color.dataset.color,
+                size: size.children[0].textContent
+            };
+    
             const allDataChoice = this.d.data.find(item => choice.article === item.article);
-            const imgUrl = 
-                allDataChoice[choice.color]?.img[index_color] 
-                || 
+            const imgUrl =
+                allDataChoice[choice.color]?.img[index_color] ||
                 allDataChoice.black.img[0];
-
+    
             const data = {
-                ...choice, 
-                price : allDataChoice.price,
+                ...choice,
+                price: allDataChoice.price,
                 imgUrl,
-                title : allDataChoice.title,
-                description : allDataChoice.description,
-                amount : 1,
+                title: allDataChoice.title,
+                description: allDataChoice.description,
+                amount: 1,
             };
     
             const main_offer_id = getMainOfferID(choice);
-
+    
             window.cart.add(main_offer_id);
-
-            // console.log(choice);
-            // this.addToBasket(data);
         }
     }
+    
 
     touchStart(e) {      
         // свайп внешнего слайда  

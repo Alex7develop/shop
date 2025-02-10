@@ -668,6 +668,7 @@ class OrderList {
               weight: product.PROPERTY_VES_VALUE || 'Не указано',
               year: product.PROPERTY_YROJAI_VALUE || 'Не указано',
               image: (product.PROPERTY_PICTURES_VALUE_SRC || [])[0] || '',
+              size: product.PROPERTY_SIZE_VALUE || 'Не указано',
             };
           })
         : [],
@@ -675,71 +676,75 @@ class OrderList {
   }
 
   renderOrders(orders) {
-    this.ordersContainer.innerHTML = '';
+  this.ordersContainer.innerHTML = '';
 
-    orders.forEach((order) => {
-      const orderItem = document.createElement('li');
-      orderItem.classList.add('history__item');
+  orders.forEach((order) => {
+    const orderItem = document.createElement('li');
+    orderItem.classList.add('history__item');
 
-      orderItem.innerHTML = `
-        <div class="history__delivery">${order.deliveryType}</div>
-        <div class="history__delivery-cost">
-          Итоговая сумма: <span class="history__delivery-cost_num">${order.price.toFixed(0)}</span>
-          <span class="history__delivery-cost_currency">р.</span>
-        </div>
-        <div class="history__delivery-address">${order.address}</div>
-        <div class="history__delivery-date">
-          ${order.deliveryDate.from && order.deliveryDate.to ? `${order.deliveryDate.from} - ${order.deliveryDate.to}` : ''}
-        </div>
-        <div class="history__order-number"><span class="history__order-number_num">${order.id}</span></div>
-        <ul class="history__order-state-list">
-          ${this.getOrderStateList(order.state)}
+    orderItem.innerHTML = `
+      <div class="history__delivery">${order.deliveryType}</div>
+      <div class="history__delivery-cost">
+        Итоговая сумма: <span class="history__delivery-cost_num">${order.price.toFixed(0)}</span>
+        <span class="history__delivery-cost_currency">р.</span>
+      </div>
+      <div class="history__delivery-address">${order.address}</div>
+      <div class="history__delivery-date">
+        ${order.deliveryDate.from && order.deliveryDate.to ? `${order.deliveryDate.from} - ${order.deliveryDate.to}` : ''}
+      </div>
+      <div class="history__order-number"><span class="history__order-number_num">${order.id}</span></div>
+      <ul class="history__order-state-list">
+        ${this.getOrderStateList(order.state)}
+      </ul>
+      <div class="history__wr-details">
+        <input class="history__details-title_checkbox" type="checkbox" />
+        <label class="history__details-title" data-state="0">
+          <span class="history__details-title-text">Посмотреть детали заказа</span>
+          <span class="history__details-title-arrow"></span>
+        </label>
+        <ul class="history__details-list">
+          ${order.items
+            .map((item) => {
+              let details = [];
+
+              if (item.grind && item.grind !== 'Не указано') details.push(`<p>Помол: ${item.grind}</p>`);
+              if (item.roast && item.roast !== 'Не указано') details.push(`<p>Обжарка: ${item.roast}</p>`);
+              if ((item.variety && item.variety !== 'Не указано') || (item.weight && item.weight !== 'Не указано')) {
+                let varietyWeight = [];
+                if (item.variety && item.variety !== 'Не указано') varietyWeight.push(`Сорт: ${item.variety}`);
+                if (item.weight && item.weight !== 'Не указано') varietyWeight.push(`Вес: ${item.weight}`);
+                details.push(`<p>${varietyWeight.join(', ')}</p>`);
+              }
+              if (item.year && item.year !== 'Не указано') details.push(`<p>Урожай: ${item.year}</p>`);
+
+              // Add size details if available
+              if (item.size && item.size !== 'Не указано') details.push(`<p>Размер: ${item.size}</p>`);
+
+              return `
+                <li class="history__details-item">
+                  <div class="history__details-wr-img">
+                    <img src="${item.image}" alt="фото заказанного товара">
+                  </div>
+                  <div class="history__details-description">
+                    <p>${item.name}</p>
+                    ${details.length > 0 ? details.join('') : ''}
+                  </div>
+                  <div class="history__details-amount">
+                    <span class="history__details-amount-num">${item.quantity}</span>
+                    <span class="history__details-amount_unit">шт</span>
+                  </div>
+                </li>
+              `;
+            })
+            .join('')}
         </ul>
-        <div class="history__wr-details">
-          <input class="history__details-title_checkbox" type="checkbox" />
-          <label class="history__details-title" data-state="0">
-            <span class="history__details-title-text">Посмотреть детали заказа</span>
-            <span class="history__details-title-arrow"></span>
-          </label>
-          <ul class="history__details-list">
-            ${order.items
-              .map((item) => {
-                let details = [];
+      </div>
+    `;
 
-                if (item.grind && item.grind !== 'Не указано') details.push(`<p>Помол: ${item.grind}</p>`);
-                if (item.roast && item.roast !== 'Не указано') details.push(`<p>Обжарка: ${item.roast}</p>`);
-                if ((item.variety && item.variety !== 'Не указано') || (item.weight && item.weight !== 'Не указано')) {
-                  let varietyWeight = [];
-                  if (item.variety && item.variety !== 'Не указано') varietyWeight.push(`Сорт: ${item.variety}`);
-                  if (item.weight && item.weight !== 'Не указано') varietyWeight.push(`Вес: ${item.weight}`);
-                  details.push(`<p>${varietyWeight.join(', ')}</p>`);
-                }
-                if (item.year && item.year !== 'Не указано') details.push(`<p>Урожай: ${item.year}</p>`);
+    this.ordersContainer.appendChild(orderItem);
+  });
+}
 
-                return `
-                  <li class="history__details-item">
-                    <div class="history__details-wr-img">
-                      <img src="${item.image}" alt="фото заказанного товара">
-                    </div>
-                    <div class="history__details-description">
-                      <p>${item.name}</p>
-                      ${details.length > 0 ? details.join('') : ''}
-                    </div>
-                    <div class="history__details-amount">
-                      <span class="history__details-amount-num">${item.quantity}</span>
-                      <span class="history__details-amount_unit">шт</span>
-                    </div>
-                  </li>
-                `;
-              })
-              .join('')}
-          </ul>
-        </div>
-      `;
-
-      this.ordersContainer.appendChild(orderItem);
-    });
-  }
 
 
   getOrderStateList(state) {

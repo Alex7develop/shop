@@ -275,11 +275,11 @@ window.addEventListener('load', async () => {
   }
 
   // Заказы временно через контакты
-  const contacts = document.querySelector('.contacts');
-  const temporaryLink = document.querySelector('.orders-are-temporary a');
-  if (contacts && temporaryLink) {
-    temporaryOrders(temporaryLink, contacts);
-  }
+  // const contacts = document.querySelector('.contacts');
+  // const temporaryLink = document.querySelector('.orders-are-temporary a');
+  // if (contacts && temporaryLink) {
+  //   temporaryOrders(temporaryLink, contacts);
+  // }
 
   // SERVICE смена карточек
   const service = document.querySelector('.service');

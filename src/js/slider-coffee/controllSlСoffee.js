@@ -54,49 +54,45 @@ export default class ControllSlСoffee {
             );
         }
 
-        if(e.target.closest('.sl-prod__button-slide')) {
-            // this.d.scrollToContacts();
-
-            // article: "3"
-            // color: ""
-            // imgUrl: ['./img/content/accessories-nok-box-motta-105-content.webp']
-            // price: "4 000 p."
-            // sectionName: "accessories"
-            // size: "105 мм"
-            // title: "Нок-бокс"
-
-            const card = e.target.closest('li');
-
+        if (e.target.closest('.sl-prod__button-slide')) {
+            const button = e.target.closest('.sl-prod__slide'); 
+        
+            // Добавляем класс анимации
+            // button.classList.add('move-animation');
+        
+            // // Убираем класс после завершения анимации
+            // setTimeout(() => {
+            //     button.classList.remove('move-animation');
+            // }, 300);
+        
+            const card = button.closest('li'); // Получаем карточку товара
+        
             let choice = {
-                article : card.dataset.id,
-                part : card.dataset.part,
-                packing : card.dataset.packing,
-                imgUrl : '',
-                sectionName : 'coffee',
-                amount : 1,
-            }
-
-            // для фильтр кофе получаем значение радио кнопок (зерно/помол)
+                article: card.dataset.id,
+                part: card.dataset.part,
+                packing: card.dataset.packing,
+                imgUrl: '',
+                sectionName: 'coffee',
+                amount: 1,
+            };
+        
+            // Получаем значение радио кнопок (зерно/помол)
             const radioForm = card.querySelector('form');
-            if(radioForm) {
+            if (radioForm) {
                 const radioButtons = radioForm['sl-prod-radio'];
-                const valueButtonChecked = [...radioButtons].find(i => i.checked).value;
+                const valueButtonChecked = [...radioButtons].find(i => i.checked)?.value;
                 choice.grinding = valueButtonChecked;
             }
-
+        
             const coffee = this.d.data.find(item => {
-                return (
-                    item.id === choice.article && item.packing === card.dataset.packing
-                );
+                return item.id === choice.article && item.packing === card.dataset.packing;
             });
-  
-            // значение набор (того что получит в итоге покупатель)
+        
             choice.part = coffee.part;
             choice.description = coffee.description;
-
-            // если дрип пакет то подставляем путь к картинке набор 
-            // если другой то картинка пачка кофе
-            if(coffee?.img_part) {
+        
+            // Если дрип-пакет, то используем картинку набора, иначе пачки кофе
+            if (coffee?.img_part) {
                 choice.imgUrl = coffee.img_part;
                 choice.article = coffee.part;
                 choice.title = coffee.part;
@@ -104,9 +100,10 @@ export default class ControllSlСoffee {
                 choice.imgUrl = coffee.img;
                 choice.title = coffee.title;
             }
-
+        
             this.addToBasket(choice);
         }
+        
 
         if (e.target.closest('.sl-prod__button-slide_drip')) {
             // alert(e.target.title)
