@@ -87,8 +87,15 @@ class Cart {
         console.warn('Cart: Элемент .basket__goods-list не найден.');
     }
 
+    const discount = this.total_price.sum_without_discount - this.total_price.sum_with_discount;
+
     if (this.totalPriceOldEl) {
-        this.totalPriceOldEl.innerHTML = this.total_price.sum_without_discount;
+        if (discount > 0) {
+            this.totalPriceOldEl.innerHTML = this.total_price.sum_without_discount;
+            this.totalPriceOldEl.style.display = '';
+        } else {
+            this.totalPriceOldEl.style.display = 'none';
+        }
     } else {
         console.warn('Cart: Элемент .basket__total-price-old не найден.');
     }
@@ -100,12 +107,11 @@ class Cart {
     }
 
     if (this.discountEl) {
-        this.discountEl.innerHTML = this.total_price.sum_without_discount - this.total_price.sum_with_discount;
+        this.discountEl.innerHTML = discount;
     } else {
         console.warn('Cart: Элемент .basket__total-discount-num span не найден.');
     }
-}
-
+  }
 
   add(id) {
     const myHeaders = new Headers();

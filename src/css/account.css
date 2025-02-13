@@ -684,6 +684,11 @@ input:-webkit-autofill:focus,input:-webkit-autofill:active,input:-webkit-autofil
     margin-left: 0.52vw;
 }
 
+.history__details-description p:first-of-type {
+   color: #F37548;
+   text-transform: uppercase;
+  }
+
 .history__details-amount {
     padding-left: 1.46vw;
     padding-right: 1.46vw;

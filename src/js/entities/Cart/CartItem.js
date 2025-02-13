@@ -60,7 +60,7 @@ export default class CartItem {
         <p class="basket__goods-info-text" style="color: white; margin: 0;">
           Скидка составляет <span style="color: #F6724A; font-weight: 600;">10%</span>, так как Вы заказали более <span style="color: #F6724A; font-weight: 600;">10 Дрип пакетов</span> кофе
         </p>`;
-      }
+    }
 
     return discountMessage;
   }
@@ -73,12 +73,12 @@ export default class CartItem {
       sum_with_discount,
       sum_without_discount,
       PROPS,
+      DISCOUNT_PRICE
     } = this.product;
 
-    console.log("%cКартинки в объекте ===> ', 'color: red; font-size: 20px;", PROPS.PROPERTY_PICTURES_VALUE);
     const IMAGE_PATH = CartItem.getImagePath(PROPS.PROPERTY_PICTURES_VALUE);
-    console.log("%cПервая картинка ТУТ:', 'color: teal; font-size: 20px;", PROPS.PROPERTY_PICTURES_VALUE[0]);
     const discountMessage = this.checkDiscount();
+    const discountBlock = discountMessage ? `<div class="basket__goods-discount"><span>${sum_without_discount}</span> р.</div>` : '';
 
     return (`
       <li class="basket__goods-item" data-index="5" data-sku_title="${NAME}" data-sku_packing="${NAME}" data-article="1">
@@ -105,7 +105,7 @@ export default class CartItem {
             ${discountMessage}
           </div>
           <div class="basket__goods-wr-price">
-            <div class="basket__goods-discount"><span>${sum_without_discount}</span> р.</div>
+            ${discountBlock}
             <div class="basket__goods-price"><span>${sum_with_discount}</span> р.</div>
           </div>
         </div>
@@ -117,4 +117,3 @@ export default class CartItem {
     return path.match(/http?s:\/\/localhost/) ? path.replace('localhost', 'dev.r18.coffee') : path;
   }
 }
-

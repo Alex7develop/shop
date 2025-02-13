@@ -47,11 +47,12 @@ export default class RedrawBasketButton {
         const basket = JSON.parse(localStorage.basket);
         
         const totalQuantity = basket.reduce((acc, item) => {
-            return acc + Number(item.QUANTITY); // Убедимся, что QUANTITY преобразовано в число
+            const quantity = Number(item.QUANTITY); // Преобразуем в число
+            return isNaN(quantity) ? acc : acc + quantity; // Если это не число, не добавляем
         }, 0);
 
         // Обновляем отображение количества товаров
-        this.amount.textContent = totalQuantity;
+        this.amount.textContent = totalQuantity || 0;
         // if(!this.el.classList.contains('header__basket_active')) {
         //     this.el.classList.add('header__basket_active');
         // }
@@ -69,25 +70,26 @@ export default class RedrawBasketButton {
     // изменение количества товара в корзине визуально
     calcAmountGoods(button) {
         const type = button.dataset.type;
-
         let amount;
         let num;
-
-        if(type === 'decrement') {
+    
+        if (type === 'decrement') {
             amount = button.nextElementSibling; 
-
             num = +amount?.value;
-            if(+amount.value === 0) return;
-            amount.value = num - 1;
+            if (!isNaN(num) && num > 0) {
+                amount.value = num - 1;
+            }
         }
-
-        if(type === 'increment') {
+    
+        if (type === 'increment') {
             amount = button.previousElementSibling;
-
             num = +amount?.value;
-            amount.value = num + 1;
+            if (!isNaN(num)) {
+                amount.value = num + 1;
+            }
         }
     }
+    
 
     // открываем модалку
     openNewModal(modal) {
@@ -109,7 +111,7 @@ export default class RedrawBasketButton {
 
         const goodsList = this.lastActiveModal.querySelector('.modal-basket__goods-list');
     
-        const basket = JSON.parse(localStorage.basket);
+        const basket = JSON.parse(localStorage.basket) || []; 
 
         const goods = basket.map((item, index) => {
             return this.patternProduct(item, index);

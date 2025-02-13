@@ -504,10 +504,10 @@
     color: #fff;
     border-radius: 1.56vw;
     background-color: #F1551C;
-    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.15),
-     5px 3px 6px 0px rgba(0, 0, 0, 0.13),
-      11px 7px 8px 0px rgba(0, 0, 0, 0.08),
-       20px 12px 9px 0px rgba(0, 0, 0, 0.02),
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.0),
+     5px 3px 6px 0px rgba(0, 0, 0, 0.05),
+      11px 7px 8px 0px rgba(0, 0, 0, 0.00),
+       20px 12px 9px 0px rgba(0, 0, 0, 0.00),
         31px 18px 10px 0px rgba(0, 0, 0, 0.00);
 
     justify-content: center;
