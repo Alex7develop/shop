@@ -441,7 +441,9 @@ export default class ControllAccountButton extends ApiModals {
 
         e.target.setAttribute('placeholder', this.currentPlaceholder);
         this.currentPlaceholder = null;
-        this.redraw.showRequiredStar(input);
+        if (input.name !== 'secodname') {
+          this.redraw.showRequiredStar(input);
+        }
        // Добавляем проверку совпадения паролей при потере фокуса
        if (input.name === 'confirm-password') {
         const form = input.closest('form');
@@ -491,7 +493,7 @@ export default class ControllAccountButton extends ApiModals {
     const result = [];
     inputs.forEach((item) => {
       // поле не заполненно
-      if (!item.value) {
+      if (!item.value && item.name !== 'secodname') {
         // валидация
         this.redraw.incorrectData(item, 'Поле обязательное для заполнения');
         result.push(false);
