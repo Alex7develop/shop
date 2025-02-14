@@ -121,7 +121,7 @@ export default class RedrawAccountProfile {
       // Обработка адресов
       const addressList = document.querySelector('.profile__address-list');
       if (data.ADDRESSES && Array.isArray(data.ADDRESSES)) {
-        addressList.innerHTML = data.ADDRESSES.map(
+        addressList.innerHTML = data.ADDRESSES.reverse().map(
           (address) =>
             `<li class="profile__address-item">${decodeURIComponent(
               address.ALIAS
@@ -411,7 +411,7 @@ class ProfileEditor {
       birthday: data.birthday.replace(/_/g, '').replace(/\//g, '.'), // Убираем символы "_" и "/" и ставим точки
     };
   }
-
+  
   // handleSuccess() {
   //     alert('Данные успешно сохранены!');
   //     this.closeEditForm('user-data');
@@ -888,7 +888,7 @@ class PlaceOrderAddress {
   }
 
   renderAddressList(addresses) {
-    const addressItems = addresses
+    const addressItems = addresses.reverse()
       .map(
         (address) =>
           `<div class="place-order__type-address-item">${decodeURIComponent(
@@ -1236,3 +1236,17 @@ class ZipCodeInput {
 
 new ZipCodeInput('input[name="zip-code"]');
 
+const requiredInputs = document.querySelectorAll('.place-order__form-input_required');
+
+// Для каждого инпута добавляем обработчик событий
+requiredInputs.forEach(input => {
+    input.addEventListener('input', () => {
+        if (input.value.trim() === '') {
+            // Добавляем класс, если поле пустое
+            input.classList.add('place-order__form-input_required');
+        } else {
+            // Убираем класс, если есть текст
+            input.classList.remove('place-order__form-input_required');
+        }
+    });
+});
