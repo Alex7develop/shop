@@ -897,6 +897,7 @@ class PlaceOrderAddress {
       )
       .join('');
     this.addressList.innerHTML = addressItems;
+    window.addressListRaw=addresses;
   }
 
   renderEmptyAddressMessage() {
@@ -1027,8 +1028,10 @@ function submitOrder() {
     items: []
   };
 
-  const addressForm = document.querySelector('.place-order__form-address');
+  var addressForm = document.querySelector('.place-order__forms-address-item_active form');
+  console.log('============================>',addressForm);
   if (addressForm) {
+    console.log('DONE ADRESS FORM ============================>')
     const formData = new FormData(addressForm);
     orderData.address = {
       alias: formData.get('alias') || '',
@@ -1043,6 +1046,30 @@ function submitOrder() {
       room: formData.get('appartment') || '',
     };
   }
+console.log(window.selectAddressText);
+  console.log(window.addressListRaw);
+
+  if ("undefined" !== typeof window.selectAddressText && window.selectAddressText && "undefined" !== typeof window.addressListRaw) {
+    var seleedAddr = window.selectAddressText;
+    for (var nn in window.addressListRaw) {
+      var currentItem = window.addressListRaw[nn];
+    console.log("currentItem: ", currentItem);
+      if (currentItem.ALIAS == seleedAddr) {
+        orderData.address.alias = currentItem.ALIAS;
+        orderData.address.index = currentItem.INDEX;
+        orderData.address.oblast = currentItem.OBLAST;
+        orderData.address.gorod = currentItem.GOROD;
+        orderData.address.ulitsa = currentItem.ULITSA;
+        orderData.address.dom = currentItem.DOM;
+        orderData.address.podezd = currentItem.PODEZD;
+        orderData.address.etazh = currentItem.ETAZH;
+        orderData.address.domofon = currentItem.DOMOFON;
+        orderData.address.room  = "undefined" !== typeof currentItem.ROOM ? currentItem.ROOM : "";
+      }
+    }
+  }
+//  orderData.selectAddress
+
 
   const deliveryType = document.querySelector('.place-order__receiving-item_active');
   if (deliveryType && deliveryType.dataset.receiving) {

@@ -49,3 +49,23 @@ this.currentPayment = this.paymentNav[type];
   }
 }
 //"Это брал за образец"
+
+
+
+this.addressTitle.textContent = addressName;
+
+
+ console.log('====**************',e);
+            var product =(e.target).closest(".sl-p__card").querySelector(".sl-p__card-slider-pag-item_active")
+            // console.log(findImage);
+            
+            // alert(main_offer_id);
+            // window.cart.add(main_offer_id);
+
+            //var product = document.querySelector('.product');
+            var cart = document.querySelector('.header__basket');
+            var productImage = product.querySelector("image");
+            
+            e.target.addEventListener('click', () => {
+              move_to_cart(productImage, cart);
+            });

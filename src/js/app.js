@@ -300,8 +300,101 @@ window.addEventListener('load', async () => {
     const controll = new ControllDelivery(redraw);
     controll.init();
   }
+
+
+
+
+
+
+  
 });
 
 function testPug(id) {
   alert(id);
+}
+
+
+window.addEventListener("click", function(e) {
+  console.log(e.target.classList);
+  var currentImage;
+  var productImage;
+  // slider
+  if (e.target.classList.contains("sl-p__card-link")) {
+    console.log('====**************',e);
+    var card = (e.target).closest(".sl-p__card");
+    console.log('CARD',card);
+    var sliderItem = card.querySelector(".sl-p__card-slider-pag-item_active");
+    console.log('sliderItem',sliderItem);
+    var num = sliderItem.getAttribute("data-num");
+    console.log('num',num);
+    var imageList = card.querySelectorAll(".sl-p__card-slides-item");
+    for (var imageIndex in imageList) {
+      currentImage = imageList[imageIndex];
+      if (currentImage.getAttribute("data-num") == num) {
+        productImage = currentImage.querySelector("img");
+        break;
+      }
+      // slider 2
+    } 
+  } else if (e.target.classList.contains("sl-prod__button-slide")) {
+    console.log('++++++++++++');
+    
+    console.log('e.target',e.target);
+    var card = e.target.closest('.sl-prod__slide');
+    productImage = card.querySelector(".sl-prod__img-slide");
+    
+  }else if (e.target.classList.contains("sl-prod__button-slide_drip")){
+    var topCard = e.target.closest('.sl-prod__big-desc-card_active');
+    var card = topCard.querySelector(".sl-prod__big-compos-desc-wr-img");
+    productImage = card.querySelector(".sl-prod__big-desc-img");
+  }
+
+  var cart = document.querySelector('.header__basket');
+  if (cart && productImage) {
+    move_to_cart(productImage, cart);
+  }
+});
+
+//Animation
+function move_to_cart(picture, cart) {
+  console.log('picture ====>',picture);
+  console.log('cart ====>',cart);
+  
+  console.log("move_to_cart",'=====>')
+  let picture_pos = picture.getBoundingClientRect();
+  let cart_pos = cart.getBoundingClientRect();
+
+  let picture2 = picture.cloneNode();
+  picture2.style.position = "fixed";
+  picture2.style.left = picture_pos.left + "px";
+  picture2.style.top = picture_pos.top + "px";
+  picture2.style.width = picture_pos.width + "px";
+  picture2.style.height = picture_pos.height + "px";
+  picture2.style.border = "none";
+  picture2.style.zIndex = 32767;
+  picture2.style.objectFit = 'contain';
+  picture2.style.objectPosition = 'center';
+
+  document.body.appendChild(picture2);
+  void picture2.offsetWidth;
+
+  // Вычисляем середину корзины и товара
+  let start_x = picture_pos.left + picture_pos.width / 2;
+  let start_y = picture_pos.top + picture_pos.height / 2;
+  let end_x = cart_pos.left + cart_pos.width / 2;
+  let end_y = cart_pos.top + cart_pos.height / 2;
+
+  // Вычисляем разницу координат для перемещения
+  let delta_x = end_x - start_x;
+  let delta_y = end_y - start_y;
+
+  picture2.style.transition = "transform 1s";
+  picture2.style.transformOrigin = "center"; // Изменено на "center"
+  picture2.style.transform = `translateX(${delta_x}px) translateY(${delta_y}px) scale(0.25)`;
+
+  setTimeout(() => {
+      if (picture2.parentNode) {
+        document.body.removeChild(picture2);
+      }
+  }, 1000);
 }

@@ -129,7 +129,22 @@ export default class RedrawSlСoffee {
 
             this.oldActiveSlide = this.activeSlide;
             this.activeSlide = this.slides.children[1];
+            console.log('his.slides.children[1]', this);
+            
             this.activeSlide.classList.add('sl-prod__slide_active');
+
+
+var inputs = this.activeSlide.querySelectorAll("input");
+for (var inputIndex in inputs) {
+    if (inputs[inputIndex].checked) {
+        var liElement = inputs[inputIndex].closest("li");
+        if (liElement) {
+            liElement.click();
+        }
+        break;
+    }
+}
+// sl-prod__radio-input
 
 
             setTimeout(() => {

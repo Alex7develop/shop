@@ -954,11 +954,13 @@ export default class RedrawSLP {
         link.title = data.title;
         link.target = '_blank';
         link.dataset.article = data.article;
-        link.addEventListener('click', (e) => {
-            // alert(main_offer_id);
-            // window.cart.add(main_offer_id);
-            e.preventDefault();
-        });
+        // link.addEventListener('click', (e) => {
+           
+
+
+
+        //     e.preventDefault();
+        // });
         // link.dataset.color = data.article.colors.name;
         wrLink.append(link);
 
@@ -992,3 +994,4 @@ export default class RedrawSLP {
         })
     }
 }
+

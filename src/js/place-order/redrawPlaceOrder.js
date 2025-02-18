@@ -335,6 +335,7 @@ export default class RedrawPlaceOrder {
   // выбор адреса (SELECT)
   setSelectAddress(value) {
     this.selectAddress.textContent = value;
+    window.selectAddressText = value;
 
     // если пользователь выберет уже сохраненный ранее 
     // тип адреса то закрываем форму кастомного адреса,

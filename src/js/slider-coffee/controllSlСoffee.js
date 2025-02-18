@@ -55,8 +55,12 @@ export default class ControllSlСoffee {
         }
 
         if (e.target.closest('.sl-prod__button-slide')) {
-            const button = e.target.closest('.sl-prod__slide'); 
+            console.log("e.target", e.target);
         
+            
+            
+            const button = e.target.closest('.sl-prod__slide'); 
+            console.log("button", button);
             // Добавляем класс анимации
             // button.classList.add('move-animation');
         
@@ -80,7 +84,10 @@ export default class ControllSlСoffee {
             const radioForm = card.querySelector('form');
             if (radioForm) {
                 const radioButtons = radioForm['sl-prod-radio'];
+                console.log('radioButtons ========>',radioButtons);
+                
                 const valueButtonChecked = [...radioButtons].find(i => i.checked)?.value;
+                console.log("valueButtonChecked ", valueButtonChecked);
                 choice.grinding = valueButtonChecked;
             }
         
