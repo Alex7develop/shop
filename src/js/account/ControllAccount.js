@@ -248,6 +248,7 @@ export default class ControllAccount extends ApiModals {
         const closeButton = result.querySelector('.modal__close');
         closeButton.addEventListener('click', () => {
             result.remove();
+            location.reload(); 
         }, { once: true });
 
         this.redraw.content.el.append(result);

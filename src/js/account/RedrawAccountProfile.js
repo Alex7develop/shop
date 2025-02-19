@@ -1105,6 +1105,7 @@ console.log(window.selectAddressText);
     }
     if (paymentType === 'legal') {
       orderData.oplata = 6;
+      orderData.ur_litso = true;
     }
   }
 
@@ -1130,12 +1131,69 @@ console.log(window.selectAddressText);
     }
   });
 
-  // Проверки
-  if (!orderData.delivery_id || !orderData.oplata) {
-    // Если нет способа доставки, типа оплаты или адреса
-    showModal('failed'); // Показываем модалку с ошибкой
-    return;
+var orderDataValid = true;
+
+if (paymentInput && paymentInput.dataset.payment_type) {
+  // dostavka msk
+  if (orderData.delivery_id === 7 || orderData.delivery_id == 8 || orderData.delivery_id == 6) {
+
+    // ne msk
+  } else {
+    if (orderData.oplata !== 4) {
+      orderDataValid = false;
+    }
   }
+
+  if (orderDataValid && orderData.oplata === 6) {
+    // urlico
+    var orgForm = paymentInput.parentNode.querySelector(".place-order__payment-form");
+    console.log(orgForm);
+    if (!orgForm) {
+      alert('noOrgForm'); // Показываем модалку с ошибкой
+      return;
+    }
+    var orgFormData = new FormData(orgForm);
+
+    var userOrgData = {
+      inn: orgFormData.get("inn") || "",
+      name: orgFormData.get("name") || "",
+      address: orgFormData.get("address") || "",
+      ogrn: orgFormData.get("ogrn") || ""
+    };
+
+    if (userOrgData.name.trim() === "") {
+      alert('name failed'); // Показываем модалку с ошибкой
+      return;
+    }
+
+    if (userOrgData.address.trim() === "") {
+      alert('address failed'); // Показываем модалку с ошибкой
+      return;
+    }
+
+    if (!/[\d]{10,12}/.test(userOrgData.inn)) {
+      alert('inn failed'); // Показываем модалку с ошибкой
+      return;
+    }
+
+    if (!/[\d]{13}/.test(userOrgData.ogrn)) {
+      alert('ogrn failed'); // Показываем модалку с ошибкой
+      return;
+    }
+
+    orderData.orgData = userOrgData;
+    console.log("userOrgData", userOrgData);
+
+  }
+
+  var commentTextareaForm = document.querySelector(".place-order__wr-comment-textarea");
+  console.log('commentTextareaForm',commentTextareaForm);
+  
+  if (commentTextareaForm) {
+    orderData.comment = commentTextareaForm.querySelector("textarea").value;
+  }
+
+}
 
   const requestOptions = {
     method: 'POST',
