@@ -51,7 +51,7 @@
 }
 
 .modal__wr-icon {
-    margin-top: 2.60vw;
+    /* margin-top: 2.60vw; */
 }
 
 .modal__icon {
@@ -358,7 +358,7 @@
 /* START ОКНО РЕГИСТРАЦИЯ */
 .modal-reg {
     width: 26.3%;
-    margin-top: 4vw;
+    /* margin-top: 4vw; */
 }
 
 .modal-reg__pass-rules {
@@ -427,7 +427,8 @@
 }
 
 .modal-reg__wr-icon-pdf {
-    margin-top: 1.30vw;
+    margin-left: 300px;
+    margin-top: -2vw;
 }
 
 .modal-reg__link-icon-pdf {

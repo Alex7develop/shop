@@ -80,65 +80,53 @@ export default class ApiAccountButton {
 }
 
 showErrorMessage(message) {
-    console.log('showErrorMessage вызван с текстом:', message); 
+  console.log('showErrorMessage вызван с текстом:', message); 
 
-    let passwordInput = document.querySelector('input[name="password"]');
-    console.log('Найден ли input[name="password"]:', passwordInput); 
+  let passwordInput = document.querySelector('input[name="password"]');
+  if (!passwordInput) {
+      console.error('Поле ввода пароля не найдено');
+      return;
+  }
 
-    if (!passwordInput) {
-        console.error('Поле ввода пароля не найдено');
-        return;
-    }
+  let inputWrapper = passwordInput.closest('.modal__wr-input'); 
+  if (!inputWrapper) {
+      console.error('Родительский контейнер .modal__wr-input не найден');
+      return;
+  }
 
-    let parent = passwordInput.parentElement;
-    console.log('Родительский элемент input:', parent);
+  let errorBox = inputWrapper.querySelector('.login-error');
 
-    parent.style.position = 'relative'; 
+  if (!errorBox) {
+      console.log('Создание нового блока ошибки');
+      errorBox = document.createElement('div');
+      errorBox.classList.add('login-error');
+      errorBox.style.color = '#d9534f';
+      errorBox.style.fontSize = '12px';
+      errorBox.style.marginTop = '5px';
+      errorBox.style.fontFamily = "'SofiaSans', sans-serif";
+      errorBox.style.textAlign = 'left';
 
-    let errorBox = document.getElementById('login-error');
+      inputWrapper.appendChild(errorBox);
+  }
 
-    if (!errorBox) {
-        console.log('Создание нового блока ошибки');
-        errorBox = document.createElement('div');
-        errorBox.id = 'login-error';
-        errorBox.style.position = 'absolute';
-        errorBox.style.bottom = '-25px'; 
-        errorBox.style.left = '50%';
-        errorBox.style.transform = 'translateX(-50%)';
-        errorBox.style.backgroundColor = '#ffdddd';
-        errorBox.style.color = '#d9534f';
-        errorBox.style.padding = '5px 10px';
-        errorBox.style.borderRadius = '4px';
-        errorBox.style.fontSize = '12px';
-        errorBox.style.boxShadow = '0px 2px 5px rgba(0,0,0,0.2)';
-        errorBox.style.transition = 'opacity 0.3s ease-in-out';
-        errorBox.style.opacity = '0';
-        errorBox.style.textAlign = 'center';
-        errorBox.style.zIndex = '9999'; 
-        errorBox.style.whiteSpace = 'nowrap';
-        errorBox.style.fontFamily = "'SofiaSans', sans-serif";
+  // Устанавливаем текст ошибки
+  errorBox.textContent = message;
 
-        parent.appendChild(errorBox);
-    }
+  // Если сообщение уже есть, не дублируем его
+  if (!inputWrapper.contains(errorBox)) {
+      inputWrapper.appendChild(errorBox);
+  }
 
-    // Устанавливаем текст ошибки
-    errorBox.textContent = message;
+  console.log('Сообщение об ошибке добавлено:', message);
 
-    // Убедимся, что сообщение видимо
-    errorBox.style.opacity = '1';
-    console.log('Сообщение об ошибке добавлено:', message); // Проверим, что ошибка добавляется
-
-    // Удалим сообщение через 3 секунды
-    setTimeout(() => {
-        errorBox.style.opacity = '0';
-        setTimeout(() => {
-            console.log('Сообщение об ошибке удалено');
-            errorBox.remove();
-        }, 300);
-    }, 3000);
+  // Удалим сообщение через 3 секунды
+  setTimeout(() => {
+      if (errorBox) {
+          errorBox.remove();
+          console.log('Сообщение об ошибке удалено');
+      }
+  }, 3000);
 }
-
-
 
   async logout() {
     try {

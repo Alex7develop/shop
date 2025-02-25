@@ -180,7 +180,7 @@
 }
 
 .place-order__product-price {
-    margin-top: 0.57vw;
+    margin-top: -0.57vw;
 
     font-family: "SofiaSans";
     font-size: 0.83vw;
