@@ -224,53 +224,53 @@
     width: 52%;
     padding-right: .2%;
     margin-top: 2.08vw;
-
     font-family: "SofiaSans";
-    font-size: 1.04vw;
+    font-size: 1.34vw;
     font-weight: 400;
-
     flex-direction: column;
     align-items: flex-end;
 }
 
 .basket__wr-total-discount {
     display: flex;
-    gap: 3.13vw;
-
+    justify-content: space-between;
+    width: 100%;
     color: #FFF;
 }
 
 .basket__total-price-old {
     position: relative;
-
     margin-top: 1.04vw;
-
     color: #FFF;
 }
 
 .basket__total-price-old::before {
     content: "";
-
     position: absolute;
     top: 50%;
     left: 50%;
-
     height: 2px;
     width: 107%;
-
     background-color: #F37548;
-
     transform: translate(-50%, -50%) rotate(-12deg);
 }
 
 .basket__total-price {
     display: flex;
-    gap: 3.13vw;
+    justify-content: space-between;
+    width: 100%;
     font-size: 1.3vw;
     font-weight: 700;
-    margin-right: -4px;
-
     color: #F1551C;
+}
+
+.basket__total-discount-text, .basket__total-price-text {
+    margin-left: 450px;
+}
+
+.basket__total-discount-num, .basket__total-price-num {
+    flex: 1;
+    text-align: right;
 }
 
 .basket__button {
@@ -543,4 +543,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+.sl-prod__slide_active[data-packing="Дрип-пакет"] .sl-prod__button-slide {
+    display: none;
 }

@@ -290,14 +290,15 @@
 
 .place-order__cdek-type {
     display: none;
-    margin-top: 1.82vw;
-    gap: 1.04vw;
+    margin-top: 2vw;
+    gap: 1.9vw;
 
     font-family: "SofiaSans";
-    font-size: 0.73vw;
+    font-size: 0.8vw;
     font-weight: 400;
     
     color: #FFF;
+    margin-left: 9px;
 }
 
 .place-order__cdek-type_active {
@@ -802,13 +803,13 @@
     background-position: left 74% top 35%;
 }
 .place-order__payment-input.place-order__form-input_required[name="address"] {
-    background-position: left 24.5% top 35%;
+    background-position: left 34.5% top 35%;
 }
 .place-order__payment-input.place-order__form-input_required[name="inn"] {
     background-position: left 20% top 35%;
 }
 .place-order__payment-input.place-order__form-input_required[name="ogrn"] {
-    background-position: left 22.3% top 35%;
+    background-position: left 48.3% top 35%;
 }
 
 

@@ -2,6 +2,8 @@ export default class Profile {
   constructor() {
     this.data = null;
     this.accountElement = document.querySelector('.header__account a');
+    this.basketUrl = 'https://dev.r18.coffee/basket';
+    this.accountUrl = 'https://dev.r18.coffee/account';
   }
 
   async getUserInfo() {
@@ -41,11 +43,23 @@ export default class Profile {
     }
   }
 
+  restrictAccess() {
+    const isBasketPage = window.location.href.startsWith(this.basketUrl);
+
+    if (!this.data && isBasketPage) {
+      this.accountElement.removeAttribute('href'); // Убираем ссылку
+      this.accountElement.style.cursor = 'default'; // Меняем курсор
+      this.accountElement.addEventListener('click', (event) => event.preventDefault());
+    }
+  }
+
   async init() {
     await this.getUserInfo();
     this.updateUserIcon();
+    this.restrictAccess();
   }
 }
 
 const profile = new Profile();
 profile.init();
+

@@ -41,6 +41,7 @@
     height: 1.41vw;
 
     cursor: pointer;
+    margin-bottom: -45px;
 }
 
 .modal__close_failed{
@@ -57,7 +58,8 @@
 .modal__icon {
     width: 6.51vw;
     height: 6.51vw;
-    margin: 0 auto;
+    margin-bottom: -10px;
+    margin-top: 40px;
 }
 
 .modal__icon-king {
@@ -358,6 +360,7 @@
 /* START ОКНО РЕГИСТРАЦИЯ */
 .modal-reg {
     width: 26.3%;
+    height: 880px;
     /* margin-top: 4vw; */
 }
 
@@ -1057,3 +1060,53 @@
     opacity: 0.8;
 }
 
+/* Обертка для модального окна */
+.custom-modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45); 
+    z-index: 1000001; 
+}
+
+
+.custom-modal {
+    background: #726B68;
+    padding: 2vw;
+    /* border-radius: 1vw;  */
+    width: 30vw; 
+    text-align: center; 
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.2); 
+}
+
+
+.custom-modal__text {
+    font-family: 'SofiaSans', sans-serif; 
+    font-size: 1.04vw; 
+    color: #fff; 
+    margin-bottom: 1.5vw;
+}
+
+
+.custom-modal__close-button {
+    height: 2.60vw;
+    font-size: 1.04vw;
+    border-radius: 1.56vw; 
+    border: 0.12vw solid #FFF; 
+    background: transparent; 
+    color: #fff; 
+    cursor: pointer; 
+    padding: 0 1.5vw;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+
+.custom-modal__close-button:hover {
+    background: #F1551C; /* Оранжевый фон */
+    border-color: #F1551C; /* Оранжевая рамка */
+}

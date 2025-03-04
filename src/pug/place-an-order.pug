@@ -76,8 +76,10 @@ block content
                                         .place-order__type-address-item Адрес 2
                                         .place-order__type-address-item Адрес 3
                                 label.place-order__label-checkbox
-                                //- input(type="checkbox", id="save-address")
-                                span.modal__checkbox-text Сохранить адрес
+                                    //-  input(type="checkbox", id="save-address")
+                                    label.modal__label-checkbox
+                                    input.modal__checkbox(type="checkbox")
+                                    span.modal__checkbox-text Сохранить адрес
 
                         .place-order__forms-address-list
                             //- .place-order__forms-address-item_active
@@ -92,9 +94,9 @@ block content
                                     .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="appartment")
                                         input(type="text" name="appartment" placeholder="Квартира/Офис").place-order__form-address-input.place-order__form-input_required
                                     .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="entrance")
-                                        input(type="text" name="entrance" placeholder="Подъезд").place-order__form-address-input.place-order__form-input_required
+                                        input(type="text" name="entrance" placeholder="Подъезд").place-order__form-address-input
                                     .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="stage")
-                                        input(type="text" name="stage" placeholder="Этаж").place-order__form-address-input.place-order__form-input_required
+                                        input(type="text" name="stage" placeholder="Этаж").place-order__form-address-input
                                     .place-order__form-address-wr-input.place-order__form-address-wr-input_moskow(data-name-input="intercom")
                                         input(type="text" name="intercom" placeholder="Код домофона").place-order__form-address-input
                             .place-order__forms-address-item(data-type="area-region")
@@ -112,9 +114,9 @@ block content
                                     .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="appartment")
                                         input(type="text" name="appartment" placeholder="Квартира/Офис").place-order__form-address-input.place-order__form-input_required
                                     .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="entrance")
-                                        input(type="text" name="entrance" placeholder="Подъезд").place-order__form-address-input.place-order__form-input_required
+                                        input(type="text" name="entrance" placeholder="Подъезд").place-order__form-address-input
                                     .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="stage")
-                                        input(type="text" name="stage" placeholder="Этаж").place-order__form-address-input.place-order__form-input_required
+                                        input(type="text" name="stage" placeholder="Этаж").place-order__form-address-input
                                     .place-order__form-address-wr-input.place-order__form-address-wr-input_area-region(data-name-input="intercom")
                                         input(type="text" name="intercom" placeholder="Код домофона").place-order__form-address-input
                             .place-order__forms-address-item(data-type="pickup")
@@ -144,9 +146,9 @@ block content
                                             .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="appartment")
                                                 input(type="text" name="appartment" placeholder="Квартира/Офис").place-order__form-address-input.place-order__form-input_required
                                             .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="entrance")
-                                                input(type="text" name="entrance" placeholder="Подъезд").place-order__form-address-input.place-order__form-input_required
+                                                input(type="text" name="entrance" placeholder="Подъезд").place-order__form-address-input
                                             .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="stage")
-                                                input(type="text" name="stage" placeholder="Этаж").place-order__form-address-input.place-order__form-input_required
+                                                input(type="text" name="stage" placeholder="Этаж").place-order__form-address-input
                                             .place-order__form-address-wr-input.place-order__form-address-wr-input_courier(data-name-input="intercom")
                                                 input(type="text" name="intercom" placeholder="Код домофона").place-order__form-address-input
                                     .place-order__forms-address-cdek-item(data-type="opp")
@@ -188,7 +190,7 @@ block content
                                 .place-order__payment-wr-input 
                                     input.place-order__payment-input.place-order__form-input_required(type="text" name="name" placeholder="Название организации")
                                 .place-order__payment-wr-input 
-                                    input.place-order__payment-input.place-order__form-input_required(type="text" name="address" placeholder="Адрес")
+                                    input.place-order__payment-input.place-order__form-input_required(type="text" name="address" placeholder="Юр.адрес")
                                 .place-order__payment-wr-input 
                                     input.place-order__payment-input.place-order__form-input_required(type="text" name="inn" placeholder="ИНН")
                                 .place-order__payment-wr-input 

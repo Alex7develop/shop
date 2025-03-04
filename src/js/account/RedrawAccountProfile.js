@@ -649,7 +649,7 @@ class OrderList {
     return {
       id: data.ID || 'Неизвестно',
       deliveryType: data.Delivery_type || 'Не указан',
-      address: data.Address || 'Не указан',
+      address: data.Address || '',
       deliveryDate: {
         from: data.Delivery_data_from || '',
         to: data.Delivery_data_to || '',
@@ -848,7 +848,7 @@ class PlaceOrderAddress {
 
     // Заголовок с выбранным именем адреса
     this.addressTitle = this.el.querySelector(
-      '.place-order__type-address-title'
+      'Ваш адрес'
     );
 
     this.init();
@@ -1017,7 +1017,49 @@ orderDeliveryAndPayment
 import ApiModals from '../api-modals/ApiModals';
 
 const apiModals = new ApiModals();
+function createCustomAlertModal() {
+  const modalWrapper = document.createElement('div');
+  modalWrapper.id = 'custom-alert-modal';
+  modalWrapper.className = 'custom-modal-wrapper';
+  modalWrapper.style.display = 'none';
 
+  const modal = document.createElement('div');
+  modal.className = 'custom-modal';
+
+  const modalText = document.createElement('p');
+  modalText.className = 'custom-modal__text';
+
+  const closeButton = document.createElement('button');
+  closeButton.className = 'custom-modal__close-button';
+  closeButton.textContent = 'Закрыть';
+
+  // Добавляем элементы в модальное окно
+  modal.appendChild(modalText);
+  modal.appendChild(closeButton);
+  modalWrapper.appendChild(modal);
+
+  // Добавляем модальное окно в body
+  document.body.appendChild(modalWrapper);
+
+  // Обработчик закрытия модального окна
+  closeButton.addEventListener('click', () => {
+    modalWrapper.style.display = 'none';
+  });
+}
+
+// Инициализация модального окна при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+  createCustomAlertModal();
+});
+
+// Функция для показа модального окна с сообщением
+function showCustomAlert(message) {
+  const modalWrapper = document.getElementById('custom-alert-modal');
+  const modalText = modalWrapper.querySelector('.custom-modal__text');
+
+  modalText.textContent = message;
+  modalWrapper.style.display = 'flex';
+}
 function submitOrder() {
   const orderData = {
     delivery_id: '',
@@ -1028,10 +1070,25 @@ function submitOrder() {
     items: []
   };
 
+  // Проверка на пустую корзину
+  const cartItems = document.querySelectorAll('.place-order__order-item');
+  if (cartItems.length === 0) {
+    showCustomAlert('Корзина пуста. Добавьте товары для оформления заказа.');
+    return;
+  }
+
+  // Проверка на выбор способа доставки
+  var deliveryType = document.querySelector('.place-order__receiving-item_active');
+  if (!deliveryType || !deliveryType.dataset.receiving) {
+    showCustomAlert('Выберите способ доставки.');
+    return;
+  }
+
+  // Проверка на выбор адреса доставки
   var addressForm = document.querySelector('.place-order__forms-address-item_active form');
-  console.log('============================>',addressForm);
+
+  // Заполнение данных адреса
   if (addressForm) {
-    console.log('DONE ADRESS FORM ============================>')
     const formData = new FormData(addressForm);
     orderData.address = {
       alias: formData.get('alias') || '',
@@ -1046,9 +1103,8 @@ function submitOrder() {
       room: formData.get('appartment') || '',
     };
   }
-console.log(window.selectAddressText);
-  console.log(window.addressListRaw);
 
+  // Заполнение данных из сохраненного адреса
   if ("undefined" !== typeof window.selectAddressText && window.selectAddressText && "undefined" !== typeof window.addressListRaw) {
     var seleedAddr = window.selectAddressText;
     for (var nn in window.addressListRaw) {
@@ -1068,58 +1124,104 @@ console.log(window.selectAddressText);
       }
     }
   }
-//  orderData.selectAddress
 
+  
+  // Заполнение данных доставки
+  const delivery_type = deliveryType.dataset.receiving;
+  if (delivery_type === 'pickup') {
+    orderData.delivery_id = 6;
+  } else if (delivery_type === 'moskow') {
+    orderData.delivery_id = 7;
+  } else if (delivery_type === 'moskow-area') {
+    orderData.delivery_id = 8;
+  } else if (delivery_type === 'regions') {
+    orderData.delivery_id = 9;
+  } else if (delivery_type === 'cdek') {
+    orderData.delivery_id = 10;
+  }
 
-  const deliveryType = document.querySelector('.place-order__receiving-item_active');
-  if (deliveryType && deliveryType.dataset.receiving) {
-    const delivery_type = deliveryType.dataset.receiving;
-    if (delivery_type === 'pickup') {
-      orderData.delivery_id = 6;
-    }
-    if (delivery_type === 'moskow') {
-      orderData.delivery_id = 7;
-    }
-    if (delivery_type === 'moskow-area') {
-      orderData.delivery_id = 8;
-    }
-    if (delivery_type === 'regions') {
-      orderData.delivery_id = 9;
-    }
-    if (delivery_type === 'cdek') {
-      orderData.delivery_id = 10;
+  if (delivery_type === 'moskow') {
+    if (!orderData.address.gorod || !orderData.address.ulitsa || !orderData.address.dom || !orderData.address.room) {
+      showCustomAlert('Заполните обязательные поля!');
+      return;
     }
   }
 
+  if (delivery_type === 'moskow-area' || delivery_type === 'regions') {
+    if (!orderData.address.index || !orderData.address.gorod || !orderData.address.ulitsa || !orderData.address.dom || !orderData.address.room) {
+      showCustomAlert('Заполните обязательные поля!');
+      return;
+    }
+  }
+
+  // Заполнение данных оплаты
   const paymentInput = document.querySelector('.place-order__payment-type_active');
   if (paymentInput && paymentInput.dataset.payment_type) {
     const paymentType = paymentInput.dataset.payment_type;
     if (paymentType === 'cash') {
       orderData.oplata = 3;
-    }
-    if (paymentType === 'card-site') {
+    } else if (paymentType === 'card-site') {
       orderData.oplata = 4;
-    }
-    if (paymentType === 'card-place') {
+    } else if (paymentType === 'card-place') {
       orderData.oplata = 5;
-    }
-    if (paymentType === 'legal') {
+    } else if (paymentType === 'legal') {
       orderData.oplata = 6;
       orderData.ur_litso = true;
     }
   }
 
-  const legalCheckbox = document.querySelector('#legal-entity-checkbox');
-  if (legalCheckbox) {
-    orderData.ur_litso = legalCheckbox.checked;
+  // Проверка на выбор типа оплаты
+  if (!paymentInput || !paymentInput.dataset.payment_type) {
+    showCustomAlert('Выберите тип оплаты.');
+    return;
   }
 
-  const commentInput = document.querySelector('#order-comment');
-  if (commentInput) {
-    orderData.comment = commentInput.value;
+  // Заполнение данных для Юрлица
+  if (orderData.oplata === 6) {
+    const orgForm = paymentInput.parentNode.querySelector(".place-order__payment-form");
+    if (!orgForm) {
+      showCustomAlert('Заполните данные для Юрлица.');
+      return;
+    }
+    const orgFormData = new FormData(orgForm);
+    const userOrgData = {
+      inn: orgFormData.get("inn") || "",
+      name: orgFormData.get("name") || "",
+      address: orgFormData.get("address") || "",
+      ogrn: orgFormData.get("ogrn") || ""
+    };
+
+    if (userOrgData.name.trim() === "") {
+      showCustomAlert('Укажите название организации.');
+      return;
+    }
+
+    if (userOrgData.address.trim() === "") {
+      showCustomAlert('Укажите адрес организации.');
+      return;
+    }
+
+    if (!/[\d]{10,12}/.test(userOrgData.inn)) {
+      showCustomAlert('ИНН должен содержать только цифры (12 символов).');
+      return;
+    }
+
+    if (!/[\d]{13}/.test(userOrgData.ogrn)) {
+      showCustomAlert('ОГРН/OГРНИП должен содержать только цифры (13 символов).');
+      return;
+    }
+
+    orderData.orgData = userOrgData;
   }
 
-  const cartItems = document.querySelectorAll('.place-order__order-item');
+  // Заполнение комментария
+  var commentTextareaForm = document.querySelector(".place-order__wr-comment-textarea");
+  console.log('commentTextareaForm',commentTextareaForm);
+  
+  if (commentTextareaForm) {
+    orderData.comment = commentTextareaForm.querySelector("textarea").value;
+  }
+  // Заполнение товаров в заказе
   cartItems.forEach((item) => {
     const productId = item.dataset.productId;
     const quantityInput = item.querySelector('.product-quantity');
@@ -1130,71 +1232,9 @@ console.log(window.selectAddressText);
       });
     }
   });
-
-var orderDataValid = true;
-
-if (paymentInput && paymentInput.dataset.payment_type) {
-  // dostavka msk
-  if (orderData.delivery_id === 7 || orderData.delivery_id == 8 || orderData.delivery_id == 6) {
-
-    // ne msk
-  } else {
-    if (orderData.oplata !== 4) {
-      orderDataValid = false;
-    }
-  }
-
-  if (orderDataValid && orderData.oplata === 6) {
-    // urlico
-    var orgForm = paymentInput.parentNode.querySelector(".place-order__payment-form");
-    console.log(orgForm);
-    if (!orgForm) {
-      alert('noOrgForm'); // Показываем модалку с ошибкой
-      return;
-    }
-    var orgFormData = new FormData(orgForm);
-
-    var userOrgData = {
-      inn: orgFormData.get("inn") || "",
-      name: orgFormData.get("name") || "",
-      address: orgFormData.get("address") || "",
-      ogrn: orgFormData.get("ogrn") || ""
-    };
-
-    if (userOrgData.name.trim() === "") {
-      alert('name failed'); // Показываем модалку с ошибкой
-      return;
-    }
-
-    if (userOrgData.address.trim() === "") {
-      alert('address failed'); // Показываем модалку с ошибкой
-      return;
-    }
-
-    if (!/[\d]{10,12}/.test(userOrgData.inn)) {
-      alert('inn failed'); // Показываем модалку с ошибкой
-      return;
-    }
-
-    if (!/[\d]{13}/.test(userOrgData.ogrn)) {
-      alert('ogrn failed'); // Показываем модалку с ошибкой
-      return;
-    }
-
-    orderData.orgData = userOrgData;
-    console.log("userOrgData", userOrgData);
-
-  }
-
-  var commentTextareaForm = document.querySelector(".place-order__wr-comment-textarea");
-  console.log('commentTextareaForm',commentTextareaForm);
   
-  if (commentTextareaForm) {
-    orderData.comment = commentTextareaForm.querySelector("textarea").value;
-  }
 
-}
-
+  // Отправка заказа на сервер
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -1205,51 +1245,44 @@ if (paymentInput && paymentInput.dataset.payment_type) {
   };
 
   fetch('https://dev.r18.coffee/api/order/create', requestOptions)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Ошибка: ' + response.statusText);
-    }
-    return response.json();
-  })
-  .then((answer) => {
-    console.log('Ответ от сервера:', answer);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Ошибка: ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then((answer) => {
+      if (answer.errors && answer.errors.length > 0) {
+        console.error('Ошибки в заказе:', answer.errors);
+        showModal('failed');
+        return;
+      }
 
-    if (answer.errors && answer.errors.length > 0) {
-      console.error('Ошибки в заказе:', answer.errors);
-      showModal('failed'); // Показываем модалку с ошибкой
-      return;
-    }
+      if (answer.url && typeof answer.url === 'string') {
+        window.location.href = answer.url;
+        return;
+      }
 
-    if (answer.url && typeof answer.url === 'string') {
-      console.info('Получена ссылка на оплату:', answer.url);
-      window.location.href = answer.url; // Переходим по полученной ссылке
-      return;
-    }
-
-    if (answer.status === 'success') {
-      // Получаем номер заказа из ответа и передаем в модалку
-      const orderNumber = answer.data.match(/Номер заказа: (\d+)/);
-      showModal('order-successfully', orderNumber ? orderNumber[1] : '');
-    } else {
-      console.error('Неожиданный статус ответа:', answer.status);
-      showModal('failed'); // Показываем модалку с ошибкой
-    }
-  })
-  .catch((error) => {
-    console.error('Ошибка запроса:', error);
-    showModal('failed'); // Показываем модалку с ошибкой
-  });
-
+      if (answer.status === 'success') {
+        const orderNumber = answer.data.match(/Номер заказа: (\d+)/);
+        showModal('order-successfully', orderNumber ? orderNumber[1] : '');
+      } else {
+        showModal('failed');
+      }
+    })
+    .catch((error) => {
+      console.error('Ошибка запроса:', error);
+      showModal('failed');
+    });
 }
 
 // Функция для показа модалки
 async function showModal(type, orderNumber = '') {
   try {
     const modal = await apiModals.read(type);
-    document.body.appendChild(modal); // Добавляем модалку в body
-    modal.style.display = 'block'; // Показываем модалку (можно добавить анимацию)
+    document.body.appendChild(modal);
+    modal.style.display = 'block';
 
-    // Если это модалка с успешным заказом, подставляем номер заказа
     if (type === 'order-successfully' && orderNumber) {
       const orderNumberElement = modal.querySelector('.modal-order-success__number');
       if (orderNumberElement) {
@@ -1257,27 +1290,24 @@ async function showModal(type, orderNumber = '') {
       }
     }
 
-    // Обработчик закрытия модального окна
     const closeButton = modal.querySelector('.modal__close_failed');
     if (closeButton) {
       closeButton.addEventListener('click', () => {
-        modal.remove(); // Удаляем модальное окно из DOM
+        modal.remove();
       });
     }
-
   } catch (error) {
     console.error('Ошибка при загрузке модалки:', error);
   }
-  
 }
 
-
+// Инициализация кнопки отправки заказа
 document.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.querySelector('#submit-order-button');
   if (submitButton) {
     submitButton.addEventListener('click', submitOrder);
   } else {
-    console.error('ОТСУТСТВУЕТ :(');
+    console.error('Кнопка отправки заказа не найдена.');
   }
 });
 
@@ -1313,13 +1343,105 @@ class ZipCodeInput {
     this.inputElement.addEventListener('blur', () => {
       if (this.inputElement.value.length < 6) {
         this.inputElement.value = ''; 
-        alert('Индекс должен содержать 6 цифр');
+        showCustomAlert('Поле должно содержать только цифр');
       }
     });
   }
 }
 
+
 new ZipCodeInput('input[name="zip-code"]');
+new ZipCodeInput('input[name="zip"]');
+
+class Onlynumber {
+  constructor(selector) {
+    this.inputElement = document.querySelector(selector);
+
+    if (!this.inputElement) {
+      console.error(`Element with selector "${selector}" not found.`);
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+  
+    this.inputElement.addEventListener('input', (event) => {
+      const value = this.inputElement.value;
+
+ 
+      this.inputElement.value = value.replace(/\D/g, '');
+
+ 
+      if (this.inputElement.value.length > 12) {
+        this.inputElement.value = this.inputElement.value.slice(0, 12);
+      }
+    });
+
+ 
+    this.inputElement.addEventListener('blur', () => {
+      if (this.inputElement.value.length < 12) {
+        this.inputElement.value = ''; 
+        showCustomAlert('ИНН должен содержать 12 цифр');
+      }
+    });
+  }
+}
+
+
+new Onlynumber('input[name="inn"]');
+
+class OnlynumberOgrn {
+  constructor(selector) {
+    this.inputElement = document.querySelector(selector);
+
+    if (!this.inputElement) {
+      console.error(`Element with selector "${selector}" not found.`);
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+    this.inputElement.addEventListener('input', (event) => {
+      let value = this.inputElement.value.replace(/\D/g, ''); 
+
+      if (value.length > 0) {
+        const firstDigit = value.charAt(0);
+
+        if (firstDigit === '1' || firstDigit === '5') {
+          value = value.slice(0, 13); 
+        } else if (firstDigit === '3') {
+          value = value.slice(0, 15); 
+        } else {
+          showCustomAlert('Введите корректный номер');
+          value = '';
+        }
+      }
+
+      this.inputElement.value = value;
+    });
+
+    this.inputElement.addEventListener('blur', () => {
+      const value = this.inputElement.value;
+      if (value.length === 0) return; 
+
+      const firstDigit = value.charAt(0);
+      if ((firstDigit === '1' || firstDigit === '5') && value.length !== 13) {
+        showCustomAlert('ОГРН должен содержать 13 цифр');
+        this.inputElement.value = '';
+      } else if (firstDigit === '3' && value.length !== 15) {
+        showCustomAlert('ОГРНИП должен содержать 15 цифр');
+        this.inputElement.value = '';
+      }
+    });
+  }
+}
+
+new OnlynumberOgrn('input[name="ogrn"]');
+
 
 const requiredInputs = document.querySelectorAll('.place-order__form-input_required');
 
@@ -1335,3 +1457,7 @@ requiredInputs.forEach(input => {
         }
     });
 });
+
+
+
+
