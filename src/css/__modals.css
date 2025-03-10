@@ -360,7 +360,7 @@
 /* START ОКНО РЕГИСТРАЦИЯ */
 .modal-reg {
     width: 26.3%;
-    height: 880px;
+    height: 910px;
     /* margin-top: 4vw; */
 }
 
@@ -451,6 +451,7 @@
 
 .modal-reg__button {
     width: 71.4%;
+    margin-top: -30px;
 }
 /* END ОКНО РЕГИСТРАЦИЯ */
 
@@ -541,6 +542,71 @@
     justify-content: center;
 }
 /* END ОКНО ЗАКАЗ ОТПРАВЛЕН УСПЕШНО */
+@media (max-width: 765px) {
+    .modal-order-success {
+        width: 80%;
+        top: 150px;
+        left: 10%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .modal-order-success__info-text {
+        margin-top: 4vw;
+    }
+
+    .modal-order-success__text {
+        margin-top: 2vw;
+    }
+
+    .modal-order-success__phone {
+        margin-top: 1vw;
+    }
+
+    .modal-order-success__wr-battons {
+        flex-direction: column;
+        margin-top: 4vw;
+        margin-bottom: 6vw;
+    }
+
+    .modal-order-success__button {
+        width: 100%;
+        padding: 3vw;
+    }
+}
+
+@media (max-width: 375px) {
+    .modal-order-success {
+        width: 90%;
+        top: 120px;
+        /* left: 5%; */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .modal-order-success__info-text {
+        margin-top: 5vw;
+    }
+
+    .modal-order-success__text {
+        margin-top: 3vw;
+    }
+
+    .modal-order-success__phone {
+        margin-top: 2vw;
+    }
+
+    .modal-order-success__wr-battons {
+        flex-direction: column;
+        margin-top: 5vw;
+        margin-bottom: 7vw;
+    }
+
+    .modal-order-success__button {
+        width: 100%;
+        padding: 4vw;
+    }
+}
 
 
 /* ------------------==============================------------------- */
@@ -677,6 +743,7 @@
     
         border-radius: 8vw;
         border: 0.53vw solid #FFF;
+        /* margin-left: 15vw; */
     }
 }
 
@@ -839,10 +906,19 @@
 /* START ОКНО РЕГИСТРАЦИЯ */
 @media(max-width: 1200px) {
     .modal-reg {
-        margin-top: 0;
+        width: 80%;
+        height: auto;
+        padding: 2vw;
     }
-}
 
+
+.modal-reg__wr-icon-pdf {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vw;
+    text-align: center;
+}
+}
 @media(max-width: 1200px) {
     .modal-reg__pass-rules {
         margin-top: 2.93vw;
@@ -877,6 +953,7 @@
 @media(max-width: 1200px) {
     .modal-reg__wr-icon-pdf {
         margin-top: 4.80vw;
+        padding: 15px;
     }
 }
 
@@ -977,6 +1054,7 @@
 @media(max-width: 1200px) {
     .modal-order-success__button {
         width: 67.4%;
+        margin-left: 13vw;
     }
 }
 /* END ОКНО ЗАКАЗ ОТПРАВЛЕН УСПЕШНО */
@@ -1028,6 +1106,33 @@
     border: 0.15vw solid #FFF;
     cursor: pointer;
 }
+
+/*Адаптивные стили для кнопки в ЛК*/
+
+@media (max-width: 765px) {
+    .profile__logout-button,
+    .profile__logout-button_exchange {
+        top: 85vw;
+        right: 8vw;
+        padding: 2vw 4vw;
+        font-size: 3vw;
+        border-radius: 4vw;
+        border: 0.4vw solid #FFF;
+    }
+}
+
+@media (max-width: 375px) {
+    .profile__logout-button,
+    .profile__logout-button_exchange {
+        top: 85vw;
+        right: 8vw;
+        /* padding: 3vw 6vw; */
+        font-size: 4vw;
+        border-radius: 5vw;
+        border: 0.5vw solid #FFF;
+    }
+}
+
 
 .password-input-wrapper {
     position: relative;
@@ -1109,4 +1214,46 @@
 .custom-modal__close-button:hover {
     background: #F1551C; /* Оранжевый фон */
     border-color: #F1551C; /* Оранжевая рамка */
+}
+
+@media (max-width: 765px) {
+    .custom-modal {
+        width: 70vw; 
+        padding: 4vw; 
+        box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.3);
+    }
+
+    .custom-modal__text {
+        font-size: 3vw; 
+        margin-bottom: 3vw;
+    }
+
+    .custom-modal__close-button {
+        height: 6vw;
+        font-size: 3vw;
+        border-radius: 4vw;
+        border: 0.3vw solid #FFF;
+        padding: 0 3vw;
+    }
+}
+
+@media (max-width: 375px) {
+    .custom-modal {
+        width: 85vw; 
+        padding: 5vw;
+        box-shadow: 0 1.5vw 3vw rgba(0, 0, 0, 0.4);
+    }
+
+    .custom-modal__text {
+        font-size: 4vw; 
+        margin-bottom: 4vw;
+    }
+
+    .custom-modal__close-button {
+        height: 7vw;
+        font-size: 4vw;
+        border-radius: 5vw;
+        border: 0.4vw solid #FFF;
+        padding: 0 4vw;
+    }
 }

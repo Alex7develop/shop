@@ -1212,10 +1212,13 @@
         position: static;
         top: 0;
         right: 0;
-
         margin-top: 14.40vw;
         align-self: center;
         order: 2;
+        width: 54.40vw;
+        height: 10.67vw;
+        font-size: 4.27vw;
+        border-radius: 8vw;
     }
 
     .sl-prod__big-desc-set .sl-prod__big-desc-wr-text-set {

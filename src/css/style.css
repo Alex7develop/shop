@@ -528,6 +528,7 @@
         padding-bottom: 2.40vw;
         padding-top: 2.40vw;
     }
+
 }
 
 @media( max-width: 1200px ) {
@@ -557,6 +558,28 @@
     }
 }
 
+@media (max-width: 768px) {
+    .header__account a {
+        width: 100px; 
+        /* height: 40px; */
+        position: relative; 
+        margin-top:6vw;
+    }
+
+    .header__account svg {
+        width: 7vw;
+        height: 6vw;
+        margin-top: -1.6vw;
+    }
+}
+
+@media (max-width: 375px) {
+    .header__account svg {
+        width: 7vw;
+        /* height: 6vw; */
+        margin-top: -1.4vw;
+    }
+}
 /* ------------------------------------- */
 
 /* COFFEE */

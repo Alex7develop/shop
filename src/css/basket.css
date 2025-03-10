@@ -225,7 +225,7 @@
     padding-right: .2%;
     margin-top: 2.08vw;
     font-family: "SofiaSans";
-    font-size: 1.34vw;
+    font-size: 1.2vw;
     font-weight: 400;
     flex-direction: column;
     align-items: flex-end;
@@ -267,7 +267,20 @@
 .basket__total-discount-text, .basket__total-price-text {
     margin-left: 450px;
 }
+/*Адаптируем под телефон*/
+@media (max-width: 765px) {
+    .basket__total-discount-text,
+    .basket__total-price-text {
+        margin-left: 150px;
+    }
+}
 
+@media (max-width: 375px) {
+    .basket__total-discount-text,
+    .basket__total-price-text {
+        margin-left: 120px;
+    }
+}
 .basket__total-discount-num, .basket__total-price-num {
     flex: 1;
     text-align: right;
@@ -397,7 +410,8 @@
 
 @media(max-width: 1200px) {
     .basket__goods-info-price {
-        margin-top: 2.13vw;
+        margin-top: 7.13vw;
+        margin-left: 25px;
     }
 }
 
@@ -452,7 +466,7 @@
         margin-top: 4.80vw;
         padding-right: 4.9%;
 
-        font-size: 3.73vw;
+        font-size: 3.3vw;
     }
 }
 

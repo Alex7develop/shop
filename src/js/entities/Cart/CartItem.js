@@ -40,7 +40,7 @@ export default class CartItem {
     const { QUANTITY, PRODUCT_ID } = this.product;
 
     const espressoIds = ['85', '87', '89', '91', '93'];
-    const dripIds = ['97'];
+    const dripIds = ['97','98','99','126','121','122','123','125','120','118','124','119'];
     const filterIds = ['109', '110', '111', '112', '114', '115', '116', '1117'];
     
     let discountMessage = '';
