@@ -12,7 +12,6 @@
         "processing": "мытая",
         "q": "84.75", 
         "roasting": "эспрессо",
-        "harvest": "2023",
         "weight": "1 кг",
         "img": "./img/content/espresso-colombia-andino-content.webp",
         "link": "#",
@@ -40,9 +39,9 @@
     {
         "packing": "espresso",
         "filter-name": "Эспрессо",
-        "id": "honduras-intibuca",
-        "part": "honduras-intibuca",
-        "title": "honduras intibuca",
+        "id": "ephiopia-beha",
+        "part": "ephiopia-beha",
+        "title": "Эфиопия Бешаш",
         "taste": "пряности и ягоды, ноты брусники, карамели и клюквы, пряностей и черного чая",
         "region": "Лемпира, Интибука",
         "height": "1750-1950 м",
@@ -52,9 +51,9 @@
         "roasting": "эспрессо",
         "harvest": "2023",
         "weight": "1 кг",
-        "img": "./img/content/espresso-honduras-intibuca-content.webp",
+        "img": "./img/content/espresso-ephiopia-beha-content.webp",
         "link": "#",
-        "description" : "Кофе R18: 'Honduras intibuca'"
+        "description" : "Кофе R18: Эфиопия Бешаш"
     },
     {
         "packing": "espresso",

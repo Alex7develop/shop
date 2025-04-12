@@ -221,7 +221,7 @@ module.exports = {
           to: 'img/content',
         },
         {
-          from: 'src/img/content/espresso-honduras-intibuca-content.webp',
+          from: 'src/img/content/espresso-ephiopia-beha-content.webp',
           to: 'img/content',
         },
         {
@@ -230,6 +230,10 @@ module.exports = {
         },
         {
           from: 'src/img/content/filter-burundi-muranga-content.webp',
+          to: 'img/content',
+        },
+        {
+          from: 'src/img/content/filter-ruanda-content.webp',
           to: 'img/content',
         },
         {

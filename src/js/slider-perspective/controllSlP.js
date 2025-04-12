@@ -105,7 +105,7 @@ export default class ControllSLP {
             };
     
             const main_offer_id = getMainOfferID(choice);
-    
+            console.log('======ТУТ==>Main Offer ID:', main_offer_id); 
             window.cart.add(main_offer_id);
         }
     }

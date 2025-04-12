@@ -377,12 +377,15 @@
 }
 
 .modal__wr-checkbox {
-    margin-top: 1.35vw;
+    /* margin-top: 1.35vw; */
     align-self: flex-start;
 }
 
+
 .modal__label-checkbox {
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
 }
 
 .modal__checkbox {
@@ -390,17 +393,18 @@
 }
 
 .modal__checkbox-text {
-    display: flex;
-    gap: 0.47vw;
-    align-items: end;
-
-    font-family: "SofiaSans";
-    font-size: 0.63vw;
-    font-weight: 400;
-    text-align: center;
-    user-select: none;
-    
+    display: inline-block;
+    line-height: 1.2;
     color: #FFF;
+    font-family: "SofiaSans";
+    font-size: 0.9vw;
+    font-weight: 400;
+}
+
+.modal__checkbox-text a {
+    color: #FFF;
+    text-decoration: underline;
+    white-space: normal;
 }
 
 .modal__checkbox-text::before {
@@ -412,6 +416,7 @@
 
     background-color: #fff;
     border-radius: 0.21vw;
+    margin-right: 10px;
 }
 
 .modal__label-checkbox_invalid + .modal__checkbox-text {
@@ -438,6 +443,8 @@
     display: block;
     height: 3.49vw;
     width: 3.49vw;
+    margin-top: 2.35vw;
+    margin-left: -170px;
 }
 
 .modal-reg__wr-battons {
@@ -1255,5 +1262,55 @@
         border-radius: 5vw;
         border: 0.4vw solid #FFF;
         padding: 0 4vw;
+    }
+}
+.modal__checkbox-text a {
+    color: #FFF;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.modal__checkbox-text {
+    color: #FFF;
+    line-height: 0.7;
+}
+
+@media (max-width: 765px) {
+    .modal__label-checkbox {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal__checkbox-text {
+        font-size: 3vw;
+        margin-top: -30px;
+    }
+
+    .modal__checkbox-text a {
+        font-size: 3vw;
+    }
+
+    .modal-reg__button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 375px) {
+    .modal__label-checkbox {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal__checkbox-text {
+        font-size: 4vw;
+        margin-top: -30px;
+    }
+
+    .modal__checkbox-text a {
+        font-size: 4vw;
+    }
+
+    .modal-reg__button {
+        width: 100%;
     }
 }

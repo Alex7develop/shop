@@ -708,7 +708,7 @@
 
 
 .place-order__payment {
-    margin-top: 2.2vw;
+    margin-top: .1vw;
     grid-column: 1; 
     grid-row: 3;
 }
@@ -1345,7 +1345,7 @@
     }
 
     .place-order__payment-input.place-order__form-input_required[name="address"] {
-        background-position: left 15.2% top 35%;
+        background-position: left 20.2% top 35%;
     }
 
     .place-order__payment-input.place-order__form-input_required[name="inn"] {
@@ -1353,7 +1353,7 @@
     }
 
     .place-order__payment-input.place-order__form-input_required[name="ogrn"] {
-        background-position: left 14% top 35%;
+        background-position: left 28% top 35%;
     }
 }
 

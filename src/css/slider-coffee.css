@@ -322,6 +322,7 @@
     object-position: center;
 
     z-index: 2;
+    margin-top: 40px;
 }
 
 .sl-prod__img-slide-deco {
@@ -371,15 +372,16 @@
     overflow: hidden;
     opacity: 0;
 }
-
+/* Отображаение карточки, когда вернется помол */
 .sl-prod__slide_active .sl-prod__radio-form {
-    height: 18%;
-
+    /* height: 18%; */
+    height: 10%;
     opacity: 1;
 }
-
+/* отображение помола зерна  */
 .sl-prod__radio-list {
-    display: grid;
+    /* display: grid; */
+    display: none;
     grid-template-rows: min-content min-content;
     grid-template-columns: 1fr 42%;
     row-gap: 0.68vw;
@@ -447,7 +449,7 @@
 
 .sl-prod__title-slide {
     font-family: 'SofiaSans';
-    font-size: 1.15vw;
+    font-size: 1vw;
     font-weight: 700;
     text-transform: uppercase;
 
@@ -660,6 +662,7 @@
     box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.15), 5px 3px 6px 0px rgba(0, 0, 0, 0.13), 11px 7px 8px 0px rgba(0, 0, 0, 0.08), 20px 12px 9px 0px rgba(0, 0, 0, 0.02), 31px 18px 10px 0px rgba(0, 0, 0, 0.00);
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 /*

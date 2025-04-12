@@ -235,6 +235,7 @@
 
     align-items: center;
     justify-content: center;
+    display: none;
 }
 
 .coffee__wr-slider-bottom {
@@ -617,6 +618,7 @@
           11px 7px 8px 0px rgba(0, 0, 0, 0.08),
            5px 3px 6px 0px rgba(0, 0, 0, 0.13),
             1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+            display: none;
     }
 }
 
@@ -911,3 +913,126 @@ text-align: center;
     max-height: 70%;
     object-fit: contain;
   } */
+
+  @media (max-width: 768px) {
+    .header__basket {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #F1551C;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+  
+    .header__basket-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .header__basket svg {
+      width: 80px;
+      height: 80px;
+      fill: white;
+    }
+  
+    .header__basket-amount {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: #F1551C;
+      color: white;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: bold;
+      min-width: 20px;
+      text-align: center;
+    }
+  }
+/* 
+  .sl-prod__slide_active > .sl-prod__price {
+    opacity: 1;
+}
+
+.sl-prod__price {
+    position: absolute;
+    top: 6%;
+    left: 1%;
+    z-index: 2;
+    display: grid
+;
+    width: 5vw;
+    height: 1.72vw;
+    place-items: center;
+    font-family: "SofiaSans";
+    font-size: 1.04vw;
+    font-style: normal;
+    font-weight: 700;
+    color: #FFF;
+    border-radius: 0px 0.78vw 0.78vw 0px;
+    background: #F1551C;
+    transition: opacity 0.7s linear;
+    opacity: 0;
+}
+
+@media (max-width: 961px) {
+    .sl-prod__price {
+        position: absolute;
+        top: 6%;
+        left: 0;
+        z-index: 2;
+        width: 20.80vw;
+        height: 6.13vw;
+        font-size: 4.27vw;
+        border-radius: 0px 4vw 4vw 0px;
+        opacity: 1;
+    }
+} */
+.sl-prod__slide {
+    position: relative; /* Важно! Чтобы .sl-prod__price нормально позиционировался */
+}
+
+.sl-prod__slide_active > .sl-prod__price {
+    opacity: 1;
+}
+
+.sl-prod__price {
+    position: absolute;
+    top: 6%;
+    left: 1%;
+    z-index: 2;
+    display: grid;
+    width: 5vw;
+    height: 1.72vw;
+    place-items: center;
+    font-family: "SofiaSans";
+    font-size: 1vw;
+    font-style: normal;
+    font-weight: 700;
+    color: #FFF;
+    border-radius: 0px 0.78vw 0.78vw 0px;
+    background: #F1551C;
+    transition: opacity 0.7s linear;
+    opacity: 0;
+}
+
+@media (max-width: 961px) {
+    .sl-prod__price {
+        width: 20.80vw;
+        height: 6.13vw;
+        font-size: 4.27vw;
+        border-radius: 0px 4vw 4vw 0px;
+        opacity: 1;
+    }
+}
+
+/*Форма регистрации*/

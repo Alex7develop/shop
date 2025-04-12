@@ -57,6 +57,7 @@ export default class RedrawSlСoffee {
                 linkTitle: item.title,
                 mainOfferId: item.main_offer_id,
                 systemId: item.system_id,
+                price: item.price
             });
 
             el.style.transition = `height ${this.duration}s ${this.timeFunc}, width ${this.duration}s ${this.timeFunc}`;
@@ -426,6 +427,7 @@ for (var inputIndex in inputs) {
                 linkTitle: item.title,
                 mainOfferId: item.main_offer_id,
                 systemId: item.system_id,
+                price: item.price
             });
             li.style.transition = `height ${this.duration}s ${this.timeFunc}, width ${this.duration}s ${this.timeFunc}`;
 
@@ -506,6 +508,20 @@ for (var inputIndex in inputs) {
         const id = activeSlide.dataset.id;
 
         const info = data.find( item => item.id === id);
+        //отображение веса зерна 
+        if(activeSlide.dataset.packing === 'Дрип-пакет') {
+            info.weight = '11,5 г'; // Фиксированный вес для дрип-пакетов
+            info.roasting = 'фильтр'; // Фиксированная обжарка для дрип-пакетов
+        }
+        if(activeSlide.dataset.packing === 'Эспрессо') {
+            info.weight = '1кг'; // Фиксированный вес для эспрессо
+            info.roasting = 'эспрессо'; // Фиксированная обжарка для эспрессо
+        }
+        if(activeSlide.dataset.packing === 'Фильтр') {
+            info.weight = '250г'; // Фиксированный вес для фильра
+            info.roasting = 'фильтр'; // Фиксированная обжарка для фильтра
+        }
+
         const keys = Object.keys(info);
         keys.forEach( item => {
             const el = this.description.querySelector(`[data-type="${item}"]`);
@@ -563,18 +579,24 @@ for (var inputIndex in inputs) {
     changeBigDescription(activeSlide) {
         const part = activeSlide.dataset?.part;
         
-        if(part && part === this.activeBigDesc.dataset.part) return;
-
-        // Активируем карточку
+        if (!part || (this.activeBigDesc && part === this.activeBigDesc.dataset.part)) return;
+    
         const el = [...this.bigDescriptions].find(item => item.dataset.part === part);
-
+    
+        if (!el) {
+            console.warn(`Нет описания для data-part="${part}"`);
+            return;
+        }
+    
         el.classList.add('sl-prod__big-desc-card_active');
-
-        this.activeBigDesc.classList.remove('sl-prod__big-desc-card_active');
-
+    
+        if (this.activeBigDesc) {
+            this.activeBigDesc.classList.remove('sl-prod__big-desc-card_active');
+        }
+    
         setTimeout(() => {
             this.activeBigDesc = el;
-        })
+        });
     }
 
     fillTextInfo() {
@@ -614,13 +636,13 @@ for (var inputIndex in inputs) {
     }
 
     createSlide({
-        id, part, pathImg, title, packing, href, linkTitle, mainOfferId, systemId = null
+        id, part, pathImg, title, packing, href, linkTitle, mainOfferId, systemId = null, price
     }) {
         // слайд
         const li = this.createEl('li', ['sl-prod__slide']);
-        
+        console.log('Переданная цена:', price, 'Тип:', typeof price);
         // console.log(`%c${mainOfferId}, - ${part}`, 'color: purple; font-size: 16px;')
-
+        
         // изоюражение на слайде
         const divImg = this.createEl('div', ['sl-prod__wr-img-slide', `sl-prod__wr-img-slide_${packing}`]);
         const img = this.createEl('img', ['sl-prod__img-slide']);
@@ -684,7 +706,15 @@ for (var inputIndex in inputs) {
 
             li.append(radioForm);
         }
+        // if (packing !== 'Дрип-пакет'){
+        const priceBlock = this.createEl('div', ['sl-prod__price']);
+        // Приводим price к числу перед проверкой
+        const formattedPrice = parseFloat(price);
+    
+        priceBlock.textContent = price && !isNaN(formattedPrice) ? `${formattedPrice} p.` : 'ошибка';
 
+        li.append(priceBlock);
+        // }
         // заголовок слайда
         const divTitle = this.createEl('div', ['sl-prod__wr-title-slide']);
         const h3 = this.createEl('h3', ['sl-prod__title-slide']);
@@ -789,3 +819,4 @@ for (var inputIndex in inputs) {
 
 
 }
+

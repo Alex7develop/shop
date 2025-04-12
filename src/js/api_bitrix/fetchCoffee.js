@@ -40,6 +40,7 @@ export async function fetchCoffeeData() {
           // pomol:offer.pomol,
           main_offer_id: offer.main_offer_id,
           system_id: offer.system_id,
+          price: offer.price
         };
 
         // if (offer.packing === 'filter') {
@@ -51,8 +52,11 @@ export async function fetchCoffeeData() {
         // }
 
         return transformedOffer;
+        
       })
+      
     );
+    console.log('Готовые данные с ценами:========', transformedData);
 
     // console.log('Вот тут готовый вариант ======>', transformedData);
 

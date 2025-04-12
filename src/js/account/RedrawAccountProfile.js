@@ -52,17 +52,18 @@ export default class RedrawAccountProfile {
       '.profile__button-save-adress'
     );
 
-    this.el
-      .querySelector('.profile__address-list')
-      .addEventListener('click', (e) => {
-        if (e.target && e.target.classList.contains('profile__address-item')) {
-          this.fillAddressForm(e.target.textContent);
-          const event = new CustomEvent('addressSelected', {
-            detail: e.target.textContent,
-          });
-          document.dispatchEvent(event);
-        }
+    const addressListElement = this.el.querySelector('.profile__address-list');
+  if (addressListElement) {
+    addressListElement.addEventListener('click', (e) => {
+    if (e.target && e.target.classList.contains('profile__address-item')) {
+      this.fillAddressForm(e.target.textContent);
+      const event = new CustomEvent('addressSelected', {
+        detail: e.target.textContent,
       });
+      document.dispatchEvent(event);
+    }
+  });
+}
 
     this.loadProfileData();
     this.addAddressButton = this.el.querySelector('.profile__button-add-adress');
@@ -650,6 +651,7 @@ class OrderList {
       id: data.ID || 'Неизвестно',
       deliveryType: data.Delivery_type || 'Не указан',
       address: data.Address || '',
+      dateCreated:data.Date_created,
       deliveryDate: {
         from: data.Delivery_data_from || '',
         to: data.Delivery_data_to || '',
@@ -689,8 +691,8 @@ class OrderList {
         <span class="history__delivery-cost_currency">р.</span>
       </div>
       <div class="history__delivery-address">${order.address}</div>
-      <div class="history__delivery-date">
-        ${order.deliveryDate.from && order.deliveryDate.to ? `${order.deliveryDate.from} - ${order.deliveryDate.to}` : ''}
+      <div class="history__delivery-date"> Ожидаемая дата доставки:
+      ${getDeliveryDate((order.dateCreated))}
       </div>
       <div class="history__order-number"><span class="history__order-number_num">${order.id}</span></div>
       <ul class="history__order-state-list">
@@ -755,6 +757,8 @@ class OrderList {
       'Оплачен',
       'Выполнен',
       'Отменен',
+      'Передан в доставку',
+      'В обработке',
     ];
     return states
       .map(
@@ -1460,4 +1464,45 @@ requiredInputs.forEach(input => {
 
 
 
+//Пример 
+function addBusinessDays(startDate, daysToAdd) {
+  const result = new Date(startDate);
+  let addedDays = 0;
+  
+  while (addedDays < daysToAdd) {
+    result.setDate(result.getDate() + 1);
+    // Пропускаем субботу (6) и воскресенье (0)
+    if (result.getDay() !== 0 && result.getDay() !== 6) {
+      addedDays++;
+    }
+  }
+  
+  return result;
+}
 
+function getDeliveryDate(dateString) {
+  // Парсим дату из строки формата "05.03.2025 17:58:36"
+  const [day, month, year] = dateString.split(' ')[0].split('.').map(Number);
+  const orderDate = new Date(year, month - 1, day); // JS использует 0-индексированные месяцы
+
+  // Добавляем 2 рабочих дня
+  const deliveryDate = addBusinessDays(orderDate, 2);
+
+  // Форматируем дату
+  return deliveryDate.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+
+//Обязательные чек боксы 
+document.addEventListener('DOMContentLoaded', function() {
+  const termsCheckbox = document.querySelector('input[name="terms"]');
+  const newsletterCheckbox = document.querySelector('input[name="newsletter"]');
+  const registerButton = document.querySelector('.modal-reg__button');
+
+  function toggleRegisterButton() {
+      registerButton.disabled = !(termsCheckbox.checked && newsletterCheckbox.checked);
+  }
+
+  termsCheckbox.addEventListener('change', toggleRegisterButton);
+  newsletterCheckbox.addEventListener('change', toggleRegisterButton);
+});

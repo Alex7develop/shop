@@ -42,23 +42,36 @@ export default class CartItem {
     const espressoIds = ['85', '87', '89', '91', '93'];
     const dripIds = ['97','98','99','126','121','122','123','125','120','118','124','119'];
     const filterIds = ['109', '110', '111', '112', '114', '115', '116', '1117'];
+    const accessoriesId = ['74','70','82','80','78','76','72','66','69']
     
     let discountMessage = '';
 
-    if (espressoIds.includes(PRODUCT_ID) && QUANTITY >= 10) {
+    if (espressoIds.includes(PRODUCT_ID)) {
+      if (QUANTITY >= 50) {
+        discountMessage = `
+          <p class="basket__goods-info-text" style="color: white; margin: 0;">
+            Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span><span style="color: #F6724A; font-weight: 600;">50 кг</span>
+          </p>`;
+      } else if (QUANTITY >= 1) {
+        discountMessage = `
+          <p class="basket__goods-info-text" style="color: white; margin: 0;">
+            Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span><span style="color: #F6724A; font-weight: 600;"></span> 
+          </p>`;
+      }
+    } else if (dripIds.includes(PRODUCT_ID) && QUANTITY >= 1) {
       discountMessage = `
         <p class="basket__goods-info-text" style="color: white; margin: 0;">
-          Скидка составляет <span style="color: #F6724A; font-weight: 600;">10%</span>, так как Вы заказали более <span style="color: #F6724A; font-weight: 600;">10 кг</span> кофе
+          Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span><span style="color: #F6724A; font-weight: 600;"></span>
         </p>`;
-    } else if (dripIds.includes(PRODUCT_ID) && QUANTITY >= 10) {
+    } else if (filterIds.includes(PRODUCT_ID) && QUANTITY >= 1) {
       discountMessage = `
         <p class="basket__goods-info-text" style="color: white; margin: 0;">
-          Скидка составляет <span style="color: #F6724A; font-weight: 600;">10%</span>, так как Вы заказали более <span style="color: #F6724A; font-weight: 600;">10 пачек зерна</span>
+          Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span> <span style="color: #F6724A; font-weight: 600;"></span>
         </p>`;
-    } else if (filterIds.includes(PRODUCT_ID) && QUANTITY >= 10) {
+    } else if (accessoriesId.includes(PRODUCT_ID) && QUANTITY >= 1) {
       discountMessage = `
         <p class="basket__goods-info-text" style="color: white; margin: 0;">
-          Скидка составляет <span style="color: #F6724A; font-weight: 600;">10%</span>, так как Вы заказали более <span style="color: #F6724A; font-weight: 600;">10 Дрип пакетов</span> кофе
+          Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span> <span style="color: #F6724A; font-weight: 600;"></span>
         </p>`;
     }
 
