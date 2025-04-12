@@ -808,7 +808,7 @@ for (var inputIndex in inputs) {
      */
     getFilterCoffeeMainOfferId(slug, type) {
         const filterCoffee = window.coffeeData['Фильтр'];
-        const found = filterCoffee.find(offer => offer.pomol === type && offer.id === slug);
+        const found = filterCoffee.find(offer => offer.pomol === type && offer.part === slug);
         if (found) return found.main_offer_id;
         return null;
     }
