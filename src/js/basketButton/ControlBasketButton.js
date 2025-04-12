@@ -208,6 +208,8 @@ export default class ControllBasketButton extends ApiModals {
         const basket = JSON.parse(localStorage.basket);
         delete localStorage.basket;
 
+        console.warn("basket")
+        console.warn(basket)
         // проверка добавлялся ли уже такой продукт в корзину
         const product = basket.find(item => {
             // если в товаре нет помола то это не фильтр кофе
@@ -218,6 +220,8 @@ export default class ControllBasketButton extends ApiModals {
             return item.article === data.article && item.title === data.title && item.grinding === data.grinding
         })
 
+        console.warn("product")
+        console.warn(product)
         // если такого продукта в корзине нет закидываем его туда
         if(!product) {
             basket.push(data);
@@ -244,7 +248,7 @@ export default class ControllBasketButton extends ApiModals {
                 if(item.amount <= 0){
                     array.splice(index, 1); // удалить из basket
                     this.redraw.deleteProduct(data.index); // удалить с экрана
-                };
+                }
                 // если в корзине не осталось товаров чистим localStorage
                 if(array.length === 0) {
                     this.clearLocalStorage();
@@ -255,6 +259,7 @@ export default class ControllBasketButton extends ApiModals {
         if(basket.length) localStorage.basket = JSON.stringify(basket);
         
         // перерисовка/отрисовка значка корзины с количеством товаров в ней
+
         this.redraw.redrawIconAmount();
     }
 

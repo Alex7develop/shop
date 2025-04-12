@@ -121,6 +121,8 @@ class Cart {
     // console.log(myHeaders)
     // console.log(this.cookies);
     console.log([...myHeaders.entries()]);
+    console.warn("ID ЭЛЕМЕНТА CART 124")
+    console.warn(id)
 
     const raw = JSON.stringify({ product_id: id });
 

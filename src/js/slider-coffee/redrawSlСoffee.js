@@ -235,6 +235,7 @@ for (var inputIndex in inputs) {
             // меняем большую картинку и описания товара
             this.changeBigImg(this.activeSlide);
         }
+        
 
         // Для мобилки
         if(innerWidth <= 1200) {
@@ -263,6 +264,7 @@ for (var inputIndex in inputs) {
         this.changeBigDescription(this.activeSlide);
         this.changeTextInfo(this.activeSlide, this.data);
     }
+    
 
     // SWIPE START
     touchStart(data) {
@@ -695,6 +697,10 @@ for (var inputIndex in inputs) {
 
                 radioItem.append(label);
                 radioItem.addEventListener('click', () => {
+                    console.warn("part redraw 748")
+                    console.warn(part)
+                    console.warn("arrText[i] redraw 748")
+                    console.warn(arrText[i])
                     this.filterCoffeeMainOfferId = this.getFilterCoffeeMainOfferId(part, arrText[i]);
                     console.log('Event listener called');
                 })
@@ -734,10 +740,14 @@ for (var inputIndex in inputs) {
             link.href = href;
             link.title = linkTitle;
             link.dataset.part
+            console.warn("link")
+            console.warn(link)
             link.textContent = 'Купить';
             link.addEventListener('click', (e) => {
                 // alert('Hello coffee ' + mainOfferId)
                 if (packing === 'filter') {
+                    console.warn("ID ЭЛЕМЕНТА redraw 741")
+                    console.warn(id)
                     window.cart.add(this.filterCoffeeMainOfferId);
                 }
                 else if (packing === 'Дрип-пакет') {
@@ -745,6 +755,8 @@ for (var inputIndex in inputs) {
                 }
                 else {
                     // alert(`${part} - ${mainOfferId}`);
+                    console.warn("ID ЭЛЕМЕНТА redraw 748")
+                    console.warn(id)
                     window.cart.add(mainOfferId);
                 }
                 e.preventDefault();
@@ -807,6 +819,8 @@ for (var inputIndex in inputs) {
      *      "Зерно", "Эспрессо", "Капельная кофеварка", "Турка", 
      */
     getFilterCoffeeMainOfferId(slug, type) {
+        console.warn("getFilterCoffeeMainOfferId")
+        console.warn(window.coffeeData['Фильтр'])
         const filterCoffee = window.coffeeData['Фильтр'];
         const found = filterCoffee.find(offer => offer.pomol === type && offer.part === slug);
         if (found) return found.main_offer_id;

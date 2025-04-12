@@ -70,7 +70,10 @@ export default class ControllSlСoffee {
             // }, 300);
         
             const card = button.closest('li'); // Получаем карточку товара
-        
+
+            console.warn("ControlSlCoffee")
+            console.warn(card)
+
             let choice = {
                 article: card.dataset.id,
                 part: card.dataset.part,
@@ -79,9 +82,16 @@ export default class ControllSlСoffee {
                 sectionName: 'coffee',
                 amount: 1,
             };
-        
+
+            console.warn("ControlSlCoffee")
+            console.warn(choice)
+
             // Получаем значение радио кнопок (зерно/помол)
             const radioForm = card.querySelector('form');
+
+            console.warn("ControlSlCoffee")
+            console.warn(radioForm)
+
             if (radioForm) {
                 const radioButtons = radioForm['sl-prod-radio'];
                 console.log('radioButtons ========>',radioButtons);
@@ -94,7 +104,10 @@ export default class ControllSlСoffee {
             const coffee = this.d.data.find(item => {
                 return item.id === choice.article && item.packing === card.dataset.packing;
             });
-        
+
+            console.warn("ControlSlCoffee")
+            console.warn(coffee)
+
             choice.part = coffee.part;
             choice.description = coffee.description;
         
@@ -107,14 +120,25 @@ export default class ControllSlСoffee {
                 choice.imgUrl = coffee.img;
                 choice.title = coffee.title;
             }
-        
+
+            console.warn("ControlSlCoffee choice")
+            console.warn(choice)
+
+            console.warn("ControlSlCoffee add final response")
+            console.warn(this.addToBasket(choice))
+
             this.addToBasket(choice);
         }
         
 
         if (e.target.closest('.sl-prod__button-slide_drip')) {
             // alert(e.target.title)
+
             const setItems = window.coffeeData['Дрип пакет'].filter(item => item.part === e.target.title);
+
+            console.warn("ControlSlCoffee add 136")
+            console.warn(setItems)
+
             setItems.forEach(item => window.cart.add(item.system_id));
             // console.log(setItems);
         }
