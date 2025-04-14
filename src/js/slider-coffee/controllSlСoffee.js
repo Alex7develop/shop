@@ -125,9 +125,9 @@ export default class ControllSlСoffee {
             console.warn(choice)
 
             console.warn("ControlSlCoffee add final response")
-            console.warn(this.addToBasket(choice))
-
-            this.addToBasket(choice);
+            e.preventDefault();
+            cart.add(coffee.system_id)
+            //this.addToBasket(choice);
         }
         
 
@@ -139,7 +139,7 @@ export default class ControllSlСoffee {
             console.warn("ControlSlCoffee add 136")
             console.warn(setItems)
 
-            setItems.forEach(item => window.cart.add(item.system_id));
+            //setItems.forEach(item => window.cart.add(item.system_id));
             // console.log(setItems);
         }
 

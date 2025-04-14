@@ -235,7 +235,6 @@ for (var inputIndex in inputs) {
             // меняем большую картинку и описания товара
             this.changeBigImg(this.activeSlide);
         }
-        
 
         // Для мобилки
         if(innerWidth <= 1200) {
@@ -264,7 +263,6 @@ for (var inputIndex in inputs) {
         this.changeBigDescription(this.activeSlide);
         this.changeTextInfo(this.activeSlide, this.data);
     }
-    
 
     // SWIPE START
     touchStart(data) {
@@ -748,16 +746,16 @@ for (var inputIndex in inputs) {
                 if (packing === 'filter') {
                     console.warn("ID ЭЛЕМЕНТА redraw 741")
                     console.warn(id)
-                    window.cart.add(this.filterCoffeeMainOfferId);
+                   // window.cart.add(this.filterCoffeeMainOfferId);
                 }
                 else if (packing === 'Дрип-пакет') {
-                    window.cart.add(systemId);
+                   // window.cart.add(systemId);
                 }
                 else {
                     // alert(`${part} - ${mainOfferId}`);
                     console.warn("ID ЭЛЕМЕНТА redraw 748")
                     console.warn(id)
-                    window.cart.add(mainOfferId);
+                    //window.cart.add(mainOfferId);
                 }
                 e.preventDefault();
             });
