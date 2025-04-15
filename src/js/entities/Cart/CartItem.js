@@ -50,23 +50,23 @@ export default class CartItem {
       if (QUANTITY >= 50) {
         discountMessage = `
           <p class="basket__goods-info-text" style="color: white; margin: 0;">
-            Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span><span style="color: #F6724A; font-weight: 600;">50 кг</span>
+            Скидка составляет <span style="color: #F6724A; font-weight: 600;">25%</span><span style="color: #F6724A; font-weight: 600;">50 кг</span>
           </p>`;
       } else if (QUANTITY >= 1) {
         discountMessage = `
           <p class="basket__goods-info-text" style="color: white; margin: 0;">
-            Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span><span style="color: #F6724A; font-weight: 600;"></span> 
+            Скидка составляет <span style="color: #F6724A; font-weight: 600;">25%</span><span style="color: #F6724A; font-weight: 600;"></span> 
           </p>`;
       }
     } else if (dripIds.includes(PRODUCT_ID) && QUANTITY >= 1) {
       discountMessage = `
         <p class="basket__goods-info-text" style="color: white; margin: 0;">
-          Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span><span style="color: #F6724A; font-weight: 600;"></span>
+          Скидка составляет <span style="color: #F6724A; font-weight: 600;">25%</span><span style="color: #F6724A; font-weight: 600;"></span>
         </p>`;
     } else if (filterIds.includes(PRODUCT_ID) && QUANTITY >= 1) {
       discountMessage = `
         <p class="basket__goods-info-text" style="color: white; margin: 0;">
-          Скидка составляет <span style="color: #F6724A; font-weight: 600;">20%</span> <span style="color: #F6724A; font-weight: 600;"></span>
+          Скидка составляет <span style="color: #F6724A; font-weight: 600;">25%</span> <span style="color: #F6724A; font-weight: 600;"></span>
         </p>`;
     } else if (accessoriesId.includes(PRODUCT_ID) && QUANTITY >= 1) {
       discountMessage = `

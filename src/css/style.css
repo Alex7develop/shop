@@ -1036,3 +1036,65 @@ text-align: center;
 }
 
 /*Форма регистрации*/
+@keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-0.5vw);
+    }
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: -200%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+  .banner-discount {
+      font-family: 'SofiaSans';
+      font-size: 1.34vw;
+      font-weight: 400;
+      color: #fff;
+      border-radius: 1.56vw;
+      background-color: #F1551C;
+  
+      box-shadow: 
+        1px 1px 3px rgba(0, 0, 0, 0.1), 
+        5px 3px 6px rgba(0, 0, 0, 0.05), 
+        11px 7px 8px rgba(0, 0, 0, 0.03), 
+        20px 12px 9px rgba(0, 0, 0, 0.02), 
+        31px 18px 10px rgba(0, 0, 0, 0.01);
+  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      padding: 0.6vw 2vw;
+      margin-bottom: 1.5vw;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+  
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+  }
+  
+  /* Эффект сияющего текста */
+  .banner-discount::after {
+      /* content: ''; */
+      position: absolute;
+      top: 0;
+      left: -100%;
+      height: 100%;
+      width: 200%;
+      background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+      animation: shine 2.5s linear infinite;
+      pointer-events: none;
+  }
+  
+  

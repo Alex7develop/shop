@@ -514,7 +514,12 @@ for (var inputIndex in inputs) {
             info.roasting = 'фильтр'; // Фиксированная обжарка для дрип-пакетов
         }
         if(activeSlide.dataset.packing === 'Эспрессо') {
-            info.weight = '1кг'; // Фиксированный вес для эспрессо
+            // Исключение для конкретного ID
+            if(activeSlide.dataset.id === 'Колумбия-Эксельсо-Декаф') {
+                info.weight = '250г';
+            } else {
+                info.weight = '1кг'; // Фиксированный вес для остальных эспрессо
+            }
             info.roasting = 'эспрессо'; // Фиксированная обжарка для эспрессо
         }
         if(activeSlide.dataset.packing === 'Фильтр') {
