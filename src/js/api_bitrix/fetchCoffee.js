@@ -3,7 +3,7 @@ import { API_URL } from "../utils/constants";
 export async function fetchCoffeeData() {
   try {
     // const response = await fetch(`${API_URL}/api/mainpage/coffee`);
-    const response = await fetch('https://dev.r18.coffee/api/mainpage/coffee');
+    const response = await fetch('https://r18.coffee/api/mainpage/coffee');
     const data = await response.json();
     window.coffeeData = data.OFFERS;
     // console.log('Статус ответа который мы заслужили:', response.status);

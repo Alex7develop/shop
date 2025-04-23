@@ -11,7 +11,7 @@ module.exports = {
     proxy: [
       {
         context: ['/api'],
-        target: 'https://dev.r18.coffee',
+        target: 'https://r18.coffee',
       },
     ],
   },

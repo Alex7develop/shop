@@ -127,6 +127,6 @@ export default class CartItem {
   }
 
   static getImagePath(path) {
-    return path.match(/http?s:\/\/localhost/) ? path.replace('localhost', 'dev.r18.coffee') : path;
+    return path.match(/http?s:\/\/localhost/) ? path.replace('localhost', 'r18.coffee') : path;
   }
 }

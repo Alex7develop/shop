@@ -71,7 +71,7 @@ export default class RedrawAccountProfile {
 
   async loadProfileData() {
     try {
-      const response = await fetch('https://dev.r18.coffee/api/auth/info', {
+      const response = await fetch('https://r18.coffee/api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -567,7 +567,7 @@ class AddressManager {
 
 // Инициализация класса
 document.addEventListener('DOMContentLoaded', () => {
-  const addressManager = new AddressManager('https://dev.r18.coffee/api/auth/createuseraddress');
+  const addressManager = new AddressManager('https://r18.coffee/api/auth/createuseraddress');
 });
 
 class OrderList {
@@ -779,7 +779,7 @@ class OrderList {
 }
 
 // Пример использования
-const orderList = new OrderList('https://dev.r18.coffee/api/order/list', '.history__list');
+const orderList = new OrderList('https://r18.coffee/api/order/list', '.history__list');
 orderList.fetchOrders();
 
 //Это класс для отображения оформления заказа
@@ -835,7 +835,7 @@ class UserProfile {
   }
 }
 
-const userProfile = new UserProfile('https://dev.r18.coffee/api/auth/info');
+const userProfile = new UserProfile('https://r18.coffee/api/auth/info');
 userProfile.loadProfileData();
 
 class PlaceOrderAddress {
@@ -865,7 +865,7 @@ class PlaceOrderAddress {
 
   async loadAddresses() {
     try {
-      const response = await fetch('https://dev.r18.coffee/api/auth/info', {
+      const response = await fetch('https://r18.coffee/api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -987,7 +987,7 @@ class OrderDeliveryAndPayment {
 }
 
 let orderDeliveryAndPayment = new OrderDeliveryAndPayment(
-  'https://dev.r18.coffee/api/order/delivery_and_payment'
+  'https://r18.coffee/api/order/delivery_and_payment'
 );
 
 orderDeliveryAndPayment
@@ -1248,7 +1248,7 @@ function submitOrder() {
     credentials: 'include',
   };
 
-  fetch('https://dev.r18.coffee/api/order/create', requestOptions)
+  fetch('https://r18.coffee/api/order/create', requestOptions)
     .then((response) => {
       if (!response.ok) {
         throw new Error('Ошибка: ' + response.statusText);

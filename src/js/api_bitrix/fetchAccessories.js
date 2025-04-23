@@ -50,7 +50,7 @@ export const fetchAccessoriesData = async () => {
   try {
     const response = await fetch(
       // `${API_URL}/api/mainpage/accessories`
-      'https://dev.r18.coffee/api/mainpage/accessories'
+      'https://r18.coffee/api/mainpage/accessories'
     );
 
     // console.log('Статус ответа', response.status);

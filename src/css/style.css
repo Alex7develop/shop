@@ -1097,4 +1097,24 @@ text-align: center;
       pointer-events: none;
   }
   
+  @media (max-width: 735px) {
+    .banner-discount {
+      font-size: 3.5vw; /* Сделаем текст крупнее на маленьком экране */
+      border-radius: 4vw;
+      padding: 1.5vw 5vw;
+      margin-bottom: 3vw;
+      width: 90%;
+      text-align: center; 
+    }
+  }
   
+  @media (max-width: 375px) {
+    .banner-discount {
+      font-size: 4.5vw;
+      border-radius: 5vw;
+      padding: 2vw 6vw;
+      margin-bottom: 4vw;
+      width: 90%;
+      text-align: center; 
+    }
+  }

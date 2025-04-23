@@ -38,7 +38,7 @@ const transformData = (data) => {
       composition: uniqueOffersArray
         .map((offer) => offer.PREVIEW_TEXT)
         .filter((v, i, a) => a.indexOf(v) === i),
-      link: 'dev.r18.coffee',
+      link: 'r18.coffee',
       description: `Добавлен товар:  '${item.NAME}'`,
     };
 
@@ -65,7 +65,7 @@ const transformData = (data) => {
 export const fetchMerchData = async () => {
   try {
     // const response = await fetch(`${API_URL}/api/mainpage/merch`);
-    const response = await fetch('https://dev.r18.coffee/api/mainpage/merch');
+    const response = await fetch('https://r18.coffee/api/mainpage/merch');
     // console.log('Статус ответа', response.status);
     if (!response.ok) {
       throw new Error('Ошибочка залетела');

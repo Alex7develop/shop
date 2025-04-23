@@ -2,13 +2,13 @@ export default class Profile {
   constructor() {
     this.data = null;
     this.accountElement = document.querySelector('.header__account a');
-    this.basketUrl = 'https://dev.r18.coffee/basket';
-    this.accountUrl = 'https://dev.r18.coffee/account';
+    this.basketUrl = 'https://r18.coffee/basket';
+    this.accountUrl = 'https://r18.coffee/account';
   }
 
   async getUserInfo() {
     try {
-      const response = await fetch('https://dev.r18.coffee/api/auth/info', {
+      const response = await fetch('https://r18.coffee/api/auth/info', {
         method: 'GET',
         credentials: 'include',
         headers: {

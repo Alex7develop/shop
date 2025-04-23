@@ -44,7 +44,7 @@ export default class ApiAccountButton {
     };
 
     try {
-        const response = await fetch('https://dev.r18.coffee/api/auth/login', {
+        const response = await fetch('https://r18.coffee/api/auth/login', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -130,7 +130,7 @@ showErrorMessage(message) {
 
   async logout() {
     try {
-      const response = await fetch('https://dev.r18.coffee/api/auth/logout', {
+      const response = await fetch('https://r18.coffee/api/auth/logout', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       event.preventDefault(); // предотвращаем стандартный переход по ссылке
 
       try {
-        const response = await fetch("https://dev.r18.coffee/api/auth/info", {
+        const response = await fetch("https://r18.coffee/api/auth/info", {
           method: "GET",
           credentials: "include", // чтобы отправлять куки сессии
         });
